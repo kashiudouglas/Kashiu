@@ -1253,11 +1253,12 @@ body.menu-open{overflow:hidden}
         <aside class="profile reveal" style="--d:.12s">
           <div class="row"><span class="k">Name</span><span class="v">任喆</span></div>
           <div class="row"><span class="k">Alias</span><span class="v">Kashiu</span></div>
-          <div class="row"><span class="k">Roles</span><span class="v">学生 / 作者</span></div>
+          <div class="row"><span class="k">Born</span><span class="v">2007 · 扶风</span></div>
+          <div class="row"><span class="k">School</span><span class="v">陕西机电</span></div>
           <div class="row"><span class="k">Focus</span><span class="v">写作 · AI · 游戏</span></div>
           <div class="row"><span class="k">Home</span><span class="v">扶风 · 宝鸡 · 陕西</span></div>
-          <div class="row"><span class="k">Status</span><span class="v live">保持好奇</span></div>
-          <p class="profile-note">大多数时候，我在学习和记录；剩下的时候，我在虚构另一片宇宙。</p>
+          <div class="row"><span class="k">Status</span><span class="v live">在写「环」</span></div>
+          <p class="profile-note">十九岁，在陕西机电读书；其余时间在写「环」。</p>
         </aside>
       </div>
     </div>
@@ -1299,17 +1300,18 @@ body.menu-open{overflow:hidden}
         </div>
 
         <div class="ring-copy reveal" style="--d:.12s">
-          <h3>一个仍在生长的宇宙。</h3>
+          <h3>一个复杂的宇宙。</h3>
           <p>
-            环，是我长期构思中的幻想宇宙。不同的星域、文明与神明在其中诞生、消亡，
-            群星明灭更替，命运被书写，也有人试图反抗命运。
-            Kashiu 只是这片宇宙中的一个故事——而环，仍在不断生长。
+            环，是我长期构思的幻想宇宙：不同的星域、文明与神明，
+            在同一套底层逻辑下，修仙与魔法并存。
+            Kashiu 是都格拉斯的第二十二位国王，也是最后一位——
+            而环，仍在不断生长。
           </p>
           <div class="ring-tags">
             <span>Star Domains</span>
             <span>Civilization</span>
             <span>Divinity</span>
-            <span>Fate</span>
+            <span>Cultivation · Magic</span>
           </div>
           <a class="btn" href="about-me.html#ring">阅读世界观 <span class="ar">→</span></a>
         </div>
@@ -1474,6 +1476,9 @@ body.menu-open{overflow:hidden}
           </a></li>
           <li><button id="copyWechat" data-copy="LZXM2007" type="button">
             <span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em>
+          </button></li>
+          <li><button data-copy="Kashiu" type="button">
+            <span>Bilibili</span><strong>Kashiu</strong><em class="hint">点击复制</em>
           </button></li>
           <li><a href="mailto:kashiu.douglas@gmail.com">
             <span>Mail</span><strong>kashiu.douglas</strong><em>↗</em>
@@ -1665,9 +1670,9 @@ body.menu-open{overflow:hidden}
     if (e.key === 'Escape') closeMenu();
   });
 
-  /* ---------- wechat copy ---------- */
-  var copyBtn = document.getElementById('copyWechat');
-  if (copyBtn) {
+  /* ---------- copy buttons ---------- */
+  var copyBtns = document.querySelectorAll('[data-copy]');
+  Array.prototype.forEach.call(copyBtns, function(copyBtn){
     copyBtn.addEventListener('click', function(){
       var text = copyBtn.getAttribute('data-copy') || '';
       var hint = copyBtn.querySelector('.hint');
@@ -1696,7 +1701,7 @@ body.menu-open{overflow:hidden}
         done();
       }
     });
-  }
+  });
 
   /* ---------- hero sky canvas ---------- */
   var canvas = document.getElementById('sky');

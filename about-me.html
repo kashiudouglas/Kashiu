@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07080A">
-<meta name="description" content="关于任喆（Kashiu）：学生、写作者、探索者。Kashiu 的含义、环世界观的由来与个人数字侧写。">
+<meta name="description" content="关于任喆（Kashiu）：2007 年生于陕西扶风，现就读于陕西机电职业技术学院。写诗、写「环」，也写代码。">
 <title>关于我 · Kashiu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,6 +130,39 @@ body.menu-open{overflow:hidden}
 .tag{font-family:var(--cn);font-size:clamp(14px,1.2vw,19px);letter-spacing:.04em;color:rgba(239,235,226,.62);padding:8px 0;border-bottom:1px solid var(--line-soft);margin-right:clamp(18px,2.4vw,36px);transition:color .3s,border-color .3s}
 .tag:hover{color:var(--accent);border-color:var(--accent)}
 
+/* school route */
+.route-head{display:flex;justify-content:space-between;align-items:baseline;margin-top:clamp(44px,6vw,76px);padding-bottom:14px;border-bottom:1px solid var(--line);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.route-row{display:grid;grid-template-columns:52px minmax(0,.6fr) minmax(0,1.4fr);gap:clamp(12px,2vw,28px);align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line-soft)}
+.route-no{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--accent)}
+.route-place{font-family:var(--cn);font-weight:300;font-size:clamp(16px,1.7vw,21px);letter-spacing:.03em;color:var(--paper)}
+.route-school{font-size:11px;line-height:1.9;letter-spacing:.05em;color:var(--dim)}
+
+/* world */
+.world-intro{max-width:780px;font-size:12.5px;line-height:2.15;color:var(--dim)}
+.world-intro p+p{margin-top:14px}
+.world-intro strong{color:var(--paper);font-weight:500}
+.world-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(38px,5vw,64px);border-top:1px solid var(--line)}
+.pillar{padding:clamp(22px,2.6vw,34px) clamp(16px,2vw,26px);border-left:1px solid var(--line-soft)}
+.pillar:first-child{border-left:0;padding-left:0}
+.pillar-no{font-family:var(--serif);font-style:italic;font-size:12px;color:var(--accent);letter-spacing:.08em}
+.pillar h4{margin-top:10px;font-family:var(--cn);font-weight:300;font-size:clamp(19px,2vw,24px);letter-spacing:.04em;display:flex;align-items:baseline;gap:10px}
+.pillar h4 em{font-family:var(--serif);font-style:italic;font-size:.55em;color:var(--muted)}
+.pillar p{margin-top:12px;font-size:11px;line-height:1.95;color:var(--dim)}
+.pillar b{color:var(--paper);font-weight:500}
+.domain-block{margin-top:clamp(38px,5vw,64px)}
+.domain-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.domain-row{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,.4fr) minmax(0,1.3fr);gap:clamp(12px,2vw,28px);padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.domain-row b{font-family:var(--cn);font-weight:300;font-size:clamp(16px,1.8vw,21px);letter-spacing:.05em;color:var(--paper)}
+.domain-row em{font-family:var(--serif);font-style:italic;font-size:11px;color:var(--muted)}
+.domain-row span{font-size:10.5px;line-height:1.8;color:var(--dim);text-align:right}
+.douglas{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:clamp(30px,5vw,80px);margin-top:clamp(38px,5vw,64px);padding-top:clamp(30px,4vw,48px);border-top:1px solid var(--line)}
+.douglas h3{margin-top:8px;font-family:var(--cn);font-weight:300;font-size:clamp(26px,3.2vw,40px);letter-spacing:.04em;display:flex;align-items:baseline;gap:14px}
+.douglas h3 em{font-family:var(--serif);font-style:italic;font-size:.5em;color:var(--muted)}
+.douglas-copy p{margin-top:14px;font-size:11.5px;line-height:2.05;color:var(--dim)}
+.city-tags{display:flex;flex-wrap:wrap;gap:8px;align-content:start}
+.city-tags span{font-size:10px;letter-spacing:.08em;color:var(--dim);border:1px solid var(--line);padding:7px 10px}
+.world-note{margin-top:clamp(30px,4vw,48px);padding:18px 0 18px 20px;border-left:2px solid var(--accent);font-size:12px;line-height:2;color:var(--dim)}
+
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat{padding:clamp(26px,3.4vw,44px) clamp(16px,2.2vw,30px);border-left:1px solid var(--line-soft)}
@@ -177,6 +210,14 @@ body.menu-open{overflow:hidden}
   .stat{padding:26px 0;border-left:none}.stat+.stat{border-top:1px solid var(--line-soft)}
   .stat:nth-child(-n+2){border-bottom:none}
   .mail{font-size:clamp(22px,5.6vw,32px);gap:10px}
+  .route-row{grid-template-columns:36px 1fr;gap:6px 14px}
+  .route-school{grid-column:2}
+  .world-pillars{grid-template-columns:1fr}
+  .pillar{border-left:0;border-top:1px solid var(--line-soft);padding:22px 0}
+  .pillar:first-child{border-top:0}
+  .domain-row{grid-template-columns:1fr;gap:4px}
+  .domain-row span{text-align:left}
+  .douglas{grid-template-columns:1fr;gap:24px}
   .footer-bar{flex-wrap:wrap;gap:8px 18px}
   .footer-word{font-size:23vw}
 }
@@ -247,11 +288,11 @@ body.menu-open{overflow:hidden}
       <h1 class="hero-title">关于<em class="pinyin">MANIFESTO</em></h1>
       <div class="hero-sub">
         <p class="statement">
-          大多数时候，我在学习和记录；<br>
-          <span class="dim">剩下的时候，我在虚构另一片宇宙。</span>
+          十九岁，在陕西机电读书；<br>
+          <span class="dim">剩下的时候，我在写一个叫「环」的宇宙。</span>
         </p>
         <div class="hero-meta">
-          <span>任喆</span><span>Kashiu</span><span>任 · 陕西</span>
+          <span>任喆</span><span>2007</span><span>扶风 · 陕西</span>
         </div>
       </div>
     </div>
@@ -277,23 +318,60 @@ body.menu-open{overflow:hidden}
         <div class="reveal">
           <p class="long-quote">
             我是任喆，<br>
-            也用 <strong>Kashiu</strong> 这个名字写作。<br>
-            对复杂的事物保持兴趣——<br>
-            一段代码如何运行，<br>
-            一个世界如何成立，<br>
-            一首诗为什么在某个字上停住。
-            <span class="en">These seemingly unrelated questions are, for me, the same thing — understanding how things are made.</span>
+            2007 年生于陕西扶风，<br>
+            现在在陕西机电职业技术学院读书。<br>
+            在天津读过两年学前班和一年小学，<br>
+            后来回扶风，从杏林小学一路读到美阳高中。
+            <span class="en">I write poems, build a universe called Ring, and keep asking how things are made.</span>
           </p>
         </div>
 
         <aside class="row-list reveal" style="--d:.12s">
           <div class="row"><span class="k">Name</span><span class="v">任喆</span></div>
           <div class="row"><span class="k">Alias</span><span class="v">Kashiu</span></div>
-          <div class="row"><span class="k">Roles</span><span class="v">学生 / 作者</span></div>
-          <div class="row"><span class="k">Focus</span><span class="v">写作 · AI · 游戏</span></div>
+          <div class="row"><span class="k">Born</span><span class="v">2007</span></div>
+          <div class="row"><span class="k">School</span><span class="v">陕西机电</span></div>
           <div class="row"><span class="k">Home</span><span class="v">扶风 · 宝鸡</span></div>
-          <div class="row"><span class="k">Status</span><span class="v b">保持好奇</span></div>
+          <div class="row"><span class="k">Focus</span><span class="v">写作 · AI · 游戏</span></div>
+          <div class="row"><span class="k">Status</span><span class="v b">在写「环」</span></div>
         </aside>
+      </div>
+
+      <div class="route-head reveal">
+        <span>学校轨迹 / School Route</span>
+        <span>06 Stops</span>
+      </div>
+      <div class="route reveal">
+        <div class="route-row">
+          <span class="route-no">01</span>
+          <span class="route-place">天津 · 泰达</span>
+          <span class="route-school">学前班两年，泰达二小一年级</span>
+        </div>
+        <div class="route-row">
+          <span class="route-no">02</span>
+          <span class="route-place">扶风 · 杏林</span>
+          <span class="route-school">杏林小学，读到四年级上册</span>
+        </div>
+        <div class="route-row">
+          <span class="route-no">03</span>
+          <span class="route-place">扶风 · 赵家</span>
+          <span class="route-school">赵家小学（小留小学）</span>
+        </div>
+        <div class="route-row">
+          <span class="route-no">04</span>
+          <span class="route-place">扶风 · 县城</span>
+          <span class="route-school">扶风县第一中学（县一中）</span>
+        </div>
+        <div class="route-row">
+          <span class="route-no">05</span>
+          <span class="route-place">扶风 · 美阳</span>
+          <span class="route-school">美阳高中</span>
+        </div>
+        <div class="route-row">
+          <span class="route-no">06</span>
+          <span class="route-place">宝鸡 · 陕机电</span>
+          <span class="route-school">陕西机电职业技术学院，现在</span>
+        </div>
       </div>
     </div>
   </section>
@@ -314,9 +392,9 @@ body.menu-open{overflow:hidden}
           <h3>杀死命运<em>Kill the fate</em></h3>
         </div>
         <div class="prose reveal" style="--d:.12s">
-          <p><strong>Kashiu</strong> 并不只是一个昵称。他是我笔下的人物，也是我对自己的期望。</p>
-          <p>在我的故事中，Kashiu 拥有「<span class="hl">杀死命运</span>」的含义。这不是关于毁灭，而是关于挣脱既定轨迹，用自己的意志决定前进的方向。</p>
-          <p>我把这个名字放在网站的每一处，提醒自己：故事里的选择，也可以落在现实里。</p>
+          <p><strong>Kashiu</strong> 并不只是一个昵称。他是我笔下的人物，也是我对未来的期望。</p>
+          <p>在「环」里，他是都格拉斯的第二十二位国王，也是最后一位。他的名字意味着「<span class="hl">杀死命运</span>」：不是毁灭某个人，而是让那套写好的轨道失效。</p>
+          <p>他尚未抵达。我把这个名字放在网站的每一处，提醒自己：故事里的选择，也可以落在现实里。</p>
         </div>
       </div>
     </div>
@@ -332,18 +410,74 @@ body.menu-open{overflow:hidden}
         <span class="sec-note">Worldbuilding</span>
       </div>
 
-      <div class="prose-block">
-        <div class="reveal">
-          <div class="kicker">The cosmos</div>
-          <h3>一个仍在生长的宇宙<em>A living universe</em></h3>
-          <p style="margin-top:20px;font-size:11px;letter-spacing:.18em;color:var(--muted);line-height:2">STAR DOMAINS · CIVILIZATION · DIVINITY · FATE</p>
+      <div class="world">
+        <div class="world-intro reveal">
+          <p>
+            <strong>环</strong>是一个复杂的宇宙。它先有一套底层逻辑，再在这套逻辑上长出不同的规则：
+            有的星域走修仙，有的星域用魔法，有的地方两者并存。
+            神明、权柄、城邦与王朝，都只是这套逻辑的不同显影。
+          </p>
+          <p>目前已经成形的，是这些。</p>
         </div>
-        <div class="prose reveal" style="--d:.12s">
-          <p><strong>环</strong>，是我长期构思中的幻想宇宙。这里拥有不同的星域、文明与神明，无数故事在其中发生。</p>
-          <p>文明诞生并消亡，群星明灭更替，命运被书写，也有人试图反抗命运。Kashiu 只是这片宇宙中的一个故事。</p>
-          <p>而环，仍在不断生长。</p>
-          <p style="margin-top:28px"><a class="btn" href="hometown.html">看真实的故土 <span class="ar">→</span></a></p>
+
+        <div class="world-pillars">
+          <article class="pillar reveal">
+            <span class="pillar-no">I</span>
+            <h4>派系<em>Factions</em></h4>
+            <p><b>星幕圣座</b> 与 <b>伊律什派</b>，两种对宇宙秩序的解释与实践。</p>
+          </article>
+          <article class="pillar reveal" style="--d:.06s">
+            <span class="pillar-no">II</span>
+            <h4>权柄<em>Authority</em></h4>
+            <p>成神之路、神明与凡人的关系、星球意志、权柄与冷凝、尊名法则。力量有来源，也有代价。</p>
+          </article>
+          <article class="pillar reveal" style="--d:.12s">
+            <span class="pillar-no">III</span>
+            <h4>神明<em>Divinity</em></h4>
+            <p>一级神、二级神、三级神、四级神，以及外神。层级之间并不和平。</p>
+          </article>
         </div>
+
+        <div class="domain-block reveal">
+          <div class="domain-head"><span>星域 / Star Domains</span><span>07</span></div>
+          <div class="domain-list">
+            <div class="domain-row"><b>黑塞域</b><em>Hessarion</em><span>索姆尼亚（Somnia） · 哈荷图 / 乌隆达 / 须迪尼 / 长漠</span></div>
+            <div class="domain-row"><b>因斯域</b><em>—</em><span>因斯帝国</span></div>
+            <div class="domain-row"><b>英提伊庭域</b><em>—</em><span>英提伊庭</span></div>
+            <div class="domain-row"><b>L 域</b><em>—</em><span>拉尼苏</span></div>
+            <div class="domain-row"><b>Q 域</b><em>—</em><span>群星</span></div>
+            <div class="domain-row"><b>W 域</b><em>—</em><span>瓦利德同盟</span></div>
+            <div class="domain-row"><b>未命名</b><em>—</em><span>还空着，留给以后。</span></div>
+          </div>
+        </div>
+
+        <div class="douglas">
+          <div class="douglas-copy reveal">
+            <div class="kicker">The last king</div>
+            <h3>都格拉斯<em>Douglas</em></h3>
+            <p>
+              都格拉斯位于黑塞域 · 索姆尼亚 · 须迪尼之下，由十一座城邦组成：
+              阿布拉、埃丝特、艾雷克斯、安罗盼、奥维恩、都格拉斯、厄斯格勒、
+              费利克斯、慕斯格、瑞耶安、沃伯斯。
+            </p>
+            <p>
+              Kashiu 是都格拉斯的第二十二位国王，也是最后一位。
+              他的名字在书里意味着「杀死命运」——不是杀掉某个人，
+              而是让那套写好的轨道失效。
+            </p>
+          </div>
+          <div class="city-tags reveal" style="--d:.1s">
+            <span>阿布拉</span><span>埃丝特</span><span>艾雷克斯</span><span>安罗盼</span>
+            <span>奥维恩</span><span>都格拉斯</span><span>厄斯格勒</span><span>费利克斯</span>
+            <span>慕斯格</span><span>瑞耶安</span><span>沃伯斯</span>
+          </div>
+        </div>
+
+        <p class="world-note reveal">
+          同一套底层逻辑下，修仙与魔法不是两套世界观，而是同一条规则在不同星域里的两种用法。
+        </p>
+
+        <p style="margin-top:28px" class="reveal"><a class="btn" href="hometown.html">看真实的故土 <span class="ar">→</span></a></p>
       </div>
     </div>
   </section>
@@ -431,8 +565,11 @@ body.menu-open{overflow:hidden}
 
         <ul class="contact-list reveal" style="--d:.1s">
           <li><a href="https://github.com/kashiudouglas" target="_blank" rel="noopener"><span>Github</span><strong>kashiudouglas</strong><em>↗</em></a></li>
-          <li><button id="copyWechat" data-copy="LZXM2007" type="button"><span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em></button></li>
-          <li><a href="mailto:kashiu.douglas@gmail.com"><span>Mail</span><strong>kashiu.douglas</strong><em>↗</em></a></li>
+          <li><button data-copy="Kashiu" type="button"><span>Bilibili</span><strong>Kashiu</strong><em class="hint">点击复制</em></button></li>
+          <li><button data-copy="LZXM2007" type="button"><span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em></button></li>
+          <li><a href="mailto:kashiu.douglas@gmail.com"><span>Gmail</span><strong>kashiu.douglas</strong><em>↗</em></a></li>
+          <li><a href="mailto:kashiu_douglas@outlook.com"><span>Outlook</span><strong>kashiu_douglas</strong><em>↗</em></a></li>
+          <li><a href="mailto:kashiu@vip.qq.com"><span>QQ</span><strong>kashiu@vip.qq.com</strong><em>↗</em></a></li>
         </ul>
       </div>
     </div>
@@ -531,8 +668,8 @@ body.menu-open{overflow:hidden}
     diaryEl.textContent = days.toLocaleString('en-US');
   }
 
-  var copyBtn = document.getElementById('copyWechat');
-  if (copyBtn) {
+  var copyBtns = document.querySelectorAll('[data-copy]');
+  Array.prototype.forEach.call(copyBtns, function(copyBtn){
     copyBtn.addEventListener('click', function(){
       var text = copyBtn.getAttribute('data-copy') || '';
       var hint = copyBtn.querySelector('.hint');
@@ -555,7 +692,7 @@ body.menu-open{overflow:hidden}
         document.body.removeChild(ta); done();
       }
     });
-  }
+  });
 })();
 </script>
 </body>
