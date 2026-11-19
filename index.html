@@ -1,114 +1,695 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人介绍</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            min-height: 100vh;
-            background: linear-gradient(140deg, #0f172a, #1e293b);
-            color: #e2e8f0;
-            font-family: system-ui, sans-serif;
-            padding: 30px 20px;
-        }
-        .wrap {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .card {
-            background: rgba(30, 41, 59, 0.65);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 20px;
-            padding: 36px 28px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-        }
-        h1 {
-            text-align: center;
-            color: #93c5fd;
-            font-size: 26px;
-            margin-bottom: 8px;
-        }
-        .sub-title {
-            text-align: center;
-            color: #94a3b8;
-            margin-bottom: 32px;
-        }
-        .item {
-            margin-bottom: 22px;
-        }
-        .item h3 {
-            color: #60a5fa;
-            font-size: 17px;
-            margin-bottom: 8px;
-        }
-        .item p {
-            line-height: 1.7;
-            color: #cbd5e1;
-        }
-        .tag-box {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .tag {
-            background-color: #2563eb33;
-            color: #93c5fd;
-            padding: 6px 12px;
-            border-radius: 99px;
-            font-size: 14px;
-        }
-        .footer-tip {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #64748b;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人主页 | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#030712;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===================
+    背景光效
+=================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:#7c3aed;
+    border-radius:50%;
+    filter:blur(150px);
+    top:-250px;
+    left:-250px;
+    opacity:.25;
+    animation:float1 12s infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:#06b6d4;
+    border-radius:50%;
+    filter:blur(180px);
+    right:-250px;
+    bottom:-250px;
+    opacity:.2;
+    animation:float2 10s infinite alternate;
+}
+
+@keyframes float1{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(120px);
+    }
+}
+
+@keyframes float2{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-100px);
+    }
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ===================
+    导航
+=================== */
+
+nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:1200px;
+    z-index:999;
+}
+
+.nav-wrapper{
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:16px 28px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:700;
+}
+
+.menu{
+    display:flex;
+    gap:30px;
+}
+
+.menu a{
+    color:#cccccc;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:white;
+}
+
+/* ===================
+    Hero
+=================== */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+
+    background:rgba(124,58,237,.15);
+    border:1px solid rgba(124,58,237,.4);
+
+    color:#c4b5fd;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-size:clamp(3rem,8vw,6rem);
+    line-height:1;
+    font-weight:800;
+}
+
+.gradient-text{
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #06b6d4
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:30px;
+    font-size:20px;
+    color:#94a3b8;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 30px;
+    border-radius:999px;
+    text-decoration:none;
+    transition:.4s;
+}
+
+.primary{
+    background:linear-gradient(
+    135deg,
+    #7c3aed,
+    #06b6d4
+    );
+
+    color:white;
+}
+
+.primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 40px rgba(124,58,237,.4);
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,.15);
+    color:white;
+}
+
+.secondary:hover{
+    background:rgba(255,255,255,.05);
+}
+
+/* ===================
+    通用
+=================== */
+
+section{
+    padding:120px 0;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:60px;
+    text-align:center;
+}
+
+.glass{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+}
+
+/* ===================
+    数据展示
+=================== */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-card{
+    padding:40px;
+    text-align:center;
+}
+
+.stat-card h2{
+    font-size:48px;
+    color:#7c3aed;
+}
+
+.stat-card p{
+    color:#94a3b8;
+}
+
+/* ===================
+    技能
+=================== */
+
+.skills-grid{
+    display:grid;
+    gap:25px;
+}
+
+.skill{
+    padding:20px;
+}
+
+.skill-name{
+    margin-bottom:10px;
+}
+
+.progress{
+    height:12px;
+    background:rgba(255,255,255,.05);
+    border-radius:999px;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    border-radius:999px;
+
+    background:linear-gradient(
+      90deg,
+      #7c3aed,
+      #06b6d4
+    );
+}
+
+/* ===================
+    项目
+=================== */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.project{
+    overflow:hidden;
+    transition:.4s;
+}
+
+.project:hover{
+    transform:translateY(-10px);
+}
+
+.project-image{
+    height:220px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #7c3aed,
+    #06b6d4
+    );
+}
+
+.project-content{
+    padding:25px;
+}
+
+.project-content h3{
+    margin-bottom:10px;
+}
+
+.project-content p{
+    color:#94a3b8;
+}
+
+/* ===================
+    关于我
+=================== */
+
+.about{
+    padding:50px;
+    text-align:center;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ===================
+    联系
+=================== */
+
+.contact{
+    text-align:center;
+}
+
+.contact h2{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.contact p{
+    color:#94a3b8;
+    margin-bottom:30px;
+}
+
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    text-decoration:none;
+    color:white;
+    padding:14px 24px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.socials a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+/* ===================
+    Footer
+=================== */
+
+footer{
+    text-align:center;
+    padding:60px 20px;
+    color:#64748b;
+}
+
+@media(max-width:768px){
+
+.menu{
+display:none;
+}
+
+.contact h2{
+font-size:36px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
+
+</style>
 </head>
 <body>
-    <div class="wrap">
-        <div class="card">
-            <h1>任喆</h1>
-            <div class="sub-title">软件技术专业学生</div>
 
-            <div class="item">
-                <h3>📌 关于我</h3>
-                <p>喜欢编程、折腾AI工具、写文稿，平时会看球赛、构思OC和故事，热衷于动手做各类小项目。</p>
-            </div>
+<nav>
+<div class="nav-wrapper">
+<div class="logo">ZHANGSAN</div>
 
-            <div class="item">
-                <h3>📚 学习方向</h3>
-                <p>主修软件技术，自学Python、网页开发，尝试搭建AI Agent，开发自动化小工具、整理学习笔记。</p>
-            </div>
+<div class="menu">
+<a href="#about">关于</a>
+<a href="#skills">技能</a>
+<a href="#projects">项目</a>
+<a href="#contact">联系</a>
+</div>
 
-            <div class="item">
-                <h3>✨ 技能标签</h3>
-                <div class="tag-box">
-                    <span class="tag">Python</span>
-                    <span class="tag">AI Agent</span>
-                    <span class="tag">HTML</span>
-                    <span class="tag">网页制作</span>
-                    <span class="tag">ACGN创作</span>
-                </div>
-            </div>
+</div>
+</nav>
 
-            <div class="item">
-                <h3>🎯 目标</h3>
-                <p>持续敲代码、做实战项目，打磨开发能力，把想法变成可以运行的程序。</p>
-            </div>
+<section class="hero">
 
-            <div class="footer-tip">
-                欢迎访问我的个人页面
-            </div>
-        </div>
-    </div>
+<div>
+
+<div class="badge">
+🚀 Available For Work
+</div>
+
+<h1>
+Building
+<span class="gradient-text">
+Future
+</span>
+Digital Experiences
+</h1>
+
+<p>
+全栈开发者 · AI 工程师 · 产品创造者
+</p>
+
+<div class="hero-buttons">
+
+<a href="#projects" class="btn primary">
+查看作品
+</a>
+
+<a href="#contact" class="btn secondary">
+联系我
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="glass stat-card">
+<h2>5+</h2>
+<p>年开发经验</p>
+</div>
+
+<div class="glass stat-card">
+<h2>50+</h2>
+<p>项目经验</p>
+</div>
+
+<div class="glass stat-card">
+<h2>100K+</h2>
+<p>用户服务</p>
+</div>
+
+<div class="glass stat-card">
+<h2>24/7</h2>
+<p>持续学习</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+关于我
+</h2>
+
+<div class="glass about">
+
+我是一名热爱技术与创造的开发者，
+专注于 Web 开发、人工智能与现代产品设计。
+
+喜欢把复杂的问题变成优雅的解决方案，
+从用户体验到系统架构，
+持续探索技术与商业价值的结合。
+
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">
+技能栈
+</h2>
+
+<div class="skills-grid">
+
+<div class="glass skill">
+<div class="skill-name">Frontend 95%</div>
+<div class="progress">
+<span style="width:95%"></span>
+</div>
+</div>
+
+<div class="glass skill">
+<div class="skill-name">Backend 90%</div>
+<div class="progress">
+<span style="width:90%"></span>
+</div>
+</div>
+
+<div class="glass skill">
+<div class="skill-name">AI Engineering 92%</div>
+<div class="progress">
+<span style="width:92%"></span>
+</div>
+</div>
+
+<div class="glass skill">
+<div class="skill-name">UI/UX Design 85%</div>
+<div class="progress">
+<span style="width:85%"></span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">
+Featured Projects
+</h2>
+
+<div class="projects">
+
+<div class="glass project">
+
+<div class="project-image"></div>
+
+<div class="project-content">
+<h3>AI Agent Platform</h3>
+<p>
+基于大模型构建的智能助手系统，
+支持知识库问答与自动化工作流。
+</p>
+</div>
+
+</div>
+
+<div class="glass project">
+
+<div class="project-image"></div>
+
+<div class="project-content">
+<h3>SaaS Dashboard</h3>
+<p>
+现代化数据分析平台，
+实时展示运营与业务指标。
+</p>
+</div>
+
+</div>
+
+<div class="glass project">
+
+<div class="project-image"></div>
+
+<div class="project-content">
+<h3>Creative Portfolio</h3>
+<p>
+高端品牌官方网站，
+注重视觉体验与交互细节。
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact">
+
+<h2>
+Let's Build Something Amazing.
+</h2>
+
+<p>
+hello@yourmail.com
+</p>
+
+<div class="socials">
+<a href="#">Github</a>
+<a href="#">LinkedIn</a>
+<a href="#">X / Twitter</a>
+<a href="#">Email</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Portfolio • Designed with Modern UI
+</footer>
+
+<script>
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+{
+opacity:0,
+transform:'translateY(50px)'
+},
+{
+opacity:1,
+transform:'translateY(0)'
+}
+],{
+duration:800,
+fill:'forwards'
+});
+
+}
+
+});
+
+},{threshold:0.1});
+
+document.querySelectorAll(
+'.glass,.section-title,.contact'
+).forEach(el=>{
+observer.observe(el);
+});
+
+</script>
+
 </body>
 </html>
