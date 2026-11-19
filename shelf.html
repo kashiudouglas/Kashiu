@@ -112,7 +112,7 @@ body.menu-open{overflow:hidden}
 
 /* shelf */
 .shelf-wrap{max-width:1180px}
-.shelf{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(5px,.9vw,11px);width:min(100%,calc(var(--n,7) * 92px));height:clamp(180px,23vw,286px);padding:0 clamp(4px,.8vw,10px);border-bottom:1px solid var(--line);box-shadow:0 26px 40px -34px rgba(0,0,0,.95)}
+.shelf{position:relative;display:flex;align-items:flex-end;justify-content:flex-start;gap:0;width:fit-content;max-width:100%;height:clamp(180px,23vw,286px);padding:0 clamp(4px,.8vw,10px);border-bottom:1px solid var(--line);box-shadow:0 26px 40px -34px rgba(0,0,0,.95)}
 .spine{
   --w:clamp(38px,3.4vw,52px);
   position:relative;
@@ -237,18 +237,18 @@ body.menu-open{overflow:hidden}
       <h1 class="hero-title">书架<em class="pinyin">BOOKSHELF</em></h1>
       <div class="hero-sub">
         <p class="statement">
-          书、游戏，还有一些喜欢的人。<br>
+          书、游戏，还有喜欢的角色和明星。<br>
           <span class="dim">摆在这里的，都是我愿意再翻一遍的。</span>
         </p>
         <div class="hero-meta">
-          <span>6 本</span><span>4 部</span><span>2 人</span>
+          <span>6 本</span><span>4 部</span><span>2 个角色</span><span>1 位明星</span>
         </div>
       </div>
     </div>
 
     <div class="hero-foot wrap">
       <a class="scroll-cue" href="#books"><span class="bar" aria-hidden="true"></span> Scroll to explore</a>
-      <span>Books · Games · Characters</span>
+      <span>Books · Games · Characters · Stars</span>
       <span>Shelf</span>
     </div>
   </header>
@@ -302,7 +302,7 @@ body.menu-open{overflow:hidden}
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">03</span>
-        <h2 class="sec-title">喜欢的人<em>Characters</em></h2>
+        <h2 class="sec-title">喜欢的角色<em>Characters</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Two</span>
       </div>
@@ -313,6 +313,23 @@ body.menu-open{overflow:hidden}
           <span class="spine fig" style="--h:88%" title="爱莉希雅">爱莉希雅</span>
         </div>
         <p class="shelf-note">虚构的，但喜欢是真的。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stars">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">04</span>
+        <h2 class="sec-title">喜欢的明星<em>Stars</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">One</span>
+      </div>
+
+      <div class="shelf-wrap reveal">
+        <div class="shelf" style="--n:1">
+          <span class="spine fig" style="--h:86%" title="蔡徐坤">蔡徐坤</span>
+        </div>
       </div>
 
       <div class="outro">
