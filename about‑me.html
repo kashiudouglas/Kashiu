@@ -3,174 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WANTED | Kashiu · 任喆</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<title>WANTED</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-html{
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-background:#070A12;
-font-family:'Inter',sans-serif;
-min-height:100vh;
-padding:40px 20px;
-display:flex;
-flex-direction:column;
-align-items:center;
+  background:#070A12;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:16px;
 }
-.back-link{
-align-self:flex-start;
-max-width:800px;
-width:100%;
-margin-bottom:24px;
+.back{
+  align-self:flex-start;
+  margin-bottom:12px;
 }
-.back-link a{
-color:#8B5CF6;
-text-decoration:none;
-font-size:15px;
+.back a{
+  color:#8B5CF6;
+  text-decoration:none;
 }
-.back-link a:hover{
-color:#06B6D4;
-text-decoration:underline;
-}
-/* 海贼王悬赏令本体，原版米黄旧纸质感 */
-.wanted-poster{
-width:100%;
-max-width:800px;
-background:#e9ddc3;
-color:#2c2418;
-padding:36px 32px;
-border-radius:4px;
-box-shadow:0 0 60px rgba(0,0,0,0.65);
-position:relative;
-/* 纸张杂色噪点模拟旧纸 */
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-}
-/* WANTED超大标题，原版粗衬线字体 */
-.poster-title{
-font-family:'Playfair Display',serif;
-font-size:clamp(3rem,7vw,5.2rem);
-font-weight:900;
-text-align:center;
-letter-spacing:6px;
-line-height:1;
-margin-bottom:22px;
-}
-/* 肖像照片框 */
-.photo-frame{
-width:100%;
-aspect-ratio:4/3;
-background:#111111;
-border:5px solid #2c2418;
-margin-bottom:16px;
-overflow:hidden;
-}
-.photo-frame img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-/* DEAD OR ALIVE */
-.dead-or-alive{
-text-align:center;
-font-size:clamp(1.2rem,3vw,1.8rem);
-font-weight:700;
-letter-spacing:3px;
-margin-bottom:28px;
-}
-/* 称号+名字 */
-.epithet{
-text-align:center;
-font-size:1.4rem;
-margin-bottom:8px;
-font-style:italic;
-}
-.real-name{
-text-align:center;
-font-family:'Playfair Display',serif;
-font-size:clamp(1.8rem,4vw,2.8rem);
-font-weight:900;
-margin-bottom:32px;
-}
-/* 赏金 */
-.bounty{
-text-align:center;
-font-family:'Playfair Display',serif;
-font-size:clamp(2rem,5vw,3.4rem);
-font-weight:900;
-letter-spacing:2px;
-margin-bottom:40px;
-}
-/* 底部原版那串虚构免责罗马音小字，海贼王原版手配书底部文字[[(ONE PIECE)]](https://one-piece.com/greg/o20160406_0539/index.html?f_link_type=f_linkinlinenote&flow_extra=eyJpbmxpbmVfZGlzcGxheV9wb3NpdGlvbiI6MCwiZG9jX3Bvc2l0aW9uIjowLCJkb2NfaWQiOiJmNzIzNWJiNTIyY2FlNzMxLWFjOTExN2E0ZTcyYjRiNzIifQ%3D%3D "[(ONE PIECE)]") */
-.disclaimer{
-font-size:9px;
-opacity:0.75;
-letter-spacing:0.5px;
-line-height:1.4;
-word-break:break-all;
-margin-bottom:12px;
-}
-.marine-mark{
-text-align:right;
-font-size:1.7rem;
-font-weight:900;
-font-family:'Playfair Display',serif;
-}
-footer{
-margin-top:40px;
-color:#647088;
-font-size:13px;
-text-align:center;
-}
-@media(max-width:600px){
-.wanted-poster{
-padding:22px 18px;
-}
-.poster-title{
-letter-spacing:2px;
-}
-.disclaimer{
-font-size:7px;
-}
+img{
+  max-width:100%;
+  height:auto;
+  border:none;
 }
 </style>
 </head>
 <body>
-<div class="back-link">
-<a href="index.html">← 返回首页</a>
+<div class="back">
+  <a href="index.html">← 返回首页</a>
 </div>
-
-<div class="wanted-poster">
-<div class="poster-title">WANTED</div>
-
-<div class="photo-frame">
-<!-- 把下面src替换成你的OC头像图片地址 -->
-<img src="" alt="Kashiu 肖像">
-</div>
-
-<div class="dead-or-alive">DEAD OR ALIVE</div>
-
-<div class="epithet">「挣脱命运之人」</div>
-<div class="real-name">KASHIU · 任喆</div>
-
-<div class="bounty">∞ Berries —</div>
-
-<div class="disclaimer">
-KONO SAKUHIN HA FICTION DETHU NODE JITSUZAISURU JINBUTSU DANTAI SONOTA NO SOSHIKI TO DOITSU NO MEISHOU GA GEKICHU NI TOUJYOU SHITATOSHITEMO JITSUZAI NA MONOTOHA ISSAI MUKANKEIDETH
-</div>
-
-<div class="marine-mark">MARINE</div>
-</div>
-
-<footer>
-Student · Writer · Explorer
-</footer>
+<img src="wanted.jpg" alt="Wanted Poster">
 </body>
 </html>
+
