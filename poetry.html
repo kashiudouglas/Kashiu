@@ -3,405 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="《口水盆》——任喆（Kashiu）的诗词与随笔合集，收录 2024 年至今的创作。">
 <title>口水盆 · 诗集 | Kashiu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
---bg:#070A12;
---surface:#10141F;
---surface-2:#171C2B;
---border:rgba(255,255,255,.09);
---border-hover:rgba(255,255,255,.18);
---text:#F7F8FA;
---text-sub:#9AA3B8;
---primary:#8B5CF6;
---accent:#06B6D4;
---shadow:0 24px 80px rgba(0,0,0,0.35);
---radius:20px;
---transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-position:relative;
-}
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background-image:
-  radial-gradient(circle at 20% 20%, rgba(139,92,246,0.12), transparent 45%),
-  radial-gradient(circle at 80% 75%, rgba(6,182,212,0.09), transparent 40%),
-  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-background-size:100% 100%,100% 100%,48px 48px,48px 48px;
-z-index:-3;
-opacity:0.7;
-}
-.container{
-width:min(1160px,92%);
-margin:0 auto;
-}
-nav{
-position:fixed;
-top:24px;
-left:50%;
-transform:translateX(-50%);
-width:min(1160px,92%);
-z-index:100;
-}
-.nav-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 24px;
-background:rgba(16,20,31,0.72);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-border:1px solid var(--border);
-border-radius:16px;
-box-shadow:0 8px 32px rgba(0,0,0,0.22);
-transition:var(--transition);
-}
-.nav-inner:hover{border-color:var(--border-hover);}
-.logo{
-font-weight:700;
-font-size:18px;
-letter-spacing:0.04em;
-}
-.menu{display:flex;gap:28px;align-items:center}
-.menu a{
-text-decoration:none;
-color:var(--text-sub);
-font-size:14.5px;
-font-weight:500;
-transition:var(--transition);
-}
-.menu a:hover{color:var(--text)}
-.hamburger{
-display:none;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-}
-.hamburger span{
-width:24px;height:2px;background:#fff;border-radius:2px;transition:0.25s
-}
-.mobile-menu{
-display:none;
-margin-top:12px;
-padding:18px 22px;
-border-radius:16px;
-background:rgba(16,20,31,0.72);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-border:1px solid var(--border);
-}
-.mobile-menu a{
-display:block;padding:11px 0;color:var(--text-sub);text-decoration:none;
-font-weight:500;transition:var(--transition);
-}
-.mobile-menu a:hover{color:var(--text)}
-.mobile-menu.open{display:block}
-
-section{padding-top:160px;padding-bottom:120px;}
-.title{
-text-align:center;font-size:clamp(34px,5vw,48px);
-margin-bottom:48px;font-weight:700;letter-spacing:-0.02em;
-}
-.glass{
-background:var(--surface);
-border:1px solid var(--border);
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-transition:var(--transition);
-}
-.glass:hover{
-transform: translateY(-6px);
-border-color:var(--border-hover);
-box-shadow:0 28px 90px rgba(0,0,0,0.42);
-}
-.poetry-wrap{padding:40px;}
-.poetry-index{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-bottom:48px;
-}
-.poetry-index a{
-color:var(--text-sub);
-font-size:14px;
-text-decoration:none;
-padding:7px 13px;
-border-radius:8px;
-background:rgba(255,255,255,.04);
-border:1px solid var(--border);
-transition:0.25s;
-}
-.poetry-index a:hover{
-background:rgba(139,92,246,0.2);
-color:#fff;
-border-color:var(--border-hover);
-}
-.poem-item{
-margin-bottom:48px;
-padding-bottom:32px;
-border-bottom:1px solid rgba(255,255,255,.07);
-}
-.poem-item:last-child{
-border-bottom:none;
-margin-bottom:0;
-padding-bottom:0;
-}
-.poem-title{
-font-size:22px;
-margin-bottom:12px;
-color:#e2e8f0;
-}
-.poem-date{
-font-size:14px;
-color:var(--text-sub);
-margin-bottom:16px;
-}
-.poem-content{
-white-space:pre-wrap;
-line-height:2;
-color:#d1d5db;
-font-size:17px;
-}
-.back-poetry-top{
-margin-top:12px;
-display:inline-block;
-font-size:14px;
-color:var(--primary);
-text-decoration:none;
-}
-.back-poetry-top:hover{color:var(--accent)}
-.back-home{
-display:inline-block;margin-bottom:30px;font-size:15px;color:var(--primary);
-text-decoration:none;font-weight:550;
-}
-.back-home:hover{color:var(--accent)}
-footer{
-padding:64px 20px;text-align:center;color:#647088;
-line-height:1.8;font-size:14px;
-}
-@keyframes fadeUp {
-from{opacity:0;transform:translateY(24px)}
-to{opacity:1;transform:translateY(0)}
-}
-.wrap{
-animation:fadeUp 0.7s ease-out both;
-}
-@media(max-width:768px){
-.menu{display:none}
-.hamburger{display:flex}
-.title{font-size:32px}
-.poetry-wrap{padding:24px 16px;}
-.poem-content{font-size:15px;}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<nav>
-<div class="nav-inner">
-<div class="logo">KASHIU</div>
-<div class="menu">
-<a href="index.html">首页</a>
-<a href="about-me.html">个人</a>
-</div>
-<div class="hamburger" id="hamburger">
-<span></span><span></span><span></span>
-</div>
-</div>
-<div class="mobile-menu" id="mobileMenu">
-<a href="index.html">首页</a>
-<a href="about-me.html">个人</a>
-</div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="dot"></span>
+      <span>kashiu<span class="at">@</span><span class="path">ring</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="about-me.html">个人</a>
+      <a href="index.html#projects">项目</a>
+      <a href="poetry.html" class="is-active">诗集</a>
+      <a href="index.html#contact">联系</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false">≡</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">首页</a>
+    <a href="about-me.html">个人</a>
+    <a href="index.html#projects">项目</a>
+    <a href="poetry.html" class="is-active">诗集</a>
+    <a href="index.html#contact">联系</a>
+  </div>
 </nav>
 
-<section class="wrap">
-<div class="container">
-<a href="index.html" class="back-home">← 返回首页</a>
-<h2 class="title">口水盆 · 诗集</h2>
-<div class="glass poetry-wrap">
-<div class="poetry-index" id="poetry-index">
-<a href="#poem-bieg">别故</a>
-<a href="#poem-gutu">孤途</a>
-<a href="#poem-mangran">茫然</a>
-<a href="#poem-siyou">思友</a>
-<a href="#poem-suifeng">随风</a>
-<a href="#poem-tigeng">替更</a>
-<a href="#poem-wuriguhuai">午日孤怀</a>
-<a href="#poem-zhi">志</a>
-<a href="#poem-longniao">笼鸟</a>
-<a href="#poem-mijin">迷津</a>
-<a href="#poem-tiluoyunxu">提落云絮</a>
-<a href="#poem-dandai">单呆</a>
-<a href="#poem-putisa-man">菩萨蛮·五月二十日记</a>
-<a href="#poem-biejiuyu">别旧雨</a>
-<a href="#poem-huangtang">荒唐</a>
-<a href="#poem-yintian">阴天</a>
-<a href="#poem-jiyi">记梦</a>
-<a href="#poem-quannihao">劝你好自为之和我和好</a>
-<a href="#poem-xixiangyi">樨香忆</a>
-<a href="#poem-huaizhongqiu">怀中秋</a>
-<a href="#poem-tianjingsha">天净沙·秋思</a>
-<a href="#poem-yuqingan">青玉案·黑月白日梦</a>
-<a href="#poem-jiangchengzi">江城子·待别赠可人</a>
-<a href="#poem-zuiluopo">醉落魄</a>
-<a href="#poem-duyin">独饮</a>
-<a href="#poem-zikuan">自宽</a>
-<a href="#poem-yuemingding">月酩酊</a>
-<a href="#poem-xinzhongji">闲中寄意</a>
-<a href="#poem-suqing">愫生（一改）</a>
-<a href="#poem-suzhongqing">诉衷情·春枝芽</a>
-<a href="#poem-dianjiangchun">点绛唇·相思</a>
-<a href="#poem-huanxisha">浣溪沙·元日小记</a>
-<a href="#poem-queqiaoxian">鹊桥仙</a>
-<a href="#poem-shangyuan">上元有寄</a>
-<a href="#poem-zuihuayin">醉花阴</a>
-<a href="#poem-chiayuanhuai">池月怀远</a>
-<a href="#poem-yuhaizhongkuwei">于海中枯萎</a>
-<a href="#poem-zhixiangsan">栀香散</a>
-<a href="#poem-wanleijinsan">晚雷尽散</a>
-<a href="#poem-guyuanke-si">故园客思</a>
-<a href="#poem-bashenganzhou">八声甘州·寒云</a>
-<a href="#poem-ruoguanqian">结弱冠前</a>
-</div>
+<header class="poetry-head">
+  <div class="wrap">
+    <div class="crumb" style="font-size:12.5px;color:var(--muted);margin-bottom:18px"><a href="index.html" style="color:var(--cyan)">~</a> / poetry / 口水盆</div>
+    <div class="prompt-line" style="font-size:13px;color:var(--muted);margin-bottom:18px"><span class="ps1" style="color:var(--green)">kashiu@ring</span><span class="ps2" style="color:var(--muted)">:~$</span> ls ~/poetry</div>
+    <h1>口水盆 · 诗集</h1>
+    <p>诗词、随笔与散文。始于 2024 年，持续更新中。共 42 首。</p>
+  </div>
+</header>
 
-<div class="poem-item" id="poem-bieg">
-<div class="poem-title">别故</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">才识又逢离别时，故人何日再相知。
+<main>
+  <section style="padding:40px 0 96px">
+    <div class="wrap">
+
+      <div class="poetry-index reveal" id="poetry-index">
+        <a href="#poem-bieg">别故</a>
+        <a href="#poem-gutu">孤途</a>
+        <a href="#poem-mangran">茫然</a>
+        <a href="#poem-siyou">思友</a>
+        <a href="#poem-suifeng">随风</a>
+        <a href="#poem-tigeng">替更</a>
+        <a href="#poem-wuriguhuai">午日孤怀</a>
+        <a href="#poem-zhi">志</a>
+        <a href="#poem-longniao">笼鸟</a>
+        <a href="#poem-mijin">迷津</a>
+        <a href="#poem-tiluoyunxu">提落云絮</a>
+        <a href="#poem-dandai">单呆</a>
+        <a href="#poem-putisa-man">菩萨蛮·五月二十日记</a>
+        <a href="#poem-biejiuyu">别旧雨</a>
+        <a href="#poem-huangtang">荒唐</a>
+        <a href="#poem-yintian">阴天</a>
+        <a href="#poem-jiyi">记梦</a>
+        <a href="#poem-quannihao">劝你好自为之和我和好</a>
+        <a href="#poem-xixiangyi">樨香忆</a>
+        <a href="#poem-huaizhongqiu">怀中秋</a>
+        <a href="#poem-tianjingsha">天净沙·秋思</a>
+        <a href="#poem-yuqingan">青玉案·黑月白日梦</a>
+        <a href="#poem-jiangchengzi">江城子·待别赠可人</a>
+        <a href="#poem-zuiluopo">醉落魄</a>
+        <a href="#poem-duyin">独饮</a>
+        <a href="#poem-zikuan">自宽</a>
+        <a href="#poem-yuemingding">月酩酊</a>
+        <a href="#poem-xinzhongji">闲中寄意</a>
+        <a href="#poem-suqing">愫生（一改）</a>
+        <a href="#poem-suzhongqing">诉衷情·春枝芽</a>
+        <a href="#poem-dianjiangchun">点绛唇·相思</a>
+        <a href="#poem-huanxisha">浣溪沙·元日小记</a>
+        <a href="#poem-queqiaoxian">鹊桥仙</a>
+        <a href="#poem-shangyuan">上元有寄</a>
+        <a href="#poem-zuihuayin">醉花阴</a>
+        <a href="#poem-chiayuanhuai">池月怀远</a>
+        <a href="#poem-yuhaizhongkuwei">于海中枯萎</a>
+        <a href="#poem-zhixiangsan">栀香散</a>
+        <a href="#poem-wanleijinsan">晚雷尽散</a>
+        <a href="#poem-guyuanke-si">故园客思</a>
+        <a href="#poem-bashenganzhou">八声甘州·寒云</a>
+        <a href="#poem-ruoguanqian">结弱冠前</a>
+      </div>
+
+      <div class="poem-list">
+
+        <article class="poem" id="poem-bieg">
+          <h2 class="poem-title">别故</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">才识又逢离别时，故人何日再相知。
 不待柳絮随风落，已闻鹧鸪绕耳啼。
 长亭古道故人去，浮云相送长安篱。
 轻歌一曲送君行，乐斩缠藤佐清萆。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-gutu">
-<div class="poem-title">孤途</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">鸠占鹊巢无归处，四面皆危尽是敌。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-gutu">
+          <h2 class="poem-title">孤途</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">鸠占鹊巢无归处，四面皆危尽是敌。
 八方寥落无所依，两行清泪尽入泥。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-mangran">
-<div class="poem-title">茫然</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">愁眉苦脸强颜笑，心灰意冷再起难。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-mangran">
+          <h2 class="poem-title">茫然</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">愁眉苦脸强颜笑，心灰意冷再起难。
 夜黑无月不见指，抬脚不知向何处。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-siyou">
-<div class="poem-title">思友</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">叶飘南北与西东，托风惟求再相逢。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-siyou">
+          <h2 class="poem-title">思友</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">叶飘南北与西东，托风惟求再相逢。
 君立群峰望云鹏，我亦攀岩伴君登。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-suifeng">
-<div class="poem-title">随风</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">雨点落水洼，微风拂浅波。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-suifeng">
+          <h2 class="poem-title">随风</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">雨点落水洼，微风拂浅波。
 小人洼中聚，我自随风过。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-tigeng">
-<div class="poem-title">替更</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">细雨入池起涟漪，微风拂面动心柔。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-tigeng">
+          <h2 class="poem-title">替更</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">细雨入池起涟漪，微风拂面动心柔。
 细雨微风初夏少，榆柳枣杏燧木轮。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-wuriguhuai">
-<div class="poem-title">午日孤怀</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">午后赤阳横，空山寂无声。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-wuriguhuai">
+          <h2 class="poem-title">午日孤怀</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">午后赤阳横，空山寂无声。
 身心皆不适，苦愁强作兴。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-zhi">
-<div class="poem-title">志</div>
-<div class="poem-date">2024</div>
-<div class="poem-content">乘桴浮海诗远方，登高极目览群峰。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-zhi">
+          <h2 class="poem-title">志</h2>
+          <div class="poem-date">2024</div>
+          <div class="poem-content">乘桴浮海诗远方，登高极目览群峰。
 寒夜众星拱北辰，我亦堪为北极星。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-longniao">
-<div class="poem-title">笼鸟</div>
-<div class="poem-date">2025‑02‑25</div>
-<div class="poem-content">风从笼中鸟傍穿，鸟跃笼中风上翻。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-longniao">
+          <h2 class="poem-title">笼鸟</h2>
+          <div class="poem-date">2025‑02‑25</div>
+          <div class="poem-content">风从笼中鸟傍穿，鸟跃笼中风上翻。
 风过笼中云霞穿，鸟落笼中身难翻。
 风流川谷把人观，人留坑井被世关。
 伸手抓风把把空，张翼何时向天翀。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-mijin">
-<div class="poem-title">迷津</div>
-<div class="poem-date">2025‑02‑27</div>
-<div class="poem-content">海雾弥天不见曦，长风未可涤尘思。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-mijin">
+          <h2 class="poem-title">迷津</h2>
+          <div class="poem-date">2025‑02‑27</div>
+          <div class="poem-content">海雾弥天不见曦，长风未可涤尘思。
 霓虹渐欲迷望眼，南北东西志在谁。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-tiluoyunxu">
-<div class="poem-title">提落云絮</div>
-<div class="poem-date">2025‑03‑14</div>
-<div class="poem-content">春风抚柳絮漫天，高穹落雪云遮泥。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-tiluoyunxu">
+          <h2 class="poem-title">提落云絮</h2>
+          <div class="poem-date">2025‑03‑14</div>
+          <div class="poem-content">春风抚柳絮漫天，高穹落雪云遮泥。
 风急托絮遮眼眸，涛怒卷絮沉心埼。
 式繁不解心中愁，思愁不补心上坜。
 春里寻春终不得，云落成絮化愁思。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-dandai">
-<div class="poem-title">单呆</div>
-<div class="poem-date">2025‑03‑17</div>
-<div class="poem-content">衣单体瑟谁人问?举目相望四无人。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-dandai">
+          <h2 class="poem-title">单呆</h2>
+          <div class="poem-date">2025‑03‑17</div>
+          <div class="poem-content">衣单体瑟谁人问?举目相望四无人。
 忽望前方神恍惚，神遗何处扣谁门。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-putisa-man">
-<div class="poem-title">菩萨蛮·五月二十日记</div>
-<div class="poem-date">2025‑05‑20</div>
-<div class="poem-content">独立江皋不闻水，白云浮去不知泪，
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-putisa-man">
+          <h2 class="poem-title">菩萨蛮·五月二十日记</h2>
+          <div class="poem-date">2025‑05‑20</div>
+          <div class="poem-content">独立江皋不闻水，白云浮去不知泪，
 新蝉未破土，旧絮依挂眉。
 星似落人家，无迹无可寻。
 情思徒增愁，双双化鹧鸪。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-huangtang">
-<div class="poem-title">荒唐</div>
-<div class="poem-date">2025‑08‑19</div>
-<div class="poem-content">墨史贪皇粮，黄梁落院堂。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-huangtang">
+          <h2 class="poem-title">荒唐</h2>
+          <div class="poem-date">2025‑08‑19</div>
+          <div class="poem-content">墨史贪皇粮，黄梁落院堂。
 秋虎寒心房，信访筑高墙。
 叶枝遮则章，择吉别地方。
 朝堂作剧场，矩矱多荒唐。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-biejiuyu">
-<div class="poem-title">别旧雨</div>
-<div class="poem-date">2025‑08‑21</div>
-<div class="poem-content">睡眼惺忪月朦胧，思絮袅袅心徘徊。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-biejiuyu">
+          <h2 class="poem-title">别旧雨</h2>
+          <div class="poem-date">2025‑08‑21</div>
+          <div class="poem-content">睡眼惺忪月朦胧，思絮袅袅心徘徊。
 清风勃然断云泪，乌鸟吞玉夜依莹。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-yintian">
-<div class="poem-title">阴天</div>
-<div class="poem-date">2025‑08‑23</div>
-<div class="poem-content">阴风吹墨染清云，墨云弃泪掩芳群。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-yintian">
+          <h2 class="poem-title">阴天</h2>
+          <div class="poem-date">2025‑08‑23</div>
+          <div class="poem-content">阴风吹墨染清云，墨云弃泪掩芳群。
 芳草青山无处寻，不见朝晖晖尚明。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-jiyi">
-<div class="poem-title">记梦</div>
-<div class="poem-date">2025‑08‑28</div>
-<div class="poem-content">梦如落花何处寻，我思坠梦絮如云。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-jiyi">
+          <h2 class="poem-title">记梦</h2>
+          <div class="poem-date">2025‑08‑28</div>
+          <div class="poem-content">梦如落花何处寻，我思坠梦絮如云。
 冯家院中逢院里，疑似青梅依情喜。
 离别人远离人悲，短时此处断此篇。
 夜里一梦数十载，匆匆已是此生毕。
@@ -409,176 +245,196 @@ animation:fadeUp 0.7s ease-out both;
 昨夜梦好，新梦似相识。
 夜半重眠梦又衔，晨起只觉似从前。
 痴人梦，梦中痴，愿醉其中，夜月圆。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-quannihao">
-<div class="poem-title">劝你好自为之和我和好</div>
-<div class="poem-date">2025‑08‑30</div>
-<div class="poem-content">一场秋雨一场寒，一夜月轮一夜烦。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-quannihao">
+          <h2 class="poem-title">劝你好自为之和我和好</h2>
+          <div class="poem-date">2025‑08‑30</div>
+          <div class="poem-content">一场秋雨一场寒，一夜月轮一夜烦。
 君子之交如水淡，何故倾其落泥潭。
 心悲衣单天渐凉，何必孤身越秋山。
 日月添羁多纠缠，明日复把昨日街。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-xixiangyi">
-<div class="poem-title">樨香忆</div>
-<div class="poem-date">2025‑09‑07</div>
-<div class="poem-content">桂挂技头香散尘，发栖案头落丝坟。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-xixiangyi">
+          <h2 class="poem-title">樨香忆</h2>
+          <div class="poem-date">2025‑09‑07</div>
+          <div class="poem-content">桂挂技头香散尘，发栖案头落丝坟。
 路轨不经别离处，丹青不遇罗曼史。
 光阴好似思落体，往事好似鸿踏雪。
 渐忘昨日蝴蝶瓦，风暖化尘忆如烟。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-huaizhongqiu">
-<div class="poem-title">怀中秋</div>
-<div class="poem-date">2025‑10‑06</div>
-<div class="poem-content">雨顺清辉淌夜柔，眸随云影举琼瓯。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-huaizhongqiu">
+          <h2 class="poem-title">怀中秋</h2>
+          <div class="poem-date">2025‑10‑06</div>
+          <div class="poem-content">雨顺清辉淌夜柔，眸随云影举琼瓯。
 秋叶随风踪渐隐，秋枫映月思难收。
 中秋月照佳人面，此夜心牵放苑楼。
 又值一年圆魄满，几时同醉桂花秋。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-tianjingsha">
-<div class="poem-title">天净沙·秋思</div>
-<div class="poem-date">2025‑11‑04</div>
-<div class="poem-content">残冠落木荒丘，乌穹流云孤鸠，故园青湖枯柳。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-tianjingsha">
+          <h2 class="poem-title">天净沙·秋思</h2>
+          <div class="poem-date">2025‑11‑04</div>
+          <div class="poem-content">残冠落木荒丘，乌穹流云孤鸠，故园青湖枯柳。
 嵚崟清秀，相思豆寄阁楼。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-yuqingan">
-<div class="poem-title">青玉案·黑月白日梦</div>
-<div class="poem-date">2025‑11‑25</div>
-<div class="poem-content">梦华照思梦中成，白月明，更思恋。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-yuqingan">
+          <h2 class="poem-title">青玉案·黑月白日梦</h2>
+          <div class="poem-date">2025‑11‑25</div>
+          <div class="poem-content">梦华照思梦中成，白月明，更思恋。
 醉夜花缀满春树。月烛点思，春絮成灰，染尽梦中霰。
 月熄风凉眠离去，梦随月烛烟散涣。
 清秋断了回思路，梦丝如影，虚虚若若，终是如意叛。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-jiangchengzi">
-<div class="poem-title">江城子·十月九日待别赠可人</div>
-<div class="poem-date">2025‑11‑28</div>
-<div class="poem-content">陈圃香销又一秋。水西流，漫凝眸。奕奕风华，婷婷立洲头。怎奈云深遮去路，鸿鹄志，不堪留。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-jiangchengzi">
+          <h2 class="poem-title">江城子·十月九日待别赠可人</h2>
+          <div class="poem-date">2025‑11‑28</div>
+          <div class="poem-content">陈圃香销又一秋。水西流，漫凝眸。奕奕风华，婷婷立洲头。怎奈云深遮去路，鸿鹄志，不堪留。
 此情何寄总无由。月如舟，渡空愁。万里霜天，何处望重楼?但祝君行知此意，前程远，自悠游。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-zuiluopo">
-<div class="poem-title">醉落魄·被英语老师站在寒风里背单词有感</div>
-<div class="poem-date">2025‑12‑08</div>
-<div class="poem-content">空空荡荡，徒生思絮流水落，遮了千里披山瀑。云随水哗，叨叨坠何处？
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-zuiluopo">
+          <h2 class="poem-title">醉落魄·被英语老师站在寒风里背单词有感</h2>
+          <div class="poem-date">2025‑12‑08</div>
+          <div class="poem-content">空空荡荡，徒生思絮流水落，遮了千里披山瀑。云随水哗，叨叨坠何处？
 炊烟袅袅几人户，夕阳萧萧青苗墓。
 来来去去徘徊路，秋住冬复，看着青衣布。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-duyin">
-<div class="poem-title">独饮</div>
-<div class="poem-date">2026‑01‑24</div>
-<div class="poem-content">桂花轩，觞自欢，白眼对青天。春风轻醉少年颜，如宗之，玉树临风前。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-duyin">
+          <h2 class="poem-title">独饮</h2>
+          <div class="poem-date">2026‑01‑24</div>
+          <div class="poem-content">桂花轩，觞自欢，白眼对青天。春风轻醉少年颜，如宗之，玉树临风前。
 夜难眠，絮纷闲，今朝愿梦衔。春花寄月丝萦边，不见仙，宋城老无言。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-zikuan">
-<div class="poem-title">自宽</div>
-<div class="poem-date">2026‑01‑26</div>
-<div class="poem-content">楼外鸟语喧喧，阶前飞叶翩翩。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-zikuan">
+          <h2 class="poem-title">自宽</h2>
+          <div class="poem-date">2026‑01‑26</div>
+          <div class="poem-content">楼外鸟语喧喧，阶前飞叶翩翩。
 轻穿疏竹千缕，闲逐溪花南迁。
 春漫冬疆之畔，冬凝春土之沿。
 不期鹊啼添喜，唯感春风拂肩。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-yuemingding">
-<div class="poem-title">月酩酊</div>
-<div class="poem-date">2026‑01‑30</div>
-<div class="poem-content">窗外孤灯空照影，窗内独笔自描景。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-yuemingding">
+          <h2 class="poem-title">月酩酊</h2>
+          <div class="poem-date">2026‑01‑30</div>
+          <div class="poem-content">窗外孤灯空照影，窗内独笔自描景。
 窗外无星唯月明，窗内无心唯人酊。
 风私语扰神难醒，思成曲乱身难寝。
 昼见婵娟留无计，夜无婵娟寄私恋。
 长亭阶上雪犹悻，杨柳堤边《雨霖铃》。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-xinzhongji">
-<div class="poem-title">闲中寄意</div>
-<div class="poem-date">2026‑01‑31</div>
-<div class="poem-content">孤月垂枝漏夜寒，空蹊草色共风残。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-xinzhongji">
+          <h2 class="poem-title">闲中寄意</h2>
+          <div class="poem-date">2026‑01‑31</div>
+          <div class="poem-content">孤月垂枝漏夜寒，空蹊草色共风残。
 墙根花发无人问，岸畔鸭游只影看。
 旧径每疑君步至，新痕偏觉客衣单。
 相思不似春潮缓，一寸愁心一寸酸。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-suqing">
-<div class="poem-title">愫生（一改）</div>
-<div class="poem-date">2026‑02‑01</div>
-<div class="poem-content">初见无感车尘短，悠悠忽起舟月满。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-suqing">
+          <h2 class="poem-title">愫生（一改）</h2>
+          <div class="poem-date">2026‑02‑01</div>
+          <div class="poem-content">初见无感车尘短，悠悠忽起舟月满。
 愫生西子输妍色，心恋东婵逊笑颜。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-suzhongqing">
-<div class="poem-title">诉衷情·春枝芽</div>
-<div class="poem-date">2026‑02‑04</div>
-<div class="poem-content">花慵倚暖软风绵，青影欲舒肩。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-suzhongqing">
+          <h2 class="poem-title">诉衷情·春枝芽</h2>
+          <div class="poem-date">2026‑02‑04</div>
+          <div class="poem-content">花慵倚暖软风绵，青影欲舒肩。
 月痕轻笼庭苑，情味入春阳。
 韶光促，惜流年，且凭欢。
 春痕暗度，岁岁新颜，莫负芳天。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-dianjiangchun">
-<div class="poem-title">点绛唇·相思</div>
-<div class="poem-date">2026‑02‑11</div>
-<div class="poem-content">帘隔云天，灯暖难遮心头远。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-dianjiangchun">
+          <h2 class="poem-title">点绛唇·相思</h2>
+          <div class="poem-date">2026‑02‑11</div>
+          <div class="poem-content">帘隔云天，灯暖难遮心头远。
 影孤人散，繁华都吹断。
 墨冷笺寒，心事皆成烟。
 千般念，未曾轻遣，不敢到君前。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-huanxisha">
-<div class="poem-title">浣溪沙·元日小记</div>
-<div class="poem-date">2026‑02‑17</div>
-<div class="poem-content">新晨初暖戏言轻，灯华熠彩报新正。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-huanxisha">
+          <h2 class="poem-title">浣溪沙·元日小记</h2>
+          <div class="poem-date">2026‑02‑17</div>
+          <div class="poem-content">新晨初暖戏言轻，灯华熠彩报新正。
 红封来往一般平。
 静意暗随春入庭，深情不向外人听。
 只将安好寄卿卿。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-queqiaoxian">
-<div class="poem-title">鹊桥仙</div>
-<div class="poem-date">2026‑02‑28</div>
-<div class="poem-content">天星楚楚，流光点点，怜意漫天轻舞。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-queqiaoxian">
+          <h2 class="poem-title">鹊桥仙</h2>
+          <div class="poem-date">2026‑02‑28</div>
+          <div class="poem-content">天星楚楚，流光点点，怜意漫天轻舞。
 月碎云疏清夜景，欢心暗许动人处。
 春花灼灼，芳馨灿灿，春意枝头尽吐。
 风飘柳絮乱遮眸，不恋繁华思绮户。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-shangyuan">
-<div class="poem-title">上元有寄</div>
-<div class="poem-date">2026‑03‑03</div>
-<div class="poem-content">上元灯火渐成尘，独对寒窗忆远人。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-shangyuan">
+          <h2 class="poem-title">上元有寄</h2>
+          <div class="poem-date">2026‑03‑03</div>
+          <div class="poem-content">上元灯火渐成尘，独对寒窗忆远人。
 雨湿归途添别恨，烟迷旧冢断前因。
 一轮明月堪为寄，万种相思不可陈。
 莫道婵娟惟天上，我心深处亦婵娟。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-zuihuayin">
-<div class="poem-title">醉花阴</div>
-<div class="poem-date">2026‑03‑18</div>
-<div class="poem-content">乱风斗襟凉穿袖，杂灯错影瘦。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-zuihuayin">
+          <h2 class="poem-title">醉花阴</h2>
+          <div class="poem-date">2026‑03‑18</div>
+          <div class="poem-content">乱风斗襟凉穿袖，杂灯错影瘦。
 早鸟习业漏，只是匆碌，焦烂无处候。
 风雨初竭阳初露，春花满枝秀。
 采春遗远者，只是笑颜，芳向漫天流。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-chiayuanhuai">
-<div class="poem-title">池月怀远</div>
-<div class="poem-date">2026‑03‑22</div>
-<div class="poem-content">举眸恋明月，明月何处掠。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-chiayuanhuai">
+          <h2 class="poem-title">池月怀远</h2>
+          <div class="poem-date">2026‑03‑22</div>
+          <div class="poem-content">举眸恋明月，明月何处掠。
 小池月影摇，婵娟未及梢。
 东风思旧花，花却离枝去。
 花愿随水流，水亦恋痴意。
 柳絮萦夜华，不知月思芽。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-yuhaizhongkuwei">
-<div class="poem-title">于海中枯萎</div>
-<div class="poem-date">2026‑07‑03</div>
-<div class="poem-content">清风将花枝赠予长河，
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-yuhaizhongkuwei">
+          <h2 class="poem-title">于海中枯萎</h2>
+          <div class="poem-date">2026‑07‑03</div>
+          <div class="poem-content">清风将花枝赠予长河，
 河水无意地卷着落花，
 于海中枯萎。
 夜幕将星辰投入尘间，
@@ -590,21 +446,23 @@ animation:fadeUp 0.7s ease-out both;
 枯萎于海中流浪，
 于是，
 浪携着繁花，于海中枯萎。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-zhixiangsan">
-<div class="poem-title">栀香散</div>
-<div class="poem-date">2026‑07‑03</div>
-<div class="poem-content">云怠松慵，旱风初满深院。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-zhixiangsan">
+          <h2 class="poem-title">栀香散</h2>
+          <div class="poem-date">2026‑07‑03</div>
+          <div class="poem-content">云怠松慵，旱风初满深院。
 一缕栀香轻散，暗惊窗纱绿浅。
 举觞怯对孤月，醉醒方觉宵短。
 晚凉无那吹鬓，又是疏桐雨断。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-wanleijinsan">
-<div class="poem-title">晚雷尽散</div>
-<div class="poem-date">2026‑07‑27</div>
-<div class="poem-content">暮夏的雷总是仓促。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-wanleijinsan">
+          <h2 class="poem-title">晚雷尽散</h2>
+          <div class="poem-date">2026‑07‑27</div>
+          <div class="poem-content">暮夏的雷总是仓促。
 轰然掠过檐外，搅碎一室长久的寂静，不过须臾，便敛了所有声息，彻底沉进远山的云层里。
 恍惚想起山野间一丛临路的夏花，生得玲珑明媚，开得轻巧灵动。与它相逢只是擦肩的缘分，没有驻足相守，没有长久相伴，只是寡淡平直的岁月里，无端撞入视野的一抹明丽。它倏然绽放在沉寂的路途，恰如天际乍起的雷鸣，不喧嚣张扬，却给日复一日刻板的晨昏，添了片刻生动的起伏。
 后来花期悄然落幕，无声零落，不作辞别，不留余迹，如同此刻消散于云霭之间的雷鸣。
@@ -612,55 +470,66 @@ animation:fadeUp 0.7s ease-out both;
 雨停了，穿堂的风也渐渐消融在尘嚣之中。待到秋霜染尽枝头，木叶归根入土，这一段擦肩而过的风物印记，也会同枯叶一同掩埋，往后岁月，再也寻不到半分往日的余音。
 天地依旧，风雨如常。
 往后漫长平庸的朝夕，再不会有那样一点轻快鲜活，猝不及防，落进我寂静的生活里，只余下我，安静守着一成不变的孤寂。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-guyuanke-si">
-<div class="poem-title">故园客思</div>
-<div class="poem-date">2026‑11‑03</div>
-<div class="poem-content">雨湿泥添重，风梳叶染泽。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-guyuanke-si">
+          <h2 class="poem-title">故园客思</h2>
+          <div class="poem-date">2026‑11‑03</div>
+          <div class="poem-content">雨湿泥添重，风梳叶染泽。
 故里犹为客，阡陌旧山河。
 白鸟栖光隙，阴云暗换天。
 所思凝冷雾，忍踏旧途寒。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-bashenganzhou">
-<div class="poem-title">八声甘州·寒云</div>
-<div class="poem-date">2026‑11‑10</div>
-<div class="poem-content">倚山腰小阁暖金晖，千层楼倚山。望云深隐处，不分崖壑，难辨人烟。远近高低错落，楼影接青峦。惟有天边岫，没入苍烟。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-bashenganzhou">
+          <h2 class="poem-title">八声甘州·寒云</h2>
+          <div class="poem-date">2026‑11‑10</div>
+          <div class="poem-content">倚山腰小阁暖金晖，千层楼倚山。望云深隐处，不分崖壑，难辨人烟。远近高低错落，楼影接青峦。惟有天边岫，没入苍烟。
 不忍凭栏俯看，见众生渺渺，尽化微尘。怪晨光虽暖，万类寂无声。忽抬眼、一禽掠过，划长空、翅影破寒云。方信道、此间犹有，未绝之音。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
-<div class="poem-item" id="poem-ruoguanqian">
-<div class="poem-title">结弱冠前</div>
-<div class="poem-date">附记</div>
-<div class="poem-content">于贫赏，亲眼白，奶贵能挂数十年。兔笼旁，租赁房，天寒屋漏雨卧床。免圈闭，亲离故，留守五岁迁繁乡。来到天津卫，嘛也没学会，只是光阴好，留了忆。心拓远，脱乡野，洗心革了旧时面，盼着来日光景。又三年，归故里，入是客从亲。宿学堂，无友亲，年幼不知孤何悲。入苦稂，多惨凉，泪发假借忆亲旁。惧豺狼，言非良，又把诈欺扛。新雨落了污河，浊尘杂了清壳。愁云蔽，忘了天日，又留独自泣心棱。又三年，逃了彷得处，徘徊是非破哀墙，新世始人郎。结朋，存忆，读诗文。交友，砌志，话天门。匆匆忙忙，碍碍不知何为。亦有玩物，亦有遗志。多少悲欢事，多少光阴寸，都如烟波散，忘却几载春秋事。旧泥罐子里积了十九层花絮，愁云在天，与我万里遥，何干!鲲鹏吞了星河，何乎琐尘味。春日复春日，别了旧轮月，看今朝，又是百花争芳艳。
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
+
+        <article class="poem" id="poem-ruoguanqian">
+          <h2 class="poem-title">结弱冠前</h2>
+          <div class="poem-date">附记</div>
+          <div class="poem-content">于贫赏，亲眼白，奶贵能挂数十年。兔笼旁，租赁房，天寒屋漏雨卧床。免圈闭，亲离故，留守五岁迁繁乡。来到天津卫，嘛也没学会，只是光阴好，留了忆。心拓远，脱乡野，洗心革了旧时面，盼着来日光景。又三年，归故里，入是客从亲。宿学堂，无友亲，年幼不知孤何悲。入苦稂，多惨凉，泪发假借忆亲旁。惧豺狼，言非良，又把诈欺扛。新雨落了污河，浊尘杂了清壳。愁云蔽，忘了天日，又留独自泣心棱。又三年，逃了彷得处，徘徊是非破哀墙，新世始人郎。结朋，存忆，读诗文。交友，砌志，话天门。匆匆忙忙，碍碍不知何为。亦有玩物，亦有遗志。多少悲欢事，多少光阴寸，都如烟波散，忘却几载春秋事。旧泥罐子里积了十九层花絮，愁云在天，与我万里遥，何干!鲲鹏吞了星河，何乎琐尘味。春日复春日，别了旧轮月，看今朝，又是百花争芳艳。
 一戴年华，一戴风花，生谢伤人，泣私意。夜颜点点星，总挂宿枝映梦，惹人心，恋其怜可，只惜声难及，冬凉总是不得意，此意亦是难消去，只是刚别了眉间，又上了心间。沅有芷兮澧有兰，思公子兮来敢言，荒忽气远望，观流水兮潺湲。夜不眠，独饮泉，聊遥兮容与，只是自在宽。(弱冠还没结了，所以又补了一段，就这样吧)
 成人一岁，幼成人，身不在思乱步行。思泉涌，絮飘穹，长书挂了几斤愁。无情月，无言夜，幕还未作良笔颜。无心览春春自流，落花痴意意空游。又梦重楼，颤心头，何事岂能不留痕，旧忆总伤人。月清柔，星映眸，只愿星辰，携我离去无名暗，逢阳。
 结，弱冠始，杨春末，欢自流。弱冠时节，心无春艳，只念朝夕，待到栀子盛，采芳遗远者。寒夜众星拱北辰，我亦堪为星北斗。</div>
-<a href="#poetry-index" class="back-poetry-top">↑ 返回目录</a>
-</div>
+          <a href="#poetry-index" class="poem-back">↑ 返回目录</a>
+        </article>
 
-</div>
-</div>
-</section>
+      </div>
+    </div>
+  </section>
+</main>
 
-<footer>
-口水盆 · 诗集 | 任喆 · Kashiu
-<br><br>
-Student · Writer · Explorer
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span><span class="ok">●</span> 口水盆 · 诗集 — 任喆 · Kashiu</span>
+    <a href="index.html" class="cmd">cd ~/home →</a>
+  </div>
 </footer>
 
 <script>
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{
-  mobileMenu.classList.toggle('open');
-})
-mobileMenu.querySelectorAll('a').forEach(link=>{
-  link.addEventListener('click',()=>{
-    mobileMenu.classList.remove('open')
-  })
-})
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function(){
+      var open = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
 </script>
 </body>
 </html>
