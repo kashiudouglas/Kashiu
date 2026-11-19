@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="任喆 · Kashiu 的个人网站 — 学生、写作者、探索者。代码与诗歌之间，构建世界，记录生活。">
+<title>任喆 · Kashiu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="dot"></span>
+      <span>kashiu<span class="at">@</span><span class="path">ring</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="is-active">首页</a>
+      <a href="about-me.html">个人</a>
+      <a href="#projects">项目</a>
+      <a href="poetry.html">诗集</a>
+      <a href="#contact">联系</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false">≡</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="is-active">首页</a>
+    <a href="about-me.html">个人</a>
+    <a href="#projects">项目</a>
+    <a href="poetry.html">诗集</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">// personal_site — v2.0</div>
+        <h1>任喆<br><span class="accent">Kashiu</span></h1>
+        <p class="role">学生<span class="sep">·</span>写作者<span class="sep">·</span>探索者</p>
+        <p class="hero-desc">
+          在代码与诗歌之间搭桥。构建幻想世界，记录日常思考，
+          对这个世界的大多数事物保持兴趣。
+        </p>
+        <div class="hero-actions">
+          <a href="about-me.html" class="btn btn-primary"><span class="br">[</span> 了解我 <span class="br">]</span></a>
+          <a href="poetry.html" class="btn"><span class="br">[</span> 进入诗集 <span class="br">]</span></a>
+        </div>
+      </div>
+
+      <div class="terminal" aria-hidden="true">
+        <div class="terminal-bar">
+          <span class="t-dot r"></span>
+          <span class="t-dot y"></span>
+          <span class="t-dot g"></span>
+          <span class="terminal-title">kashiu@ring — zsh</span>
+        </div>
+        <div class="terminal-body">
+          <span class="ln" style="animation-delay:.15s"><span class="ps1">kashiu@ring</span><span class="ps2">:~$</span> <span class="cmd">whoami</span></span>
+          <span class="ln" style="animation-delay:.35s">任喆 · Kashiu</span>
+          <span class="ln gap" style="animation-delay:.6s"><span class="ps1">kashiu@ring</span><span class="ps2">:~$</span> <span class="cmd">cat role.txt</span></span>
+          <span class="ln out" style="animation-delay:.8s">学生 · 写作者 · 探索者</span>
+          <span class="ln gap" style="animation-delay:1.05s"><span class="ps1">kashiu@ring</span><span class="ps2">:~$</span> <span class="cmd">cat mission.txt</span></span>
+          <span class="ln out" style="animation-delay:1.25s">对世界的大多数事物都抱有兴趣。</span>
+          <span class="ln out" style="animation-delay:1.4s">从代码到诗歌，从人工智能到机械结构，</span>
+          <span class="ln out" style="animation-delay:1.55s">从游戏到音乐，从现实到幻想。</span>
+          <span class="ln gap" style="animation-delay:1.85s"><span class="ps1">kashiu@ring</span><span class="ps2">:~$</span> <span class="cmd">./connect --now</span> <span class="cursor"></span></span>
+        </div>
+        <div class="terminal-status">
+          <span><span class="ok">●</span> online</span>
+          <span>UTC+8</span>
+          <span>扶风 · 宝鸡</span>
+          <span>status: 保持好奇</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2>关于我</h2>
+        <span class="line"></span>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="lead">
+            <strong>Kashiu</strong> 并不只是一个昵称。他是我笔下的人物，也是我对自己的期望。
+            在我的故事里，Kashiu 拥有「<span class="hl">杀死命运</span>」的含义——这不是关于毁灭，
+            而是关于挣脱既定轨迹，用自己的意志决定前进的方向。
+          </p>
+          <p class="lead">
+            <strong>环</strong>，是我长期构思中的幻想宇宙。不同的星域、文明与神明在其中诞生、消亡，
+            群星明灭更替，命运被书写，也有人试图反抗命运。Kashiu 只是这片宇宙中的一个故事，
+            而环，仍在不断生长。
+          </p>
+          <p style="margin-top:26px">
+            <a class="btn" href="about-me.html"><span class="br">$</span> cd ~/about</a>
+          </p>
+        </div>
+        <aside class="about-side reveal">
+          <h3>// PROFILE</h3>
+          <div class="kv"><span class="k">name</span><span class="v">任喆</span></div>
+          <div class="kv"><span class="k">alias</span><span class="v">Kashiu</span></div>
+          <div class="kv"><span class="k">roles</span><span class="v">学生 / 作者</span></div>
+          <div class="kv"><span class="k">focus</span><span class="v">写作 · AI · 游戏</span></div>
+          <div class="kv"><span class="k">status</span><span class="v green">保持好奇</span></div>
+        </aside>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="num" id="diaryTimer">—</div>
+          <p>持续记录日记</p>
+        </div>
+        <div class="stat">
+          <div class="num">359+</div>
+          <p>体验过的游戏</p>
+        </div>
+        <div class="stat">
+          <div class="num">3430+</div>
+          <p>TapTap 游戏时长</p>
+        </div>
+        <div class="stat">
+          <div class="num">∞</div>
+          <p>保持好奇</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2>项目</h2>
+        <span class="line"></span>
+      </div>
+      <div class="projects">
+        <a class="card reveal" href="about-me.html#ring">
+          <div class="card-path">~/projects/ring</div>
+          <h3>环 · Ring</h3>
+          <p>长期构思中的幻想宇宙。星域、文明与神明在其中更替，命运被书写，也被人反抗。</p>
+          <div class="card-foot">
+            <span class="pill">worldbuilding</span>
+            <span class="pill">fiction</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+        <a class="card reveal" href="poetry.html">
+          <div class="card-path">~/projects/poems</div>
+          <h3>口水盆 · 诗集</h3>
+          <p>持续更新的诗词与随笔合集，从 2024 年的第一首写到今天，记录情绪与季节的切片。</p>
+          <div class="card-foot">
+            <span class="pill">poetry</span>
+            <span class="pill">42 poems</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+        <a class="card reveal" href="about-me.html#kashiu">
+          <div class="card-path">~/projects/kashiu</div>
+          <h3>Kashiu</h3>
+          <p>一个笔下的人物，也是自我期望的投射。「杀死命运」——挣脱既定轨迹，自己决定方向。</p>
+          <div class="card-foot">
+            <span class="pill">character</span>
+            <span class="pill">story</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+        <a class="card reveal" href="index.html">
+          <div class="card-path">~/projects/site</div>
+          <h3>个人网站</h3>
+          <p>你正在浏览的页面。纯静态构建，暗色终端风格，托管于 GitHub Pages。</p>
+          <div class="card-foot">
+            <span class="pill">html</span>
+            <span class="pill">css</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="writing">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2>写作</h2>
+        <span class="line"></span>
+      </div>
+      <div class="rows reveal">
+        <a class="row" href="poetry.html">
+          <span class="path">./poetry</span>
+          <span class="name">《口水盆》诗集<small>诗词、随笔与散文</small></span>
+          <span class="meta">42 首<span class="arrow">→</span></span>
+        </a>
+        <div class="row">
+          <span class="path">./diary</span>
+          <span class="name">日记<small>生活、思考与成长</small></span>
+          <span class="meta">始于 2025-01-21</span>
+        </div>
+        <div class="row">
+          <span class="path">./stories</span>
+          <span class="name">故事<small>围绕「环」世界观展开</small></span>
+          <span class="meta">持续生长</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2>联系</h2>
+        <span class="line"></span>
+      </div>
+      <div class="contact">
+        <a class="contact-item reveal" href="mailto:kashiu.douglas@gmail.com">
+          <div class="label">EMAIL</div>
+          <div class="value">kashiu.douglas@gmail.com</div>
+        </a>
+        <a class="contact-item reveal" href="https://github.com/kashiudouglas" target="_blank" rel="noopener">
+          <div class="label">GITHUB</div>
+          <div class="value">github.com/kashiudouglas</div>
+        </a>
+        <div class="contact-item reveal">
+          <div class="label">WECHAT</div>
+          <div class="value">LZXM2007</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span><span class="ok">●</span> 任喆 · Kashiu — Student · Writer · Explorer</span>
+    <span class="cmd">// built with curiosity · © <span id="year">2026</span></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function(){
+      var open = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var diaryStart = new Date(2025, 0, 21);
+  var diaryEl = document.getElementById('diaryTimer');
+  function updateDiary(){
+    var now = new Date();
+    var y = now.getFullYear() - diaryStart.getFullYear();
+    var m = now.getMonth() - diaryStart.getMonth();
+    var d = now.getDate() - diaryStart.getDate();
+    if (d < 0) {
+      m--;
+      var lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+      d += lastMonth.getDate();
+    }
+    if (m < 0) { y--; m += 12; }
+    var text = '';
+    if (y > 0) text += y + '年';
+    if (m > 0) text += m + '个月';
+    text += d + '天+';
+    diaryEl.textContent = text;
+  }
+  updateDiary();
+  setInterval(updateDiary, 3600000);
+})();
+</script>
+</body>
+</html>
