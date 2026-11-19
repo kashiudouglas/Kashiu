@@ -437,7 +437,7 @@ body.menu-open{overflow:hidden}
 .hero-title{
   font-family:var(--serif);
   font-weight:400;
-  font-size:clamp(76px,17.6vw,272px);
+  font-size:clamp(72px,16.9vw,258px);
   line-height:.8;
   letter-spacing:-.015em;
   white-space:nowrap;
@@ -623,19 +623,24 @@ body.menu-open{overflow:hidden}
 .mini-node:hover::before,.mini-node.is-active::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 16px rgba(216,80,47,.8);transform:translate(-50%,-50%) scale(1.35)}
 .mini-node:hover::after,.mini-node.is-active::after{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .mini-node:focus-visible{outline:1px solid var(--accent);outline-offset:0;border-radius:50%}
-.mini-detail{position:relative;min-height:104px;padding:15px 118px 0 0;border-top:1px solid var(--line)}
+.mini-detail{position:relative;min-height:104px;padding:0 0 16px;border-bottom:1px solid var(--line);margin-bottom:clamp(16px,2vw,26px)}
 .mini-no{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--accent)}
 .mini-detail strong{display:block;margin-top:7px;font-family:var(--cn);font-size:17px;font-weight:300;letter-spacing:.05em}
 .mini-detail p{margin-top:6px;font-size:10.5px;line-height:1.85;color:var(--dim)}
-.mini-enter{position:absolute;right:0;top:16px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);transition:color .3s}
+.mini-enter{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);transition:color .3s}
 .mini-enter:hover{color:var(--accent)}
+@media(min-width:1200px){
+  .ring-grid{grid-template-columns:minmax(0,1.32fr) minmax(0,.68fr)}
+  .mini-atlas{display:grid;grid-template-columns:minmax(0,1fr) 214px;gap:26px;align-items:start;max-width:820px}
+  .mini-map{grid-area:1/1}
+  .mini-detail{grid-area:1/2;border-bottom:0;border-left:1px solid var(--line);padding:2px 0 0 20px;margin:0;min-height:0}
+}
 @media(max-width:640px){
   .mini-overview .mini-label{font-size:9px;padding:2px 3px;background:rgba(7,8,10,.76)}
   .mini-domain .mini-node .mini-label{display:none;padding:3px 5px;background:var(--ink)}
   .mini-domain .mini-node.is-active .mini-label,.mini-domain .mini-node:focus-visible .mini-label{display:block}
   .mini-domain-name{font-size:7px;letter-spacing:.1em}
-  .mini-detail{padding-right:0;min-height:128px}
-  .mini-enter{position:static;display:inline-block;margin-top:9px}
+  .mini-detail{min-height:104px}
 }
 .ring-copy h3{
   font-family:var(--cn);
@@ -1240,6 +1245,12 @@ body.menu-open{overflow:hidden}
 
       <div class="ring-grid">
         <div class="mini-atlas reveal">
+          <div class="mini-detail" aria-live="polite">
+            <span class="mini-no" id="miniNo">THE RING / STAR MAP</span>
+            <strong id="miniTitle">选择一片星域</strong>
+            <p id="miniText">点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。</p>
+            <a class="mini-enter" id="miniLink" href="about-me.html#ring">阅读完整关系图 ↗</a>
+          </div>
           <div class="mini-map" id="miniMap" role="group" aria-label="环的可探索星空">
             <svg class="mini-sky" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
               <circle cx="44" cy="83" r="1.2"></circle><circle class="bright" cx="91" cy="157" r="1.5"></circle>
@@ -1275,12 +1286,6 @@ body.menu-open{overflow:hidden}
               <span class="mini-domain-name" id="miniDomainName"></span>
               <span class="mini-domain-tip">SELECT A STAR / 点击星点查看</span>
             </div>
-          </div>
-          <div class="mini-detail" aria-live="polite">
-            <span class="mini-no" id="miniNo">THE RING / STAR MAP</span>
-            <strong id="miniTitle">选择一片星域</strong>
-            <p id="miniText">点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。</p>
-            <a class="mini-enter" id="miniLink" href="about-me.html#ring">阅读完整关系图 ↗</a>
           </div>
         </div>
 
