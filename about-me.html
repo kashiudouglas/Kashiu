@@ -11,11 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#07080A;--ink-2:#0B0C0F;
+  --ink:#07080A;
   --paper:#EFEBE2;--paper-soft:rgba(239,235,226,.72);
   --dim:#9A958A;--muted:#67635B;
   --line:rgba(239,235,226,.14);--line-soft:rgba(239,235,226,.07);
-  --accent:#D8502F;--gold:#C7A76C;
+  --accent:#D8502F;
   --serif:'Instrument Serif','Noto Serif SC',Georgia,serif;
   --cn:'Noto Serif SC','Songti SC','STSong',serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -64,8 +64,6 @@ body.scrolled .site-nav{background:rgba(7,8,10,.78);-webkit-backdrop-filter:blur
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--paper);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease)}
 .nav-links a:hover{color:var(--paper)}
 .nav-links a:hover::after{transform:scaleX(1)}
-.nav-links a.is-active{color:var(--paper)}
-.nav-links a.is-active::after{transform:scaleX(1)}
 .menu-toggle{display:none;width:42px;height:42px;position:relative;z-index:210}
 .menu-toggle span{position:absolute;left:10px;right:10px;height:1px;background:var(--paper);transition:transform .4s var(--ease),top .4s var(--ease)}
 .menu-toggle span:nth-child(1){top:16px}.menu-toggle span:nth-child(2){top:25px}
