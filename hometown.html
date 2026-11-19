@@ -233,18 +233,6 @@ body.menu-open{overflow:hidden}
 .note-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .note-facts span{padding:5px 9px;border:1px solid var(--line);font-size:9px;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
 
-/* ============ NEIGHBORS ============ */
-.neighbors{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,2.15fr);gap:clamp(36px,5vw,80px);align-items:start}
-.neighbor-intro .big{font-family:var(--cn);font-weight:200;font-size:clamp(24px,3vw,40px);line-height:1.55;color:var(--paper)}
-.neighbor-intro p{font-size:12.5px;line-height:2;color:var(--dim);margin-top:18px}
-.neighbor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.neighbor{padding:clamp(18px,2.2vw,28px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .4s}
-.neighbor:hover{background:rgba(239,235,226,.03)}
-.neighbor b{display:block;font-family:var(--cn);font-weight:300;font-size:clamp(18px,1.9vw,24px);letter-spacing:.04em}
-.neighbor em{display:block;margin:5px 0 12px;font-family:var(--serif);font-style:italic;font-size:10.5px;letter-spacing:.05em;color:var(--muted)}
-.neighbor p{font-size:11px;line-height:1.9;color:var(--dim)}
-.neighbor .km{display:block;margin-top:12px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent)}
-
 /* ============ FOOTER ============ */
 .footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
 .footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
@@ -266,8 +254,6 @@ body.menu-open{overflow:hidden}
   .notes{grid-template-columns:1fr}
   .note:nth-last-child(-n+2){border-bottom:0}
   .note:last-child{border-bottom:1px solid var(--line)}
-  .neighbors{grid-template-columns:1fr}
-  .neighbor-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   body{font-size:13px}
@@ -280,7 +266,6 @@ body.menu-open{overflow:hidden}
   .marquee{margin-left:calc(var(--gutter) * -1);margin-right:calc(var(--gutter) * -1)}
   .footer-bar{flex-wrap:wrap;gap:8px 18px}
   .footer-word{font-size:23vw}
-  .neighbor-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -586,7 +571,7 @@ body.menu-open{overflow:hidden}
           <div class="note-top"><span class="note-no">N.02</span><span>法门镇召陈村 · 免费</span></div>
           <h3 class="note-title">周原遗址<em>Zhouyuan Ruins</em></h3>
           <p class="note-text">
-            县城北 9 公里，扶风与岐山交界。周人灭商前的都邑「岐周」就在这一带，
+            县城北 9 公里，周原遗址的核心区就在这一带。周人灭商前的都邑在此，
             凤雏甲组建筑基址出土过西周甲骨。《诗经》里那句
             <b>「周原朊朊，堇荼如饴」</b>，说的就是这片地的肥。
             周原博物院在法门镇召陈村，免费，周一闭馆。
@@ -646,8 +631,8 @@ body.menu-open{overflow:hidden}
           <p class="note-text">
             扶风一口香臊子面：小碗、酸汤、面少汤多，一顿能连吃十几碗；
             还有擀面皮、醋糟粉、甑糕、油糕。最拿得出手的是<b>鹿羔馍</b>，
-            唐代就有记载，直径约 10 厘米，香酥耐存，走亲戚常拿它。
-            「岐山的挂面凤翔的酒，扶风的鹿羔馍京里走」。
+            唐代就有记载，直径约 10 厘米，香酥耐存，走亲戚常拿它；
+            扶风人出门，包里也常塞两个。
           </p>
           <div class="note-facts"><span>一口香臊子面</span><span>鹿羔馍</span><span>醋糟粉</span></div>
         </article>
@@ -665,70 +650,11 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- ============ 06 NEIGHBORS ============ -->
-  <section class="section" id="neighbors">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-no">06</span>
-        <h2 class="sec-title">邻里<em>Neighbors</em></h2>
-        <span class="sec-line"></span>
-        <span class="sec-note">Around Fufeng</span>
-      </div>
-
-      <div class="neighbors">
-        <div class="neighbor-intro reveal">
-          <p class="big">
-            扶风在中间，<br>
-            东南西北都是熟人。
-          </p>
-          <p>
-            朋友来，不用非得住扶风。隔壁县各有各的去处，
-            串起来就是一条关中西府线：上午看周原，下午进山，
-            晚上换个县吃面。
-          </p>
-        </div>
-
-        <div class="neighbor-grid">
-          <div class="neighbor reveal">
-            <b>岐山</b><em>Qishan</em>
-            <p>周原的另一半；岐山臊子面、擀面皮。五丈原上还有诸葛亮庙。</p>
-            <span class="km">约 25 km</span>
-          </div>
-          <div class="neighbor reveal" style="--d:.06s">
-            <b>眉县</b><em>Meixian</em>
-            <p>渭河对岸。太白山国家森林公园、猕猴桃；夏天进山，秋天吃果。</p>
-            <span class="km">约 30 km</span>
-          </div>
-          <div class="neighbor reveal" style="--d:.12s">
-            <b>麟游</b><em>Linyou</em>
-            <p>九成宫遗址，《九成宫醴泉铭》的原碑就在那儿；夏天比县城凉。</p>
-            <span class="km">约 45 km</span>
-          </div>
-          <div class="neighbor reveal">
-            <b>乾县</b><em>Qianxian</em>
-            <p>乾陵，唐高宗与武则天合葬；乾州锅盔、豆腐脑。</p>
-            <span class="km">约 40 km</span>
-          </div>
-          <div class="neighbor reveal" style="--d:.06s">
-            <b>武功</b><em>Wugong</em>
-            <p>后稷教稼台、苏武墓；武功镇的老街值得慢慢转。</p>
-            <span class="km">约 25 km</span>
-          </div>
-          <div class="neighbor reveal" style="--d:.12s">
-            <b>杨凌</b><em>Yangling</em>
-            <p>农科城，西北农林科技大学；看农业、吃蘸水面。</p>
-            <span class="km">约 20 km</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 07 BACK ============ -->
+  <!-- ============ 06 BACK ============ -->
   <section class="section" id="back">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-no">07</span>
+        <span class="sec-no">06</span>
         <h2 class="sec-title">回到<em>Go home</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Home · 0917</span>
@@ -742,7 +668,7 @@ body.menu-open{overflow:hidden}
             也吹过少年放学的那条路。
           </p>
           <p style="margin-top:clamp(22px,2.6vw,34px);font-size:12.5px;color:var(--dim);line-height:2">
-            周边县区的朋友来，第一站先吃一碗面。<br>
+            朋友来扶风，第一站先吃一碗面。<br>
             总有一天要回去，找一家巷口老店，<br>
             再吃一碗热腾腾的臊子面。
           </p>
