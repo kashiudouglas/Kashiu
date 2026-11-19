@@ -117,6 +117,11 @@ body.menu-open{overflow:hidden}
 .index-list a .idx-no{font-family:var(--mono);font-size:10px;color:var(--muted);margin-right:8px;letter-spacing:.14em}
 .index-head-info{font-family:var(--serif);font-size:clamp(54px,7vw,96px);line-height:.95;letter-spacing:-.01em}
 .index-head-info em{font-style:italic;font-size:.32em;color:var(--muted);font-family:var(--mono);letter-spacing:.14em;margin-left:10px}
+.picks{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 26px;padding-bottom:22px;margin-bottom:28px;border-bottom:1px solid var(--line-soft)}
+.picks-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.picks a{display:inline-flex;align-items:baseline;gap:7px;font-family:var(--cn);font-size:clamp(14px,1.4vw,17px);letter-spacing:.04em;color:var(--dim);border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.picks a em{font-family:var(--mono);font-style:normal;font-size:9px;letter-spacing:.16em;color:var(--muted)}
+.picks a:hover{color:var(--paper);border-bottom-color:var(--line)}
 
 /* poems */
 .poems-wrap{padding-bottom:40px}
@@ -238,8 +243,8 @@ body.menu-open{overflow:hidden}
       <h1 class="hero-title">诗集<em class="pinyin">KOU SHUI PEN</em></h1>
       <div class="hero-sub">
         <p class="statement">
-          诗词、随笔与散文。<br>
-          <span class="dim">始于 2024 年，持续更新中。</span>
+          诗词、随笔与散文。始于 2024 年，持续更新中。<br>
+          <span class="dim">「口水盆」不是雅称。我总觉得这些写得不算好，像随口说出的口水话；攒得多了，就装进一个盆里。</span>
         </p>
         <div class="hero-meta">
           <span>42 首</span><span>2024 — 2026</span><span>持续</span>
@@ -257,6 +262,15 @@ body.menu-open{overflow:hidden}
   <!-- ============ INDEX ============ -->
   <section class="section index-wrap" id="poem-index">
     <div class="wrap">
+      <div class="picks reveal">
+        <span class="picks-label">推荐 · Selected</span>
+        <a href="#poem-ruoguanqian">结弱冠前<em>附记</em></a>
+        <a href="#poem-yuhaizhongkuwei">于海中枯萎<em>2026</em></a>
+        <a href="#poem-guyuanke-si">故园客思<em>2026</em></a>
+        <a href="#poem-tianjingsha">天净沙·秋思<em>2025</em></a>
+        <a href="#poem-zhi">志<em>2024</em></a>
+      </div>
+
       <div class="index-head reveal">
         <div class="filters" role="tablist">
           <button class="on" data-filter="all">全部 · ALL</button>
