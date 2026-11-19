@@ -3,693 +3,472 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>个人主页 | Portfolio</title>
-
+<title>任喆 | Kashiu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{
+--bg:#070A12;
+--surface:#10141F;
+--surface-2:#171C2B;
+--border:rgba(255,255,255,.09);
+--border-hover:rgba(255,255,255,.18);
+--text:#F7F8FA;
+--text-sub:#9AA3B8;
+--primary:#8B5CF6;
+--accent:#06B6D4;
+--shadow:0 24px 80px rgba(0,0,0,0.35);
+--radius:20px;
+--transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:'Inter',sans-serif;
-    background:#030712;
-    color:white;
-    overflow-x:hidden;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+position:relative;
 }
-
-/* ===================
-    背景光效
-=================== */
-
 body::before{
-    content:"";
-    position:fixed;
-    width:700px;
-    height:700px;
-    background:#7c3aed;
-    border-radius:50%;
-    filter:blur(150px);
-    top:-250px;
-    left:-250px;
-    opacity:.25;
-    animation:float1 12s infinite alternate;
+content:"";
+position:fixed;
+inset:0;
+background-image:
+  radial-gradient(circle at 20% 20%, rgba(139,92,246,0.12), transparent 45%),
+  radial-gradient(circle at 80% 75%, rgba(6,182,212,0.09), transparent 40%),
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+background-size:100% 100%,100% 100%,48px 48px,48px 48px;
+z-index:-3;
+opacity:0.7;
 }
-
-body::after{
-    content:"";
-    position:fixed;
-    width:700px;
-    height:700px;
-    background:#06b6d4;
-    border-radius:50%;
-    filter:blur(180px);
-    right:-250px;
-    bottom:-250px;
-    opacity:.2;
-    animation:float2 10s infinite alternate;
-}
-
-@keyframes float1{
-    from{
-        transform:translateY(0);
-    }
-    to{
-        transform:translateY(120px);
-    }
-}
-
-@keyframes float2{
-    from{
-        transform:translateY(0);
-    }
-    to{
-        transform:translateY(-100px);
-    }
-}
-
 .container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
+width:min(1160px,92%);
+margin:0 auto;
 }
-
-/* ===================
-    导航
-=================== */
-
 nav{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    width:90%;
-    max-width:1200px;
-    z-index:999;
+position:fixed;
+top:24px;
+left:50%;
+transform:translateX(-50%);
+width:min(1160px,92%);
+z-index:100;
 }
-
-.nav-wrapper{
-    backdrop-filter:blur(20px);
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:16px 28px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.nav-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 24px;
+background:rgba(16,20,31,0.72);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid var(--border);
+border-radius:16px;
+box-shadow:0 8px 32px rgba(0,0,0,0.22);
+transition:var(--transition);
 }
-
+.nav-inner:hover{border-color:var(--border-hover);}
 .logo{
-    font-size:20px;
-    font-weight:700;
+font-weight:700;
+font-size:18px;
+letter-spacing:0.04em;
 }
-
-.menu{
-    display:flex;
-    gap:30px;
-}
-
+.menu{display:flex;gap:28px;align-items:center}
 .menu a{
-    color:#cccccc;
-    text-decoration:none;
-    transition:.3s;
+text-decoration:none;
+color:var(--text-sub);
+font-size:14.5px;
+font-weight:500;
+transition:var(--transition);
 }
-
-.menu a:hover{
-    color:white;
+.menu a:hover{color:var(--text)}
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
 }
-
-/* ===================
-    Hero
-=================== */
+.hamburger span{
+width:24px;height:2px;background:#fff;border-radius:2px;transition:0.25s
+}
+.mobile-menu{
+display:none;
+margin-top:12px;
+padding:18px 22px;
+border-radius:16px;
+background:rgba(16,20,31,0.72);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border:1px solid var(--border);
+}
+.mobile-menu a{
+display:block;padding:11px 0;color:var(--text-sub);text-decoration:none;
+font-weight:500;transition:var(--transition);
+}
+.mobile-menu a:hover{color:var(--text)}
+.mobile-menu.open{display:block}
 
 .hero{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+min-height:100vh;
+display:flex;align-items:center;justify-content:center;
+text-align:center;padding:140px 20px 80px;
 }
-
-.badge{
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:999px;
-
-    background:rgba(124,58,237,.15);
-    border:1px solid rgba(124,58,237,.4);
-
-    color:#c4b5fd;
-    margin-bottom:30px;
-}
-
 .hero h1{
-    font-size:clamp(3rem,8vw,6rem);
-    line-height:1;
-    font-weight:800;
+font-size:clamp(3.2rem,9vw,7.2rem);
+font-weight:800;line-height:1.05;letter-spacing:-0.03em;
 }
-
-.gradient-text{
-    background:linear-gradient(
-        135deg,
-        #7c3aed,
-        #06b6d4
-    );
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.gradient{
+background:linear-gradient(135deg,var(--primary),var(--accent));
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-
 .hero p{
-    margin-top:30px;
-    font-size:20px;
-    color:#94a3b8;
+margin-top:28px;
+font-size:clamp(17px,2vw,20px);
+line-height:1.75;
+color:var(--text-sub);
+max-width:720px;
+margin-left:auto;margin-right:auto;
 }
-
 .hero-buttons{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
+margin-top:44px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
 }
-
 .btn{
-    padding:16px 30px;
-    border-radius:999px;
-    text-decoration:none;
-    transition:.4s;
+padding:14px 30px;border-radius:12px;text-decoration:none;font-weight:600;
+font-size:15px;transition:var(--transition);
 }
-
-.primary{
-    background:linear-gradient(
-    135deg,
-    #7c3aed,
-    #06b6d4
-    );
-
-    color:white;
+.btn-primary{
+background:linear-gradient(135deg,var(--primary),var(--accent));
+color:white;box-shadow:0 12px 36px rgba(139,92,246,0.25);
 }
-
-.primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 20px 40px rgba(124,58,237,.4);
+.btn-secondary{
+background:transparent;border:1px solid var(--border);color:var(--text);
 }
+.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 
-.secondary{
-    border:1px solid rgba(255,255,255,.15);
-    color:white;
+section{padding:120px 0}
+.title{
+text-align:center;font-size:clamp(34px,5vw,48px);
+margin-bottom:64px;font-weight:700;letter-spacing:-0.02em;
 }
-
-.secondary:hover{
-    background:rgba(255,255,255,.05);
-}
-
-/* ===================
-    通用
-=================== */
-
-section{
-    padding:120px 0;
-}
-
-.section-title{
-    font-size:42px;
-    margin-bottom:60px;
-    text-align:center;
-}
-
 .glass{
-    background:rgba(255,255,255,.05);
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:24px;
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+transition:var(--transition);
 }
-
-/* ===================
-    数据展示
-=================== */
-
+.glass:hover{
+transform: translateY(-6px);
+border-color:var(--border-hover);
+box-shadow:0 28px 90px rgba(0,0,0,0.42);
+}
+.about{padding:44px 48px;line-height:1.85;font-size:17px;color:#D6DBE8;}
 .stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:22px;
 }
-
-.stat-card{
-    padding:40px;
-    text-align:center;
+.stat{padding:40px 24px;text-align:center;}
+.stat .number{
+font-size:40px;font-weight:750;
+background:linear-gradient(135deg,var(--primary),var(--accent));
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+margin-bottom:10px;
 }
-
-.stat-card h2{
-    font-size:48px;
-    color:#7c3aed;
+.stat p{color:var(--text-sub);font-size:15px;font-weight:500;}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
 }
-
-.stat-card p{
-    color:#94a3b8;
+.card{padding:40px 32px;}
+.card h3{margin-bottom:14px;font-size:20px;font-weight:650}
+.card p{color:var(--text-sub);line-height:1.75;font-size:15.5px}
+.back-poetry-top{
+display:inline-block;margin-top:14px;font-size:14px;color:var(--primary);
+text-decoration:none;font-weight:550;transition:0.25s;
 }
-
-/* ===================
-    技能
-=================== */
-
-.skills-grid{
-    display:grid;
-    gap:25px;
+.back-poetry-top:hover{color:var(--accent)}
+.tags{
+display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
 }
-
-.skill{
-    padding:20px;
+.tag{
+padding:12px 20px;border-radius:12px;
+background:var(--surface);
+border:1px solid var(--border);
+color:var(--text-sub);
+font-size:14.5px;font-weight:500;
+transition:var(--transition);
 }
-
-.skill-name{
-    margin-bottom:10px;
+.tag:hover{
+border-color:var(--border-hover);
+color:var(--text);
+transform:translateY(-2px);
 }
-
-.progress{
-    height:12px;
-    background:rgba(255,255,255,.05);
-    border-radius:999px;
-}
-
-.progress span{
-    display:block;
-    height:100%;
-    border-radius:999px;
-
-    background:linear-gradient(
-      90deg,
-      #7c3aed,
-      #06b6d4
-    );
-}
-
-/* ===================
-    项目
-=================== */
-
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
-}
-
-.project{
-    overflow:hidden;
-    transition:.4s;
-}
-
-.project:hover{
-    transform:translateY(-10px);
-}
-
-.project-image{
-    height:220px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #7c3aed,
-    #06b6d4
-    );
-}
-
-.project-content{
-    padding:25px;
-}
-
-.project-content h3{
-    margin-bottom:10px;
-}
-
-.project-content p{
-    color:#94a3b8;
-}
-
-/* ===================
-    关于我
-=================== */
-
-.about{
-    padding:50px;
-    text-align:center;
-    font-size:18px;
-    line-height:1.8;
-}
-
-/* ===================
-    联系
-=================== */
-
-.contact{
-    text-align:center;
-}
-
-.contact h2{
-    font-size:52px;
-    margin-bottom:20px;
-}
-
+.contact{text-align:center}
 .contact p{
-    color:#94a3b8;
-    margin-bottom:30px;
+color:var(--text-sub);line-height:2;
+font-size:16px;
 }
-
-.socials{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
+.contact a{
+color:var(--primary);text-decoration:none;font-weight:550;
+transition:0.25s;
 }
-
-.socials a{
-    text-decoration:none;
-    color:white;
-    padding:14px 24px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.1);
-}
-
-.socials a:hover{
-    background:rgba(255,255,255,.05);
-}
-
-/* ===================
-    Footer
-=================== */
-
+.contact a:hover{color:var(--accent);text-decoration:underline}
 footer{
-    text-align:center;
-    padding:60px 20px;
-    color:#64748b;
+padding:64px 20px;text-align:center;color:#647088;
+line-height:1.8;font-size:14px;
 }
-
+@keyframes fadeUp {
+from{opacity:0;transform:translateY(24px)}
+to{opacity:1;transform:translateY(0)}
+}
+section{
+animation:fadeUp 0.7s ease-out both;
+animation-delay:0.1s;
+}
 @media(max-width:768px){
-
-.menu{
-display:none;
+.menu{display:none}
+.hamburger{display:flex}
+.title{font-size:32px}
+.about{padding:32px 24px;font-size:16px}
+.stat{padding:30px 16px}
+.cards{grid-template-columns:1fr}
 }
-
-.contact h2{
-font-size:36px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-}
-
 </style>
 </head>
 <body>
-
 <nav>
-<div class="nav-wrapper">
-<div class="logo">ZHANGSAN</div>
-
+<div class="nav-inner">
+<div class="logo">KASHIU</div>
 <div class="menu">
-<a href="#about">关于</a>
-<a href="#skills">技能</a>
-<a href="#projects">项目</a>
+<a href="about-me.html">个人</a>
+<a href="#kashiu">Kashiu</a>
+<a href="#ring">环</a>
+<a href="#writing">写作</a>
+<a href="poetry.html">诗集</a>
 <a href="#contact">联系</a>
 </div>
-
+<div class="hamburger" id="hamburger">
+<span></span><span></span><span></span>
+</div>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+<a href="about-me.html">个人</a>
+<a href="#kashiu">Kashiu</a>
+<a href="#ring">环</a>
+<a href="#writing">写作</a>
+<a href="poetry.html">诗集</a>
+<a href="#contact">联系</a>
 </div>
 </nav>
 
 <section class="hero">
-
 <div>
-
-<div class="badge">
-🚀 Available For Work
-</div>
-
-<h1>
-Building
-<span class="gradient-text">
-Future
-</span>
-Digital Experiences
-</h1>
-
-<p>
-全栈开发者 · AI 工程师 · 产品创造者
+<h1>任喆<br><span class="gradient">Kashiu</span></h1>
+<p>学生 · 写作者 · 探索者
+<br><br>
+我对世界的大多数事物都抱有兴趣。
+从代码到诗歌，
+从人工智能到机械结构，
+从游戏到音乐，
+从现实到幻想。
 </p>
-
 <div class="hero-buttons">
-
-<a href="#projects" class="btn primary">
-查看作品
-</a>
-
-<a href="#contact" class="btn secondary">
-联系我
-</a>
-
+<a href="about-me.html" class="btn btn-primary">了解我</a>
+<a href="#ring" class="btn btn-secondary">进入环</a>
 </div>
-
 </div>
-
 </section>
 
 <section>
-
 <div class="container">
-
+<h2 class="title">数字侧写</h2>
 <div class="stats">
-
-<div class="glass stat-card">
-<h2>5+</h2>
-<p>年开发经验</p>
+<div class="glass stat">
+<div class="number" id="diaryTimer"></div>
+<p>持续记录日记</p>
 </div>
-
-<div class="glass stat-card">
-<h2>50+</h2>
-<p>项目经验</p>
+<div class="glass stat">
+<div class="number">359+</div>
+<p>体验过的游戏</p>
 </div>
-
-<div class="glass stat-card">
-<h2>100K+</h2>
-<p>用户服务</p>
+<div class="glass stat">
+<div class="number">3430+</div>
+<p>TapTap 游戏时长</p>
 </div>
-
-<div class="glass stat-card">
-<h2>24/7</h2>
-<p>持续学习</p>
+<div class="glass stat">
+<div class="number">∞</div>
+<p>保持好奇</p>
 </div>
-
 </div>
-
 </div>
-
 </section>
 
-<section id="about">
-
+<section id="kashiu">
 <div class="container">
-
-<h2 class="section-title">
-关于我
-</h2>
-
+<h2 class="title">Who Is Kashiu</h2>
 <div class="glass about">
-
-我是一名热爱技术与创造的开发者，
-专注于 Web 开发、人工智能与现代产品设计。
-
-喜欢把复杂的问题变成优雅的解决方案，
-从用户体验到系统架构，
-持续探索技术与商业价值的结合。
-
+Kashiu 并不只是一个昵称。
+他是我笔下的人物。
+也是我对自己的期望。
+在我的故事中，
+Kashiu 拥有「杀死命运」的含义。
+这不是关于毁灭，
+而是关于挣脱既定轨迹，
+用自己的意志决定前进的方向。
 </div>
-
 </div>
-
 </section>
 
-<section id="skills">
-
+<section id="ring">
 <div class="container">
-
-<h2 class="section-title">
-技能栈
-</h2>
-
-<div class="skills-grid">
-
-<div class="glass skill">
-<div class="skill-name">Frontend 95%</div>
-<div class="progress">
-<span style="width:95%"></span>
+<h2 class="title">环 · Ring</h2>
+<div class="glass about">
+环，是我长期构思中的幻想宇宙。
+这里拥有不同的星域、
+文明与神明。
+无数故事在其中发生。
+文明诞生并消亡，
+群星明灭更替，
+命运被书写，
+也有人试图反抗命运。
+Kashiu 只是这片宇宙中的一个故事。
+而环，
+仍在不断生长。
 </div>
 </div>
-
-<div class="glass skill">
-<div class="skill-name">Backend 90%</div>
-<div class="progress">
-<span style="width:90%"></span>
-</div>
-</div>
-
-<div class="glass skill">
-<div class="skill-name">AI Engineering 92%</div>
-<div class="progress">
-<span style="width:92%"></span>
-</div>
-</div>
-
-<div class="glass skill">
-<div class="skill-name">UI/UX Design 85%</div>
-<div class="progress">
-<span style="width:85%"></span>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </section>
 
-<section id="projects">
-
+<section id="writing">
 <div class="container">
-
-<h2 class="section-title">
-Featured Projects
-</h2>
-
-<div class="projects">
-
-<div class="glass project">
-
-<div class="project-image"></div>
-
-<div class="project-content">
-<h3>AI Agent Platform</h3>
+<h2 class="title">写作</h2>
+<div class="cards">
+<div class="glass card">
+<h3>📖 诗集</h3>
 <p>
-基于大模型构建的智能助手系统，
-支持知识库问答与自动化工作流。
+收录诗词、随笔与散文。
+其中包括《口水盆》等持续更新的作品集。
+<br><br>
+<a href="poetry.html" class="back-poetry-top">👉 进入《口水盆》诗集</a>
 </p>
 </div>
-
-</div>
-
-<div class="glass project">
-
-<div class="project-image"></div>
-
-<div class="project-content">
-<h3>SaaS Dashboard</h3>
+<div class="glass card">
+<h3>📓 日记</h3>
 <p>
-现代化数据分析平台，
-实时展示运营与业务指标。
+持续记录生活、思考与成长。
+始于 2025-01-21。
 </p>
 </div>
-
-</div>
-
-<div class="glass project">
-
-<div class="project-image"></div>
-
-<div class="project-content">
-<h3>Creative Portfolio</h3>
+<div class="glass card">
+<h3>📚 故事</h3>
 <p>
-高端品牌官方网站，
-注重视觉体验与交互细节。
+围绕「环」世界观展开的角色、
+文明与历史。
 </p>
 </div>
-
 </div>
-
 </div>
+</section>
 
+<section>
+<div class="container">
+<h2 class="title">兴趣宇宙</h2>
+<div class="tags">
+<div class="tag">人工智能</div>
+<div class="tag">软件开发</div>
+<div class="tag">未来科技</div>
+<div class="tag">机械结构</div>
+<div class="tag">去中心化</div>
+<div class="tag">游戏</div>
+<div class="tag">小说</div>
+<div class="tag">诗歌</div>
+<div class="tag">音乐</div>
+<div class="tag">插花</div>
+<div class="tag">绘画</div>
+<div class="tag">汽车</div>
+<div class="tag">运动</div>
+<div class="tag">互联网</div>
+<div class="tag">宇宙</div>
+<div class="tag">文明</div>
+<div class="tag">历史</div>
+<div class="tag">更多...</div>
 </div>
-
+</div>
 </section>
 
 <section id="contact">
-
 <div class="container">
-
 <div class="contact">
-
-<h2>
-Let's Build Something Amazing.
-</h2>
-
+<h2 class="title">联系我</h2>
 <p>
-hello@yourmail.com
+Google Mail<br>
+<a href="mailto:kashiu.douglas@gmail.com">kashiu.douglas@gmail.com</a>
+<br><br>
+GitHub<br>
+<a target="_blank" href="https://github.com/kashiudouglas">github.com/kashiudouglas</a>
+<br><br>
+WeChat<br>
+LZXM2007
 </p>
-
-<div class="socials">
-<a href="#">Github</a>
-<a href="#">LinkedIn</a>
-<a href="#">X / Twitter</a>
-<a href="#">Email</a>
 </div>
-
 </div>
-
-</div>
-
 </section>
 
 <footer>
-© 2026 Portfolio • Designed with Modern UI
+任喆 · Kashiu
+<br><br>
+Student · Writer · Explorer
+<br><br>
+Building worlds,
+writing stories,
+and exploring the unknown.
 </footer>
 
 <script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  mobileMenu.classList.toggle('open');
+})
+mobileMenu.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    mobileMenu.classList.remove('open')
+  })
+})
 
-const observer = new IntersectionObserver(entries => {
+const diaryStart = new Date("2025-01-21T00:00:00");
+const diaryEl = document.getElementById("diaryTimer");
 
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.animate([
-{
-opacity:0,
-transform:'translateY(50px)'
-},
-{
-opacity:1,
-transform:'translateY(0)'
+function getDateDiff(startDate, endDate) {
+    let y = endDate.getFullYear() - startDate.getFullYear();
+    let m = endDate.getMonth() - startDate.getMonth();
+    let d = endDate.getDate() - startDate.getDate();
+    if (d < 0) {
+        m--;
+        const lastMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+        d += lastMonth.getDate();
+    }
+    if (m < 0) {
+        y--;
+        m += 12;
+    }
+    return {y,m,d};
 }
-],{
-duration:800,
-fill:'forwards'
-});
 
+function updateDiaryTime(){
+  const now = new Date();
+  const diff = getDateDiff(diaryStart, now);
+  let text = "";
+  if(diff.y>0) text += `${diff.y}年`;
+  if(diff.m>0) text += `${diff.m}个月`;
+  text += `${diff.d}天+`;
+  diaryEl.innerText = text;
 }
-
-});
-
-},{threshold:0.1});
-
-document.querySelectorAll(
-'.glass,.section-title,.contact'
-).forEach(el=>{
-observer.observe(el);
-});
-
+updateDiaryTime();
+setInterval(updateDiaryTime, 1000 * 60 * 60);
 </script>
-
 </body>
 </html>
