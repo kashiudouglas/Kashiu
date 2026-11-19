@@ -6,6 +6,17 @@
 <meta name="theme-color" content="#07080A">
 <meta name="description" content="《口水盆》——任喆（Kashiu）的诗词与随笔合集，收录 2024 年至今的 42 首创作。">
 <title>口水盆 · 诗集 | Kashiu</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="口水盆 · 诗集 | Kashiu">
+<meta property="og:description" content="任喆的诗词与随笔合集，收录 2024 年至今的 42 首创作。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kashiu">
+<meta property="og:url" content="https://kashiudouglas.github.io/Kashiu/poetry.html">
+<meta property="og:image" content="https://kashiudouglas.github.io/Kashiu/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
@@ -127,6 +138,14 @@ body.menu-open{overflow:hidden}
 .poem-content p,.poem-content br{display:block}
 .poem-back{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(20px,2.4vw,28px);font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;transition:color .3s}
 .poem-back:hover{color:var(--accent)}
+.random-poem{padding:11px 20px;border:1px solid var(--line);border-radius:999px;color:var(--dim);font-size:10px;letter-spacing:.2em;transition:color .3s,border-color .3s}
+.random-poem:hover{color:var(--accent);border-color:var(--accent)}
+.poem{scroll-margin-top:100px}
+.poem-title{transition:color .5s}
+.poem.picked .poem-title{color:var(--accent)}
+.poem-read-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:clamp(20px,2.4vw,28px)}
+.poem-read-nav .poem-back{margin-top:0}
+.poem-read-nav .is-disabled{opacity:.35;cursor:default}
 
 .footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(64px,15vw,220px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
 .footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
@@ -245,6 +264,7 @@ body.menu-open{overflow:hidden}
           <button data-filter="2025">2025</button>
           <button data-filter="2024">2024</button>
         </div>
+        <button class="random-poem" id="randomPoem" type="button" hidden>随机一首 ↗</button>
         <div class="index-head-info">42<em>POEMS</em></div>
       </div>
 
@@ -749,7 +769,7 @@ body.menu-open{overflow:hidden}
   // Filter buttons
   var filterBtns = document.querySelectorAll('.filters button');
   var poemYears = document.querySelectorAll('.poem-year');
-  var poems = document.querySelectorAll('.poem');
+  var poems = Array.prototype.slice.call(document.querySelectorAll('.poem'));
   Array.prototype.forEach.call(filterBtns, function(btn){
     btn.addEventListener('click', function(){
       Array.prototype.forEach.call(filterBtns, function(b){ b.classList.remove('on'); });
@@ -769,6 +789,56 @@ body.menu-open{overflow:hidden}
       });
     });
   });
+
+  // Previous / next links, generated once from the existing poem order.
+  poems.forEach(function(poem, i){
+    var back = poem.querySelector('.poem-back');
+    if (!back) return;
+    var nav = document.createElement('nav');
+    nav.className = 'poem-read-nav';
+    nav.setAttribute('aria-label', '诗歌阅读导航');
+    function makeLink(target, label){
+      var a = document.createElement('a');
+      a.className = 'poem-back';
+      a.href = '#' + target.id;
+      var title = target.querySelector('.poem-title');
+      a.textContent = label;
+      if (title) a.title = title.textContent;
+      return a;
+    }
+    function makeDisabled(label){
+      var s = document.createElement('span');
+      s.className = 'poem-back is-disabled';
+      s.textContent = label;
+      return s;
+    }
+    nav.appendChild(i > 0 ? makeLink(poems[i - 1], '← 上一首') : makeDisabled('← 第一首'));
+    var indexLink = back.cloneNode(true);
+    indexLink.textContent = '↑ 目录';
+    nav.appendChild(indexLink);
+    nav.appendChild(i < poems.length - 1 ? makeLink(poems[i + 1], '下一首 →') : makeDisabled('最后一首 →'));
+    back.parentNode.replaceChild(nav, back);
+  });
+
+  var randomBtn = document.getElementById('randomPoem');
+  if (randomBtn && poems.length) {
+    randomBtn.hidden = false;
+    randomBtn.addEventListener('click', function(){
+      var pool = poems.filter(function(poem){ return poem.style.display !== 'none'; });
+      if (!pool.length) return;
+      var current = window.location.hash.slice(1);
+      if (pool.length > 1) {
+        var withoutCurrent = pool.filter(function(poem){ return poem.id !== current; });
+        if (withoutCurrent.length) pool = withoutCurrent;
+      }
+      var pick = pool[Math.floor(Math.random() * pool.length)];
+      try { history.replaceState(null, '', '#' + pick.id); }
+      catch (err) { window.location.hash = pick.id; }
+      pick.scrollIntoView({behavior:reduce ? 'auto' : 'smooth', block:'start'});
+      pick.classList.add('picked');
+      setTimeout(function(){ pick.classList.remove('picked'); }, 1800);
+    });
+  }
 })();
 </script>
 </body>

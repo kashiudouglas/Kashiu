@@ -6,6 +6,17 @@
 <meta name="theme-color" content="#07080A">
 <meta name="description" content="关于任喆（Kashiu）：2007 年生于陕西扶风，现就读于陕西机电职业技术学院。写诗、写「环」，也写代码。">
 <title>关于我 · Kashiu</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="关于我 · Kashiu">
+<meta property="og:description" content="任喆：陕西扶风人，陕西机电在读。写诗，也在写一个叫「环」的宇宙。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kashiu">
+<meta property="og:url" content="https://kashiudouglas.github.io/Kashiu/about-me.html">
+<meta property="og:image" content="https://kashiudouglas.github.io/Kashiu/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
@@ -163,6 +174,27 @@ body.menu-open{overflow:hidden}
 .city-tags span{font-size:10px;letter-spacing:.08em;color:var(--dim);border:1px solid var(--line);padding:7px 10px}
 .world-note{margin-top:clamp(30px,4vw,48px);padding:18px 0 18px 20px;border-left:2px solid var(--accent);font-size:12px;line-height:2;color:var(--dim)}
 
+/* ring atlas */
+.atlas{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.55fr);gap:clamp(28px,4vw,60px);padding:clamp(26px,4vw,44px) 0 0}
+.atlas-map{min-width:0}
+.atlas-root{display:flex;justify-content:center}
+.atlas-node{position:relative;z-index:1;display:block;width:100%;min-height:72px;padding:12px 14px;border:1px solid var(--line);background:var(--ink);color:var(--dim);text-align:left;font-family:var(--cn);font-size:13px;letter-spacing:.06em;transition:color .3s,border-color .3s,background .3s}
+.atlas-node em{display:block;margin-top:6px;font-family:var(--serif);font-size:10px;font-style:italic;letter-spacing:.04em;color:var(--muted)}
+.atlas-node:hover,.atlas-node.is-active{border-color:var(--accent);color:var(--paper);background:rgba(179,140,86,.06)}
+.atlas-node:focus-visible{outline:1px solid var(--accent);outline-offset:3px}
+.atlas-root .atlas-node{width:min(180px,60%);text-align:center}
+.atlas-trunk{width:1px;height:28px;margin:0 auto;background:var(--line)}
+.atlas-path{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,1.4vw,18px)}
+.atlas-path::before{content:"";position:absolute;left:4%;right:4%;top:50%;height:1px;background:var(--line)}
+.atlas-others{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:26px;padding-top:18px;border-top:1px solid var(--line-soft)}
+.atlas-others>span{width:100%;margin-bottom:4px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.atlas-others .atlas-node{width:auto;min-height:0;padding:8px 11px;font-size:10px}
+.atlas-detail{align-self:stretch;padding-left:clamp(20px,3vw,36px);border-left:1px solid var(--line)}
+.atlas-detail-no{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--accent)}
+.atlas-detail h4{margin-top:16px;font-family:var(--cn);font-size:clamp(25px,3vw,38px);font-weight:300;letter-spacing:.04em}
+.atlas-detail h4 em{display:block;margin-top:6px;font-family:var(--serif);font-size:.4em;font-style:italic;color:var(--muted)}
+.atlas-detail p{margin-top:18px;font-size:11.5px;line-height:2.05;color:var(--dim)}
+
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stat{padding:clamp(26px,3.4vw,44px) clamp(16px,2.2vw,30px);border-left:1px solid var(--line-soft)}
@@ -196,6 +228,8 @@ body.menu-open{overflow:hidden}
 @media (max-width:900px){
   .nav-links{display:none}.menu-toggle{display:block}
   .split-grid,.prose-block,.contact-grid,.hero-sub{grid-template-columns:1fr;gap:30px}
+  .atlas{grid-template-columns:1fr}
+  .atlas-detail{padding:24px 0 0;border-left:0;border-top:1px solid var(--line)}
   .stats{grid-template-columns:1fr 1fr}
   .stat{padding:28px 20px}.stat:nth-child(odd){border-left:none;padding-left:0}
   .stat:nth-child(-n+2){border-bottom:1px solid var(--line-soft)}
@@ -217,6 +251,9 @@ body.menu-open{overflow:hidden}
   .pillar:first-child{border-top:0}
   .domain-row{grid-template-columns:1fr;gap:4px}
   .domain-row span{text-align:left}
+  .atlas-path{grid-template-columns:1fr;gap:10px}
+  .atlas-path::before{left:20px;right:auto;top:4%;bottom:4%;width:1px;height:auto}
+  .atlas-node{min-height:0}
   .douglas{grid-template-columns:1fr;gap:24px}
   .footer-bar{flex-wrap:wrap;gap:8px 18px}
   .footer-word{font-size:23vw}
@@ -425,6 +462,37 @@ body.menu-open{overflow:hidden}
             这里只收进几页设定。更多的名字、人物与往事仍在修改，
             有些连我自己也还没有看清。
           </p>
+        </div>
+
+        <div class="domain-block reveal">
+          <div class="domain-head"><span>世界坐标 / World Atlas</span><span>点击节点</span></div>
+          <div class="atlas">
+            <div class="atlas-map" role="group" aria-label="环的星域关系图">
+              <div class="atlas-root"><button class="atlas-node is-active" type="button" data-atlas="ring" aria-pressed="true">环<em>The Ring</em></button></div>
+              <div class="atlas-trunk" aria-hidden="true"></div>
+              <div class="atlas-path">
+                <button class="atlas-node" type="button" data-atlas="hessarion" aria-pressed="false">黑塞域<em>Hessarion</em></button>
+                <button class="atlas-node" type="button" data-atlas="somnia" aria-pressed="false">索姆尼亚<em>Somnia</em></button>
+                <button class="atlas-node" type="button" data-atlas="sudini" aria-pressed="false">须迪尼<em>Sudini</em></button>
+                <button class="atlas-node" type="button" data-atlas="douglas" aria-pressed="false">都格拉斯<em>Douglas</em></button>
+                <button class="atlas-node" type="button" data-atlas="cities" aria-pressed="false">十一城邦<em>City-states</em></button>
+              </div>
+              <div class="atlas-others">
+                <span>其他星域 / Other domains</span>
+                <button class="atlas-node" type="button" data-atlas="ins" aria-pressed="false">因斯域</button>
+                <button class="atlas-node" type="button" data-atlas="ying" aria-pressed="false">英提伊庭域</button>
+                <button class="atlas-node" type="button" data-atlas="l" aria-pressed="false">L 域</button>
+                <button class="atlas-node" type="button" data-atlas="q" aria-pressed="false">Q 域</button>
+                <button class="atlas-node" type="button" data-atlas="w" aria-pressed="false">W 域</button>
+                <button class="atlas-node" type="button" data-atlas="unnamed" aria-pressed="false">未命名</button>
+              </div>
+            </div>
+            <aside class="atlas-detail" aria-live="polite">
+              <span class="atlas-detail-no" id="atlasNo">ATLAS / 00</span>
+              <h4><span id="atlasTitle">环</span><em id="atlasEn">The Ring</em></h4>
+              <p id="atlasText">由权柄交织、冷凝而成的无形海洋。神明、星域与凡人，都从这套规则中获得自己的位置。</p>
+            </aside>
+          </div>
         </div>
 
         <div class="world-pillars">
@@ -706,6 +774,44 @@ body.menu-open{overflow:hidden}
     var startDate = new Date(2025, 0, 21);
     var days = Math.max(0, Math.floor((Date.now() - startDate.getTime()) / 86400000));
     diaryEl.textContent = days.toLocaleString('en-US');
+  }
+
+  // Ring atlas: only repeats lore already published on this page.
+  var atlasNodes = document.querySelectorAll('[data-atlas]');
+  var atlasNo = document.getElementById('atlasNo');
+  var atlasTitle = document.getElementById('atlasTitle');
+  var atlasEn = document.getElementById('atlasEn');
+  var atlasText = document.getElementById('atlasText');
+  var atlasData = {
+    ring: ['ATLAS / 00', '环', 'The Ring', '由权柄交织、冷凝而成的无形海洋。神明、星域与凡人，都从这套规则中获得自己的位置。'],
+    hessarion: ['ATLAS / 01', '黑塞域', 'Hessarion', '黑塞域之下，已公开的有索姆尼亚、哈荷图、乌隆达、须迪尼与长漠。'],
+    somnia: ['ATLAS / 02', '索姆尼亚', 'Somnia', '由三级神法内提希创造。对她而言，索姆尼亚不仅是一颗星球，也是人性之锚。'],
+    sudini: ['ATLAS / 03', '须迪尼', 'Sudini', '都格拉斯所在之地。再往下，是十一座城邦与最后一位国王。'],
+    douglas: ['ATLAS / 04', '都格拉斯', 'Douglas', '由十一座城邦组成。Kashiu 是这里的第二十二位国王，也是最后一位。'],
+    cities: ['ATLAS / 05', '十一城邦', 'City-states', '阿布拉、埃丝特、艾雷克斯、安罗盼、奥维恩、都格拉斯、厄斯格勒、费利克斯、慕斯格、瑞耶安、沃伯斯。'],
+    ins: ['DOMAIN / 01', '因斯域', 'Ins', '因斯域 · 因斯帝国。'],
+    ying: ['DOMAIN / 02', '英提伊庭域', 'Yingtiyiting', '英提伊庭域 · 英提伊庭。'],
+    l: ['DOMAIN / 03', 'L 域', 'Lanisu', 'L 域 · 拉尼苏。'],
+    q: ['DOMAIN / 04', 'Q 域', 'Stars', 'Q 域 · 群星。'],
+    w: ['DOMAIN / 05', 'W 域', 'Walid Alliance', 'W 域 · 瓦利德同盟。'],
+    unnamed: ['DOMAIN / —', '未命名', 'Unwritten', '尚未命名。那一页还空着。']
+  };
+  if (atlasNo && atlasTitle && atlasEn && atlasText) {
+    Array.prototype.forEach.call(atlasNodes, function(node){
+      node.addEventListener('click', function(){
+        var d = atlasData[node.getAttribute('data-atlas')];
+        if (!d) return;
+        Array.prototype.forEach.call(atlasNodes, function(n){
+          var active = n === node;
+          n.classList.toggle('is-active', active);
+          n.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        atlasNo.textContent = d[0];
+        atlasTitle.textContent = d[1];
+        atlasEn.textContent = d[2];
+        atlasText.textContent = d[3];
+      });
+    });
   }
 
   var copyBtns = document.querySelectorAll('[data-copy]');
