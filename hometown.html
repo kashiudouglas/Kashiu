@@ -218,6 +218,33 @@ body.menu-open{overflow:hidden}
 .place-row:hover .place-title{color:var(--accent);transform:translateX(10px)}
 .place-row:hover .place-arrow{color:var(--paper);transform:translate(5px,-5px)}
 
+/* ============ FIELD NOTES ============ */
+.section-intro{max-width:56ch;margin:clamp(18px,2.4vw,30px) 0 clamp(30px,4vw,54px);font-size:12.5px;line-height:2.05;color:var(--dim)}
+.section-intro b{color:var(--paper);font-weight:400}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5vw,80px)}
+.note{padding:clamp(26px,3.2vw,42px) 0;border-top:1px solid var(--line);scroll-margin-top:96px}
+.note:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+.note-top{display:flex;justify-content:space-between;gap:14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.note-no{color:var(--accent)}
+.note-title{margin:14px 0 16px;font-family:var(--cn);font-weight:300;font-size:clamp(24px,3vw,38px);line-height:1.15;letter-spacing:.02em}
+.note-title em{display:block;margin-top:5px;font-family:var(--serif);font-style:italic;font-size:.42em;font-weight:400;color:var(--muted);letter-spacing:.04em}
+.note-text{font-size:12.5px;line-height:2.05;color:var(--dim);max-width:48ch}
+.note-text b{color:var(--paper);font-weight:400}
+.note-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.note-facts span{padding:5px 9px;border:1px solid var(--line);font-size:9px;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
+
+/* ============ NEIGHBORS ============ */
+.neighbors{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,2.15fr);gap:clamp(36px,5vw,80px);align-items:start}
+.neighbor-intro .big{font-family:var(--cn);font-weight:200;font-size:clamp(24px,3vw,40px);line-height:1.55;color:var(--paper)}
+.neighbor-intro p{font-size:12.5px;line-height:2;color:var(--dim);margin-top:18px}
+.neighbor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.neighbor{padding:clamp(18px,2.2vw,28px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .4s}
+.neighbor:hover{background:rgba(239,235,226,.03)}
+.neighbor b{display:block;font-family:var(--cn);font-weight:300;font-size:clamp(18px,1.9vw,24px);letter-spacing:.04em}
+.neighbor em{display:block;margin:5px 0 12px;font-family:var(--serif);font-style:italic;font-size:10.5px;letter-spacing:.05em;color:var(--muted)}
+.neighbor p{font-size:11px;line-height:1.9;color:var(--dim)}
+.neighbor .km{display:block;margin-top:12px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent)}
+
 /* ============ FOOTER ============ */
 .footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
 .footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
@@ -236,6 +263,11 @@ body.menu-open{overflow:hidden}
   .place-title em{font-size:.4em}
   .ruin-links{grid-template-columns:1fr}
   .ruin-count .years{margin-left:0;text-align:left}
+  .notes{grid-template-columns:1fr}
+  .note:nth-last-child(-n+2){border-bottom:0}
+  .note:last-child{border-bottom:1px solid var(--line)}
+  .neighbors{grid-template-columns:1fr}
+  .neighbor-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   body{font-size:13px}
@@ -248,6 +280,7 @@ body.menu-open{overflow:hidden}
   .marquee{margin-left:calc(var(--gutter) * -1);margin-right:calc(var(--gutter) * -1)}
   .footer-bar{flex-wrap:wrap;gap:8px 18px}
   .footer-word{font-size:23vw}
+  .neighbor-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -366,7 +399,8 @@ body.menu-open{overflow:hidden}
             <span class="k">County</span><span class="v">扶风 · <b>Fufeng</b></span>
             <span class="k">Coordinates</span><span class="v">34° 21′ N · 107° 51′ E</span>
             <span class="k">Area</span><span class="v">约 720 km²</span>
-            <span class="k">Population</span><span class="v">约 44 万</span>
+            <span class="k">Population</span><span class="v">约 42 万（户籍）</span>
+            <span class="k">Divisions</span><span class="v">7 镇 · 1 街道</span>
             <span class="k">River</span><span class="v">渭水 · <b>Wei River</b></span>
             <span class="k">Plain</span><span class="v">关中平原 · Guanzhong</span>
           </div>
@@ -379,8 +413,8 @@ body.menu-open{overflow:hidden}
             这里是八百里秦川的一部分——土地平坦，河流纵横，是周秦文明的摇篮。
           </p>
           <p style="margin-top:22px">
-            从扶风向东百余公里便是西安，向西翻过秦岭可达甘肃。
-            这里是古丝绸之路的必经之地，也是周人最早的聚居地之一。
+            扶风之名始于汉代，取「扶助京师，以行风化」之意。
+            向东百余公里是西安，向西翻过秦岭可达甘肃；古丝绸之路从这里经过，周人也最早在这一带聚居。
           </p>
           <div class="loc-tags">
             <span>Guanzhong Plain</span>
@@ -487,45 +521,214 @@ body.menu-open{overflow:hidden}
       </div>
 
       <div class="places">
-        <a class="place-row reveal" href="hometown.html#famen" id="famen">
+        <a class="place-row reveal" href="#famen">
           <span class="place-no">(01)</span>
           <span class="place-title">法门寺<em>Famen Temple</em></span>
           <span class="place-tags">唐朝地宫<br>佛指舍利</span>
           <span class="place-arrow">↗</span>
         </a>
-        <a class="place-row reveal" href="hometown.html#zhiyuan" id="zhiyuan">
+        <a class="place-row reveal" href="#zhiyuan">
           <span class="place-no">(02)</span>
           <span class="place-title">周原遗址<em>Zhouyuan Ruins</em></span>
           <span class="place-tags">周都<br>甲骨文</span>
           <span class="place-arrow">↗</span>
         </a>
-        <a class="place-row reveal" href="hometown.html#bronze" id="bronze">
+        <a class="place-row reveal" href="#bronze">
           <span class="place-no">(03)</span>
           <span class="place-title">青铜器窖藏<em>Bronze Hoards</em></span>
-          <span class="place-tags">1976 窖藏<br>何尊 · 史墙盘</span>
+          <span class="place-tags">1976 窖藏<br>史墙盘 · 折觥 · 大克鼎</span>
           <span class="place-arrow">↗</span>
         </a>
-        <a class="place-row reveal" href="hometown.html#qin" id="qin">
+        <a class="place-row reveal" href="#qin">
           <span class="place-no">(04)</span>
           <span class="place-title">西府秦腔<em>Xifu Qinqiang</em></span>
           <span class="place-tags">老调<br>一碗面一台戏</span>
           <span class="place-arrow">↗</span>
         </a>
-        <a class="place-row reveal" href="hometown.html#food" id="food">
+        <a class="place-row reveal" href="#food">
           <span class="place-no">(05)</span>
           <span class="place-title">臊子面<em>Saozi Noodles</em></span>
-          <span class="place-tags">酸汤<br>十几种臊子</span>
+          <span class="place-tags">酸汤<br>一口香</span>
           <span class="place-arrow">↗</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ 05 MAP ============ -->
-  <section class="section" id="back">
+  <!-- ============ 05 FIELD NOTES ============ -->
+  <section class="section" id="notes">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">05</span>
+        <h2 class="sec-title">风物<em>Field Notes</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">What to see &amp; eat</span>
+      </div>
+
+      <p class="section-intro reveal">
+        给第一次来扶风的朋友：<b>半天看法门寺，半天看周原，晚上回县城吃面</b>，
+        就是最省事的一条线。下面这些地方和吃食，都是扶风人自己会带朋友去的。
+      </p>
+
+      <div class="notes">
+        <article class="note reveal" id="famen">
+          <div class="note-top"><span class="note-no">N.01</span><span>法门镇 · 5A</span></div>
+          <h3 class="note-title">法门寺<em>Famen Temple</em></h3>
+          <p class="note-text">
+            始建于东汉末年，号称「关中塔庙始祖」。1987 年清理塔基时发现唐代地宫，
+            出土佛指舍利和 <b>2499 件大唐珍宝</b>。今天看真身宝塔、地宫、合十舍利塔，
+            再走一遍 1230 米佛光大道，慢慢逛要半天。
+          </p>
+          <div class="note-facts"><span>1987 地宫开启</span><span>2499 件唐宝</span><span>佛指舍利</span></div>
+        </article>
+
+        <article class="note reveal" id="zhiyuan">
+          <div class="note-top"><span class="note-no">N.02</span><span>法门镇召陈村 · 免费</span></div>
+          <h3 class="note-title">周原遗址<em>Zhouyuan Ruins</em></h3>
+          <p class="note-text">
+            县城北 9 公里，扶风与岐山交界。周人灭商前的都邑「岐周」就在这一带，
+            凤雏甲组建筑基址出土过西周甲骨。《诗经》里那句
+            <b>「周原朊朊，堇荼如饴」</b>，说的就是这片地的肥。
+            周原博物院在法门镇召陈村，免费，周一闭馆。
+          </p>
+          <div class="note-facts"><span>周人肇兴</span><span>西周甲骨</span><span>周一闭馆</span></div>
+        </article>
+
+        <article class="note reveal" id="bronze">
+          <div class="note-top"><span class="note-no">N.03</span><span>青铜器之乡</span></div>
+          <h3 class="note-title">青铜器窖藏<em>Bronze Hoards</em></h3>
+          <p class="note-text">
+            1976 年 12 月，庄白一号窖藏一次出土 <b>103 件</b>西周青铜器，
+            其中的墙盘内底有 284 字铭文，被叫作「青铜史书」；
+            1890 年任家村出土的大克鼎，也是从这里走的。
+            想看原件去宝鸡青铜器博物院，想看来处，就来扶风。
+          </p>
+          <div class="note-facts"><span>庄白一号窖藏</span><span>墙盘 284 字</span><span>大克鼎</span></div>
+        </article>
+
+        <article class="note reveal" id="water">
+          <div class="note-top"><span class="note-no">N.04</span><span>县城南 · 县城北</span></div>
+          <h3 class="note-title">山水<em>River &amp; Mountain</em></h3>
+          <p class="note-text">
+            <b>七星河国家湿地公园</b>：全长 39 公里，北起法门镇马家村，南到杏林镇浪店村，
+            2018 年正式挂牌，免费。傍晚去，荷塘、廊桥、芦苇都好看。
+            <b>野河山</b>：乔山南麓，4A 景区，法门寺北 8 公里，18 万亩槐树林，
+            五月槐花最盛，山里有贵妃故里和人民公社旧址。
+          </p>
+          <div class="note-facts"><span>七星河 · 39 km</span><span>野河山 · 18 万亩槐花</span></div>
+        </article>
+
+        <article class="note reveal" id="jiangzhang">
+          <div class="note-top"><span class="note-no">N.05</span><span>县城东南 13 km</span></div>
+          <h3 class="note-title">绛帐<em>Jiangzhang</em></h3>
+          <p class="note-text">
+            东汉马融在这里设绛色纱帐讲学，弟子众多，郑玄、卢植都出自门下，
+            「绛帐授徒」后来成了师长讲学的代称。1936 年陇海铁路在此设站，
+            2022 年起又有动车停靠——一个镇，装着半部关中文教和铁路史。
+          </p>
+          <div class="note-facts"><span>马融讲学</span><span>陇海铁路 1936</span><span>动车停靠</span></div>
+        </article>
+
+        <article class="note reveal" id="qin">
+          <div class="note-top"><span class="note-no">N.06</span><span>庙会 · 过事</span></div>
+          <h3 class="note-title">西府秦腔<em>Xifu Qinqiang</em></h3>
+          <p class="note-text">
+            关中人叫秦腔，西府人叫「大戏」。过事、赶会、庙会，台子一搭，板胡一响，
+            半个村子都来了。唱的是老调，吼的是气性；听不懂词也没关系，
+            那股劲先到，人就站住了。
+          </p>
+          <div class="note-facts"><span>板胡</span><span>庙会</span><span>老调</span></div>
+        </article>
+
+        <article class="note reveal" id="food">
+          <div class="note-top"><span class="note-no">N.07</span><span>县城 · 各镇</span></div>
+          <h3 class="note-title">吃<em>Eat</em></h3>
+          <p class="note-text">
+            扶风一口香臊子面：小碗、酸汤、面少汤多，一顿能连吃十几碗；
+            还有擀面皮、醋糟粉、甑糕、油糕。最拿得出手的是<b>鹿羔馍</b>，
+            唐代就有记载，直径约 10 厘米，香酥耐存，走亲戚常拿它。
+            「岐山的挂面凤翔的酒，扶风的鹿羔馍京里走」。
+          </p>
+          <div class="note-facts"><span>一口香臊子面</span><span>鹿羔馍</span><span>醋糟粉</span></div>
+        </article>
+
+        <article class="note reveal" id="museum">
+          <div class="note-top"><span class="note-no">N.08</span><span>城关街道</span></div>
+          <h3 class="note-title">县博物馆<em>County Museum</em></h3>
+          <p class="note-text">
+            馆藏以周原出土的青铜器、陶器、瓦当为主。想把扶风三千年快速串起来，
+            先来这儿看一圈，再去法门寺和周原，很多地名和器物就对上了。
+          </p>
+          <div class="note-facts"><span>青铜器</span><span>陶器</span><span>瓦当</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 NEIGHBORS ============ -->
+  <section class="section" id="neighbors">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">06</span>
+        <h2 class="sec-title">邻里<em>Neighbors</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">Around Fufeng</span>
+      </div>
+
+      <div class="neighbors">
+        <div class="neighbor-intro reveal">
+          <p class="big">
+            扶风在中间，<br>
+            东南西北都是熟人。
+          </p>
+          <p>
+            朋友来，不用非得住扶风。隔壁县各有各的去处，
+            串起来就是一条关中西府线：上午看周原，下午进山，
+            晚上换个县吃面。
+          </p>
+        </div>
+
+        <div class="neighbor-grid">
+          <div class="neighbor reveal">
+            <b>岐山</b><em>Qishan</em>
+            <p>周原的另一半；岐山臊子面、擀面皮。五丈原上还有诸葛亮庙。</p>
+            <span class="km">约 25 km</span>
+          </div>
+          <div class="neighbor reveal" style="--d:.06s">
+            <b>眉县</b><em>Meixian</em>
+            <p>渭河对岸。太白山国家森林公园、猕猴桃；夏天进山，秋天吃果。</p>
+            <span class="km">约 30 km</span>
+          </div>
+          <div class="neighbor reveal" style="--d:.12s">
+            <b>麟游</b><em>Linyou</em>
+            <p>九成宫遗址，《九成宫醴泉铭》的原碑就在那儿；夏天比县城凉。</p>
+            <span class="km">约 45 km</span>
+          </div>
+          <div class="neighbor reveal">
+            <b>乾县</b><em>Qianxian</em>
+            <p>乾陵，唐高宗与武则天合葬；乾州锅盔、豆腐脑。</p>
+            <span class="km">约 40 km</span>
+          </div>
+          <div class="neighbor reveal" style="--d:.06s">
+            <b>武功</b><em>Wugong</em>
+            <p>后稷教稼台、苏武墓；武功镇的老街值得慢慢转。</p>
+            <span class="km">约 25 km</span>
+          </div>
+          <div class="neighbor reveal" style="--d:.12s">
+            <b>杨凌</b><em>Yangling</em>
+            <p>农科城，西北农林科技大学；看农业、吃蘸水面。</p>
+            <span class="km">约 20 km</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 BACK ============ -->
+  <section class="section" id="back">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">07</span>
         <h2 class="sec-title">回到<em>Go home</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Home · 0917</span>
@@ -539,16 +742,18 @@ body.menu-open{overflow:hidden}
             也吹过少年放学的那条路。
           </p>
           <p style="margin-top:clamp(22px,2.6vw,34px);font-size:12.5px;color:var(--dim);line-height:2">
-            总有一天要回去，<br>
-            找一家巷口老店，<br>
+            周边县区的朋友来，第一站先吃一碗面。<br>
+            总有一天要回去，找一家巷口老店，<br>
             再吃一碗热腾腾的臊子面。
           </p>
         </div>
 
         <aside class="story-aside reveal" style="--d:.12s">
           <div class="row"><span class="k">Area code</span><span class="v">+86 · 0917</span></div>
-          <div class="row"><span class="k">高铁</span><span class="v">扶风南 → 西安北 约 40 min</span></div>
-          <div class="row"><span class="k">机场</span><span class="v">西安咸阳国际机场</span></div>
+          <div class="row"><span class="k">县城</span><span class="v">城关街道</span></div>
+          <div class="row"><span class="k">动车</span><span class="v">绛帐站 · C162 / T7010</span></div>
+          <div class="row"><span class="k">高铁</span><span class="v">杨陵南站 · 约 20 km</span></div>
+          <div class="row"><span class="k">机场</span><span class="v">西安咸阳国际机场 · 约 100 km</span></div>
           <div class="row"><span class="k">回家</span><span class="v b">随时可以</span></div>
         </aside>
       </div>
