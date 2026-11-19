@@ -608,32 +608,45 @@ body.menu-open{overflow:hidden}
   align-items:center;
 }
 .mini-atlas{width:100%;max-width:620px;margin:0 auto}
-.mini-map{position:relative;width:100%;aspect-ratio:1}
-.mini-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.mini-svg circle{fill:none;stroke:rgba(239,235,226,.07);stroke-width:1;stroke-dasharray:2 9}
-.mini-svg line{stroke:rgba(239,235,226,.12);stroke-width:1}
-.mini-svg .mini-main-line{stroke:rgba(216,80,47,.38);stroke-width:1.2}
-.mini-hint{position:absolute;left:0;top:0;font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--muted)}
-.mini-core,.mini-node{position:absolute;transform:translate(-50%,-50%);z-index:2;color:var(--dim);transition:color .3s,border-color .3s}
-.mini-core{left:50%;top:50%;width:clamp(72px,10vw,100px);aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(216,80,47,.55);border-radius:50%;background:radial-gradient(circle,rgba(216,80,47,.15),var(--ink) 70%);font-family:var(--cn);font-size:clamp(24px,3vw,34px);font-weight:200}
-.mini-core::after{content:"";position:absolute;inset:-9px;border:1px solid rgba(216,80,47,.22);border-radius:50%;animation:miniPulse 6s ease-in-out infinite}
-@keyframes miniPulse{0%,100%{transform:scale(.96);opacity:.35}50%{transform:scale(1.08);opacity:.9}}
-.mini-node{display:flex;align-items:center;gap:7px;padding:9px;font-family:var(--cn);font-size:10px;letter-spacing:.06em;white-space:nowrap}
-.mini-node::before{content:"";display:block;width:6px;height:6px;flex:none;border:1px solid var(--muted);border-radius:50%;background:var(--ink);transition:background .3s,box-shadow .3s,border-color .3s}
-.mini-node.main::before{border-color:var(--accent)}
-.mini-node:hover,.mini-node.is-active,.mini-core.is-active{color:var(--paper)}
-.mini-node:hover::before,.mini-node.is-active::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 12px rgba(216,80,47,.75)}
-.mini-node:focus-visible,.mini-core:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
-.mini-detail{position:relative;min-height:88px;padding:15px 108px 0 0;border-top:1px solid var(--line)}
+.mini-map{position:relative;width:100%;aspect-ratio:1;isolation:isolate;overflow:hidden}
+.mini-sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.mini-sky circle{fill:var(--paper);opacity:.2}
+.mini-sky .bright{opacity:.55}
+.mini-sky .warm{fill:var(--accent);opacity:.48}
+.mini-scene{position:absolute;inset:0}
+.js .mini-scene{opacity:0;visibility:hidden;pointer-events:none;transform:scale(.94);transition:opacity .32s ease,transform .52s var(--ease),visibility .52s}
+.js .mini-scene.is-current{opacity:1;visibility:visible;pointer-events:auto;transform:scale(1)}
+.js .mini-scene.is-zoomed{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.14)}
+.mini-domain{display:none}
+.js .mini-domain{display:block}
+.mini-hint,.mini-domain-name,.mini-domain-tip{position:absolute;z-index:3;font-family:var(--mono);font-size:8px;letter-spacing:.16em;color:var(--muted);pointer-events:none}
+.mini-hint{left:0;top:0}
+.mini-domain-name{right:0;top:5px;color:var(--dim)}
+.mini-domain-tip{left:0;bottom:0}
+.mini-back{position:absolute;left:0;top:-6px;z-index:4;padding:6px 0;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--dim);transition:color .3s}
+.mini-back:hover{color:var(--paper)}
+.mini-node{position:absolute;z-index:2;width:44px;height:44px;padding:0;transform:translate(-50%,-50%);color:var(--dim);font-family:var(--cn);font-size:10px;letter-spacing:.06em;white-space:nowrap}
+.mini-node::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border:1px solid var(--dim);border-radius:50%;background:var(--paper);box-shadow:0 0 8px rgba(239,235,226,.35);transform:translate(-50%,-50%);transition:background .3s,border-color .3s,box-shadow .3s,transform .35s var(--ease)}
+.mini-node.main::before{width:7px;height:7px;border-color:var(--paper);box-shadow:0 0 13px rgba(239,235,226,.5)}
+.mini-node::after{content:"";position:absolute;left:50%;top:50%;width:23px;height:23px;border:1px solid rgba(216,80,47,.45);border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.65);transition:opacity .3s,transform .4s var(--ease)}
+.mini-label{position:absolute;left:calc(50% + 15px);top:50%;transform:translateY(-50%);pointer-events:none;transition:color .3s}
+.mini-node.label-left .mini-label{left:auto;right:calc(50% + 15px)}
+.mini-node:hover,.mini-node.is-active{color:var(--paper)}
+.mini-node:hover::before,.mini-node.is-active::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 16px rgba(216,80,47,.8);transform:translate(-50%,-50%) scale(1.35)}
+.mini-node:hover::after,.mini-node.is-active::after{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.mini-node:focus-visible{outline:1px solid var(--accent);outline-offset:0;border-radius:50%}
+.mini-detail{position:relative;min-height:104px;padding:15px 118px 0 0;border-top:1px solid var(--line)}
 .mini-no{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--accent)}
 .mini-detail strong{display:block;margin-top:7px;font-family:var(--cn);font-size:17px;font-weight:300;letter-spacing:.05em}
 .mini-detail p{margin-top:6px;font-size:10.5px;line-height:1.85;color:var(--dim)}
 .mini-enter{position:absolute;right:0;top:16px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);transition:color .3s}
 .mini-enter:hover{color:var(--accent)}
 @media(max-width:640px){
-  .mini-node .mini-label{display:none}
-  .mini-node.is-active .mini-label{display:block;padding:3px 5px;background:var(--ink)}
-  .mini-detail{padding-right:0;min-height:118px}
+  .mini-overview .mini-label{font-size:9px;padding:2px 3px;background:rgba(7,8,10,.76)}
+  .mini-domain .mini-node .mini-label{display:none;padding:3px 5px;background:var(--ink)}
+  .mini-domain .mini-node.is-active .mini-label,.mini-domain .mini-node:focus-visible .mini-label{display:block}
+  .mini-domain-name{font-size:7px;letter-spacing:.1em}
+  .mini-detail{padding-right:0;min-height:128px}
   .mini-enter{position:static;display:inline-block;margin-top:9px}
 }
 .ring-copy h3{
@@ -1243,37 +1256,47 @@ body.menu-open{overflow:hidden}
 
       <div class="ring-grid">
         <div class="mini-atlas reveal">
-          <div class="mini-map" role="group" aria-label="环的微缩星图">
-            <svg class="mini-svg" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
-              <circle cx="300" cy="300" r="92"></circle><circle cx="300" cy="300" r="184"></circle><circle cx="300" cy="300" r="270"></circle>
-              <line x1="300" y1="300" x2="174" y2="204"></line><line x1="300" y1="300" x2="120" y2="324"></line>
-              <line x1="300" y1="300" x2="180" y2="456"></line><line x1="300" y1="300" x2="318" y2="492"></line>
-              <line x1="300" y1="300" x2="480" y2="420"></line><line x1="300" y1="300" x2="498" y2="78"></line>
-              <line x1="300" y1="300" x2="60" y2="210"></line>
-              <line class="mini-main-line" x1="174" y1="204" x2="114" y2="114"></line>
-              <line class="mini-main-line" x1="114" y1="114" x2="252" y2="78"></line>
-              <line class="mini-main-line" x1="252" y1="78" x2="390" y2="144"></line>
-              <line class="mini-main-line" x1="390" y1="144" x2="462" y2="252"></line>
+          <div class="mini-map" id="miniMap" role="group" aria-label="环的可探索星空">
+            <svg class="mini-sky" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+              <circle cx="44" cy="83" r="1.2"></circle><circle class="bright" cx="91" cy="157" r="1.5"></circle>
+              <circle cx="137" cy="54" r=".8"></circle><circle cx="181" cy="121" r="1"></circle>
+              <circle class="warm" cx="226" cy="76" r="1.2"></circle><circle cx="275" cy="165" r=".8"></circle>
+              <circle class="bright" cx="329" cy="55" r="1.4"></circle><circle cx="374" cy="125" r=".9"></circle>
+              <circle cx="439" cy="65" r="1.1"></circle><circle class="bright" cx="526" cy="139" r="1.5"></circle>
+              <circle cx="565" cy="61" r=".8"></circle><circle cx="57" cy="260" r=".9"></circle>
+              <circle class="warm" cx="117" cy="224" r="1.2"></circle><circle cx="209" cy="259" r=".8"></circle>
+              <circle class="bright" cx="290" cy="220" r="1.4"></circle><circle cx="348" cy="303" r="1"></circle>
+              <circle cx="416" cy="232" r=".8"></circle><circle class="bright" cx="489" cy="302" r="1.4"></circle>
+              <circle cx="557" cy="244" r="1"></circle><circle class="bright" cx="74" cy="384" r="1.5"></circle>
+              <circle cx="150" cy="343" r=".8"></circle><circle cx="231" cy="411" r="1.1"></circle>
+              <circle class="warm" cx="306" cy="361" r="1.2"></circle><circle cx="384" cy="419" r=".9"></circle>
+              <circle class="bright" cx="457" cy="365" r="1.5"></circle><circle cx="541" cy="429" r=".8"></circle>
+              <circle cx="43" cy="517" r="1"></circle><circle class="bright" cx="125" cy="471" r="1.4"></circle>
+              <circle cx="202" cy="552" r=".8"></circle><circle cx="281" cy="487" r="1.1"></circle>
+              <circle class="bright" cx="365" cy="546" r="1.5"></circle><circle class="warm" cx="433" cy="493" r="1.2"></circle>
+              <circle cx="506" cy="553" r=".9"></circle><circle class="bright" cx="568" cy="493" r="1.4"></circle>
             </svg>
-            <span class="mini-hint">CLICK A NODE / 点击节点</span>
-            <button class="mini-core is-active" type="button" data-mini="ring" aria-label="环" aria-pressed="true">环</button>
-            <button class="mini-node main" style="left:29%;top:34%" type="button" data-mini="hessarion" aria-label="黑塞域" aria-pressed="false"><span class="mini-label">黑塞域</span></button>
-            <button class="mini-node main" style="left:19%;top:19%" type="button" data-mini="somnia" aria-label="索姆尼亚" aria-pressed="false"><span class="mini-label">索姆尼亚</span></button>
-            <button class="mini-node main" style="left:42%;top:13%" type="button" data-mini="sudini" aria-label="须迪尼" aria-pressed="false"><span class="mini-label">须迪尼</span></button>
-            <button class="mini-node main" style="left:65%;top:24%" type="button" data-mini="douglas" aria-label="都格拉斯" aria-pressed="false"><span class="mini-label">都格拉斯</span></button>
-            <button class="mini-node main" style="left:77%;top:42%" type="button" data-mini="cities" aria-label="十一城邦" aria-pressed="false"><span class="mini-label">十一城邦</span></button>
-            <button class="mini-node" style="left:20%;top:54%" type="button" data-mini="ins" aria-label="因斯域" aria-pressed="false"><span class="mini-label">因斯域</span></button>
-            <button class="mini-node" style="left:30%;top:76%" type="button" data-mini="ying" aria-label="英提伊庭域" aria-pressed="false"><span class="mini-label">英提伊庭域</span></button>
-            <button class="mini-node" style="left:53%;top:82%" type="button" data-mini="l" aria-label="L 域" aria-pressed="false"><span class="mini-label">L 域</span></button>
-            <button class="mini-node" style="left:80%;top:70%" type="button" data-mini="q" aria-label="Q 域" aria-pressed="false"><span class="mini-label">Q 域</span></button>
-            <button class="mini-node" style="left:83%;top:13%" type="button" data-mini="w" aria-label="W 域" aria-pressed="false"><span class="mini-label">W 域</span></button>
-            <button class="mini-node" style="left:10%;top:35%" type="button" data-mini="unnamed" aria-label="未命名星域" aria-pressed="false"><span class="mini-label">未命名</span></button>
+            <div class="mini-scene mini-overview is-current" id="miniOverview" aria-hidden="false">
+              <span class="mini-hint">SELECT A DOMAIN / 点击星域</span>
+              <button class="mini-node main" style="left:28%;top:30%" type="button" data-mini="hessarion" aria-label="进入黑塞域" aria-pressed="false"><span class="mini-label">黑塞域</span></button>
+              <button class="mini-node main label-left" style="left:68%;top:21%" type="button" data-mini="ins" aria-label="进入因斯域" aria-pressed="false"><span class="mini-label">因斯域</span></button>
+              <button class="mini-node main label-left" style="left:80%;top:46%" type="button" data-mini="ying" aria-label="进入英提伊庭域" aria-pressed="false"><span class="mini-label">英提伊庭域</span></button>
+              <button class="mini-node main label-left" style="left:63%;top:74%" type="button" data-mini="l" aria-label="进入 L 域" aria-pressed="false"><span class="mini-label">L 域</span></button>
+              <button class="mini-node main" style="left:32%;top:80%" type="button" data-mini="q" aria-label="进入 Q 域" aria-pressed="false"><span class="mini-label">Q 域</span></button>
+              <button class="mini-node main" style="left:14%;top:56%" type="button" data-mini="w" aria-label="进入 W 域" aria-pressed="false"><span class="mini-label">W 域</span></button>
+              <button class="mini-node label-left" style="left:85%;top:84%" type="button" data-mini="unnamed" aria-label="查看未命名星域" aria-pressed="false"><span class="mini-label">未命名</span></button>
+            </div>
+            <div class="mini-scene mini-domain" id="miniDomain" aria-hidden="true">
+              <button class="mini-back" id="miniBack" type="button" tabindex="-1">← 返回星空</button>
+              <span class="mini-domain-name" id="miniDomainName"></span>
+              <span class="mini-domain-tip">SELECT A STAR / 点击星点查看</span>
+            </div>
           </div>
           <div class="mini-detail" aria-live="polite">
-            <span class="mini-no" id="miniNo">ATLAS / 00</span>
-            <strong id="miniTitle">环</strong>
-            <p id="miniText">权柄冷凝成的宇宙。点击节点，看它已经公开的部分。</p>
-            <a class="mini-enter" id="miniLink" href="about-me.html?atlas=ring#ring">进入星图 ↗</a>
+            <span class="mini-no" id="miniNo">THE RING / STAR MAP</span>
+            <strong id="miniTitle">选择一片星域</strong>
+            <p id="miniText">点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。</p>
+            <a class="mini-enter" id="miniLink" href="about-me.html#ring">阅读完整关系图 ↗</a>
           </div>
         </div>
 
@@ -1681,43 +1704,155 @@ body.menu-open{overflow:hidden}
     });
   });
 
-  /* ---------- ring miniature atlas ---------- */
-  var miniNodes = document.querySelectorAll('[data-mini]');
+  /* ---------- ring: explorable star field ---------- */
+  var miniMap = document.getElementById('miniMap');
+  var miniOverview = document.getElementById('miniOverview');
+  var miniDomain = document.getElementById('miniDomain');
+  var miniBack = document.getElementById('miniBack');
+  var miniDomainName = document.getElementById('miniDomainName');
   var miniNo = document.getElementById('miniNo');
   var miniTitle = document.getElementById('miniTitle');
   var miniText = document.getElementById('miniText');
   var miniLink = document.getElementById('miniLink');
+  var currentDomain = '';
   var miniData = {
-    ring:['ATLAS / 00','环','权柄冷凝成的宇宙。点击节点，看它已经公开的部分。'],
-    hessarion:['ATLAS / 01','黑塞域','索姆尼亚、哈荷图、乌隆达、须迪尼与长漠所在的黑塞域。'],
+    ring:['THE RING / STAR MAP','选择一片星域','点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。'],
+    hessarion:['ATLAS / 01','黑塞域','索姆尼亚、哈荷图、乌隆达、须迪尼与长漠，已经标在这片星空中。'],
     somnia:['ATLAS / 02','索姆尼亚','法内提希创造的星球，也是她的人性之锚。'],
-    sudini:['ATLAS / 03','须迪尼','都格拉斯所在之地。'],
-    douglas:['ATLAS / 04','都格拉斯','十一座城邦，以及第二十二位、也是最后一位国王。'],
-    cities:['ATLAS / 05','十一城邦','阿布拉、埃丝特、艾雷克斯……十一座城邦。'],
-    ins:['DOMAIN / 01','因斯域','因斯帝国。'],
-    ying:['DOMAIN / 02','英提伊庭域','英提伊庭。'],
-    l:['DOMAIN / 03','L 域','拉尼苏。'],
-    q:['DOMAIN / 04','Q 域','群星。'],
-    w:['DOMAIN / 05','W 域','瓦利德同盟。'],
+    hahotu:['HESSARION / 02','哈荷图','黑塞域已公开的地点之一。其余内容仍在书写。'],
+    ulongda:['HESSARION / 03','乌隆达','黑塞域已公开的地点之一。其余内容仍在书写。'],
+    sudini:['ATLAS / 03','须迪尼','都格拉斯所在之地。再往下，是十一座城邦与最后一位国王。'],
+    changmo:['HESSARION / 05','长漠','黑塞域已公开的地点之一。其余内容仍在书写。'],
+    ins:['DOMAIN / 01','因斯域','因斯域之中，已公开的是因斯帝国。'],
+    insEmpire:['INS / 01','因斯帝国','因斯域 · 因斯帝国。更多内容仍在书写。'],
+    ying:['DOMAIN / 02','英提伊庭域','英提伊庭域之中，已公开的是英提伊庭。'],
+    yingCourt:['YINGTIYITING / 01','英提伊庭','英提伊庭域 · 英提伊庭。更多内容仍在书写。'],
+    l:['DOMAIN / 03','L 域','L 域之中，已公开的是拉尼苏。'],
+    lanisu:['L / 01','拉尼苏','L 域 · 拉尼苏。更多内容仍在书写。'],
+    q:['DOMAIN / 04','Q 域','Q 域之中，已公开的是群星。'],
+    stars:['Q / 01','群星','Q 域 · 群星。更多内容仍在书写。'],
+    w:['DOMAIN / 05','W 域','W 域之中，已公开的是瓦利德同盟。'],
+    walid:['W / 01','瓦利德同盟','W 域 · 瓦利德同盟。更多内容仍在书写。'],
     unnamed:['DOMAIN / —','未命名','尚未命名。那一页还空着。']
   };
-  if (miniNo && miniTitle && miniText && miniLink) {
-    Array.prototype.forEach.call(miniNodes, function(node){
-      node.addEventListener('click', function(){
-        var key = node.getAttribute('data-mini');
-        var d = miniData[key];
-        if (!d) return;
-        Array.prototype.forEach.call(miniNodes, function(n){
-          var active = n === node;
-          n.classList.toggle('is-active', active);
-          n.setAttribute('aria-pressed', active ? 'true' : 'false');
-        });
-        miniNo.textContent = d[0];
-        miniTitle.textContent = d[1];
-        miniText.textContent = d[2];
-        miniLink.href = 'about-me.html?atlas=' + key + '#ring';
-      });
+  var miniDomains = {
+    hessarion:[['somnia',30,28,''],['hahotu',69,24,'label-left'],['ulongda',77,59,'label-left'],['sudini',47,75,''],['changmo',20,58,'']],
+    ins:[['insEmpire',52,47,'']],
+    ying:[['yingCourt',52,47,'label-left']],
+    l:[['lanisu',52,47,'']],
+    q:[['stars',52,47,'']],
+    w:[['walid',52,47,'label-left']]
+  };
+  var miniAtlasAliases = {
+    hahotu:'hessarion',ulongda:'hessarion',changmo:'hessarion',
+    insEmpire:'ins',yingCourt:'ying',lanisu:'l',stars:'q',walid:'w'
+  };
+
+  function markMiniActive(node){
+    Array.prototype.forEach.call(miniMap.querySelectorAll('[data-mini]'), function(n){
+      var active = n === node;
+      n.classList.toggle('is-active', active);
+      n.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
+  }
+
+  function showMiniDetail(key){
+    var d = miniData[key];
+    if (!d) return;
+    miniNo.textContent = d[0];
+    miniTitle.textContent = d[1];
+    miniText.textContent = d[2];
+    miniLink.href = key === 'ring'
+      ? 'about-me.html#ring'
+      : 'about-me.html?atlas=' + (miniAtlasAliases[key] || key) + '#ring';
+    miniLink.textContent = key === 'ring' ? '阅读完整关系图 ↗' : '在关系图中查看 ↗';
+  }
+
+  function setMiniScene(scene, enabled){
+    scene.setAttribute('aria-hidden', enabled ? 'false' : 'true');
+    Array.prototype.forEach.call(scene.querySelectorAll('button'), function(button){
+      button.tabIndex = enabled ? 0 : -1;
+    });
+  }
+
+  function openMiniDomain(key, node){
+    var children = miniDomains[key];
+    showMiniDetail(key);
+    if (!children || !children.length) {
+      markMiniActive(node);
+      return;
+    }
+
+    currentDomain = key;
+    Array.prototype.forEach.call(miniDomain.querySelectorAll('.mini-node'), function(child){
+      miniDomain.removeChild(child);
+    });
+    children.forEach(function(item){
+      var d = miniData[item[0]];
+      var child = document.createElement('button');
+      child.type = 'button';
+      child.className = 'mini-node main' + (item[3] ? ' ' + item[3] : '');
+      child.style.left = item[1] + '%';
+      child.style.top = item[2] + '%';
+      child.setAttribute('data-mini', item[0]);
+      child.setAttribute('aria-label', '查看' + d[1]);
+      child.setAttribute('aria-pressed', 'false');
+      var label = document.createElement('span');
+      label.className = 'mini-label';
+      label.textContent = d[1];
+      child.appendChild(label);
+      miniDomain.appendChild(child);
+    });
+
+    var origin = node.style.left + ' ' + node.style.top;
+    miniOverview.style.transformOrigin = origin;
+    miniDomain.style.transformOrigin = origin;
+    miniDomainName.textContent = miniData[key][1] + ' / ' + children.length + (children.length === 1 ? ' STAR' : ' STARS');
+    miniDomain.setAttribute('aria-label', miniData[key][1] + '内部星点');
+    markMiniActive(null);
+    miniOverview.classList.remove('is-current');
+    miniOverview.classList.add('is-zoomed');
+    miniDomain.classList.remove('is-zoomed');
+    void miniDomain.offsetWidth;
+    miniDomain.classList.add('is-current');
+    setMiniScene(miniOverview, false);
+    setMiniScene(miniDomain, true);
+    miniBack.focus({preventScroll:true});
+  }
+
+  function returnToMiniOverview(){
+    if (!currentDomain) return;
+    var key = currentDomain;
+    currentDomain = '';
+    miniDomain.classList.remove('is-current');
+    miniDomain.classList.add('is-zoomed');
+    miniOverview.classList.remove('is-zoomed');
+    void miniOverview.offsetWidth;
+    miniOverview.classList.add('is-current');
+    setMiniScene(miniDomain, false);
+    setMiniScene(miniOverview, true);
+    var node = miniOverview.querySelector('[data-mini="' + key + '"]');
+    markMiniActive(node);
+    showMiniDetail(key);
+    if (node) node.focus({preventScroll:true});
+  }
+
+  if (miniMap && miniOverview && miniDomain && miniBack && miniNo && miniTitle && miniText && miniLink) {
+    miniMap.addEventListener('click', function(event){
+      var node = event.target.closest('[data-mini]');
+      if (!node || !miniMap.contains(node)) return;
+      var key = node.getAttribute('data-mini');
+      if (!miniData[key]) return;
+      if (miniOverview.contains(node)) {
+        openMiniDomain(key, node);
+      } else {
+        markMiniActive(node);
+        showMiniDetail(key);
+      }
+    });
+    miniBack.addEventListener('click', returnToMiniOverview);
+    setMiniScene(miniOverview, true);
+    setMiniScene(miniDomain, false);
   }
 
   /* ---------- hero sky canvas ---------- */
