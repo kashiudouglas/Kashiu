@@ -211,9 +211,8 @@ section[id],header[id]{scroll-margin-top:88px}
   align-items:center;
   justify-content:center;
   transition:transform .95s var(--ease),visibility .95s;
-  animation:preOut .9s var(--ease) 3.4s forwards;
+  animation:preOut .7s var(--ease) .9s forwards;
 }
-#preloader.done{transform:translateY(-100%);visibility:hidden}
 @keyframes preOut{to{transform:translateY(-100%);visibility:hidden}}
 .pre-center{position:relative;display:grid;place-items:center;width:132px;height:132px}
 .pre-center::before,.pre-center::after{
@@ -230,17 +229,6 @@ section[id],header[id]{scroll-margin-top:88px}
   font-size:30px;
   color:var(--paper);
 }
-.pre-meta{
-  position:absolute;
-  left:var(--gutter);right:var(--gutter);bottom:34px;
-  display:flex;
-  justify-content:space-between;
-  font-size:10px;
-  letter-spacing:.24em;
-  color:var(--muted);
-  text-transform:uppercase;
-}
-#prePct{color:var(--paper)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ---------------- nav ---------------- */
@@ -1121,10 +1109,6 @@ body.menu-open{overflow:hidden}
 
 <div id="preloader" aria-hidden="true">
   <div class="pre-center"><span>环</span></div>
-  <div class="pre-meta">
-    <span>Loading the universe</span>
-    <span id="prePct">000</span>
-  </div>
 </div>
 
 <div class="grain" aria-hidden="true"></div>
@@ -1505,26 +1489,6 @@ body.menu-open{overflow:hidden}
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('js');
-
-  /* ---------- preloader ---------- */
-  var pre = document.getElementById('preloader');
-  var pctEl = document.getElementById('prePct');
-  var pct = 0;
-  var timer = setInterval(function(){
-    pct = Math.min(100, pct + Math.random() * 13 + 5);
-    if (pctEl) pctEl.textContent = String(Math.floor(pct)).padStart(3, '0');
-    if (pct >= 100) {
-      clearInterval(timer);
-      setTimeout(function(){
-        if (pre) pre.classList.add('done');
-      }, 220);
-    }
-  }, 55);
-  setTimeout(function(){
-    clearInterval(timer);
-    if (pctEl) pctEl.textContent = '100';
-    if (pre) pre.classList.add('done');
-  }, 2600);
 
   /* ---------- custom cursor ---------- */
   var cursor = document.getElementById('cursor');
