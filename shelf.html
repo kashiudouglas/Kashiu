@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07080A">
-<meta name="description" content="任喆（Kashiu）的书架：小王子、战争与和平、局外人、俗世奇人、蛊真人、诡秘之主，以及 GTA 5、巫师 3、赛博朋克 2077 和崩坏。">
+<meta name="description" content="任喆（Kashiu）的书架：喜欢的书、游戏、角色与明星，按种类放在同一层书架上。">
 <title>书架 · SHELF | Kashiu</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="书架 · SHELF | Kashiu">
-<meta property="og:description" content="书、游戏，还有一些喜欢的人。">
+<meta property="og:description" content="书、游戏，还有喜欢的角色和明星。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kashiu">
 <meta property="og:url" content="https://kashiudouglas.github.io/Kashiu/shelf.html">
@@ -152,9 +152,8 @@ body.menu-open{overflow:hidden}
   .menu-toggle{display:block}
   .hero-sub{grid-template-columns:1fr;gap:30px}
   .hero-meta{justify-content:flex-start}
-  .shelf{height:170px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
-  .shelf::-webkit-scrollbar{display:none}
-  .spine{--w:38px;flex:none;padding:12px 0}
+  .shelf{height:170px}
+  .spine{--w:clamp(20px,6.5vw,38px);flex:0 1 auto;min-width:0;padding:12px 0}
   .spine:hover,.spine:focus-visible{transform:translateY(-10px) scale(1.02)}
 }
 @media (max-width:640px){
@@ -163,7 +162,7 @@ body.menu-open{overflow:hidden}
   .hero-top-meta .wrap span:nth-child(2){display:none}
   .hero-title{font-size:clamp(64px,20vw,110px)}
   .shelf{height:150px}
-  .spine{--w:34px;font-size:11px}
+  .spine{font-size:10px;letter-spacing:.12em}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -227,8 +226,8 @@ body.menu-open{overflow:hidden}
     <div class="hero-top-meta">
       <div class="wrap">
         <span>Collection · Shelf</span>
-        <span>书 · 游戏 · 喜欢的人</span>
-        <span>13 Spines</span>
+        <span>书 · 游戏 · 角色 · 明星</span>
+        <span>14 Spines</span>
       </div>
     </div>
 
@@ -257,13 +256,13 @@ body.menu-open{overflow:hidden}
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">01</span>
-        <h2 class="sec-title">书<em>Books</em></h2>
+        <h2 class="sec-title">全部<em>By category</em></h2>
         <span class="sec-line"></span>
-        <span class="sec-note">Six</span>
+        <span class="sec-note">14</span>
       </div>
 
       <div class="shelf-wrap reveal">
-        <div class="shelf" style="--n:7">
+        <div class="shelf" aria-label="书、游戏、喜欢的角色和明星，按种类依次排列">
           <span class="spine" style="--h:78%" title="小王子">小王子</span>
           <span class="spine" style="--h:92%" title="战争与和平">战争与和平</span>
           <span class="spine" style="--h:72%" title="局外人">局外人</span>
@@ -271,65 +270,15 @@ body.menu-open{overflow:hidden}
           <span class="spine" style="--h:96%" title="蛊真人">蛊真人</span>
           <span class="spine" style="--h:82%" title="诡秘之主">诡秘之主</span>
           <a class="spine link" style="--h:66%" href="poetry.html" title="一些小诗">一些小诗 &nbsp;↗</a>
-        </div>
-        <p class="shelf-note">读过的，和还在读的。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="games">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-no">02</span>
-        <h2 class="sec-title">游戏<em>Games</em></h2>
-        <span class="sec-line"></span>
-        <span class="sec-note">Four</span>
-      </div>
-
-      <div class="shelf-wrap reveal">
-        <div class="shelf" style="--n:4">
           <span class="spine" style="--h:84%" title="侠盗猎车手 V">GTA 5</span>
           <span class="spine" style="--h:94%" title="巫师 3：狂猎">巫师 3</span>
           <span class="spine" style="--h:88%" title="赛博朋克 2077">赛博朋克 2077</span>
           <span class="spine" style="--h:76%" title="崩坏系列">崩坏系列</span>
-        </div>
-        <p class="shelf-note">存档都还在。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="figures">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-no">03</span>
-        <h2 class="sec-title">喜欢的角色<em>Characters</em></h2>
-        <span class="sec-line"></span>
-        <span class="sec-note">Two</span>
-      </div>
-
-      <div class="shelf-wrap reveal">
-        <div class="shelf" style="--n:3">
           <span class="spine fig" style="--h:80%" title="金闪闪">金闪闪</span>
           <span class="spine fig" style="--h:88%" title="爱莉希雅">爱莉希雅</span>
-        </div>
-        <p class="shelf-note">虚构的，但喜欢是真的。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="stars">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-no">04</span>
-        <h2 class="sec-title">喜欢的明星<em>Stars</em></h2>
-        <span class="sec-line"></span>
-        <span class="sec-note">One</span>
-      </div>
-
-      <div class="shelf-wrap reveal">
-        <div class="shelf" style="--n:1">
           <span class="spine fig" style="--h:86%" title="蔡徐坤">蔡徐坤</span>
         </div>
+        <p class="shelf-note">书 · 游戏 · 喜欢的角色 · 喜欢的明星</p>
       </div>
 
       <div class="outro">
