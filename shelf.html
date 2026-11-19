@@ -172,7 +172,12 @@ body.menu-open{overflow:hidden}
   .scroll-cue .bar::after{animation:none;transform:none}
   .spine{transition:none}
 }
+.footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
+.footer-bar a{transition:color .3s}
+.footer-bar a:hover{color:var(--accent)}
 </style>
+<link rel="stylesheet" href="assets/interact.css">
 </head>
 <body>
 
@@ -317,6 +322,18 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
+  <section class="section" id="end" style="border-top:1px solid var(--line);padding-top:clamp(60px,8vw,120px)">
+    <div class="footer-word" aria-hidden="true">SHELF</div>
+    <div class="wrap footer-bar">
+      <span>© 2026 任喆 · Kashiu</span>
+      <span class="foot-actions">
+        <button class="bookmark-btn" type="button">☆ 收藏本页</button>
+        <a href="index.html#tip" class="tip-link">打赏 →</a>
+      </span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </section>
+
 </main>
 
 <script>
@@ -362,5 +379,6 @@ body.menu-open{overflow:hidden}
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
 })();
 </script>
+<script src="assets/interact.js" defer></script>
 </body>
 </html>

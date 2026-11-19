@@ -1107,6 +1107,7 @@ body.menu-open{overflow:hidden}
   #preloader,#cursor{display:none !important}
 </style>
 </noscript>
+<link rel="stylesheet" href="assets/interact.css">
 </head>
 <body id="top">
 
@@ -1444,11 +1445,32 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- ============ 06 CONTACT ============ -->
-  <section class="section contact-section" id="contact">
+  <!-- ============ 06 TIP / SUPPORT ============ -->
+  <section class="section" id="tip">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">06</span>
+        <h2 class="sec-title">打赏<em>Buy me a coffee</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">Support</span>
+      </div>
+
+      <div class="tip-wrap reveal">
+        <p class="tip-lead">如果这些字、这颗星球，曾让你停过一会儿——可以请我喝杯咖啡。<br><span style="font-size:.6em;color:var(--muted)">不强求，被读到就已经很开心了。</span></p>
+        <div class="tip-actions">
+          <button id="coinBtn" class="coin-btn" type="button"><span class="coin-ico" aria-hidden="true">☕</span>请喝杯咖啡</button>
+          <span class="coin-count">已被请 <b id="coffeeCount">0</b> 杯</span>
+          <button id="tipOpen" class="tip-open" type="button">查看收款码 / 链上钱包 →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 CONTACT ============ -->
+  <section class="section contact-section" id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">07</span>
         <h2 class="sec-title">联系<em>Contact</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Say hello</span>
@@ -1484,9 +1506,47 @@ body.menu-open{overflow:hidden}
     <div class="wrap footer-bar">
       <span>© 2026 任喆 · Kashiu</span>
       <span>Built with curiosity</span>
+      <span class="foot-actions">
+        <button class="bookmark-btn" type="button">☆ 收藏本页</button>
+        <a href="#tip" class="tip-link">打赏 →</a>
+      </span>
       <a href="#top">Back to top ↑</a>
     </div>
   </section>
+
+  <!-- ============ TIP MODAL ============ -->
+  <div class="tip-modal" id="tipModal" hidden>
+    <div class="tip-modal-mask" data-close></div>
+    <div class="tip-modal-card" role="dialog" aria-modal="true" aria-labelledby="tipTitle">
+      <button class="tip-modal-x" data-close aria-label="关闭">×</button>
+      <h3 id="tipTitle">打赏 / Support</h3>
+      <p class="tip-sub">谢谢你愿意请我喝咖啡</p>
+      <div class="qr-grid">
+        <figure class="qr">
+          <div class="qr-img">
+            <img src="assets/qr-wechat.png" alt="微信收款码" onerror="this.parentNode.classList.add('placeholder')">
+            <span class="qr-ph">微信<br>收款码</span>
+          </div>
+          <figcaption>WeChat</figcaption>
+        </figure>
+        <figure class="qr">
+          <div class="qr-img">
+            <img src="assets/qr-alipay.png" alt="支付宝收款码" onerror="this.parentNode.classList.add('placeholder')">
+            <span class="qr-ph">支付宝<br>收款码</span>
+          </div>
+          <figcaption>Alipay</figcaption>
+        </figure>
+      </div>
+      <div class="wallet">
+        <span class="wallet-label">链上钱包 / Wallet</span>
+        <div class="wallet-row">
+          <code class="wallet-addr" id="walletAddr">0x0000000000000000000000000000000000000000</code>
+          <button class="copy-btn" data-copy-target="walletAddr" type="button">复制</button>
+        </div>
+        <p class="wallet-chain">链 / Chain：EVM · 请替换为你的真实地址与链名</p>
+      </div>
+    </div>
+  </div>
 
 </main>
 
@@ -1922,5 +1982,6 @@ body.menu-open{overflow:hidden}
   }
 })();
 </script>
+<script src="assets/interact.js" defer></script>
 </body>
 </html>
