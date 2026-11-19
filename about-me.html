@@ -812,6 +812,11 @@ body.menu-open{overflow:hidden}
         atlasText.textContent = d[3];
       });
     });
+    var requestedAtlas = new URLSearchParams(window.location.search).get('atlas');
+    if (requestedAtlas && atlasData[requestedAtlas]) {
+      var initialNode = document.querySelector('[data-atlas="' + requestedAtlas + '"]');
+      if (initialNode) initialNode.click();
+    }
   }
 
   var copyBtns = document.querySelectorAll('[data-copy]');
