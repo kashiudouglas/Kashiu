@@ -1874,6 +1874,10 @@ body.menu-open{overflow:hidden}
       if (!node || !miniMap.contains(node)) return;
       var key = node.getAttribute('data-mini');
       if (!miniData[key]) return;
+      if (key === 'unnamed') {
+        window.location.assign('404.html');
+        return;
+      }
       if (miniOverview.contains(node)) {
         openMiniDomain(key, node);
       } else {

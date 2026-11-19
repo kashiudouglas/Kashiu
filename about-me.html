@@ -815,6 +815,10 @@ body.menu-open{overflow:hidden}
   if (atlasNo && atlasTitle && atlasEn && atlasText) {
     Array.prototype.forEach.call(atlasNodes, function(node){
       node.addEventListener('click', function(){
+        if (node.getAttribute('data-atlas') === 'unnamed') {
+          window.location.assign('404.html');
+          return;
+        }
         var d = atlasData[node.getAttribute('data-atlas')];
         if (!d) return;
         Array.prototype.forEach.call(atlasNodes, function(n){
