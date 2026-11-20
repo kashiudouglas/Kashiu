@@ -587,6 +587,23 @@ body.menu-open{overflow:hidden}
   letter-spacing:.08em;
   color:var(--muted);
 }
+.intro-block{
+  margin-top:clamp(36px,5vw,68px);
+  padding-top:clamp(22px,3vw,32px);
+  border-top:1px solid var(--line-soft);
+  max-width:760px;
+  font-family:var(--cn);
+  font-size:clamp(13px,1.15vw,15px);
+  line-height:2.05;
+  letter-spacing:.06em;
+  color:var(--dim);
+}
+.intro-block p + p{margin-top:14px}
+.intro-block .intro-lead{
+  color:var(--paper-soft);
+  font-size:clamp(15px,1.5vw,19px);
+  line-height:1.85;
+}
 
 /* ---------------- ring ---------------- */
 .ring-grid{
@@ -1231,6 +1248,13 @@ body.menu-open{overflow:hidden}
           <p class="profile-note">2007 年生，软件技术在读；偶尔写诗，偶尔搞点抽象。</p>
         </aside>
       </div>
+
+      <div class="intro-block reveal">
+        <p class="intro-lead">我是一名软件技术专业的学生，对科技、人工智能、机械、汽车、钟表、金融和文学等领域有着广泛的兴趣。</p>
+        <p>我喜欢探索新事物，也乐于研究事物背后的原理。相比单纯追求结果，我更享受学习、思考和创造的过程。</p>
+        <p>我重视独立思考与客观判断，乐于交流不同观点，也愿意接受合理的质疑和修正。我相信知识和技术能够拓展人的可能性，但也认为工具始终应该服务于人，而不是成为人的枷锁。</p>
+        <p>我希望始终保持好奇心，不断学习、尝试和成长，在认识世界的同时，也逐渐形成自己的理解与判断。</p>
+      </div>
     </div>
   </section>
 
@@ -1752,12 +1776,16 @@ body.menu-open{overflow:hidden}
   var currentDomain = '';
   var miniData = {
     ring:['THE RING / STAR MAP','选择一片星域','点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。'],
-    hessarion:['ATLAS / 01','黑塞域','一颗名为黑塞的恒星，环绕着八颗行星。塞姆尼亚、哈荷图、乌隆达、须迪尼与长漠，已经标在这片星空中。'],
-    somnia:['ATLAS / 02','塞姆尼亚','法内提希创造的星球，也是她的人性之锚。它有四个州；州之下是国家，再往下才是城邦。'],
-    hahotu:['HESSARION / 02','哈荷图','黑塞域已公开的星球之一。其余内容仍在书写。'],
-    ulongda:['HESSARION / 03','乌隆达','黑塞域已公开的星球之一。其余内容仍在书写。'],
-    sudini:['ATLAS / 03','须迪尼','都格拉斯所在之地。它既是一个国家，也是一座城邦；其下还有十一座城邦，派系繁多。'],
-    changmo:['HESSARION / 05','长漠','黑塞域已公开的星球之一。其余内容仍在书写。'],
+    hessarion:['ATLAS / 01','黑塞域','黑塞居于黑塞域的中心，八颗行星绕它运行：黎晨越、韦多斯、索姆尼亚、卜宇、狭召、渡归、伯希洛、恒皋泽。'],
+    lichen:['HESSARION / 01','黎晨越','黑塞域八颗行星之一。'],
+    weiduosi:['HESSARION / 02','韦多斯','黑塞域八颗行星之一。'],
+    somnia:['ATLAS / 02','索姆尼亚','法内提希创造的星球，也是她的人性之锚。四个洲：哈何图、长漠、西大陆须迪尼、东大陆乌隆达。'],
+    buyu:['HESSARION / 04','卜宇','黑塞域八颗行星之一。'],
+    xiazhao:['HESSARION / 05','狭召','黑塞域八颗行星之一。'],
+    dugui:['HESSARION / 06','渡归','黑塞域八颗行星之一。'],
+    boxiluo:['HESSARION / 07','伯希洛','黑塞域八颗行星之一。'],
+    henggaoze:['HESSARION / 08','恒皋泽','黑塞域八颗行星之一。'],
+    sudini:['ATLAS / 03','须迪尼','索姆尼亚的西大陆，都格拉斯所在之地。它既是一个国家，也是一座城邦；其下还有十一座城邦，派系繁多。'],
     ins:['DOMAIN / 01','因斯域','因斯域之中，已公开的是因斯帝国。'],
     insEmpire:['INS / 01','因斯帝国','因斯域 · 因斯帝国。更多内容仍在书写。'],
     ying:['DOMAIN / 02','英提伊庭域','英提伊庭域之中，已公开的是英提伊庭。'],
@@ -1770,9 +1798,8 @@ body.menu-open{overflow:hidden}
     walid:['W / 01','瓦利德同盟','W 域 · 瓦利德同盟。更多内容仍在书写。'],
     unnamed:['DOMAIN / —','未命名','尚未命名。那一页还空着。']
   };
-  var miniDomainCount = { hessarion: 8 };
   var miniDomains = {
-    hessarion:[['somnia',30,28,''],['hahotu',69,24,'label-left'],['ulongda',77,59,'label-left'],['sudini',47,75,''],['changmo',20,58,'']],
+    hessarion:[['lichen',15,22,''],['weiduosi',45,15,''],['somnia',78,29,'label-left'],['buyu',88,57,'label-left'],['xiazhao',68,80,'label-left'],['dugui',37,86,''],['boxiluo',12,63,''],['henggaoze',46,49,'']],
     ins:[['insEmpire',52,47,'']],
     ying:[['yingCourt',52,47,'label-left']],
     l:[['lanisu',52,47,'']],
@@ -1780,7 +1807,8 @@ body.menu-open{overflow:hidden}
     w:[['walid',52,47,'label-left']]
   };
   var miniAtlasAliases = {
-    hahotu:'hessarion',ulongda:'hessarion',changmo:'hessarion',
+    somnia:'hessarion',lichen:'hessarion',weiduosi:'hessarion',buyu:'hessarion',
+    xiazhao:'hessarion',dugui:'hessarion',boxiluo:'hessarion',henggaoze:'hessarion',
     insEmpire:'ins',yingCourt:'ying',lanisu:'l',stars:'q',walid:'w'
   };
 
@@ -1843,8 +1871,7 @@ body.menu-open{overflow:hidden}
     var origin = node.style.left + ' ' + node.style.top;
     miniOverview.style.transformOrigin = origin;
     miniDomain.style.transformOrigin = origin;
-    var visible = miniDomainCount[key] || children.length;
-    miniDomainName.textContent = miniData[key][1] + ' / ' + visible + (visible === 1 ? ' STAR' : ' STARS');
+    miniDomainName.textContent = miniData[key][1] + ' / ' + children.length + (children.length === 1 ? ' STAR' : ' STARS');
     miniDomain.setAttribute('aria-label', miniData[key][1] + '内部星点');
     markMiniActive(node);
     miniOverview.classList.remove('is-current');
