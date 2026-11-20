@@ -1630,7 +1630,7 @@ body.menu-open{overflow:hidden}
         <span class="sec-no">✦</span>
         <h2 class="sec-title">语录<em>Quotes</em></h2>
         <span class="sec-line"></span>
-        <span class="sec-note">弹幕现场</span>
+        <span class="sec-note">自动串烧</span>
       </div>
 
       <div class="flash-card reveal">
@@ -1650,7 +1650,7 @@ body.menu-open{overflow:hidden}
 
         <div class="flash-ctrl">
           <button id="flashNext" type="button"><span>↻</span> 下一句</button>
-          <span class="flash-hint">台下的人在看 / 弹幕从右边来</span>
+          <span class="flash-hint">每 6 秒自动串下一句 / 鼠标放上去暂停</span>
         </div>
       </div>
     </div>
@@ -1960,7 +1960,7 @@ body.menu-open{overflow:hidden}
     dugui:['HESSARION / 06','渡归','黑塞域八颗行星之一。'],
     boxiluo:['HESSARION / 07','伯希洛','黑塞域八颗行星之一。'],
     henggaoze:['HESSARION / 08','恒皋泽','黑塞域八颗行星之一。'],
-    sudini:['ATLAS / 03','须迪尼','索姆尼亚的西大陆，都格拉斯所在之地。它既是一个国家，也是一座城邦；其下还有十一座城邦，派系繁多。'],
+    sudini:['ATLAS / 03','须迪尼','索姆尼亚的西大陆，都格拉斯所在之地。都格拉斯既是一个国家，也是它的首都城邦；其下还有十一座城邦，派系繁多。'],
     ins:['DOMAIN / 01','因斯域','因斯域之中，已公开的是因斯帝国。'],
     insEmpire:['INS / 01','因斯帝国','因斯域 · 因斯帝国。更多内容仍在书写。'],
     ying:['DOMAIN / 02','英提伊庭域','英提伊庭域之中，已公开的是英提伊庭。'],
@@ -2241,11 +2241,27 @@ body.menu-open{overflow:hidden}
     stopDanmaku();
     startDanmaku();
   }
-  nextBtn.addEventListener('click',function(){ setRound(idx+1); });
+  var autoTimer = null;
+  function stopAuto(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null; } }
+  function startAuto(){
+    stopAuto();
+    autoTimer = setInterval(function(){ setRound(idx+1); }, 6000);
+  }
+  nextBtn.addEventListener('click',function(){ setRound(idx+1); startAuto(); });
   var flashEl = document.getElementById('flash');
+  var card = flashEl.querySelector('.flash-card');
+  var hovering = false;
+  card.addEventListener('mouseenter',function(){ hovering=true; stopAuto(); });
+  card.addEventListener('mouseleave',function(){ hovering=false; startAuto(); });
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting) startDanmaku(); else stopDanmaku();
+      if(e.isIntersecting){
+        startDanmaku();
+        if(!hovering) startAuto();
+      } else {
+        stopDanmaku();
+        stopAuto();
+      }
     });
   },{threshold:.15});
   io.observe(flashEl);
