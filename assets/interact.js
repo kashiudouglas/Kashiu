@@ -244,3 +244,60 @@
     });
   }
 })();
+
+/* ---------------- nav active state ---------------- */
+(function(){
+  var path = location.pathname.split('/').pop() || 'index.html';
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a, .menu-overlay nav a'));
+  if (!links.length) return;
+
+  function clear(){
+    links.forEach(function(a){ a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
+  }
+  function mark(link, value){
+    link.classList.add('is-active');
+    link.setAttribute('aria-current', value || 'page');
+  }
+
+  var pageFor = { 'poetry.html':'04', 'hometown.html':'05', 'shelf.html':'06', 'about-me.html':'01' };
+  var wanted = pageFor[path];
+  if (wanted){
+    links.forEach(function(a){
+      var i = a.querySelector('i');
+      if (i && i.textContent.trim() === wanted) mark(a);
+    });
+    return;
+  }
+
+  var sections = ['manifesto','ring','works','contact'].map(function(id){
+    return document.getElementById(id);
+  }).filter(Boolean);
+  if (!sections.length) return;
+
+  function update(){
+    var line = window.innerHeight * 0.42;
+    var current = null;
+    sections.forEach(function(s){
+      var r = s.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) current = s.id;
+    });
+    if (!current){
+      var last = sections[sections.length - 1];
+      var r = last.getBoundingClientRect();
+      if (r.bottom <= line) current = last.id;
+    }
+    clear();
+    if (!current) return;
+    var link = document.querySelector('.nav-links a[href="#' + current + '"], .menu-overlay nav a[href="#' + current + '"]');
+    if (link) mark(link, 'true');
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ update(); ticking = false; });
+  }, { passive:true });
+  window.addEventListener('resize', update);
+  update();
+})();

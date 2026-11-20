@@ -311,6 +311,8 @@ body.scrolled .site-nav{
 }
 .nav-links a:hover{color:var(--paper)}
 .nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a.is-active{color:var(--paper)}
+.nav-links a.is-active::after{transform:scaleX(1);background:var(--accent)}
 .menu-toggle{
   display:none;
   width:42px;height:42px;
@@ -363,6 +365,7 @@ body.menu-open .menu-overlay{opacity:1;visibility:visible}
   color:var(--accent);
   letter-spacing:.14em;
 }
+.menu-overlay nav a.is-active{color:var(--accent)}
 .menu-overlay .mo-foot{
   display:flex;
   justify-content:space-between;
@@ -484,6 +487,24 @@ body.menu-open{overflow:hidden}
   border-radius:50%;
   background:var(--accent);
 }
+.hero-links{
+  display:flex;
+  justify-content:flex-end;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:10px 20px;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.hero-links .hl-label{font-size:8.5px;letter-spacing:.24em;color:var(--muted)}
+.hero-links a{
+  color:var(--paper-soft);
+  padding-bottom:3px;
+  border-bottom:1px solid var(--line);
+  transition:color .3s,border-color .3s;
+}
+.hero-links a:hover{color:var(--accent);border-color:var(--accent)}
 .hero-foot{
   position:relative;z-index:2;
   display:flex;
@@ -993,6 +1014,9 @@ body.menu-open{overflow:hidden}
 .mail:hover{color:var(--accent);border-color:var(--accent)}
 .mail:hover .ar{transform:translate(6px,-6px);color:var(--accent)}
 .contact-list{display:flex;flex-direction:column}
+.contact-group{display:block;margin-bottom:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.contact-list + .contact-group{margin-top:26px}
+.contact-note{margin-top:12px;font-size:10px;line-height:1.8;letter-spacing:.06em;color:var(--muted)}
 .contact-list a,.contact-list button{
   display:flex;
   align-items:baseline;
@@ -1177,6 +1201,7 @@ body.menu-open{overflow:hidden}
   .hero-top{top:92px}
   .hero-sub{grid-template-columns:1fr;gap:20px}
   .roles{justify-content:flex-start}
+  .hero-links{justify-content:flex-start;gap:10px 16px}
   .manifesto-grid,.ring-grid,.poem-grid,.contact-grid{grid-template-columns:1fr}
   .manifesto-grid{gap:44px}
   .profile{max-width:520px}
@@ -1310,10 +1335,13 @@ body.menu-open{overflow:hidden}
       <div class="hero-sub">
         <p class="statement">
           在代码与诗歌之间搭桥。<br>
-          <span class="dim">构建幻想世界，记录日常思考，对世界的大多数事物保持兴趣。</span>
+          <span class="dim">软件技术专业在读 · 一个喜欢探索、思考与创作的人。</span>
         </p>
-        <div class="roles">
-          <span>学生</span><span>写作者</span><span>探索者</span>
+        <div class="hero-links">
+          <span class="hl-label">Explore more</span>
+          <a href="#manifesto">关于我</a>
+          <a href="#works">作品</a>
+          <a href="poetry.html">创作</a>
         </div>
       </div>
     </div>
@@ -1664,20 +1692,28 @@ body.menu-open{overflow:hidden}
           </a>
         </div>
 
-        <ul class="contact-list reveal" style="--d:.1s">
-          <li><a href="https://github.com/kashiudouglas" target="_blank" rel="noopener">
-            <span>Github</span><strong>kashiudouglas</strong><em>↗</em>
-          </a></li>
-          <li><button id="copyWechat" data-copy="LZXM2007" type="button">
-            <span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em>
-          </button></li>
-          <li><button data-copy="Kashiu" type="button">
-            <span>Bilibili</span><strong>Kashiu</strong><em class="hint">点击复制</em>
-          </button></li>
-          <li><a href="mailto:kashiu.douglas@gmail.com">
-            <span>Mail</span><strong>kashiu.douglas</strong><em>↗</em>
-          </a></li>
-        </ul>
+        <div class="contact-list-wrap reveal" style="--d:.1s">
+          <span class="contact-group">公开 / Public</span>
+          <ul class="contact-list">
+            <li><a href="https://github.com/kashiudouglas" target="_blank" rel="noopener">
+              <span>Github</span><strong>kashiudouglas</strong><em>↗</em>
+            </a></li>
+            <li><button data-copy="Kashiu" type="button">
+              <span>Bilibili</span><strong>Kashiu</strong><em class="hint">点击复制</em>
+            </button></li>
+            <li><a href="mailto:kashiu.douglas@gmail.com">
+              <span>Mail</span><strong>kashiu.douglas</strong><em>↗</em>
+            </a></li>
+          </ul>
+
+          <span class="contact-group">私下 / Private</span>
+          <ul class="contact-list">
+            <li><button id="copyWechat" data-copy="LZXM2007" type="button">
+              <span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em>
+            </button></li>
+          </ul>
+          <p class="contact-note">微信仅用于熟人联系，添加时请说明来意。</p>
+        </div>
       </div>
     </div>
 

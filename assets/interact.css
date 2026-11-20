@@ -128,3 +128,8 @@
 @media (prefers-reduced-motion:reduce){
   .particle,.coin-particle{display:none !important}
 }
+
+/* nav current page / section */
+.nav-links a.is-active{color:var(--paper)}
+.nav-links a.is-active::after{transform:scaleX(1);background:var(--accent)}
+.menu-overlay nav a.is-active{color:var(--accent)}
