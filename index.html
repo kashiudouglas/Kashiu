@@ -637,8 +637,7 @@ body.menu-open{overflow:hidden}
 }
 @media(max-width:640px){
   .mini-overview .mini-label{font-size:9px;padding:2px 3px;background:rgba(7,8,10,.76)}
-  .mini-domain .mini-node .mini-label{display:none;padding:3px 5px;background:var(--ink)}
-  .mini-domain .mini-node.is-active .mini-label,.mini-domain .mini-node:focus-visible .mini-label{display:block}
+  .mini-domain .mini-node .mini-label{display:block;font-size:8.5px;padding:2px 4px;border-radius:2px;background:rgba(7,8,10,.86)}
   .mini-domain-name{font-size:7px;letter-spacing:.1em}
   .mini-detail{min-height:104px}
 }
@@ -1212,12 +1211,11 @@ body.menu-open{overflow:hidden}
         <div class="reveal">
           <p class="manifesto-text">
             Kashiu 是我的网名，<br>
-            也是我笔下的人物。<br>
-            在「环」里，他是都格拉斯最后的国王，<br>
-            名字的意思是<strong>「杀死命运」</strong>。<br>
-            我把自己的名字借给他，<br>
-            也把一些尚未成为的东西，<br>
-            寄存在他那里。
+            也是我笔下的角色，<br>
+            寄托了我对未来的期望。<br>
+            在小说里，它的意思是<strong>「杀死命运」</strong>。<br>
+            我从前是一个宿命论的囚徒，<br>
+            我希望我能打破枷锁，去向远方。
             <span class="en">A name for what I have not yet become.</span>
           </p>
         </div>
@@ -1293,11 +1291,10 @@ body.menu-open{overflow:hidden}
         </div>
 
         <div class="ring-copy reveal" style="--d:.12s">
-          <h3>世界从一次呼吸开始。</h3>
+          <h3>造物主将权柄弥散，万物孕育其中。</h3>
           <p>
-            环是一片由权柄冷凝而成的宇宙。神明呼出星辰，也呼出凡人；
+            环是一片由权柄冷凝而成的宇宙。造物主将权柄弥散，万物孕育其中；
             相同的规则落在不同星域，便有了修仙与魔法。
-            Kashiu 是都格拉斯的第二十二位国王，也是最后一位。
             这里只收进几页；剩下的，还在写。
           </p>
           <div class="ring-tags">
@@ -1319,7 +1316,7 @@ body.menu-open{overflow:hidden}
         <span class="sec-no">03</span>
         <h2 class="sec-title">作品<em>Selected Works</em></h2>
         <span class="sec-line"></span>
-        <span class="sec-note">04 Entries</span>
+        <span class="sec-note">05 Entries</span>
       </div>
 
       <div class="works">
@@ -1344,9 +1341,16 @@ body.menu-open{overflow:hidden}
           <span class="work-tags">Character<br>Story</span>
           <span class="work-arrow">↗</span>
         </a>
-        <a class="work-row reveal" href="index.html"
-           data-no="04" data-title="个人网站" data-tag="HTML / CSS" data-art="4">
+        <a class="work-row reveal" href="shelf.html"
+           data-no="04" data-title="书架 · Shelf" data-tag="Books / Games" data-art="4">
           <span class="work-no">(04)</span>
+          <span class="work-title">书架 · Shelf<em>书、游戏，还有一些喜欢的名字</em></span>
+          <span class="work-tags">Books<br>Games</span>
+          <span class="work-arrow">↗</span>
+        </a>
+        <a class="work-row reveal" href="index.html"
+           data-no="05" data-title="个人网站" data-tag="HTML / CSS" data-art="1">
+          <span class="work-no">(05)</span>
           <span class="work-title">个人网站<em>你正在浏览的页面</em></span>
           <span class="work-tags">Static<br>HTML · CSS</span>
           <span class="work-arrow">↗</span>
@@ -1748,12 +1752,12 @@ body.menu-open{overflow:hidden}
   var currentDomain = '';
   var miniData = {
     ring:['THE RING / STAR MAP','选择一片星域','点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。'],
-    hessarion:['ATLAS / 01','黑塞域','索姆尼亚、哈荷图、乌隆达、须迪尼与长漠，已经标在这片星空中。'],
-    somnia:['ATLAS / 02','索姆尼亚','法内提希创造的星球，也是她的人性之锚。'],
-    hahotu:['HESSARION / 02','哈荷图','黑塞域已公开的地点之一。其余内容仍在书写。'],
-    ulongda:['HESSARION / 03','乌隆达','黑塞域已公开的地点之一。其余内容仍在书写。'],
-    sudini:['ATLAS / 03','须迪尼','都格拉斯所在之地。再往下，是十一座城邦与最后一位国王。'],
-    changmo:['HESSARION / 05','长漠','黑塞域已公开的地点之一。其余内容仍在书写。'],
+    hessarion:['ATLAS / 01','黑塞域','一颗名为黑塞的恒星，环绕着八颗行星。塞姆尼亚、哈荷图、乌隆达、须迪尼与长漠，已经标在这片星空中。'],
+    somnia:['ATLAS / 02','塞姆尼亚','法内提希创造的星球，也是她的人性之锚。它有四个州；州之下是国家，再往下才是城邦。'],
+    hahotu:['HESSARION / 02','哈荷图','黑塞域已公开的星球之一。其余内容仍在书写。'],
+    ulongda:['HESSARION / 03','乌隆达','黑塞域已公开的星球之一。其余内容仍在书写。'],
+    sudini:['ATLAS / 03','须迪尼','都格拉斯所在之地。它既是一个国家，也是一座城邦；其下还有十一座城邦，派系繁多。'],
+    changmo:['HESSARION / 05','长漠','黑塞域已公开的星球之一。其余内容仍在书写。'],
     ins:['DOMAIN / 01','因斯域','因斯域之中，已公开的是因斯帝国。'],
     insEmpire:['INS / 01','因斯帝国','因斯域 · 因斯帝国。更多内容仍在书写。'],
     ying:['DOMAIN / 02','英提伊庭域','英提伊庭域之中，已公开的是英提伊庭。'],
@@ -1766,6 +1770,7 @@ body.menu-open{overflow:hidden}
     walid:['W / 01','瓦利德同盟','W 域 · 瓦利德同盟。更多内容仍在书写。'],
     unnamed:['DOMAIN / —','未命名','尚未命名。那一页还空着。']
   };
+  var miniDomainCount = { hessarion: 8 };
   var miniDomains = {
     hessarion:[['somnia',30,28,''],['hahotu',69,24,'label-left'],['ulongda',77,59,'label-left'],['sudini',47,75,''],['changmo',20,58,'']],
     ins:[['insEmpire',52,47,'']],
@@ -1838,9 +1843,10 @@ body.menu-open{overflow:hidden}
     var origin = node.style.left + ' ' + node.style.top;
     miniOverview.style.transformOrigin = origin;
     miniDomain.style.transformOrigin = origin;
-    miniDomainName.textContent = miniData[key][1] + ' / ' + children.length + (children.length === 1 ? ' STAR' : ' STARS');
+    var visible = miniDomainCount[key] || children.length;
+    miniDomainName.textContent = miniData[key][1] + ' / ' + visible + (visible === 1 ? ' STAR' : ' STARS');
     miniDomain.setAttribute('aria-label', miniData[key][1] + '内部星点');
-    markMiniActive(null);
+    markMiniActive(node);
     miniOverview.classList.remove('is-current');
     miniOverview.classList.add('is-zoomed');
     miniDomain.classList.remove('is-zoomed');

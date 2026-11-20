@@ -476,7 +476,7 @@ body.menu-open{overflow:hidden}
               <div class="atlas-trunk" aria-hidden="true"></div>
               <div class="atlas-path">
                 <button class="atlas-node" type="button" data-atlas="hessarion" aria-pressed="false">黑塞域<em>Hessarion</em></button>
-                <button class="atlas-node" type="button" data-atlas="somnia" aria-pressed="false">索姆尼亚<em>Somnia</em></button>
+                <button class="atlas-node" type="button" data-atlas="somnia" aria-pressed="false">塞姆尼亚<em>Somnia</em></button>
                 <button class="atlas-node" type="button" data-atlas="sudini" aria-pressed="false">须迪尼<em>Sudini</em></button>
                 <button class="atlas-node" type="button" data-atlas="douglas" aria-pressed="false">都格拉斯<em>Douglas</em></button>
                 <button class="atlas-node" type="button" data-atlas="cities" aria-pressed="false">十一城邦<em>City-states</em></button>
@@ -543,14 +543,14 @@ body.menu-open{overflow:hidden}
           <div class="domain-list">
             <div class="domain-row"><b>一级神 · 瓦修希德尼姆</b><em>Creator</em><span>全知全能，一切权柄的源头。宇宙是祂沉默的延续；无本名。</span></div>
             <div class="domain-row"><b>二级神 · 伊皮法尼亚</b><em>Sovereignty</em><span>傲慢 · 君王 · 权力。</span></div>
-            <div class="domain-row"><b>三级神 · 法内提希</b><em>Dream &amp; Stars</em><span>梦境 · 星空 · 轨迹 · 幸运 · 星球 · 画家。创造了无数星球，包括索姆尼亚；索姆尼亚是她的人性之锚。</span></div>
+            <div class="domain-row"><b>三级神 · 法内提希</b><em>Dream &amp; Stars</em><span>梦境 · 星空 · 轨迹 · 幸运 · 星球 · 画家。创造了无数星球，包括塞姆尼亚；塞姆尼亚是她的人性之锚。</span></div>
           </div>
         </div>
 
         <div class="domain-block reveal">
           <div class="domain-head"><span>星域选摘 / Star Domains</span><span>未完待续</span></div>
           <div class="domain-list">
-            <div class="domain-row"><b>黑塞域</b><em>Hessarion</em><span>索姆尼亚（Somnia） · 哈荷图 / 乌隆达 / 须迪尼 / 长漠</span></div>
+            <div class="domain-row"><b>黑塞域</b><em>Hessarion</em><span>恒星黑塞，八颗行星。已公开：塞姆尼亚（Somnia） · 哈荷图 / 乌隆达 / 须迪尼 / 长漠</span></div>
             <div class="domain-row"><b>因斯域</b><em>—</em><span>因斯帝国</span></div>
             <div class="domain-row"><b>英提伊庭域</b><em>—</em><span>英提伊庭</span></div>
             <div class="domain-row"><b>L 域</b><em>—</em><span>拉尼苏</span></div>
@@ -565,7 +565,7 @@ body.menu-open{overflow:hidden}
             <div class="kicker">The last king</div>
             <h3>都格拉斯<em>Douglas</em></h3>
             <p>
-              都格拉斯位于黑塞域 · 索姆尼亚 · 须迪尼之下，由十一座城邦组成：
+              都格拉斯位于黑塞域 · 塞姆尼亚 · 须迪尼之下，由十一座城邦组成：
               阿布拉、埃丝特、艾雷克斯、安罗盼、奥维恩、都格拉斯、厄斯格勒、
               费利克斯、慕斯格、瑞耶安、沃伯斯。
             </p>
@@ -573,6 +573,10 @@ body.menu-open{overflow:hidden}
               Kashiu 是都格拉斯的第二十二位国王，也是最后一位。
               他的名字在书里意味着「杀死命运」。
               到了他这里，写好的轨道断了。
+            </p>
+            <p>
+              塞姆尼亚有四个州；州之下是国家，再往下才是城邦。
+              都格拉斯既是一个国家，也是一座城邦。派系繁多，彼此纠缠。
             </p>
           </div>
           <div class="city-tags reveal" style="--d:.1s">
@@ -800,9 +804,9 @@ body.menu-open{overflow:hidden}
   var atlasText = document.getElementById('atlasText');
   var atlasData = {
     ring: ['ATLAS / 00', '环', 'The Ring', '由权柄交织、冷凝而成的无形海洋。神明、星域与凡人，都从这套规则中获得自己的位置。'],
-    hessarion: ['ATLAS / 01', '黑塞域', 'Hessarion', '黑塞域之下，已公开的有索姆尼亚、哈荷图、乌隆达、须迪尼与长漠。'],
-    somnia: ['ATLAS / 02', '索姆尼亚', 'Somnia', '由三级神法内提希创造。对她而言，索姆尼亚不仅是一颗星球，也是人性之锚。'],
-    sudini: ['ATLAS / 03', '须迪尼', 'Sudini', '都格拉斯所在之地。再往下，是十一座城邦与最后一位国王。'],
+    hessarion: ['ATLAS / 01', '黑塞域', 'Hessarion', '一颗名为黑塞的恒星，环绕着八颗行星。已公开的有塞姆尼亚、哈荷图、乌隆达、须迪尼与长漠。'],
+    somnia: ['ATLAS / 02', '塞姆尼亚', 'Somnia', '由三级神法内提希创造。它有四个州；州之下是国家，再往下才是城邦。'],
+    sudini: ['ATLAS / 03', '须迪尼', 'Sudini', '都格拉斯所在之地。它既是一个国家，也是一座城邦；其下还有十一座城邦。'],
     douglas: ['ATLAS / 04', '都格拉斯', 'Douglas', '由十一座城邦组成。Kashiu 是这里的第二十二位国王，也是最后一位。'],
     cities: ['ATLAS / 05', '十一城邦', 'City-states', '阿布拉、埃丝特、艾雷克斯、安罗盼、奥维恩、都格拉斯、厄斯格勒、费利克斯、慕斯格、瑞耶安、沃伯斯。'],
     ins: ['DOMAIN / 01', '因斯域', 'Ins', '因斯域 · 因斯帝国。'],
