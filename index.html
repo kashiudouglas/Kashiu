@@ -607,6 +607,8 @@ body.menu-open{overflow:hidden}
 .brag{margin-top:clamp(16px,2.4vw,26px);display:flex;flex-wrap:wrap;gap:8px 14px}
 .brag span{font-family:var(--cn);font-size:9px;letter-spacing:.08em;color:var(--muted);padding:3px 7px;border:1px solid var(--line);border-radius:2px;transition:color .3s,border-color .3s,background .3s}
 .brag span:hover{color:var(--accent);border-color:var(--accent);background:rgba(216,80,47,.08)}
+.inline-more{display:inline-block;margin-top:clamp(18px,2.2vw,26px);font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--dim);border-bottom:1px solid var(--line);padding-bottom:4px;transition:color .3s,border-color .3s}
+.inline-more:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------------- ring ---------------- */
 .ring-grid{
@@ -1057,6 +1059,22 @@ body.menu-open{overflow:hidden}
 .footer-bar a{transition:color .3s}
 .footer-bar a:hover{color:var(--accent)}
 
+/* ---------------- keep reading ---------------- */
+.more-wrap{margin-top:clamp(56px,7vw,96px);padding-top:clamp(24px,3vw,36px);border-top:1px solid var(--line)}
+.more-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.more-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+.more-note{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted)}
+.more-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(18px,2.4vw,28px)}
+.more-card{display:flex;flex-direction:column;gap:8px;padding:clamp(18px,2.2vw,26px);background:var(--ink);transition:background .3s}
+.more-card:hover{background:#0C0E12}
+.more-card .n{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--muted)}
+.more-card strong{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:var(--cn);font-weight:300;font-size:clamp(16px,1.6vw,21px);letter-spacing:.04em;color:var(--paper);transition:color .3s}
+.more-card strong em{font-family:var(--serif);font-style:italic;font-size:10px;color:var(--muted);letter-spacing:.02em}
+.more-card p{font-size:11px;line-height:1.8;letter-spacing:.04em;color:var(--muted)}
+.more-card:hover strong{color:var(--accent)}
+@media (max-width:860px){.more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.more-grid{grid-template-columns:1fr}}
+
 /* ---------------- flash dialogue ---------------- */
 .flash-sec{background:linear-gradient(180deg,rgba(216,80,47,.03),transparent 40%)}
 .flash-card{
@@ -1354,6 +1372,7 @@ body.menu-open{overflow:hidden}
 
       <div class="intro-block reveal">
         <p class="intro-lead">我是一个人类，对科技、人工智能、机械、运动、金融、文学和美术等领域有着广泛的兴趣。</p>
+        <a class="inline-more" href="about-me.html">关于我的更多 →</a>
       </div>
     </div>
   </section>
@@ -1578,15 +1597,15 @@ body.menu-open{overflow:hidden}
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">✦</span>
-        <h2 class="sec-title">对话<em>Overheard</em></h2>
+        <h2 class="sec-title">语录<em>Quotes</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">弹幕现场</span>
       </div>
 
       <div class="flash-card reveal">
         <div class="flash-quote">
-          <span class="flash-who">我 · 说</span>
-          <p class="flash-text" id="flashText">天上天下，唯我独尊。真正的王，世间只此一人。能看上一眼我的宝库，已经是你的荣幸。</p>
+          <span class="flash-who">我 · 念</span>
+          <p class="flash-text" id="flashText">杂种，谁允许你抬头看本王了。</p>
         </div>
 
         <div class="danmaku-box" id="danmakuBox" aria-hidden="true">
@@ -1659,6 +1678,45 @@ body.menu-open{overflow:hidden}
             <span>Mail</span><strong>kashiu.douglas</strong><em>↗</em>
           </a></li>
         </ul>
+      </div>
+    </div>
+
+    <div class="wrap more-wrap reveal">
+      <div class="more-head">
+        <span class="more-label">08 · 继续看 / Keep reading</span>
+        <span class="more-note">主页之外，还有几页在别处</span>
+      </div>
+      <div class="more-grid">
+        <a class="more-card" href="about-me.html">
+          <span class="n">01</span>
+          <strong>关于我 <em>About</em></strong>
+          <p>在学什么、喜欢什么，以及「环」的完整设定。</p>
+        </a>
+        <a class="more-card" href="poetry.html">
+          <span class="n">02</span>
+          <strong>诗集 <em>Poems</em></strong>
+          <p>42 首，2024 — 2026，还在写。</p>
+        </a>
+        <a class="more-card" href="hometown.html">
+          <span class="n">03</span>
+          <strong>家乡 <em>Hometown</em></strong>
+          <p>陕西扶风，一个很小的地方。</p>
+        </a>
+        <a class="more-card" href="shelf.html">
+          <span class="n">04</span>
+          <strong>书架 <em>Shelf</em></strong>
+          <p>书、游戏、喜欢的角色和明星。</p>
+        </a>
+        <a class="more-card" href="#tip">
+          <span class="n">05</span>
+          <strong>打赏 <em>Support</em></strong>
+          <p>收款码与链上钱包都在这一页。</p>
+        </a>
+        <a class="more-card" href="#top">
+          <span class="n">06</span>
+          <strong>回到顶部 <em>Top</em></strong>
+          <p>从头再看一遍，或者去别处。</p>
+        </a>
       </div>
     </div>
 
@@ -2152,17 +2210,18 @@ body.menu-open{overflow:hidden}
   }
 })();
 
-/* ================ 对话 / Overheard ================ */
+/* ================ 语录 / Quotes ================ */
 (function(){
   var rounds = [
-    {quote:'天上天下，唯我独尊。真正的王，世间只此一人。能看上一眼我的宝库，已经是你的荣幸。', reply:'杂修。'},
-    {quote:'王的宝库收着人类抵达过的每一个顶点。你们站在门外，就以为自己看见了全部。', reply:'杂修。'},
-    {quote:'我不需要谁认可。王只需要仰望的人，不需要点头的人。', reply:'杂修。'},
-    {quote:'命运？那不过是还没被我杀死的东西。', reply:'杂修。'},
-    {quote:'站在这里的是我，不是天意。天要拦路，就把天一起拆了。', reply:'杂修。'},
-    {quote:'我的时间不花在解释上。看不懂，就继续看不懂。', reply:'杂修。'}
+    {quote:'杂种，谁允许你抬头看本王了。', reply:'杂修。'},
+    {quote:'不傲慢，何以称王。', reply:'杂修。'},
+    {quote:'你什么时候产生了……的错觉？', reply:'杂修。'},
+    {quote:'弱小和无知不是生存的障碍，傲慢才是。', reply:'杂修。'},
+    {quote:'与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。', reply:'杂修。'},
+    {quote:'天上天下，唯我独尊。', reply:'杂修。'},
+    {quote:'我，鲁路修·vi·布里塔尼亚，在此命令汝——', reply:'杂修。'}
   ];
-  var danmakuPool = ['这人扎啤吧','任建国是谁呀','中二病犯了','笑死','又来','什么鬼','谁家孩子跑出来了','别装了','我服','有点东西','纯纯有病','沙雕','求求了你醒醒','他好像真信了','中二晚期','哈哈哈哈哈哈','这台词谁写的','我吐了','能不能正常点','好家伙','任建国你冷静点','搁这拍什么呢','小说看多了吧','救救孩子'];
+  var danmakuPool = ['任建国是谁呀？','又开始了是吧','私斋收收味','别装了别装了','醒醒，天还没黑呢','豪意值拉满了','脚趾已经开始扣了'];
   var idx = 0;
   var box = document.getElementById('danmakuBox');
   var quoteEl = document.getElementById('flashText');
