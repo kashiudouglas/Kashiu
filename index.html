@@ -1338,7 +1338,7 @@ body.menu-open{overflow:hidden}
           <div class="row"><span class="k">Focus</span><span class="v">写作 · AI · 游戏</span></div>
           <div class="row"><span class="k">Home</span><span class="v">扶风 · 宝鸡 · 陕西</span></div>
           <div class="row"><span class="k">Status</span><span class="v live">在写「环」</span></div>
-          <div class="row"><span class="k">Asset</span><span class="v b">A3 · 大佬</span></div>
+          <div class="row"><span class="k">Assets</span><span class="v b">A3</span></div>
           <p class="profile-note">2007 年生，软件技术在读；偶尔写诗，偶尔搞点抽象。</p>
           <div class="brag">
             <span>风流倜傥</span><span>英勇盖世</span><span>智勇双全</span>
@@ -1516,10 +1516,10 @@ body.menu-open{overflow:hidden}
     <div class="wrap">
       <div class="poem-grid">
         <blockquote class="poem-quote reveal">
-          才识又逢离别时，<br>
-          故人何日再相知。<br>
-          <span style="color:var(--dim)">不待柳絮随风落，<br>已闻鹧鸪绕耳啼。</span>
-          <cite class="by">《别故》 · 2024</cite>
+          梦华照思梦中成，<br>
+          白月明，更思恋。<br>
+          <span style="color:var(--dim)">月烛点思，春絮成灰，<br>染尽梦中霰。</span>
+          <cite class="by">《青玉案 · 黑月白日梦》 · 2025</cite>
         </blockquote>
 
         <div class="poem-side reveal" style="--d:.1s">
@@ -1529,7 +1529,7 @@ body.menu-open{overflow:hidden}
             <span class="years">2024 — 2026<br>持续更新中</span>
           </div>
           <div class="poem-links">
-            <a href="poetry.html#poem-bieg">别故 <span>01</span></a>
+            <a href="poetry.html#poem-yuqingan">青玉案 <span>22</span></a>
             <a href="poetry.html#poem-gutu">孤途 <span>02</span></a>
             <a href="poetry.html#poem-longniao">笼鸟 <span>03</span></a>
             <a href="poetry.html#poem-mijin">迷津 <span>04</span></a>
@@ -1573,20 +1573,20 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- ============ FLASH DIALOGUE · 神对话 ============ -->
+  <!-- ============ DIALOGUE / OVERHEARD ============ -->
   <section class="section flash-sec" id="flash">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">✦</span>
-        <h2 class="sec-title">神对话<em>Flash</em></h2>
+        <h2 class="sec-title">对话<em>Overheard</em></h2>
         <span class="sec-line"></span>
-        <span class="sec-note">Random</span>
+        <span class="sec-note">弹幕现场</span>
       </div>
 
       <div class="flash-card reveal">
         <div class="flash-quote">
-          <span class="flash-who">闪大王 说</span>
-          <p class="flash-text" id="flashText">天上天下，唯我独尊。真的王者，世间仅此一人。杂种，能一睹本王的宝库，已是尔等的荣幸。</p>
+          <span class="flash-who">我 · 说</span>
+          <p class="flash-text" id="flashText">天上天下，唯我独尊。真正的王，世间只此一人。能看上一眼我的宝库，已经是你的荣幸。</p>
         </div>
 
         <div class="danmaku-box" id="danmakuBox" aria-hidden="true">
@@ -1594,13 +1594,13 @@ body.menu-open{overflow:hidden}
         </div>
 
         <div class="flash-reply">
-          <span class="flash-who mine">我 说</span>
-          <p class="flash-text mine" id="flashReply">杂修</p>
+          <span class="flash-who mine">我 · 回</span>
+          <p class="flash-text mine" id="flashReply">杂修。</p>
         </div>
 
         <div class="flash-ctrl">
-          <button id="flashNext" type="button"><span>↻</span> 再来一轮</button>
-          <span class="flash-hint">弹幕飘过 / 点按钮换下一个</span>
+          <button id="flashNext" type="button"><span>↻</span> 下一句</button>
+          <span class="flash-hint">台下的人在看 / 弹幕从右边来</span>
         </div>
       </div>
     </div>
@@ -2152,36 +2152,17 @@ body.menu-open{overflow:hidden}
   }
 })();
 
-/* ================ 闪大王 / Flash Dialogue ================ */
+/* ================ 对话 / Overheard ================ */
 (function(){
   var rounds = [
-    {
-      quote:'天上天下，唯我独尊。真的王者，世间仅此一人。杂种，能一睹本王的宝库，已是尔等的荣幸。',
-      reply:'杂修',
-      danmu:['这人扎啤吧','闪建国是谁呀','什么鬼','中二病犯了','沙雕','笑死','这是病得治','别装了','求求了你醒醒','……','有点东西','我服','真的假的','中二','牛逼','纯纯有病']
-    },
-    {
-      quote:'你这种渣渣，本王看都懒得看一眼。滚吧。',
-      reply:'杂修',
-      danmu:['又来','这人谁啊','哈哈哈哈','装你*呢','有病得治','闭嘴吧你','闪大王又发病了','笑死我了','还唯我独尊','我吐了']
-    },
-    {
-      quote:'本王的时间，不是你们这种蝼蚁能浪费的。',
-      reply:'杂修',
-      danmu:['好好好你最牛','这人是来搞笑的吧','闪大王：我最牛','看吐了','什么年代了还这套','……','笑死','这就是中二晚期吗','有没有考虑过自己是个小说角色']
-    },
-    {
-      quote:'真的王者，从不需要别人认可。你们这些凡人，继续仰望吧。',
-      reply:'杂修',
-      danmu:['他好像知道自己是编的','哈哈哈哈哈哈','别尬了','闪大王是真的中二','我佛了','有病','可以这很闪大王','求求你别了']
-    },
-    {
-      quote:'本王的道，你们不懂。但没关系，你们只配仰视。',
-      reply:'杂修',
-      danmu:['仰视你妈','中二','笑死','这台词谁写的','闪建国出来挨骂','又发病了','……','真的有人信吗']
-    }
+    {quote:'天上天下，唯我独尊。真正的王，世间只此一人。能看上一眼我的宝库，已经是你的荣幸。', reply:'杂修。'},
+    {quote:'王的宝库收着人类抵达过的每一个顶点。你们站在门外，就以为自己看见了全部。', reply:'杂修。'},
+    {quote:'我不需要谁认可。王只需要仰望的人，不需要点头的人。', reply:'杂修。'},
+    {quote:'命运？那不过是还没被我杀死的东西。', reply:'杂修。'},
+    {quote:'站在这里的是我，不是天意。天要拦路，就把天一起拆了。', reply:'杂修。'},
+    {quote:'我的时间不花在解释上。看不懂，就继续看不懂。', reply:'杂修。'}
   ];
-  var danmakuPool = rounds.reduce(function(a,r){return a.concat(r.danmu);},[]);
+  var danmakuPool = ['这人扎啤吧','任建国是谁呀','中二病犯了','笑死','又来','什么鬼','谁家孩子跑出来了','别装了','我服','有点东西','纯纯有病','沙雕','求求了你醒醒','他好像真信了','中二晚期','哈哈哈哈哈哈','这台词谁写的','我吐了','能不能正常点','好家伙','任建国你冷静点','搁这拍什么呢','小说看多了吧','救救孩子'];
   var idx = 0;
   var box = document.getElementById('danmakuBox');
   var quoteEl = document.getElementById('flashText');
@@ -2196,37 +2177,35 @@ body.menu-open{overflow:hidden}
     var el = document.createElement('span');
     el.className='danmaku';
     el.textContent=r;
-    // 垂直位置，避开文字区
-    var top = 8 + Math.random()*78; // 8%~86%
+    var top = 6 + Math.random()*80;
     el.style.top = top + '%';
-    var dur = 8 + Math.random()*7; // 8~15s
+    var dur = 8 + Math.random()*7;
     el.style.animationDuration = dur + 's';
     box.appendChild(el);
     setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, dur*1000 + 500);
   }
   function clearDanmaku(){ while(box.firstChild) box.removeChild(box.firstChild); }
-  function setRound(i){
-    idx = (i % rounds.length);
-    var r = rounds[idx];
-    quoteEl.textContent = r.quote;
-    replyEl.textContent = r.reply;
-    clearDanmaku();
-    stopDanmaku();
-    startDanmaku();
-  }
   function stopDanmaku(){ timers.forEach(clearInterval); timers=[]; }
   function startDanmaku(){
     spawnDanmaku();
     timers.push(setInterval(spawnDanmaku, 700 + Math.random()*900));
   }
+  function setRound(i){
+    idx = (i % rounds.length);
+    quoteEl.textContent = rounds[idx].quote;
+    replyEl.textContent = rounds[idx].reply;
+    clearDanmaku();
+    stopDanmaku();
+    startDanmaku();
+  }
   nextBtn.addEventListener('click',function(){ setRound(idx+1); });
-  // 页面滚到 flash 区域时再启动，避免首屏就飘
+  var flashEl = document.getElementById('flash');
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting) startDanmaku(); else stopDanmaku();
     });
   },{threshold:.15});
-  io.observe(document.getElementById('flash'));
+  io.observe(flashEl);
   setRound(0);
 })();
 </script>
