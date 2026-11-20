@@ -604,6 +604,9 @@ body.menu-open{overflow:hidden}
   font-size:clamp(15px,1.5vw,19px);
   line-height:1.85;
 }
+.brag{margin-top:clamp(16px,2.4vw,26px);display:flex;flex-wrap:wrap;gap:8px 14px}
+.brag span{font-family:var(--cn);font-size:9px;letter-spacing:.08em;color:var(--muted);padding:3px 7px;border:1px solid var(--line);border-radius:2px;transition:color .3s,border-color .3s,background .3s}
+.brag span:hover{color:var(--accent);border-color:var(--accent);background:rgba(216,80,47,.08)}
 
 /* ---------------- ring ---------------- */
 .ring-grid{
@@ -1054,7 +1057,97 @@ body.menu-open{overflow:hidden}
 .footer-bar a{transition:color .3s}
 .footer-bar a:hover{color:var(--accent)}
 
-/* ---------------- responsive ---------------- */
+/* ---------------- flash dialogue ---------------- */
+.flash-sec{background:linear-gradient(180deg,rgba(216,80,47,.03),transparent 40%)}
+.flash-card{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(30px,4vw,52px) clamp(22px,3vw,40px);
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:rgba(7,8,10,.45);
+  backdrop-filter:blur(4px);
+}
+.flash-quote,.flash-reply{position:relative;z-index:2;max-width:880px}
+.flash-who{
+  display:inline-block;
+  margin-bottom:clamp(10px,1.4vw,16px);
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.2em;
+  color:var(--accent);
+  text-transform:uppercase;
+}
+.flash-who.mine{color:rgba(239,235,226,.55)}
+.flash-text{
+  font-family:var(--cn);
+  font-weight:300;
+  font-size:clamp(22px,2.6vw,38px);
+  line-height:1.55;
+  letter-spacing:.02em;
+  color:var(--paper-soft);
+  margin:0;
+}
+.flash-text.mine{
+  margin-top:clamp(20px,2.8vw,34px);
+  font-size:clamp(18px,1.8vw,26px);
+  color:rgba(239,235,226,.82);
+}
+.danmaku-box{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+  mask-image:linear-gradient(0deg,transparent 0,#000 25%,#000 75%,transparent 100%);
+  -webkit-mask-image:linear-gradient(0deg,transparent 0,#000 25%,#000 75%,transparent 100%);
+}
+.danmaku{
+  position:absolute;
+  white-space:nowrap;
+  font-family:var(--cn);
+  font-size:clamp(11px,.95vw,14px);
+  color:rgba(239,235,226,.55);
+  padding:3px 8px;
+  background:rgba(7,8,10,.55);
+  border:1px solid var(--line-soft);
+  border-radius:2px;
+  animation:danmaku-move linear forwards;
+  will-change:transform;
+}
+.danmaku:nth-child(4n){color:var(--accent);border-color:rgba(216,80,47,.55)}
+.danmaku:nth-child(3n){color:rgba(150,190,230,.62)}
+@keyframes danmaku-move{
+  from{transform:translateX(110vw)}
+  to{transform:translateX(-110%)}
+}
+.flash-ctrl{
+  position:relative;z-index:2;
+  margin-top:clamp(24px,3.2vw,40px);
+  padding-top:clamp(16px,2.2vw,22px);
+  border-top:1px dashed var(--line-soft);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.flash-ctrl button{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.16em;
+  padding:10px 18px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  color:var(--paper-soft);
+  transition:border-color .3s,color .3s,background .3s;
+}
+.flash-ctrl button:hover{border-color:var(--accent);color:var(--accent);background:rgba(216,80,47,.08)}
+.flash-ctrl button span{margin-right:6px}
+.flash-hint{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--muted)}
+
+@media (max-width:640px){
+  .flash-card{padding:26px 18px}
+  .danmaku{font-size:11px}
+  .flash-text{font-size:21px}
+  .flash-text.mine{font-size:17px}
+}
 @media (max-width:1100px){
   .hero-side{display:none}
   .nav-links a{font-size:9.5px;letter-spacing:.12em}
@@ -1227,9 +1320,9 @@ body.menu-open{overflow:hidden}
       <div class="manifesto-grid">
         <div class="reveal">
           <p class="manifesto-text">
-            Kashiu 是我的网名，<br>
+            Kashiu 不止是我的网名，<br>
             也是我笔下的角色，<br>
-            寄托了我对未来的期望。<br>
+            寄托了我对未来的我的期望。<br>
             在小说里，它的意思是<strong>「杀死命运」</strong>。<br>
             我从前是一个宿命论的囚徒，<br>
             我希望我能打破枷锁，去向远方。
@@ -1245,15 +1338,22 @@ body.menu-open{overflow:hidden}
           <div class="row"><span class="k">Focus</span><span class="v">写作 · AI · 游戏</span></div>
           <div class="row"><span class="k">Home</span><span class="v">扶风 · 宝鸡 · 陕西</span></div>
           <div class="row"><span class="k">Status</span><span class="v live">在写「环」</span></div>
+          <div class="row"><span class="k">Asset</span><span class="v b">A3 · 大佬</span></div>
           <p class="profile-note">2007 年生，软件技术在读；偶尔写诗，偶尔搞点抽象。</p>
+          <div class="brag">
+            <span>风流倜傥</span><span>英勇盖世</span><span>智勇双全</span>
+            <span>意气风发</span><span>低调沉稳</span><span>热情豪迈</span>
+            <span>沉静内敛</span><span>敢闯敢拼</span><span>知足常乐</span>
+            <span>锋芒毕露</span><span>收敛自持</span><span>随性洒脱</span>
+            <span>认真严谨</span><span>志在四方</span><span>安于当下</span>
+            <span>争强好胜</span><span>淡泊名利</span><span>开朗外向</span>
+            <span>沉静寡言</span>
+          </div>
         </aside>
       </div>
 
       <div class="intro-block reveal">
-        <p class="intro-lead">我是一名软件技术专业的学生，对科技、人工智能、机械、汽车、钟表、金融和文学等领域有着广泛的兴趣。</p>
-        <p>我喜欢探索新事物，也乐于研究事物背后的原理。相比单纯追求结果，我更享受学习、思考和创造的过程。</p>
-        <p>我重视独立思考与客观判断，乐于交流不同观点，也愿意接受合理的质疑和修正。我相信知识和技术能够拓展人的可能性，但也认为工具始终应该服务于人，而不是成为人的枷锁。</p>
-        <p>我希望始终保持好奇心，不断学习、尝试和成长，在认识世界的同时，也逐渐形成自己的理解与判断。</p>
+        <p class="intro-lead">我是一个人类，对科技、人工智能、机械、运动、金融、文学和美术等领域有着广泛的兴趣。</p>
       </div>
     </div>
   </section>
@@ -1468,6 +1568,39 @@ body.menu-open{overflow:hidden}
         <div class="stat">
           <div class="num"><span class="inf">∞</span></div>
           <p>保持好奇<br>Stay curious</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLASH DIALOGUE · 神对话 ============ -->
+  <section class="section flash-sec" id="flash">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">✦</span>
+        <h2 class="sec-title">神对话<em>Flash</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">Random</span>
+      </div>
+
+      <div class="flash-card reveal">
+        <div class="flash-quote">
+          <span class="flash-who">闪大王 说</span>
+          <p class="flash-text" id="flashText">天上天下，唯我独尊。真的王者，世间仅此一人。杂种，能一睹本王的宝库，已是尔等的荣幸。</p>
+        </div>
+
+        <div class="danmaku-box" id="danmakuBox" aria-hidden="true">
+          <!-- 弹幕由 JS 注入 -->
+        </div>
+
+        <div class="flash-reply">
+          <span class="flash-who mine">我 说</span>
+          <p class="flash-text mine" id="flashReply">杂修</p>
+        </div>
+
+        <div class="flash-ctrl">
+          <button id="flashNext" type="button"><span>↻</span> 再来一轮</button>
+          <span class="flash-hint">弹幕飘过 / 点按钮换下一个</span>
         </div>
       </div>
     </div>
@@ -2017,6 +2150,84 @@ body.menu-open{overflow:hidden}
     resize();
     frame();
   }
+})();
+
+/* ================ 闪大王 / Flash Dialogue ================ */
+(function(){
+  var rounds = [
+    {
+      quote:'天上天下，唯我独尊。真的王者，世间仅此一人。杂种，能一睹本王的宝库，已是尔等的荣幸。',
+      reply:'杂修',
+      danmu:['这人扎啤吧','闪建国是谁呀','什么鬼','中二病犯了','沙雕','笑死','这是病得治','别装了','求求了你醒醒','……','有点东西','我服','真的假的','中二','牛逼','纯纯有病']
+    },
+    {
+      quote:'你这种渣渣，本王看都懒得看一眼。滚吧。',
+      reply:'杂修',
+      danmu:['又来','这人谁啊','哈哈哈哈','装你*呢','有病得治','闭嘴吧你','闪大王又发病了','笑死我了','还唯我独尊','我吐了']
+    },
+    {
+      quote:'本王的时间，不是你们这种蝼蚁能浪费的。',
+      reply:'杂修',
+      danmu:['好好好你最牛','这人是来搞笑的吧','闪大王：我最牛','看吐了','什么年代了还这套','……','笑死','这就是中二晚期吗','有没有考虑过自己是个小说角色']
+    },
+    {
+      quote:'真的王者，从不需要别人认可。你们这些凡人，继续仰望吧。',
+      reply:'杂修',
+      danmu:['他好像知道自己是编的','哈哈哈哈哈哈','别尬了','闪大王是真的中二','我佛了','有病','可以这很闪大王','求求你别了']
+    },
+    {
+      quote:'本王的道，你们不懂。但没关系，你们只配仰视。',
+      reply:'杂修',
+      danmu:['仰视你妈','中二','笑死','这台词谁写的','闪建国出来挨骂','又发病了','……','真的有人信吗']
+    }
+  ];
+  var danmakuPool = rounds.reduce(function(a,r){return a.concat(r.danmu);},[]);
+  var idx = 0;
+  var box = document.getElementById('danmakuBox');
+  var quoteEl = document.getElementById('flashText');
+  var replyEl = document.getElementById('flashReply');
+  var nextBtn = document.getElementById('flashNext');
+  var timers = [];
+  if(!box||!quoteEl||!replyEl) return;
+
+  function spawnDanmaku(){
+    if(!document.getElementById('flash')) return;
+    var r = danmakuPool[Math.floor(Math.random()*danmakuPool.length)];
+    var el = document.createElement('span');
+    el.className='danmaku';
+    el.textContent=r;
+    // 垂直位置，避开文字区
+    var top = 8 + Math.random()*78; // 8%~86%
+    el.style.top = top + '%';
+    var dur = 8 + Math.random()*7; // 8~15s
+    el.style.animationDuration = dur + 's';
+    box.appendChild(el);
+    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, dur*1000 + 500);
+  }
+  function clearDanmaku(){ while(box.firstChild) box.removeChild(box.firstChild); }
+  function setRound(i){
+    idx = (i % rounds.length);
+    var r = rounds[idx];
+    quoteEl.textContent = r.quote;
+    replyEl.textContent = r.reply;
+    clearDanmaku();
+    stopDanmaku();
+    startDanmaku();
+  }
+  function stopDanmaku(){ timers.forEach(clearInterval); timers=[]; }
+  function startDanmaku(){
+    spawnDanmaku();
+    timers.push(setInterval(spawnDanmaku, 700 + Math.random()*900));
+  }
+  nextBtn.addEventListener('click',function(){ setRound(idx+1); });
+  // 页面滚到 flash 区域时再启动，避免首屏就飘
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) startDanmaku(); else stopDanmaku();
+    });
+  },{threshold:.15});
+  io.observe(document.getElementById('flash'));
+  setRound(0);
 })();
 </script>
 <script src="assets/interact.js" defer></script>
