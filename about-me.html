@@ -24,7 +24,7 @@
 :root{
   --ink:#07080A;
   --paper:#EFEBE2;--paper-soft:rgba(239,235,226,.72);
-  --dim:#9A958A;--muted:#67635B;
+  --dim:#9A958A;--muted:#8B877C;
   --line:rgba(239,235,226,.14);--line-soft:rgba(239,235,226,.07);
   --accent:#D8502F;
   --serif:'Instrument Serif','Noto Serif SC',Georgia,serif;
@@ -888,12 +888,13 @@ body.menu-open{overflow:hidden}
     copyBtn.addEventListener('click', function(){
       var text = copyBtn.getAttribute('data-copy') || '';
       var hint = copyBtn.querySelector('.hint');
+      var originalHint = hint ? hint.textContent : '';
       function done(){
         copyBtn.classList.add('copied');
         if (hint) hint.textContent = '已复制';
         setTimeout(function(){
           copyBtn.classList.remove('copied');
-          if (hint) hint.textContent = '点击复制';
+          if (hint) hint.textContent = originalHint;
         }, 1800);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {

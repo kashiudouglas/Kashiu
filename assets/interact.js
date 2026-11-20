@@ -24,9 +24,10 @@
     function done(){
       if (!btn) return;
       btn.classList.add('done');
-      var original = btn.textContent;
-      btn.textContent = '已复制';
-      setTimeout(function(){ btn.classList.remove('done'); btn.textContent = original; }, 1400);
+      var target = btn.querySelector('.hint') || btn;
+      var original = target.textContent;
+      target.textContent = '已复制';
+      setTimeout(function(){ btn.classList.remove('done'); target.textContent = original; }, 1400);
     }
     if (navigator.clipboard && navigator.clipboard.writeText){
       navigator.clipboard.writeText(text).then(done, fallback);
@@ -300,4 +301,26 @@
   }, { passive:true });
   window.addEventListener('resize', update);
   update();
+})();
+
+/* ---------------- back to top ---------------- */
+(function(){
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var btn = document.createElement('button');
+  btn.className = 'to-top';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', '回到顶部');
+  btn.innerHTML = '<span aria-hidden="true">↑</span><em>Top</em>';
+  document.body.appendChild(btn);
+  function update(){ btn.classList.toggle('show', window.scrollY > 700); }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ update(); ticking = false; });
+  }, { passive:true });
+  update();
+  btn.addEventListener('click', function(){
+    window.scrollTo({ top:0, behavior: rm ? 'auto' : 'smooth' });
+  });
 })();
