@@ -487,6 +487,8 @@ body.menu-open{overflow:hidden}
   border-radius:50%;
   background:var(--accent);
 }
+.hero-roles{margin-top:clamp(14px,1.6vw,20px);display:flex;align-items:center;gap:14px;font-family:var(--cn);font-size:12px;letter-spacing:.16em;color:var(--dim)}
+.hero-roles i{font-style:normal;color:var(--accent);font-size:11px}
 .hero-links{
   display:flex;
   justify-content:flex-end;
@@ -1289,7 +1291,7 @@ body.menu-open{overflow:hidden}
       <a href="poetry.html"><i>04</i>诗集</a>
       <a href="hometown.html"><i>05</i>家乡</a>
       <a href="shelf.html"><i>06</i>书架</a>
-      <a href="#contact"><i>07</i>联系</a>
+      <a href="#contact"><i>06</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span>
@@ -1305,7 +1307,7 @@ body.menu-open{overflow:hidden}
     <a href="poetry.html"><i>04</i>诗集</a>
     <a href="hometown.html"><i>05</i>家乡</a>
     <a href="shelf.html"><i>06</i>书架</a>
-    <a href="#contact"><i>07</i>联系</a>
+    <a href="#contact"><i>06</i>联系</a>
   </nav>
   <div class="mo-foot">
     <span>扶风 · 宝鸡 · 陕西</span>
@@ -1337,6 +1339,7 @@ body.menu-open{overflow:hidden}
           在代码与诗歌之间搭桥。<br>
           <span class="dim">软件技术专业在读 · 一个喜欢探索、思考与创作的人。</span>
         </p>
+        <p class="hero-roles"><span>学生</span><i>·</i><span>写作者</span><i>·</i><span>探索者</span></p>
         <div class="hero-links">
           <span class="hl-label">Explore more</span>
           <a href="#manifesto">关于我</a>
@@ -1653,32 +1656,11 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- ============ 06 TIP / SUPPORT ============ -->
-  <section class="section" id="tip">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="sec-no">06</span>
-        <h2 class="sec-title">打赏<em>Buy me a coffee</em></h2>
-        <span class="sec-line"></span>
-        <span class="sec-note">Support</span>
-      </div>
-
-      <div class="tip-wrap reveal">
-        <p class="tip-lead">如果这些字、这颗星球，曾让你停过一会儿——可以请我喝杯咖啡。<br><span style="font-size:.6em;color:var(--muted)">不强求，被读到就已经很开心了。</span></p>
-        <div class="tip-actions">
-          <button id="coinBtn" class="coin-btn" type="button"><span class="coin-ico" aria-hidden="true">☕</span>请喝杯咖啡</button>
-          <span class="coin-count">已被请 <b id="coffeeCount">0</b> 杯</span>
-          <button id="tipOpen" class="tip-open" type="button">查看收款码 / 链上钱包 →</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ 07 CONTACT ============ -->
   <section class="section contact-section" id="contact">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-no">07</span>
+        <span class="sec-no">06</span>
         <h2 class="sec-title">联系<em>Contact</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Say hello</span>
@@ -1709,17 +1691,17 @@ body.menu-open{overflow:hidden}
           <span class="contact-group">私下 / Private</span>
           <ul class="contact-list">
             <li><button id="copyWechat" data-copy="LZXM2007" type="button">
-              <span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em>
+              <span>WeChat</span><strong>点击复制微信号</strong><em class="hint">不公开显示</em>
             </button></li>
           </ul>
-          <p class="contact-note">微信仅用于熟人联系，添加时请说明来意。</p>
+          <p class="contact-note">微信号不在页面公开，点击即可复制；添加时请说明来意。</p>
         </div>
       </div>
     </div>
 
     <div class="wrap more-wrap reveal">
       <div class="more-head">
-        <span class="more-label">08 · 继续看 / Keep reading</span>
+        <span class="more-label">07 · 继续看 / Keep reading</span>
         <span class="more-note">主页之外，还有几页在别处</span>
       </div>
       <div class="more-grid">
@@ -1743,7 +1725,7 @@ body.menu-open{overflow:hidden}
           <strong>书架 <em>Shelf</em></strong>
           <p>书、游戏、喜欢的角色和明星。</p>
         </a>
-        <a class="more-card" href="#tip">
+        <a class="more-card" href="tip.html">
           <span class="n">05</span>
           <strong>打赏 <em>Support</em></strong>
           <p>收款码与链上钱包都在这一页。</p>
@@ -1763,45 +1745,11 @@ body.menu-open{overflow:hidden}
       <span>Built with curiosity</span>
       <span class="foot-actions">
         <button class="bookmark-btn" type="button">☆ 收藏本页</button>
-        <a href="#tip" class="tip-link">打赏 →</a>
+        <a href="tip.html" class="tip-link">打赏 →</a>
       </span>
       <a href="#top">Back to top ↑</a>
     </div>
   </section>
-
-  <!-- ============ TIP MODAL ============ -->
-  <div class="tip-modal" id="tipModal" hidden>
-    <div class="tip-modal-mask" data-close></div>
-    <div class="tip-modal-card" role="dialog" aria-modal="true" aria-labelledby="tipTitle">
-      <button class="tip-modal-x" data-close aria-label="关闭">×</button>
-      <h3 id="tipTitle">打赏 / Support</h3>
-      <p class="tip-sub">谢谢你愿意请我喝咖啡</p>
-      <div class="qr-grid">
-        <figure class="qr">
-          <div class="qr-img">
-            <img src="assets/qr-wechat.png" alt="微信收款码" onerror="this.parentNode.classList.add('placeholder')">
-            <span class="qr-ph">微信收款码<br>暂未上传</span>
-          </div>
-          <figcaption>WeChat</figcaption>
-        </figure>
-        <figure class="qr">
-          <div class="qr-img">
-            <img src="assets/qr-alipay.png" alt="支付宝收款码" onerror="this.parentNode.classList.add('placeholder')">
-            <span class="qr-ph">支付宝收款码<br>暂未上传</span>
-          </div>
-          <figcaption>Alipay</figcaption>
-        </figure>
-      </div>
-      <div class="wallet">
-        <span class="wallet-label">链上钱包 / Wallet</span>
-        <div class="wallet-row">
-          <code class="wallet-addr" id="walletAddr">0xFb3dE1DC9b1d7a92018dcABCC9C77aBF99E079C2</code>
-          <button class="copy-btn" data-copy-target="walletAddr" type="button">复制</button>
-        </div>
-        <p class="wallet-chain">链 / Chain：BNB Smart Chain（BSC）· 仅发送 BSC 网络资产</p>
-      </div>
-    </div>
-  </div>
 
 </main>
 

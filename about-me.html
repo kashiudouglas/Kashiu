@@ -187,6 +187,19 @@ body.menu-open{overflow:hidden}
 .atlas{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.55fr);gap:clamp(28px,4vw,60px);padding:clamp(26px,4vw,44px) 0 0}
 .atlas-map{min-width:0}
 .atlas-root{display:flex;justify-content:center}
+.atlas-chain{list-style:none}
+.atlas-chain li{position:relative;padding-left:calc(var(--lvl)*16px)}
+.atlas-chain li+li{margin-top:16px}
+.atlas-chain li+li::before{content:"";position:absolute;left:calc(var(--lvl)*16px + 10px);top:-16px;width:1px;height:16px;background:var(--line)}
+.atlas-chain .lvl{display:block;margin-bottom:6px;font-family:var(--mono);font-size:8px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.atlas-chain .atlas-node{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%;min-height:0;padding:11px 13px;font-size:12.5px}
+.atlas-chain .atlas-node em{margin:0;font-size:10px;white-space:nowrap}
+.atlas-chain li[style*="--lvl:0"] .atlas-node{border-color:var(--accent)}
+@media(max-width:640px){
+  .atlas-chain li{padding-left:calc(var(--lvl)*10px)}
+  .atlas-chain .atlas-node{font-size:12px;padding:10px 11px}
+  .atlas-chain .atlas-node em{font-size:9px}
+}
 .atlas-node{position:relative;z-index:1;display:block;width:100%;min-height:72px;padding:12px 14px;border:1px solid var(--line);background:var(--ink);color:var(--dim);text-align:left;font-family:var(--cn);font-size:13px;letter-spacing:.06em;transition:color .3s,border-color .3s,background .3s}
 .atlas-node em{display:block;margin-top:6px;font-family:var(--serif);font-size:10px;font-style:italic;letter-spacing:.04em;color:var(--muted)}
 .atlas-node:hover,.atlas-node.is-active{border-color:var(--accent);color:var(--paper);background:rgba(179,140,86,.06)}
@@ -296,7 +309,7 @@ body.menu-open{overflow:hidden}
       <a href="poetry.html"><i>04</i>诗集</a>
       <a href="hometown.html"><i>05</i>家乡</a>
       <a href="shelf.html"><i>06</i>书架</a>
-      <a href="index.html#contact"><i>07</i>联系</a>
+      <a href="index.html#contact"><i>06</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span>
@@ -312,7 +325,7 @@ body.menu-open{overflow:hidden}
     <a href="poetry.html"><i>04</i>诗集</a>
     <a href="hometown.html"><i>05</i>家乡</a>
     <a href="shelf.html"><i>06</i>书架</a>
-    <a href="index.html#contact"><i>07</i>联系</a>
+    <a href="index.html#contact"><i>06</i>联系</a>
   </nav>
   <div class="mo-foot">
     <span>扶风 · 宝鸡 · 陕西</span>
@@ -497,16 +510,15 @@ body.menu-open{overflow:hidden}
         <div class="domain-block reveal">
           <div class="domain-head"><span>世界坐标 / World Atlas</span><span>点击节点</span></div>
           <div class="atlas">
-            <div class="atlas-map" role="group" aria-label="环的星域关系图">
-              <div class="atlas-root"><button class="atlas-node is-active" type="button" data-atlas="ring" aria-pressed="true">环<em>The Ring</em></button></div>
-              <div class="atlas-trunk" aria-hidden="true"></div>
-              <div class="atlas-path">
-                <button class="atlas-node" type="button" data-atlas="hessarion" aria-pressed="false">黑塞域<em>Hessarion</em></button>
-                <button class="atlas-node" type="button" data-atlas="somnia" aria-pressed="false">索姆尼亚<em>Somnia</em></button>
-                <button class="atlas-node" type="button" data-atlas="sudini" aria-pressed="false">须迪尼<em>Sudini</em></button>
-                <button class="atlas-node" type="button" data-atlas="douglas" aria-pressed="false">都格拉斯<em>Douglas</em></button>
-                <button class="atlas-node" type="button" data-atlas="cities" aria-pressed="false">十一城邦<em>City-states</em></button>
-              </div>
+            <div class="atlas-map" role="group" aria-label="环的星域层级图">
+              <ol class="atlas-chain">
+                <li style="--lvl:0"><span class="lvl">世界 / World</span><button class="atlas-node is-active" type="button" data-atlas="ring" aria-pressed="true">环<em>The Ring</em></button></li>
+                <li style="--lvl:1"><span class="lvl">星域 / Domain</span><button class="atlas-node" type="button" data-atlas="hessarion" aria-pressed="false">黑塞域<em>Hessarion</em></button></li>
+                <li style="--lvl:2"><span class="lvl">行星 / Planet</span><button class="atlas-node" type="button" data-atlas="somnia" aria-pressed="false">索姆尼亚<em>Somnia</em></button></li>
+                <li style="--lvl:3"><span class="lvl">洲 · 西大陆 / Continent</span><button class="atlas-node" type="button" data-atlas="sudini" aria-pressed="false">须迪尼<em>Sudini</em></button></li>
+                <li style="--lvl:4"><span class="lvl">城邦群 / City-states</span><button class="atlas-node" type="button" data-atlas="cities" aria-pressed="false">十一城邦<em>City-states</em></button></li>
+                <li style="--lvl:5"><span class="lvl">国家 · 城邦 / One of eleven</span><button class="atlas-node" type="button" data-atlas="douglas" aria-pressed="false">都格拉斯<em>Douglas</em></button></li>
+              </ol>
               <div class="atlas-others">
                 <span>其他星域 / Other domains</span>
                 <button class="atlas-node" type="button" data-atlas="ins" aria-pressed="false">因斯域</button>
@@ -710,7 +722,7 @@ body.menu-open{overflow:hidden}
         <ul class="contact-list reveal" style="--d:.1s">
           <li><a href="https://github.com/kashiudouglas" target="_blank" rel="noopener"><span>Github</span><strong>kashiudouglas</strong><em>↗</em></a></li>
           <li><button data-copy="Kashiu" type="button"><span>Bilibili</span><strong>Kashiu</strong><em class="hint">点击复制</em></button></li>
-          <li><button data-copy="LZXM2007" type="button"><span>WeChat</span><strong>LZXM2007</strong><em class="hint">点击复制</em></button></li>
+          <li><button data-copy="LZXM2007" type="button"><span>WeChat</span><strong>点击复制微信号</strong><em class="hint">不公开显示</em></button></li>
           <li><a href="mailto:kashiu.douglas@gmail.com"><span>Gmail</span><strong>kashiu.douglas</strong><em>↗</em></a></li>
           <li><a href="mailto:kashiu_douglas@outlook.com"><span>Outlook</span><strong>kashiu_douglas</strong><em>↗</em></a></li>
           <li><a href="mailto:kashiu@vip.qq.com"><span>QQ</span><strong>kashiu@vip.qq.com</strong><em>↗</em></a></li>
@@ -725,7 +737,7 @@ body.menu-open{overflow:hidden}
       <span>扶风 · 宝鸡 · 陕西</span>
       <span class="foot-actions">
         <button class="bookmark-btn" type="button">☆ 收藏本页</button>
-        <a href="index.html#tip" class="tip-link">打赏 →</a>
+        <a href="tip.html" class="tip-link">打赏 →</a>
       </span>
       <a href="#top">Back to top ↑</a>
     </div>
