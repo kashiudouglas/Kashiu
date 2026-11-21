@@ -1112,17 +1112,7 @@ body.menu-open{overflow:hidden}
   background:rgba(7,8,10,.45);
   backdrop-filter:blur(4px);
 }
-.flash-quote,.flash-reply{position:relative;z-index:2;max-width:880px}
-.flash-who{
-  display:inline-block;
-  margin-bottom:clamp(10px,1.4vw,16px);
-  font-family:var(--mono);
-  font-size:9px;
-  letter-spacing:.2em;
-  color:var(--accent);
-  text-transform:uppercase;
-}
-.flash-who.mine{color:rgba(239,235,226,.55)}
+.flash-quote{position:relative;z-index:2;max-width:880px}
 .flash-text{
   font-family:var(--cn);
   font-weight:300;
@@ -1132,10 +1122,14 @@ body.menu-open{overflow:hidden}
   color:var(--paper-soft);
   margin:0;
 }
-.flash-text.mine{
-  margin-top:clamp(20px,2.8vw,34px);
-  font-size:clamp(18px,1.8vw,26px);
-  color:rgba(239,235,226,.82);
+.flash-text.is-in{animation:flash-in .6s cubic-bezier(.22,1,.36,1)}
+@keyframes flash-in{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  .flash-text.is-in{animation:none}
+  .danmaku{animation-duration:.01s !important;display:none}
 }
 .danmaku-box{
   position:absolute;
@@ -1143,24 +1137,27 @@ body.menu-open{overflow:hidden}
   z-index:1;
   pointer-events:none;
   overflow:hidden;
-  mask-image:linear-gradient(0deg,transparent 0,#000 25%,#000 75%,transparent 100%);
-  -webkit-mask-image:linear-gradient(0deg,transparent 0,#000 25%,#000 75%,transparent 100%);
+  mask-image:linear-gradient(0deg,transparent 0,#000 18%,#000 82%,transparent 100%);
+  -webkit-mask-image:linear-gradient(0deg,transparent 0,#000 18%,#000 82%,transparent 100%);
 }
 .danmaku{
   position:absolute;
   white-space:nowrap;
   font-family:var(--cn);
-  font-size:clamp(11px,.95vw,14px);
-  color:rgba(239,235,226,.55);
-  padding:3px 8px;
-  background:rgba(7,8,10,.55);
-  border:1px solid var(--line-soft);
+  font-weight:500;
+  font-size:clamp(13px,1.15vw,17px);
+  letter-spacing:.02em;
+  color:rgba(255,255,255,.92);
+  padding:4px 10px;
+  background:rgba(7,8,10,.72);
+  border:1px solid rgba(239,235,226,.22);
   border-radius:2px;
+  text-shadow:0 1px 6px rgba(0,0,0,.8);
   animation:danmaku-move linear forwards;
   will-change:transform;
 }
-.danmaku:nth-child(4n){color:var(--accent);border-color:rgba(216,80,47,.55)}
-.danmaku:nth-child(3n){color:rgba(150,190,230,.62)}
+.danmaku:nth-child(4n){color:#FF8A6B;border-color:rgba(216,80,47,.6);background:rgba(216,80,47,.14)}
+.danmaku:nth-child(3n){color:#A9CDF5;border-color:rgba(150,190,230,.55);background:rgba(20,40,60,.4)}
 @keyframes danmaku-move{
   from{transform:translateX(110vw)}
   to{transform:translateX(-110%)}
@@ -1188,9 +1185,8 @@ body.menu-open{overflow:hidden}
 
 @media (max-width:640px){
   .flash-card{padding:26px 18px}
-  .danmaku{font-size:11px}
+  .danmaku{font-size:12.5px;padding:3px 8px}
   .flash-text{font-size:21px}
-  .flash-text.mine{font-size:17px}
 }
 @media (max-width:1100px){
   .hero-side{display:none}
@@ -1634,23 +1630,17 @@ body.menu-open{overflow:hidden}
       </div>
 
       <div class="flash-card reveal">
-        <div class="flash-quote">
-          <span class="flash-who">我 · 念</span>
-          <p class="flash-text" id="flashText">杂种，谁允许你抬头看本王了。</p>
-        </div>
-
         <div class="danmaku-box" id="danmakuBox" aria-hidden="true">
           <!-- 弹幕由 JS 注入 -->
         </div>
 
-        <div class="flash-reply">
-          <span class="flash-who mine">我 · 回</span>
-          <p class="flash-text mine" id="flashReply">杂修。</p>
+        <div class="flash-quote">
+          <p class="flash-text" id="flashText">杂种，你有什么资格与本王对话。</p>
         </div>
 
         <div class="flash-ctrl">
           <button id="flashNext" type="button"><span>↻</span> 下一句</button>
-          <span class="flash-hint">每 6 秒自动串下一句 / 鼠标放上去暂停</span>
+          <span class="flash-hint">随机换句 / 鼠标放上去暂停</span>
         </div>
       </div>
     </div>
@@ -2197,78 +2187,130 @@ body.menu-open{overflow:hidden}
 
 /* ================ 一直烦 / 串不串 ================ */
 (function(){
-  var rounds = [
-    {quote:'杂种，谁允许你抬头看本王了。', reply:'杂修。'},
-    {quote:'不傲慢，何以称王。', reply:'杂修。'},
-    {quote:'你什么时候产生了……的错觉？', reply:'杂修。'},
-    {quote:'弱小和无知不是生存的障碍，傲慢才是。', reply:'杂修。'},
-    {quote:'与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。', reply:'杂修。'},
-    {quote:'天上天下，唯我独尊。', reply:'杂修。'},
-    {quote:'我，鲁路修·vi·布里塔尼亚，在此命令汝——', reply:'杂修。'}
+  var quotes = [
+    '仙道杀招·送友风',
+    '你已有取死之道。',
+    '都是同龄人，我本来没想降维打击，麻烦别说我欺负你。',
+    '我要这天，再遮不住我眼；要这地，再埋不了我心；要这众生，都明白我意；要那诸佛，都烟消云散！',
+    '我不做人了，JOJO！',
+    '没用！没用！',
+    '猴子是永远不可能超越人类的，JOJO！而你对我来说，不过就是只猴子罢了！',
+    '时间，停止吧！（時よ止まれ！）',
+    '可以假扮成任何人，但只能是自己。',
+    '只要是活着的东西，就算是神，我也杀给你看。',
+    '感受痛苦吧，体验痛苦吧，接受痛苦吧，了解痛苦吧。',
+    '神罗天征！',
+    '三十年河东，三十年河西，莫欺少年穷！',
+    '天上天下，唯我独尊。',
+    '我乃三转巅峰，何人敢杀我？何人能杀我？',
+    '不过是些许风霜罢了。',
+    '岂不闻天无绝人之路，只要我想走，路就在脚下。',
+    '早岁已知世事艰，仍许飞鸿荡云间。一路寒风身如絮，命海沉浮客独行。千磨万击心铸铁，殚精竭虑铸一剑。今朝剑指叠云处，炼蛊炼人还炼天。',
+    '宿命天成命中败，仙尊悔而我不悔。',
+    '我曾经呐喊过，渐渐地我发不出声音。我曾经哭泣过，渐渐地我不再流泪。我曾经悲伤过，渐渐地我能承受一切。我曾经喜悦过，渐渐地我看淡世间。而如今我只剩下面无表情，我的目光如磐石般坚硬，我的心中只剩下坚持。',
+    '杂种，你有什么资格与本王对话。（雑種如きが、吠えるではないか）',
+    '世间一切财宝，根源皆属于本王。',
+    '遇到我们的时候，你才是挑战者。',
+    '遇到我的时候，你才是挑战者。',
+    '你们的王回来了。',
+    '输一场而已，不代表会一直输给你。'
   ];
-  var danmakuPool = ['任建国是谁呀？','又开始了是吧','私斋收收味','别装了别装了','醒醒，天还没黑呢','豪意值拉满了','脚趾已经开始扣了'];
-  var idx = 0;
+  var danmakuPool = ['任建国是谁呀？','又开始了是吧','私斋收收味','别装了别装了','醒醒，天还没黑呢','豪意值拉满了','脚趾已经开始扣了','这人扎啤吧','中二晚期','这台词谁写的','求求了你醒醒'];
+
   var box = document.getElementById('danmakuBox');
   var quoteEl = document.getElementById('flashText');
-  var replyEl = document.getElementById('flashReply');
   var nextBtn = document.getElementById('flashNext');
-  var timers = [];
-  if(!box||!quoteEl||!replyEl) return;
+  var flashEl = document.getElementById('flash');
+  if(!box||!quoteEl||!flashEl) return;
 
+  var order = [], cursor = 0, current = -1;
+  function shuffle(){
+    order = quotes.map(function(_, i){ return i; });
+    for(var i = order.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = order[i]; order[i] = order[j]; order[j] = t;
+    }
+    cursor = 0;
+  }
+  function pick(){
+    if(cursor >= order.length) shuffle();
+    var i = order[cursor++];
+    // 避免连续两次相同
+    if(i === current && order.length > 1) i = order[cursor++ % order.length];
+    current = i;
+    return i;
+  }
+
+  /* ---- 弹幕 ---- */
+  var dmTimer = null, dmSpawn = [];
   function spawnDanmaku(){
-    if(!document.getElementById('flash')) return;
-    var r = danmakuPool[Math.floor(Math.random()*danmakuPool.length)];
     var el = document.createElement('span');
-    el.className='danmaku';
-    el.textContent=r;
-    var top = 6 + Math.random()*80;
-    el.style.top = top + '%';
-    var dur = 8 + Math.random()*7;
+    el.className = 'danmaku';
+    el.textContent = danmakuPool[Math.floor(Math.random() * danmakuPool.length)];
+    el.style.top = (4 + Math.random() * 84) + '%';
+    var dur = 7 + Math.random() * 5;
     el.style.animationDuration = dur + 's';
     box.appendChild(el);
-    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, dur*1000 + 500);
+    dmSpawn.push(setTimeout(function(){
+      if(el.parentNode) el.parentNode.removeChild(el);
+    }, dur * 1000 + 400));
   }
-  function clearDanmaku(){ while(box.firstChild) box.removeChild(box.firstChild); }
-  function stopDanmaku(){ timers.forEach(clearInterval); timers=[]; }
+  function clearDanmaku(){
+    dmSpawn.forEach(clearTimeout); dmSpawn = [];
+    while(box.firstChild) box.removeChild(box.firstChild);
+  }
+  function stopDanmaku(){
+    if(dmTimer){ clearInterval(dmTimer); dmTimer = null; }
+    dmSpawn.forEach(clearTimeout); dmSpawn = [];
+  }
   function startDanmaku(){
+    if(dmTimer) return;
     spawnDanmaku();
-    timers.push(setInterval(spawnDanmaku, 700 + Math.random()*900));
+    setTimeout(spawnDanmaku, 320);
+    dmTimer = setInterval(spawnDanmaku, 420 + Math.random() * 480);
   }
-  function setRound(i){
-    idx = (i % rounds.length);
-    quoteEl.textContent = rounds[idx].quote;
-    replyEl.textContent = rounds[idx].reply;
-    clearDanmaku();
-    stopDanmaku();
-    startDanmaku();
-  }
-  var autoTimer = null;
-  function stopAuto(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null; } }
-  function startAuto(){
+
+  /* ---- 换句 ---- */
+  var autoTimer = null, hovering = false, visible = false;
+  function stopAuto(){ if(autoTimer){ clearTimeout(autoTimer); autoTimer = null; } }
+  function scheduleAuto(){
     stopAuto();
-    autoTimer = setInterval(function(){ setRound(idx+1); }, 6000);
+    if(hovering || !visible) return;
+    var wait = 5200 + Math.random() * 2600;
+    autoTimer = setTimeout(function(){ turn(); scheduleAuto(); }, wait);
   }
-  nextBtn.addEventListener('click',function(){ setRound(idx+1); startAuto(); });
-  var flashEl = document.getElementById('flash');
-  var card = flashEl.querySelector('.flash-card');
-  var hovering = false;
-  card.addEventListener('mouseenter',function(){ hovering=true; stopAuto(); });
-  card.addEventListener('mouseleave',function(){ hovering=false; startAuto(); });
+  function turn(){
+    var i = pick();
+    quoteEl.textContent = quotes[i];
+    quoteEl.classList.remove('is-in');
+    void quoteEl.offsetWidth;
+    quoteEl.classList.add('is-in');
+    clearDanmaku();
+    if(visible) startDanmaku();
+  }
+
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  nextBtn.addEventListener('click', function(){ turn(); scheduleAuto(); });
+  flashEl.addEventListener('mouseenter', function(){ hovering = true; stopAuto(); });
+  flashEl.addEventListener('mouseleave', function(){ hovering = false; scheduleAuto(); });
+
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
+      visible = e.isIntersecting;
       if(e.isIntersecting){
         if(reduceMotion) return;
         startDanmaku();
-        if(!hovering) startAuto();
+        scheduleAuto();
       } else {
         stopDanmaku();
         stopAuto();
       }
     });
-  },{threshold:.15});
+  }, {threshold:.15});
   io.observe(flashEl);
-  setRound(0);
+
+  shuffle();
+  turn();
 })();
 </script>
 <script src="assets/interact.js" defer></script>
