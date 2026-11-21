@@ -195,7 +195,7 @@
     if (reduce) return;
     var r = btn.getBoundingClientRect();
     var cx = r.left + r.width / 2, cy = r.top + 8;
-    var glyphs = ['\u2615', '\uD83E\uDE99', '\u2661', '\u2728', '\uD83C\uDF6B'];
+    var glyphs = ['\u2661', '\u2726', '\u2727', '\u25C6', '\u25CF'];
     for (var i = 0; i < 9; i++){
       var p = document.createElement('span');
       p.className = 'coin-particle';
