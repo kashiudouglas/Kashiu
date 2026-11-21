@@ -716,6 +716,9 @@ body.menu-open{overflow:hidden}
   transition:color .3s,border-color .3s;
 }
 .ring-tags span:hover{color:var(--paper);border-color:var(--dim)}
+.ring-cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ring-more{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:4px;transition:color .3s,border-color .3s}
+.ring-more:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------------- works ---------------- */
 .works{position:relative}
@@ -1473,7 +1476,10 @@ body.menu-open{overflow:hidden}
             <span>Divinity</span>
             <span>Cultivation · Magic</span>
           </div>
-          <a class="btn" href="about-me.html#ring">阅读设定选摘 <span class="ar">→</span></a>
+          <div class="ring-cta">
+            <a class="btn" href="about-me.html#ring" target="_blank" rel="noopener">阅读设定选摘 <span class="ar">↗</span></a>
+            <a class="ring-more" href="#works">继续往下看 ↓</a>
+          </div>
         </div>
       </div>
     </div>
