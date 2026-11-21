@@ -324,3 +324,41 @@
     window.scrollTo({ top:0, behavior: rm ? 'auto' : 'smooth' });
   });
 })();
+
+/* ---------------- 返回首页时回到离开的位置 ---------------- */
+(function(){
+  var path = location.pathname.split('/').pop() || 'index.html';
+  var subs = ['about-me.html','poetry.html','hometown.html','shelf.html','tip.html'];
+
+  if (path === 'index.html') {
+    // 离开首页去子页时，记住当前滚动位置
+    document.addEventListener('click', function(e){
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      var h = a.getAttribute('href') || '';
+      for (var i = 0; i < subs.length; i++) {
+        if (h.indexOf(subs[i]) === 0) {
+          try { sessionStorage.setItem('kashiu:scroll', String(window.scrollY)); } catch(err){}
+          return;
+        }
+      }
+    }, true);
+
+    // 从子页回到首页时，恢复位置（带 # 锚点则优先用锚点）
+    if (!location.hash) {
+      var ref = '';
+      try { ref = new URL(document.referrer).pathname.split('/').pop(); } catch(err){}
+      if (subs.indexOf(ref) !== -1) {
+        var y = parseFloat(sessionStorage.getItem('kashiu:scroll') || '0');
+        if (y > 0) {
+          var restore = function(){
+            window.scrollTo({ top: y, behavior: 'auto' });
+            try { sessionStorage.removeItem('kashiu:scroll'); } catch(err){}
+          };
+          if (document.readyState === 'complete') setTimeout(restore, 80);
+          else window.addEventListener('load', function(){ setTimeout(restore, 80); });
+        }
+      }
+    }
+  }
+})();
