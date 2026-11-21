@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07080A">
+<meta name="theme-color" content="#151619">
 <meta name="description" content="任喆 · Kashiu 的个人网站 — 学生、写作者、探索者。在代码与诗歌之间搭桥，构建「环」的幻想宇宙。">
 <title>任喆 · Kashiu — 在代码与诗歌之间</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -1262,7 +1262,7 @@ body.menu-open{overflow:hidden}
 </noscript>
 <link rel="stylesheet" href="assets/interact.css">
 </head>
-<body id="top">
+<body id="top" class="home-page">
 
 <a class="skip" href="#main">跳到主要内容</a>
 
@@ -1290,7 +1290,7 @@ body.menu-open{overflow:hidden}
       <a href="poetry.html"><i>04</i>诗集</a>
       <a href="hometown.html"><i>05</i>家乡</a>
       <a href="shelf.html"><i>06</i>书架</a>
-      <a href="#contact"><i>06</i>联系</a>
+      <a href="#contact"><i>07</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span>
@@ -1306,7 +1306,7 @@ body.menu-open{overflow:hidden}
     <a href="poetry.html"><i>04</i>诗集</a>
     <a href="hometown.html"><i>05</i>家乡</a>
     <a href="shelf.html"><i>06</i>书架</a>
-    <a href="#contact"><i>06</i>联系</a>
+    <a href="#contact"><i>07</i>联系</a>
   </nav>
   <div class="mo-foot">
     <span>扶风 · 宝鸡 · 陕西</span>
@@ -1317,40 +1317,88 @@ body.menu-open{overflow:hidden}
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero" id="hero">
+  <section class="hero editorial-hero" id="hero">
     <canvas id="sky" aria-hidden="true"></canvas>
 
     <div class="hero-top">
       <div class="wrap">
-        <span>Portfolio — Vol. 03</span>
+        <span>KASHIU. / Personal Archive</span>
         <span>扶风 · 宝鸡 · 陕西</span>
-        <span>Est. 2025</span>
+        <span>Edition 2026</span>
       </div>
     </div>
 
     <div class="hero-side" aria-hidden="true">杀死命运 <b>/</b> Kill the fate</div>
 
     <div class="hero-main wrap">
-      <p class="hero-kicker"><span class="cn">任喆</span> / Between code &amp; poetry</p>
-      <h1 class="hero-title">KASHI<span class="u">U</span></h1>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="hero-kicker"><span class="cn">01 — 介绍</span> / Between code &amp; poetry</p>
+          <h1 class="hero-title">
+            <span class="hero-name">KASHIU<span class="u">.</span></span>
+            <span class="hero-cn">在代码与诗歌之间，<br>构建自己的世界。</span>
+          </h1>
+          <p class="hero-roles"><span>学生</span><i>·</i><span>写作者</span><i>·</i><span>探索者</span></p>
+        </div>
+
+        <figure class="hero-visual">
+          <div class="hero-frame">
+            <svg class="hero-art" viewBox="0 0 720 960" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="hero-arch-sky" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#E3E0D9"/>
+                  <stop offset="1" stop-color="#8F918F"/>
+                </linearGradient>
+                <linearGradient id="hero-arch-face" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#191A1D"/>
+                  <stop offset="1" stop-color="#3E4042"/>
+                </linearGradient>
+                <pattern id="hero-arch-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+                  <path d="M48 0H0V48" fill="none" stroke="#EAE6DE" stroke-opacity=".12" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="720" height="960" fill="url(#hero-arch-sky)"/>
+              <path d="M0 960V780L720 600V960Z" fill="#B9B8B3"/>
+              <path d="M64 900L160 188 444 42 368 900Z" fill="url(#hero-arch-face)"/>
+              <path d="M444 42L640 196 686 900H368Z" fill="#6C6E6E"/>
+              <path d="M160 188L444 42 420 212 142 344Z" fill="#A3A4A1"/>
+              <path d="M142 344L420 212 404 380 124 500Z" fill="#292B2E"/>
+              <path d="M124 500L404 380 390 546 104 656Z" fill="#484A4C"/>
+              <path d="M104 656L390 546 368 900H64Z" fill="#202125"/>
+              <path d="M444 42L640 196 622 350 426 212Z" fill="#C0C0BA"/>
+              <path d="M426 212L622 350 650 900H368Z" fill="#555758"/>
+              <path d="M470 274L574 346 592 710 428 644Z" fill="#1C1D20"/>
+              <path d="M0 860L720 510V614L0 960Z" fill="#0E0F12" fill-opacity=".76"/>
+              <path d="M160 188L64 900M444 42L368 900M640 196L686 900M142 344L622 350M124 500L630 514M104 656L642 678" fill="none" stroke="#EAE6DE" stroke-opacity=".25" stroke-width="2"/>
+              <rect width="720" height="960" fill="url(#hero-arch-grid)"/>
+              <path d="M534 98H654V112H534Z" fill="#B64148"/>
+            </svg>
+          </div>
+          <figcaption>
+            <span>A little about me</span>
+            <p>软件技术专业在读。<br>探索技术、文学与生活之间的联系。</p>
+          </figcaption>
+          <span class="hero-visual-index" aria-hidden="true">01</span>
+        </figure>
+
+        <span class="hero-motto" aria-hidden="true">KILL THE FATE.</span>
+      </div>
+
       <div class="hero-sub">
-        <p class="statement">
-          在代码与诗歌之间搭桥。<br>
-          <span class="dim">软件技术专业在读 · 一个喜欢探索、思考与创作的人。</span>
-        </p>
-        <p class="hero-roles"><span>学生</span><i>·</i><span>写作者</span><i>·</i><span>探索者</span></p>
+        <p class="statement">不是简历，是一份仍在生长的个人档案。<br><span class="dim">代码、诗歌、幻想世界，以及尚未完成的我。</span></p>
         <div class="hero-links">
-          <span class="hl-label">Explore more</span>
-          <a href="#manifesto">关于我</a>
+          <span class="hl-label">Explore my world</span>
+          <a href="about-me.html">关于我</a>
+          <a href="#ring">环</a>
           <a href="#works">作品</a>
-          <a href="poetry.html">创作</a>
+          <a href="poetry.html">诗集</a>
         </div>
       </div>
     </div>
 
     <div class="hero-foot wrap">
       <a class="scroll-cue" href="#manifesto"><span class="bar" aria-hidden="true"></span> Scroll to explore</a>
-      <span class="hide-s">Worldbuilding · Poetry · Curiosity</span>
+      <span class="hide-s">Editorial Composition · Digital Art</span>
       <span>© 2026</span>
     </div>
   </section>
@@ -1498,6 +1546,7 @@ body.menu-open{overflow:hidden}
       <div class="works">
         <a class="work-row reveal" href="about-me.html#ring"
            data-no="01" data-title="环 · Ring" data-tag="Worldbuilding" data-art="1">
+          <span class="work-art" aria-hidden="true"><span class="art-word">DIGITAL<br>FORM</span><span class="art-caption">A WORLD IN PROGRESS</span></span>
           <span class="work-no">(01)</span>
           <span class="work-title">环 · Ring<em>持续写作中的幻想宇宙</em></span>
           <span class="work-tags">Worldbuilding<br>Fiction</span>
@@ -1505,6 +1554,7 @@ body.menu-open{overflow:hidden}
         </a>
         <a class="work-row reveal" href="poetry.html"
            data-no="02" data-title="口水盆 · 诗集" data-tag="Poetry" data-art="2">
+          <span class="work-art" aria-hidden="true"><span class="art-word">GOOD<br>THOUGH</span><span class="art-caption">42 POEMS / 2024—2026</span></span>
           <span class="work-no">(02)</span>
           <span class="work-title">口水盆 · 诗集<em>2024 — 2026 · 42 首</em></span>
           <span class="work-tags">Poetry<br>Collection</span>
@@ -1512,6 +1562,7 @@ body.menu-open{overflow:hidden}
         </a>
         <a class="work-row reveal" href="about-me.html#kashiu"
            data-no="03" data-title="Kashiu" data-tag="Character" data-art="3">
+          <span class="work-art" aria-hidden="true"><span class="art-word">KILL<br>THE FATE</span><span class="art-caption">CHARACTER STUDY / 03</span></span>
           <span class="work-no">(03)</span>
           <span class="work-title">Kashiu<em>杀死命运的人</em></span>
           <span class="work-tags">Character<br>Story</span>
@@ -1519,6 +1570,7 @@ body.menu-open{overflow:hidden}
         </a>
         <a class="work-row reveal" href="shelf.html"
            data-no="04" data-title="书架 · Shelf" data-tag="Books / Games" data-art="4">
+          <span class="work-art" aria-hidden="true"><span class="art-word">READ<br>AGAIN</span><span class="art-caption">BOOKS / GAMES / NAMES</span></span>
           <span class="work-no">(04)</span>
           <span class="work-title">书架 · Shelf<em>书、游戏，还有一些喜欢的名字</em></span>
           <span class="work-tags">Books<br>Games</span>
@@ -1526,6 +1578,7 @@ body.menu-open{overflow:hidden}
         </a>
         <a class="work-row reveal" href="index.html"
            data-no="05" data-title="个人网站" data-tag="HTML / CSS" data-art="1">
+          <span class="work-art" aria-hidden="true"><span class="art-word">ORDER<br>+ CHAOS</span><span class="art-caption">STATIC HTML / CSS / JS</span></span>
           <span class="work-no">(05)</span>
           <span class="work-title">个人网站<em>你正在浏览的页面</em></span>
           <span class="work-tags">Static<br>HTML · CSS</span>
@@ -1542,7 +1595,7 @@ body.menu-open{overflow:hidden}
   </section>
 
   <!-- ============ 04 POETRY ============ -->
-  <section class="section" id="poetry" style="overflow:hidden">
+  <section class="section paper-section" id="poetry" style="overflow:hidden">
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">04</span>
