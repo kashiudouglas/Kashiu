@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#151619">
+<meta name="description" content="KASHIU 个人档案的更新日志：网站的每一次改动，以及「环」与《口水盆》的内容时间线。">
+<title>更新日志 · CHANGELOG | Kashiu</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="更新日志 · CHANGELOG | Kashiu">
+<meta property="og:description" content="网站本身也是一件持续创作的作品，这里记下它的每一次改动。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kashiu">
+<meta property="og:url" content="https://kashiudouglas.github.io/Kashiu/changelog.html">
+<meta property="og:image" content="https://kashiudouglas.github.io/Kashiu/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07080A;
+  --paper:#EFEBE2;
+  --paper-soft:rgba(239,235,226,.72);
+  --dim:#9A958A;
+  --muted:#8B877C;
+  --line:rgba(239,235,226,.14);
+  --line-soft:rgba(239,235,226,.07);
+  --accent:#D8502F;
+  --serif:'Instrument Serif','Noto Serif SC',Georgia,serif;
+  --cn:'Noto Serif SC','Songti SC','STSong',serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gutter:clamp(20px,3.2vw,48px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:14px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--accent);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,svg{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.wrap{width:100%;max-width:1560px;margin:0 auto;padding:0 var(--gutter)}
+section[id],header[id]{scroll-margin-top:88px}
+.section{position:relative;padding:clamp(84px,10vw,156px) 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:clamp(14px,2vw,28px);margin-bottom:clamp(46px,6vw,92px)}
+.sec-no{font-size:11px;letter-spacing:.14em;color:var(--accent);flex:none}
+.sec-title{font-family:var(--cn);font-weight:300;font-size:clamp(28px,4vw,52px);line-height:1.1;letter-spacing:.02em;display:flex;align-items:baseline;gap:14px;flex:none}
+.sec-title em{font-family:var(--serif);font-style:italic;font-size:.52em;font-weight:400;color:var(--dim);letter-spacing:.03em}
+.sec-line{flex:1;height:1px;background:var(--line);transform:translateY(-6px)}
+.sec-note{flex:none;font-size:10px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>")}
+.progress{position:fixed;top:0;left:0;z-index:300;width:100%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%}
+
+/* nav */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
+body.scrolled .site-nav{background:rgba(7,8,10,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--line-soft)}
+.nav-inner{max-width:1560px;margin:0 auto;padding:0 var(--gutter);height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:baseline;gap:10px;font-family:var(--cn);font-size:18px;font-weight:400;letter-spacing:.06em}
+.brand span{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--muted)}
+.brand .bdot{width:5px;height:5px;border-radius:50%;background:var(--accent);align-self:center;margin-right:4px;box-shadow:0 0 8px rgba(216,80,47,.9)}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2.1vw,34px)}
+.nav-links a{position:relative;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);padding:6px 0;transition:color .3s}
+.nav-links a i{font-style:normal;font-size:8px;color:var(--accent);margin-right:6px;vertical-align:super}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--paper);transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ease)}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.menu-toggle{display:none;width:42px;height:42px;position:relative;z-index:210}
+.menu-toggle span{position:absolute;left:10px;right:10px;height:1px;background:var(--paper);transition:transform .4s var(--ease),top .4s var(--ease)}
+.menu-toggle span:nth-child(1){top:16px}
+.menu-toggle span:nth-child(2){top:25px}
+body.menu-open .menu-toggle span:nth-child(1){top:20px;transform:rotate(45deg)}
+body.menu-open .menu-toggle span:nth-child(2){top:20px;transform:rotate(-45deg)}
+.menu-overlay{position:fixed;inset:0;z-index:205;background:var(--ink);padding:110px var(--gutter) 40px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+body.menu-open .menu-overlay{opacity:1;visibility:visible}
+.menu-overlay nav{display:flex;flex-direction:column}
+.menu-overlay nav a{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid var(--line-soft);font-family:var(--cn);font-weight:200;font-size:clamp(28px,7.4vw,42px);line-height:1.15}
+.menu-overlay nav a i{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--accent)}
+.menu-overlay .mo-foot{display:flex;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+body.menu-open{overflow:hidden}
+
+/* hero */
+.page-hero{position:relative;min-height:62svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 60px;overflow:hidden}
+.hero-top-meta{position:absolute;top:100px;left:0;right:0;z-index:2}
+.hero-top-meta .wrap{display:flex;justify-content:space-between;gap:20px;font-size:9.5px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
+.hero-main{position:relative;z-index:2}
+.hero-kicker{display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-bottom:clamp(10px,1.4vw,22px)}
+.hero-kicker::before{content:"";width:46px;height:1px;background:var(--accent)}
+.hero-kicker .cn{font-family:var(--cn);letter-spacing:.22em;color:var(--paper-soft)}
+.hero-title{font-family:var(--cn);font-weight:300;font-size:clamp(64px,13vw,190px);line-height:.86;letter-spacing:.02em;animation:heroIn 1.2s var(--ease) .2s both}
+.hero-title .pinyin{display:block;font-family:var(--serif);font-style:italic;font-size:.34em;letter-spacing:.08em;color:var(--dim);margin-top:14px}
+@keyframes heroIn{from{opacity:0;transform:translateY(42px)}to{opacity:1;transform:none}}
+.hero-sub{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:end;gap:clamp(24px,5vw,80px);margin-top:clamp(26px,3vw,44px);padding-top:20px;border-top:1px solid var(--line);animation:heroIn 1.1s var(--ease) .4s both}
+.statement{font-family:var(--cn);font-weight:300;font-size:clamp(17px,1.7vw,24px);line-height:1.85;letter-spacing:.04em;color:var(--paper)}
+.statement .dim{color:var(--muted)}
+.hero-meta{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px 20px;font-size:10px;letter-spacing:.24em;color:var(--dim);text-transform:uppercase}
+.hero-meta span{display:inline-flex;align-items:center;gap:20px}
+.hero-meta span+span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.hero-foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:clamp(34px,4vw,58px);padding-top:16px;border-top:1px solid var(--line-soft);font-size:9.5px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;animation:heroIn 1.1s var(--ease) .6s both;flex-wrap:wrap}
+.scroll-cue{display:inline-flex;align-items:center;gap:12px}
+.scroll-cue .bar{width:44px;height:1px;background:var(--muted);position:relative;overflow:hidden}
+.scroll-cue .bar::after{content:"";position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);animation:slide 2.6s var(--ease) infinite}
+@keyframes slide{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* log */
+.log-list{border-top:1px solid var(--line)}
+.log-item{display:grid;grid-template-columns:150px 96px minmax(0,1fr);gap:clamp(16px,2.4vw,40px);align-items:baseline;padding:clamp(22px,2.6vw,34px) 0;border-bottom:1px solid var(--line-soft)}
+.log-date{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim);white-space:nowrap}
+.log-tag{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+.log-tag.ongoing{color:var(--muted)}
+.log-body h3{font-family:var(--cn);font-weight:400;font-size:clamp(18px,1.9vw,26px);line-height:1.5;letter-spacing:.03em}
+.log-body p{margin-top:10px;font-family:var(--cn);font-weight:300;font-size:14px;line-height:2;letter-spacing:.03em;color:var(--dim);max-width:62ch}
+.log-item:first-child .log-body h3{color:var(--paper)}
+
+.next-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.next-card{padding:clamp(20px,2.4vw,30px);background:var(--ink)}
+.next-card .n{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+.next-card strong{display:block;margin-top:14px;font-family:var(--cn);font-weight:300;font-size:clamp(18px,1.8vw,24px);letter-spacing:.04em}
+.next-card strong em{font-family:var(--serif);font-style:italic;font-size:.6em;color:var(--dim);margin-left:10px;letter-spacing:.02em}
+.next-card p{margin-top:12px;font-family:var(--cn);font-weight:300;font-size:13px;line-height:2;letter-spacing:.03em;color:var(--muted)}
+
+.footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
+.footer-bar a{transition:color .3s}
+.footer-bar a:hover{color:var(--accent)}
+.foot-actions{display:inline-flex;gap:20px}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .hero-sub{grid-template-columns:1fr;gap:30px}
+  .hero-meta{justify-content:flex-start}
+  .log-item{grid-template-columns:120px minmax(0,1fr);row-gap:14px}
+  .log-tag{grid-column:2;grid-row:1;justify-self:end}
+  .log-body{grid-column:1 / -1}
+  .next-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .page-hero{min-height:54svh;padding:96px 0 44px}
+  .hero-top-meta{top:84px}
+  .hero-top-meta .wrap span:nth-child(2){display:none}
+  .hero-title{font-size:clamp(52px,15vw,86px)}
+  .log-item{grid-template-columns:1fr;row-gap:8px}
+  .log-tag{grid-column:1;grid-row:auto;justify-self:start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .hero-title,.hero-sub,.hero-foot{animation:none}
+  .scroll-cue .bar::after{animation:none;transform:none}
+}
+</style>
+<link rel="stylesheet" href="assets/interact.css">
+</head>
+<body id="top" class="archive-page changelog-page">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="bdot" aria-hidden="true"></span>
+      任喆<span>KASHIU</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html#manifesto"><i>01</i>关于</a>
+      <a href="index.html#ring"><i>02</i>环</a>
+      <a href="index.html#works"><i>03</i>作品</a>
+      <a href="poetry.html"><i>04</i>诗集</a>
+      <a href="shelf.html"><i>05</i>书架</a>
+      <a href="hometown.html"><i>06</i>家乡</a>
+      <a href="index.html#contact"><i>07</i>联系</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu-overlay" id="menuOverlay">
+  <nav aria-label="移动端导航">
+    <a href="index.html#manifesto"><i>01</i>关于</a>
+    <a href="index.html#ring"><i>02</i>环</a>
+    <a href="index.html#works"><i>03</i>作品</a>
+    <a href="poetry.html"><i>04</i>诗集</a>
+    <a href="shelf.html"><i>05</i>书架</a>
+    <a href="hometown.html"><i>06</i>家乡</a>
+    <a href="index.html#contact"><i>07</i>联系</a>
+  </nav>
+  <div class="mo-foot">
+    <span>扶风 · 宝鸡 · 陕西</span>
+    <span>Est. 2025</span>
+  </div>
+</div>
+
+<main id="main">
+
+  <header class="page-hero" id="hero">
+    <div class="hero-top-meta">
+      <div class="wrap">
+        <span>Archive · Changelog</span>
+        <span>网站改动 · 内容时间线</span>
+        <span>A work in progress</span>
+      </div>
+    </div>
+
+    <div class="hero-main wrap">
+      <p class="hero-kicker"><span class="cn">更新日志</span> / Changelog</p>
+      <h1 class="hero-title">更新日志<em class="pinyin">CHANGELOG</em></h1>
+      <div class="hero-sub">
+        <p class="statement">
+          这个网站本身，也是一件持续创作的作品。<br>
+          <span class="dim">每一次改动、每一段新写下的内容，都记在这里。</span>
+        </p>
+        <div class="hero-meta">
+          <span>Site</span><span>Writing</span><span>World</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot wrap">
+      <a class="scroll-cue" href="#site"><span class="bar" aria-hidden="true"></span> Scroll to explore</a>
+      <span>Since 2024</span>
+      <span>Still growing</span>
+    </div>
+  </header>
+
+  <section class="section" id="site">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">01</span>
+        <h2 class="sec-title">网站改动<em>Site Changes</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">Design · Structure · Fix</span>
+      </div>
+
+      <div class="log-list reveal">
+        <article class="log-item">
+          <span class="log-date">2026.11.22</span>
+          <span class="log-tag">结构</span>
+          <div class="log-body">
+            <h3>统一编号，加上 Start Here 与这一页</h3>
+            <p>全站导航与首页栏目统一为 01 关于、02 环、03 作品、04 诗集、05 书架、06 家乡、07 联系；首页底部改为按目的选页的引导，更新日志从这里进入。</p>
+          </div>
+        </article>
+        <article class="log-item">
+          <span class="log-date">2026.11.22</span>
+          <span class="log-tag">修复</span>
+          <div class="log-body">
+            <h3>弹幕不再被换句打断</h3>
+            <p>弹幕改为按卡片宽度完整穿行、自然离场，与换句解耦；同时移除「随机换句 / 鼠标放上去暂停」等操作提示小字。</p>
+          </div>
+        </article>
+        <article class="log-item">
+          <span class="log-date">2026.11.22</span>
+          <span class="log-tag">视觉</span>
+          <div class="log-body">
+            <h3>全站改为编辑式构图</h3>
+            <p>Editorial Composition × Digital Art：首页大标题与建筑视觉的前后叠放、作品错位网格、暖纸色诗集，以及关于、家乡、书架、打赏各自的版面重排。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="content">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">02</span>
+        <h2 class="sec-title">内容时间线<em>Content Timeline</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">Writing · World · Diary</span>
+      </div>
+
+      <div class="log-list reveal">
+        <article class="log-item">
+          <span class="log-date">2026 · 进行中</span>
+          <span class="log-tag ongoing">世界观</span>
+          <div class="log-body">
+            <h3>「环」的星域关系图逐步公开</h3>
+            <p>黑塞域、索姆尼亚、须迪尼、都格拉斯与十一城邦已经可以在关于页逐层查看；更多名字、人物与往事仍在修改。</p>
+          </div>
+        </article>
+        <article class="log-item">
+          <span class="log-date">2025.01.21 起</span>
+          <span class="log-tag ongoing">日记</span>
+          <div class="log-body">
+            <h3>开始持续记录日记</h3>
+            <p>没有公开全文，只在首页侧写里留下一个不断变大的天数。</p>
+          </div>
+        </article>
+        <article class="log-item">
+          <span class="log-date">2024 — 2026</span>
+          <span class="log-tag ongoing">诗集</span>
+          <div class="log-body">
+            <h3>《口水盆》开始积累</h3>
+            <p>诗词、随笔与散文，至今 42 首，仍在写。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="next">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">03</span>
+        <h2 class="sec-title">接下来<em>What’s Next</em></h2>
+        <span class="sec-line"></span>
+        <span class="sec-note">In preparation</span>
+      </div>
+
+      <div class="next-grid reveal">
+        <div class="next-card">
+          <span class="n">筹备中</span>
+          <strong>思想与随笔<em>Essays</em></strong>
+          <p>技术、AI、自由与命运，以及机械、金融和生活。可以是几百字的思考，也可以是一篇完整的文章。</p>
+        </div>
+        <div class="next-card">
+          <span class="n">筹备中</span>
+          <strong>创作手记<em>Workshop</em></strong>
+          <p>不只放最终成果：「环」的世界观怎样建立、Kashiu 这个角色怎样设计、一首诗从初稿到定稿的变化。</p>
+        </div>
+        <div class="next-card">
+          <span class="n">整理中</span>
+          <strong>短评与创作背景<em>Notes</em></strong>
+          <p>给书架上的每一本、每一部补上自己的评价；给每件作品补上创作时间、状态与背景。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap pager">
+      <a class="pager-item" href="index.html">
+        <span class="pager-k">← 上一页 / Prev</span>
+        <strong>返回首页</strong>
+        <em>Home</em>
+      </a>
+      <a class="pager-item next" href="about-me.html">
+        <span class="pager-k">下一页 / Next →</span>
+        <strong>关于我</strong>
+        <em>About</em>
+      </a>
+    </div>
+
+    <div class="footer-word" aria-hidden="true">KASHIU</div>
+
+    <div class="wrap footer-bar">
+      <span>© 2026 任喆 · Kashiu</span>
+      <span>更新日志 · Changelog</span>
+      <span class="foot-actions">
+        <a href="index.html">← 首页</a>
+        <a href="#top">Back to top ↑</a>
+      </span>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  'use strict';
+  document.documentElement.classList.add('js');
+
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    document.body.classList.toggle('scrolled', y > 40);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    Array.prototype.forEach.call(revealEls, function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(revealEls, function(el){ el.classList.add('in'); });
+  }
+
+  var toggle = document.getElementById('menuToggle');
+  var overlay = document.getElementById('menuOverlay');
+  function closeMenu(){
+    document.body.classList.remove('menu-open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+  if (toggle && overlay) {
+    toggle.addEventListener('click', function(){
+      var open = document.body.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    Array.prototype.forEach.call(overlay.querySelectorAll('a'), function(a){
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeMenu();
+    });
+  }
+})();
+</script>
+<script src="assets/interact.js" defer></script>
+</body>
+</html>

@@ -1103,6 +1103,10 @@ body.menu-open{overflow:hidden}
 .more-card:hover strong{color:var(--accent)}
 @media (max-width:860px){.more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.more-grid{grid-template-columns:1fr}}
+.more-links{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:clamp(18px,2.4vw,26px);font-family:var(--mono);font-size:10px;letter-spacing:.14em}
+.more-links a{display:inline-flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);color:var(--paper-soft);transition:color .3s,border-color .3s}
+.more-links a span{font-size:9px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.more-links a:hover{color:var(--accent);border-color:var(--accent)}
 
 /* ---------------- flash dialogue ---------------- */
 .flash-sec{background:linear-gradient(180deg,rgba(216,80,47,.03),transparent 40%)}
@@ -1288,8 +1292,8 @@ body.menu-open{overflow:hidden}
       <a href="#ring"><i>02</i>环</a>
       <a href="#works"><i>03</i>作品</a>
       <a href="poetry.html"><i>04</i>诗集</a>
-      <a href="hometown.html"><i>05</i>家乡</a>
-      <a href="shelf.html"><i>06</i>书架</a>
+      <a href="shelf.html"><i>05</i>书架</a>
+      <a href="hometown.html"><i>06</i>家乡</a>
       <a href="#contact"><i>07</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
@@ -1304,8 +1308,8 @@ body.menu-open{overflow:hidden}
     <a href="#ring"><i>02</i>环</a>
     <a href="#works"><i>03</i>作品</a>
     <a href="poetry.html"><i>04</i>诗集</a>
-    <a href="hometown.html"><i>05</i>家乡</a>
-    <a href="shelf.html"><i>06</i>书架</a>
+    <a href="shelf.html"><i>05</i>书架</a>
+    <a href="hometown.html"><i>06</i>家乡</a>
     <a href="#contact"><i>07</i>联系</a>
   </nav>
   <div class="mo-foot">
@@ -1647,11 +1651,11 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- ============ 05 NUMBERS ============ -->
+  <!-- ============ INTERLUDE / NUMBERS ============ -->
   <section class="section" id="numbers">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-no">05</span>
+        <span class="sec-no">✳</span>
         <h2 class="sec-title">侧写<em>In Numbers</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Data of a curious life</span>
@@ -1707,7 +1711,7 @@ body.menu-open{overflow:hidden}
   <section class="section contact-section" id="contact">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="sec-no">06</span>
+        <span class="sec-no">07</span>
         <h2 class="sec-title">联系<em>Contact</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">Say hello</span>
@@ -1748,40 +1752,45 @@ body.menu-open{overflow:hidden}
 
     <div class="wrap more-wrap reveal">
       <div class="more-head">
-        <span class="more-label">07 · 继续看 / Keep reading</span>
-        <span class="more-note">主页之外，还有几页在别处</span>
+        <span class="more-label">从这里开始 / Start Here</span>
+        <span class="more-note">第一次来，按你的目的选一页</span>
       </div>
       <div class="more-grid">
         <a class="more-card" href="about-me.html">
           <span class="n">01</span>
           <strong>关于我 <em>About</em></strong>
-          <p>在学什么、喜欢什么，以及「环」的完整设定。</p>
+          <p>想认识我：在学什么、喜欢什么，以及正在写的东西。</p>
+        </a>
+        <a class="more-card" href="about-me.html#ring">
+          <span class="n">02</span>
+          <strong>环 <em>Ring</em></strong>
+          <p>想了解我的幻想世界：星域、行星与完整关系图。</p>
+        </a>
+        <a class="more-card" href="#works">
+          <span class="n">03</span>
+          <strong>作品 <em>Works</em></strong>
+          <p>想看我的创作：正在写的、正在做的，都列在这里。</p>
         </a>
         <a class="more-card" href="poetry.html">
-          <span class="n">02</span>
+          <span class="n">04</span>
           <strong>诗集 <em>Poems</em></strong>
-          <p>42 首，2024 — 2026，还在写。</p>
-        </a>
-        <a class="more-card" href="hometown.html">
-          <span class="n">03</span>
-          <strong>家乡 <em>Hometown</em></strong>
-          <p>陕西扶风，一个很小的地方。</p>
+          <p>想读一些文字：《口水盆》42 首，2024 — 2026。</p>
         </a>
         <a class="more-card" href="shelf.html">
-          <span class="n">04</span>
-          <strong>书架 <em>Shelf</em></strong>
-          <p>书、游戏、喜欢的角色和明星。</p>
-        </a>
-        <a class="more-card" href="tip.html">
           <span class="n">05</span>
-          <strong>打赏 <em>Support</em></strong>
-          <p>收款码与链上钱包都在这一页。</p>
+          <strong>书架 <em>Shelf</em></strong>
+          <p>想了解我的兴趣：书、游戏、喜欢的角色和明星。</p>
         </a>
-        <a class="more-card" href="#top">
+        <a class="more-card" href="hometown.html">
           <span class="n">06</span>
-          <strong>回到顶部 <em>Top</em></strong>
-          <p>从头再看一遍，或者去别处。</p>
+          <strong>家乡 <em>Hometown</em></strong>
+          <p>想知道我从哪里来：陕西扶风，一个很小的地方。</p>
         </a>
+      </div>
+      <div class="more-links">
+        <a href="changelog.html">更新日志 <span>Changelog</span></a>
+        <a href="tip.html">打赏 <span>Support</span></a>
+        <a href="#top">回到顶部 <span>Top</span></a>
       </div>
     </div>
 
