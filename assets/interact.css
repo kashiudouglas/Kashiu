@@ -135,6 +135,10 @@
 .nav-links a.is-active::after{transform:scaleX(1);background:var(--accent)}
 .menu-overlay nav a.is-active{color:var(--accent)}
 
+/* in-page TOC current-section highlight (theme-aware via tokens) */
+.toc-list a.is-active{color:var(--accent);border-bottom-color:var(--accent)}
+.toc-list a.is-active .toc-no{color:var(--accent)}
+
 /* back to top */
 .to-top{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 12px;background:rgba(7,8,10,.86);border:1px solid var(--line);color:var(--dim);font-family:var(--mono);font-size:9px;letter-spacing:.16em;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .3s,transform .3s,visibility .3s,color .3s,border-color .3s;backdrop-filter:blur(8px)}
 .to-top.show{opacity:1;visibility:visible;transform:none}
@@ -162,6 +166,8 @@
 :root{
   --ink:#151619;
   --surface:#222329;
+  --surface-2:var(--surface-2);
+  --shadow-deep:var(--shadow-deep);
   --paper:#EAE6DE;
   --paper-soft:rgba(234,230,222,.76);
   --dim:#AAA69E;
@@ -205,7 +211,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .footer-word{font-family:var(--sans);font-weight:600;letter-spacing:-.065em;-webkit-text-stroke-color:rgba(234,230,222,.14)}
 
 /* ---------- shared inner-page cover ---------- */
-.archive-page .page-hero{min-height:76svh;padding:126px 0 64px;border-bottom:1px solid var(--line);background:linear-gradient(115deg,var(--ink) 0 68%,#1B1C20 68% 100%)}
+.archive-page .page-hero{min-height:76svh;padding:126px 0 64px;border-bottom:1px solid var(--line);background:linear-gradient(115deg,var(--ink) 0 68%,var(--surface-2) 68% 100%)}
 .archive-page .page-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(234,230,222,.025) calc(8.333% - 1px),rgba(234,230,222,.025) 8.333%)}
 .archive-page .page-hero::after{background:linear-gradient(to top,rgba(21,22,25,.35),transparent 65%)}
 .archive-page .hero-main{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(12px,2vw,30px)}
@@ -250,16 +256,16 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 /* ---------- home / archive manifesto ---------- */
 .home-page #manifesto .manifesto-grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(18px,3vw,48px)}
 .home-page #manifesto .manifesto-grid>div{grid-column:1/8}
-.home-page #manifesto .profile{grid-column:9/13;margin-top:clamp(60px,8vw,120px);padding:clamp(20px,2.4vw,32px);border-top:3px solid var(--accent);background:var(--surface);box-shadow:22px 24px 0 #1B1C20}
+.home-page #manifesto .profile{grid-column:9/13;margin-top:clamp(60px,8vw,120px);padding:clamp(20px,2.4vw,32px);border-top:3px solid var(--accent);background:var(--surface);box-shadow:22px 24px 0 var(--surface-2)}
 .home-page .manifesto-text{font-size:clamp(30px,4vw,60px);color:var(--paper)}
 .home-page .manifesto-text strong{font-weight:500}
 .home-page .profile .row{font-family:var(--mono);font-size:9px}
 .home-page .intro-block{margin:clamp(52px,7vw,96px) 0 0 16.666%;padding:clamp(24px,3vw,42px);border-left:1px solid var(--accent);background:var(--surface)}
 
 /* ---------- home / world atlas composition ---------- */
-.home-page #ring{background:linear-gradient(105deg,var(--ink) 0 72%,#1B1C20 72%)}
+.home-page #ring{background:linear-gradient(105deg,var(--ink) 0 72%,var(--surface-2) 72%)}
 .home-page .ring-grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(18px,3vw,48px);align-items:center}
-.home-page .mini-atlas{grid-column:1/8;position:relative;padding:clamp(18px,2.4vw,34px);background:var(--surface);box-shadow:-18px 20px 0 #101114}
+.home-page .mini-atlas{grid-column:1/8;position:relative;padding:clamp(18px,2.4vw,34px);background:var(--surface);box-shadow:-18px 20px 0 var(--shadow-deep)}
 .home-page .ring-copy{grid-column:9/13;position:relative;z-index:3;margin-left:-4%;padding:clamp(24px,3vw,42px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(21,22,25,.94)}
 .home-page .ring-copy h3{font-size:clamp(25px,2.7vw,40px)}
 .home-page .ring-copy p{font-family:var(--sans);font-size:13px}
@@ -300,8 +306,8 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .home-page .work-row:hover .work-arrow{color:var(--accent);transform:translate(3px,-3px)}
 .home-page .work-preview{display:none!important}
 
-/* ---------- warm paper / poetry ---------- */
-.paper-section,.poetry-page{
+/* ---------- warm paper / poetry (tokens + base) ---------- */
+.paper-section{
   --ink:#EAE6DE;
   --paper:#222329;
   --paper-soft:rgba(34,35,41,.78);
@@ -315,7 +321,6 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .paper-section .marquee-item{color:rgba(34,35,41,.66)}
 .paper-section .poem-quote,.paper-section .poem-count .big,.paper-section .poem-links a{color:var(--paper)}
 .paper-section .poem-links a{border-color:var(--line-soft)}
-.poetry-page{background:var(--ink);color:var(--paper)}
 .poetry-page.scrolled .site-nav{background:rgba(234,230,222,.92)}
 .poetry-page .page-hero{background:linear-gradient(115deg,#EAE6DE 0 68%,#DCD5C8 68%)}
 .poetry-page .page-hero::before{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(34,35,41,.035) calc(8.333% - 1px),rgba(34,35,41,.035) 8.333%)}
@@ -342,9 +347,9 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .about-page .self-intro{max-width:none;margin-left:16.666%;padding:clamp(24px,3vw,42px);border-top:0;border-left:1px solid var(--accent);background:var(--surface)}
 .about-page .self-intro .lead{max-width:36em}
 .about-page .route-row:nth-child(even){padding-left:6vw;background:rgba(234,230,222,.018)}
-.about-page #ring{background:linear-gradient(110deg,var(--ink) 0 74%,#1B1C20 74%)}
+.about-page #ring{background:linear-gradient(110deg,var(--ink) 0 74%,var(--surface-2) 74%)}
 .about-page .world-intro{max-width:58ch;margin-left:16.666%;font-family:var(--sans);font-size:14px}
-.about-page .atlas{padding:clamp(22px,3vw,42px);background:var(--surface);box-shadow:24px 26px 0 #101114}
+.about-page .atlas{padding:clamp(22px,3vw,42px);background:var(--surface);box-shadow:24px 26px 0 var(--shadow-deep)}
 .about-page .atlas-node{background:var(--ink)}
 .about-page .atlas-detail{padding:clamp(20px,2.5vw,34px);border-left:0;background:var(--ink)}
 .about-page .world-pillars{gap:1px;border-top:0;background:var(--line-soft)}
@@ -365,7 +370,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 /* ---------- hometown / map and reading rhythm ---------- */
 .hometown-page .hero-map{opacity:.72;filter:grayscale(.4)}
 .hometown-page #geography .map-grid,.hometown-page #memory .map-grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(18px,3vw,48px)}
-.hometown-page #geography .map-visual{grid-column:1/7;padding:clamp(20px,3vw,40px);background:var(--surface);box-shadow:-20px 22px 0 #101114}
+.hometown-page #geography .map-visual{grid-column:1/7;padding:clamp(20px,3vw,40px);background:var(--surface);box-shadow:-20px 22px 0 var(--shadow-deep)}
 .hometown-page #geography .loc-copy{grid-column:8/13;margin-top:72px}
 .hometown-page #memory .map-grid>div{grid-column:1/8}
 .hometown-page #memory .story-aside{grid-column:9/13;margin-top:64px;padding:clamp(20px,2.5vw,34px);background:var(--surface)}
@@ -381,7 +386,8 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .hometown-page .place-tags{grid-column:2;font-family:var(--mono);font-size:8px}
 
 /* ---------- warm paper long read (novel / essays) ---------- */
-.novel-page,.essays-page{
+/* shared warm long-read theme (poetry / novel / essays) */
+.poetry-page,.novel-page,.essays-page{
   --ink:#EAE6DE;
   --paper:#222329;
   --paper-soft:rgba(34,35,41,.78);
@@ -408,7 +414,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 
 /* ---------- shelf / typographic covers ---------- */
 .shelf-page .shelf-wrap{max-width:none}
-.shelf-page .shelf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretch;gap:clamp(16px,2.4vw,34px);width:100%;max-width:none;height:auto;padding:clamp(24px,4vw,56px);border:0;background:#1B1C20;box-shadow:none}
+.shelf-page .shelf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretch;gap:clamp(16px,2.4vw,34px);width:100%;max-width:none;height:auto;padding:clamp(24px,4vw,56px);border:0;background:var(--surface-2);box-shadow:none}
 .shelf-page .spine{position:relative;width:auto;height:auto;min-width:0;aspect-ratio:2/3;display:flex;align-items:flex-end;justify-content:flex-start;padding:22px 16px;writing-mode:horizontal-tb;text-align:left;font-family:var(--cn);font-size:clamp(14px,1.35vw,20px);line-height:1.45;letter-spacing:.08em;border-radius:0;background:#DCD5C8;color:#222329;box-shadow:8px 10px 0 rgba(0,0,0,.22);transform-origin:center;transition:transform .2s var(--ease),box-shadow .2s}
 .shelf-page .spine::before{content:'KASHIU / COLLECTION';position:absolute;top:16px;left:16px;right:16px;font-family:var(--mono);font-size:6px;letter-spacing:.14em;line-height:1.6;opacity:.64}
 .shelf-page .spine::after{content:'';position:absolute;left:16px;right:16px;top:38px;height:1px;background:currentColor;opacity:.28}
@@ -489,7 +495,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .sec-line{display:none}
   .sec-title{font-size:clamp(34px,11vw,48px)}
   .sec-title em{font-size:.36em}
-  .archive-page .page-hero{min-height:auto;padding:140px 0 48px;background:linear-gradient(155deg,var(--ink) 0 76%,#1B1C20 76%)}
+  .archive-page .page-hero{min-height:auto;padding:140px 0 48px;background:linear-gradient(155deg,var(--ink) 0 76%,var(--surface-2) 76%)}
   .archive-page .hero-top-meta{top:92px}
   .archive-page .hero-top-meta .wrap>span:nth-child(2){display:none}
   .archive-page .hero-kicker{grid-column:1/13;gap:10px;font-size:8px;letter-spacing:.22em;white-space:nowrap}
@@ -498,6 +504,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .poetry-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
   .novel-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
   .archive-page .page-hero .hero-title{font-size:clamp(70px,23vw,110px)}
+  .essays-page .page-hero .hero-title{font-size:clamp(48px,12vw,84px)}
   .archive-page .page-hero .hero-title .pinyin{margin-left:4%;font-size:.25em}
   .archive-page .page-hero .hero-sub{grid-column:1/13;padding:22px;margin-top:22px}
   .archive-page .hero-foot{margin-top:28px}
@@ -511,7 +518,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .hero-motto{display:none}
   .editorial-hero .hero-sub{margin-top:36px}
   .home-page #manifesto .manifesto-grid>div,.home-page #manifesto .profile{grid-column:1/13}
-  .home-page #manifesto .profile{margin-top:40px;box-shadow:12px 14px 0 #1B1C20}
+  .home-page #manifesto .profile{margin-top:40px;box-shadow:12px 14px 0 var(--surface-2)}
   .home-page .intro-block{margin-left:0}
   .home-page #ring{background:var(--ink)}
   .home-page .ring-grid{column-gap:0;row-gap:32px}
@@ -526,7 +533,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .about-page #manifesto .row-list{margin-top:36px}
   .about-page .self-intro{margin-left:0}
   .about-page .world-intro{margin-left:0}
-  .about-page .atlas{padding:16px;box-shadow:12px 14px 0 #101114}
+  .about-page .atlas{padding:16px;box-shadow:12px 14px 0 var(--shadow-deep)}
   .about-page .world-pillars{grid-template-columns:1fr}
   .about-page .world-pillars .pillar:nth-child(2){margin-top:0}
   .about-page .domain-row:nth-child(even){margin-left:0}

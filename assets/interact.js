@@ -362,3 +362,76 @@
     }
   }
 })();
+
+/* ---------------- reading progress bar (#progress) ---------------- */
+(function(){
+  var bar = document.getElementById('progress');
+  if (!bar) return;
+  function set(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var p = max > 0 ? window.scrollY / max : 0;
+    if (p < 0) p = 0; else if (p > 1) p = 1;
+    bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ set(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', set);
+  set();
+})();
+
+/* ---------------- in-page TOC: highlight current section on scroll ---------------- */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var links = Array.prototype.slice.call(document.querySelectorAll('a[href^="#"]'))
+    .filter(function(a){
+      if (!a.closest('.toc-list, .index-list, .toc')) return false;
+      var id = a.getAttribute('href').slice(1);
+      return id && !!document.getElementById(id);
+    });
+  if (!links.length) return;
+  var byId = {};
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    (byId[id] = byId[id] || []).push(a);
+  });
+  var targets = Object.keys(byId).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  function clear(){ links.forEach(function(a){ a.classList.remove('is-active'); }); }
+  function activate(id){
+    clear();
+    (byId[id] || []).forEach(function(a){ a.classList.add('is-active'); });
+  }
+  if (!('IntersectionObserver' in window)){ return; }
+  var activeId = null;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ activeId = en.target.id; }
+    });
+    if (activeId) activate(activeId);
+  }, { rootMargin: '-22% 0px -68% 0px', threshold: 0 });
+  targets.forEach(function(t){ io.observe(t); });
+
+  var first = targets[0], last = targets[targets.length - 1];
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      var doc = document.documentElement;
+      // scrolled back into the hero: nothing active
+      if (first && first.getBoundingClientRect().top > window.innerHeight * 0.22){
+        clear(); activeId = null; return;
+      }
+      // pinned to the very bottom: keep the last section active
+      if (last && window.innerHeight + window.scrollY >= doc.scrollHeight - 4){
+        activate(last.id); activeId = last.id;
+      }
+    });
+  }, { passive: true });
+  if (reduce) clear();
+})();
