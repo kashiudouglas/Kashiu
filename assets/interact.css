@@ -380,8 +380,8 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .hometown-page .place-title{font-size:clamp(24px,3vw,42px)}
 .hometown-page .place-tags{grid-column:2;font-family:var(--mono);font-size:8px}
 
-/* ---------- novel / warm paper long read ---------- */
-.novel-page{
+/* ---------- warm paper long read (novel / essays) ---------- */
+.novel-page,.essays-page{
   --ink:#EAE6DE;
   --paper:#222329;
   --paper-soft:rgba(34,35,41,.78);
@@ -393,18 +393,18 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   background:var(--ink);
   color:var(--paper);
 }
-.novel-page .site-nav{border-bottom-color:var(--line-soft)}
-.novel-page.scrolled .site-nav{background:rgba(234,230,222,.92);border-bottom-color:var(--line)}
-.novel-page .page-hero{background:linear-gradient(115deg,#EAE6DE 0 68%,#DCD5C8 68%)}
-.novel-page .page-hero::before{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(34,35,41,.035) calc(8.333% - 1px),rgba(34,35,41,.035) 8.333%)}
-.novel-page .page-hero::after{background:linear-gradient(to top,rgba(234,230,222,.45),transparent 65%)}
-.novel-page .page-hero .hero-title .pinyin{-webkit-text-stroke-color:rgba(34,35,41,.32)}
-.novel-page .page-hero .hero-sub{background:#DCD5C8;box-shadow:18px 20px 0 rgba(34,35,41,.08)}
-.novel-page .menu-overlay{background:#DCD5C8}
-.novel-page .footer-word{-webkit-text-stroke-color:rgba(34,35,41,.18)}
-.novel-page .ch-head{background:rgba(234,230,222,.94)}
-.novel-page .toc-vol-head strong,.novel-page .vol-title{color:var(--paper)}
-.novel-page .progress{background:var(--accent)}
+.novel-page .site-nav,.essays-page .site-nav{border-bottom-color:var(--line-soft)}
+.novel-page.scrolled .site-nav,.essays-page.scrolled .site-nav{background:rgba(234,230,222,.92);border-bottom-color:var(--line)}
+.novel-page .page-hero,.essays-page .page-hero{background:linear-gradient(115deg,#EAE6DE 0 68%,#DCD5C8 68%)}
+.novel-page .page-hero::before,.essays-page .page-hero::before{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(34,35,41,.035) calc(8.333% - 1px),rgba(34,35,41,.035) 8.333%)}
+.novel-page .page-hero::after,.essays-page .page-hero::after{background:linear-gradient(to top,rgba(234,230,222,.45),transparent 65%)}
+.novel-page .page-hero .hero-title .pinyin,.essays-page .page-hero .hero-title .pinyin{-webkit-text-stroke-color:rgba(34,35,41,.32)}
+.novel-page .page-hero .hero-sub,.essays-page .page-hero .hero-sub{background:#DCD5C8;box-shadow:18px 20px 0 rgba(34,35,41,.08)}
+.novel-page .menu-overlay,.essays-page .menu-overlay{background:#DCD5C8}
+.novel-page .footer-word,.essays-page .footer-word{-webkit-text-stroke-color:rgba(34,35,41,.18)}
+.novel-page .ch-head,.essays-page .ch-head,.essays-page .essay-head{background:rgba(234,230,222,.94)}
+.novel-page .toc-vol-head strong,.novel-page .vol-title,.essays-page .toc-vol-head strong,.essays-page .vol-title,.essays-page .cat-title{color:var(--paper)}
+.novel-page .progress,.essays-page .progress{background:var(--accent)}
 
 /* ---------- shelf / typographic covers ---------- */
 .shelf-page .shelf-wrap{max-width:none}
