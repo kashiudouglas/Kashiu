@@ -273,6 +273,8 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .home-page .work-row:nth-child(3){grid-column:1/6}
 .home-page .work-row:nth-child(4){grid-column:6/13;margin-top:72px}
 .home-page .work-row:nth-child(5){grid-column:3/11;margin-top:12px}
+.home-page .work-row:nth-child(6){grid-column:2/12;margin-top:12px}
+.home-page .work-row:nth-child(6) .work-art{aspect-ratio:21/8}
 .home-page .work-row:hover{transform:translateY(-4px);background:#282A30}
 .home-page .work-art{grid-area:art;position:relative;display:flex;align-items:flex-end;aspect-ratio:16/10;overflow:hidden;padding:clamp(20px,3vw,44px);background:#191A1E}
 .home-page .work-row:nth-child(2) .work-art{aspect-ratio:4/5}
@@ -283,6 +285,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .home-page .work-row[data-art='2'] .work-art{background:repeating-linear-gradient(90deg,rgba(34,35,41,.1) 0 1px,transparent 1px 22px),#D9D2C4}
 .home-page .work-row[data-art='3'] .work-art{background:linear-gradient(135deg,transparent 0 48%,rgba(182,65,72,.8) 48% 52%,transparent 52%),repeating-linear-gradient(0deg,rgba(234,230,222,.07) 0 1px,transparent 1px 28px),#191A1E}
 .home-page .work-row[data-art='4'] .work-art{background:repeating-linear-gradient(90deg,#D8D1C3 0 9%,#AAA496 9% 10%,#2B2C31 10% 19%,#B64148 19% 20%)}
+.home-page .work-row[data-art='5'] .work-art{background:radial-gradient(circle at 66% 58%,rgba(182,65,72,.55),transparent 30%),linear-gradient(180deg,transparent 0 72%,rgba(234,230,222,.12) 72% 72.2%,transparent 72.2%),repeating-linear-gradient(90deg,rgba(234,230,222,.055) 0 1px,transparent 1px 26px),#191A1E}
 .home-page .art-word{position:relative;z-index:1;font-family:var(--sans);font-size:clamp(38px,5.6vw,86px);font-weight:600;line-height:.82;letter-spacing:-.075em;color:var(--paper)}
 .home-page .work-row[data-art='2'] .art-word{color:var(--surface)}
 .home-page .work-row[data-art='4'] .art-word{padding:12px;background:rgba(21,22,25,.88)}
@@ -377,6 +380,32 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .hometown-page .place-title{font-size:clamp(24px,3vw,42px)}
 .hometown-page .place-tags{grid-column:2;font-family:var(--mono);font-size:8px}
 
+/* ---------- novel / warm paper long read ---------- */
+.novel-page{
+  --ink:#EAE6DE;
+  --paper:#222329;
+  --paper-soft:rgba(34,35,41,.78);
+  --dim:#625F59;
+  --muted:#777169;
+  --line:rgba(34,35,41,.2);
+  --line-soft:rgba(34,35,41,.1);
+  --accent:#9F3F46;
+  background:var(--ink);
+  color:var(--paper);
+}
+.novel-page .site-nav{border-bottom-color:var(--line-soft)}
+.novel-page.scrolled .site-nav{background:rgba(234,230,222,.92);border-bottom-color:var(--line)}
+.novel-page .page-hero{background:linear-gradient(115deg,#EAE6DE 0 68%,#DCD5C8 68%)}
+.novel-page .page-hero::before{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(34,35,41,.035) calc(8.333% - 1px),rgba(34,35,41,.035) 8.333%)}
+.novel-page .page-hero::after{background:linear-gradient(to top,rgba(234,230,222,.45),transparent 65%)}
+.novel-page .page-hero .hero-title .pinyin{-webkit-text-stroke-color:rgba(34,35,41,.32)}
+.novel-page .page-hero .hero-sub{background:#DCD5C8;box-shadow:18px 20px 0 rgba(34,35,41,.08)}
+.novel-page .menu-overlay{background:#DCD5C8}
+.novel-page .footer-word{-webkit-text-stroke-color:rgba(34,35,41,.18)}
+.novel-page .ch-head{background:rgba(234,230,222,.94)}
+.novel-page .toc-vol-head strong,.novel-page .vol-title{color:var(--paper)}
+.novel-page .progress{background:var(--accent)}
+
 /* ---------- shelf / typographic covers ---------- */
 .shelf-page .shelf-wrap{max-width:none}
 .shelf-page .shelf{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretch;gap:clamp(16px,2.4vw,34px);width:100%;max-width:none;height:auto;padding:clamp(24px,4vw,56px);border:0;background:#1B1C20;box-shadow:none}
@@ -467,6 +496,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .archive-page .hero-kicker::before{flex:none}
   .archive-page .hero-kicker .cn{letter-spacing:.12em}
   .poetry-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
+  .novel-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
   .archive-page .page-hero .hero-title{font-size:clamp(70px,23vw,110px)}
   .archive-page .page-hero .hero-title .pinyin{margin-left:4%;font-size:.25em}
   .archive-page .page-hero .hero-sub{grid-column:1/13;padding:22px;margin-top:22px}
