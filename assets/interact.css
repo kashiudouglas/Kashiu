@@ -180,7 +180,8 @@
 }
 body{font-family:var(--sans);background:var(--ink)}
 ::selection{color:var(--paper)}
-#preloader,#cursor{display:none!important}
+#preloader{display:none!important}
+html:not(.custom-cursor) #cursor{display:none!important}
 .grain{opacity:.032;mix-blend-mode:soft-light}
 .js .reveal{transform:translateY(16px);transition:opacity .4s var(--ease),transform .4s var(--ease);transition-delay:var(--d,0s)}
 .section{padding:clamp(96px,11vw,168px) 0;border-top:1px solid var(--line-soft)}
@@ -387,7 +388,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 
 /* ---------- warm paper long read (novel / essays) ---------- */
 /* shared warm long-read theme (poetry / novel / essays) */
-.poetry-page,.novel-page,.essays-page{
+.poetry-page,.novel-page,.essays-page,.diary-page{
   --ink:#EAE6DE;
   --paper:#222329;
   --paper-soft:rgba(34,35,41,.78);
@@ -399,18 +400,18 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   background:var(--ink);
   color:var(--paper);
 }
-.novel-page .site-nav,.essays-page .site-nav{border-bottom-color:var(--line-soft)}
-.novel-page.scrolled .site-nav,.essays-page.scrolled .site-nav{background:rgba(234,230,222,.92);border-bottom-color:var(--line)}
-.novel-page .page-hero,.essays-page .page-hero{background:linear-gradient(115deg,#EAE6DE 0 68%,#DCD5C8 68%)}
-.novel-page .page-hero::before,.essays-page .page-hero::before{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(34,35,41,.035) calc(8.333% - 1px),rgba(34,35,41,.035) 8.333%)}
-.novel-page .page-hero::after,.essays-page .page-hero::after{background:linear-gradient(to top,rgba(234,230,222,.45),transparent 65%)}
-.novel-page .page-hero .hero-title .pinyin,.essays-page .page-hero .hero-title .pinyin{-webkit-text-stroke-color:rgba(34,35,41,.32)}
-.novel-page .page-hero .hero-sub,.essays-page .page-hero .hero-sub{background:#DCD5C8;box-shadow:18px 20px 0 rgba(34,35,41,.08)}
-.novel-page .menu-overlay,.essays-page .menu-overlay{background:#DCD5C8}
-.novel-page .footer-word,.essays-page .footer-word{-webkit-text-stroke-color:rgba(34,35,41,.18)}
-.novel-page .ch-head,.essays-page .ch-head,.essays-page .essay-head{background:rgba(234,230,222,.94)}
+.novel-page .site-nav,.essays-page .site-nav,.diary-page .site-nav{border-bottom-color:var(--line-soft)}
+.novel-page.scrolled .site-nav,.essays-page.scrolled .site-nav,.diary-page.scrolled .site-nav{background:rgba(234,230,222,.92);border-bottom-color:var(--line)}
+.novel-page .page-hero,.essays-page .page-hero,.diary-page .page-hero{background:linear-gradient(115deg,#EAE6DE 0 68%,#DCD5C8 68%)}
+.novel-page .page-hero::before,.essays-page .page-hero::before,.diary-page .page-hero::before{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),rgba(34,35,41,.035) calc(8.333% - 1px),rgba(34,35,41,.035) 8.333%)}
+.novel-page .page-hero::after,.essays-page .page-hero::after,.diary-page .page-hero::after{background:linear-gradient(to top,rgba(234,230,222,.45),transparent 65%)}
+.novel-page .page-hero .hero-title .pinyin,.essays-page .page-hero .hero-title .pinyin,.diary-page .page-hero .hero-title .pinyin{-webkit-text-stroke-color:rgba(34,35,41,.32)}
+.novel-page .page-hero .hero-sub,.essays-page .page-hero .hero-sub,.diary-page .page-hero .hero-sub{background:#DCD5C8;box-shadow:18px 20px 0 rgba(34,35,41,.08)}
+.novel-page .menu-overlay,.essays-page .menu-overlay,.diary-page .menu-overlay{background:#DCD5C8}
+.novel-page .footer-word,.essays-page .footer-word,.diary-page .footer-word{-webkit-text-stroke-color:rgba(34,35,41,.18)}
+.novel-page .ch-head,.essays-page .ch-head,.essays-page .essay-head,.diary-page .ch-head{background:rgba(234,230,222,.94)}
 .novel-page .toc-vol-head strong,.novel-page .vol-title,.essays-page .toc-vol-head strong,.essays-page .vol-title,.essays-page .cat-title{color:var(--paper)}
-.novel-page .progress,.essays-page .progress{background:var(--accent)}
+.novel-page .progress,.essays-page .progress,.diary-page .progress{background:var(--accent)}
 
 /* ---------- shelf / typographic covers ---------- */
 .shelf-page .shelf-wrap{max-width:none}
@@ -503,8 +504,9 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .archive-page .hero-kicker .cn{letter-spacing:.12em}
   .poetry-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
   .novel-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
+  .diary-page .page-hero{background:linear-gradient(155deg,#EAE6DE 0 76%,#DCD5C8 76%)}
   .archive-page .page-hero .hero-title{font-size:clamp(70px,23vw,110px)}
-  .essays-page .page-hero .hero-title{font-size:clamp(48px,12vw,84px)}
+  .essays-page .page-hero .hero-title,.diary-page .page-hero .hero-title{font-size:clamp(48px,12vw,84px)}
   .archive-page .page-hero .hero-title .pinyin{margin-left:4%;font-size:.25em}
   .archive-page .page-hero .hero-sub{grid-column:1/13;padding:22px;margin-top:22px}
   .archive-page .hero-foot{margin-top:28px}

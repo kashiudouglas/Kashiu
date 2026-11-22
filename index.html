@@ -188,8 +188,8 @@ section[id],header[id]{scroll-margin-top:88px}
 #cursor.is-hover .cursor-ring{transform:scale(2.05);border-color:var(--paper)}
 #cursor.is-hover .cursor-dot{opacity:0}
 @media (pointer:fine){
-  #cursor{display:block}
-  html.js body,html.js a,html.js button,html.js [data-cursor]{cursor:none}
+  .custom-cursor #cursor{display:block}
+  .custom-cursor body,.custom-cursor a,.custom-cursor button,.custom-cursor [data-cursor]{cursor:none}
 }
 .progress{
   position:fixed;
@@ -1797,6 +1797,7 @@ body.menu-open{overflow:hidden}
       </div>
       <div class="more-links">
         <a href="essays.html">思想与随笔 <span>Essays</span></a>
+        <a href="diary.html">陈泥罐 <span>Diary</span></a>
         <a href="changelog.html">更新日志 <span>Changelog</span></a>
         <a href="tip.html">打赏 <span>Support</span></a>
         <a href="#top">回到顶部 <span>Top</span></a>
@@ -1828,6 +1829,7 @@ body.menu-open{overflow:hidden}
   /* ---------- custom cursor ---------- */
   var cursor = document.getElementById('cursor');
   if (cursor && window.matchMedia('(pointer:fine)').matches && !reduce) {
+    document.documentElement.classList.add('custom-cursor');
     var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
     var rx = cx, ry = cy;
     window.addEventListener('pointermove', function(e){
