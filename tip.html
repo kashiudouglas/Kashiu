@@ -110,39 +110,6 @@ body.menu-open{overflow:hidden}
 .scroll-cue .bar::after{content:"";position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);animation:slide 2.6s var(--ease) infinite}
 @keyframes slide{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
 
-/* shelf */
-.shelf-wrap{max-width:1180px}
-.shelf{position:relative;display:flex;align-items:flex-end;justify-content:flex-start;gap:0;width:fit-content;max-width:100%;height:clamp(180px,23vw,286px);padding:0 clamp(4px,.8vw,10px);border-bottom:1px solid var(--line);box-shadow:0 26px 40px -34px rgba(0,0,0,.95)}
-.spine{
-  --w:clamp(38px,3.4vw,52px);
-  position:relative;
-  width:var(--w);
-  height:var(--h,84%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:16px 0;
-  writing-mode:vertical-rl;
-  font-family:var(--cn);
-  font-weight:400;
-  font-size:clamp(11px,1.02vw,14px);
-  letter-spacing:.18em;
-  color:rgba(7,8,10,.84);
-  background:linear-gradient(180deg,#EFEBE2 0%,#DAD4C5 100%);
-  border-radius:2px 2px 0 0;
-  box-shadow:inset -1px 0 0 rgba(7,8,10,.16),inset 1px 0 0 rgba(255,255,255,.4);
-  transform-origin:bottom center;
-  transition:transform .55s var(--ease),box-shadow .55s var(--ease),filter .55s var(--ease);
-}
-.spine:nth-child(2n){background:linear-gradient(180deg,#D9D3C4 0%,#C3BCAA 100%)}
-.spine:nth-child(3n){background:linear-gradient(180deg,#B7B0A0 0%,#9E9787 100%)}
-.spine:nth-child(5n){background:linear-gradient(180deg,#8C8576 0%,#6F6959 100%);color:rgba(239,235,226,.92)}
-.spine:hover,.spine:focus-visible{transform:translateY(-16px) scale(1.04);box-shadow:0 26px 34px -20px rgba(0,0,0,.9),inset -1px 0 0 rgba(7,8,10,.16);filter:brightness(1.04)}
-.spine.fig{background:linear-gradient(180deg,rgba(216,80,47,.34) 0%,rgba(216,80,47,.12) 100%);border:1px solid rgba(216,80,47,.58);color:var(--paper);box-shadow:none}
-.spine.fig:hover{border-color:var(--accent);background:linear-gradient(180deg,rgba(216,80,47,.46) 0%,rgba(216,80,47,.18) 100%)}
-.spine.link{display:flex;background:transparent;border:1px solid var(--line);color:var(--paper-soft);box-shadow:none;font-weight:300}
-.spine.link:hover{border-color:var(--accent);color:var(--accent)}
-.shelf-note{margin-top:18px;font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
 .outro{margin-top:clamp(54px,7vw,92px);padding-top:26px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.18em;color:var(--muted)}
 .outro a{color:var(--paper-soft);border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .3s,border-color .3s}
 .outro a:hover{color:var(--accent);border-color:var(--accent)}
@@ -152,24 +119,18 @@ body.menu-open{overflow:hidden}
   .menu-toggle{display:block}
   .hero-sub{grid-template-columns:1fr;gap:30px}
   .hero-meta{justify-content:flex-start}
-  .shelf{height:170px}
-  .spine{--w:clamp(20px,6.5vw,38px);flex:0 1 auto;min-width:0;padding:12px 0}
-  .spine:hover,.spine:focus-visible{transform:translateY(-10px) scale(1.02)}
 }
 @media (max-width:640px){
   .page-hero{min-height:54svh;padding:96px 0 44px}
   .hero-top-meta{top:84px}
   .hero-top-meta .wrap span:nth-child(2){display:none}
   .hero-title{font-size:clamp(64px,20vw,110px)}
-  .shelf{height:150px}
-  .spine{font-size:10px;letter-spacing:.12em}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .reveal{opacity:1;transform:none;transition:none}
   .hero-title,.hero-sub,.hero-foot{animation:none}
   .scroll-cue .bar::after{animation:none;transform:none}
-  .spine{transition:none}
 }
 .footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
 .footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
@@ -190,12 +151,13 @@ body.menu-open{overflow:hidden}
       任喆<span>KASHIU</span>
     </a>
     <nav class="nav-links" aria-label="主导航">
-      <a href="index.html#manifesto"><i>01</i>关于</a>
+      <a href="about-me.html"><i>01</i>关于</a>
       <a href="index.html#ring"><i>02</i>环</a>
       <a href="index.html#works"><i>03</i>作品</a>
       <a href="poetry.html"><i>04</i>诗集</a>
-      <a href="hometown.html"><i>05</i>家乡</a>
-      <a href="index.html#contact"><i>06</i>联系</a>
+      <a href="art.html"><i>05</i>画作</a>
+    <a href="hometown.html"><i>06</i>家乡</a>
+      <a href="index.html#contact"><i>07</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span>
@@ -205,12 +167,13 @@ body.menu-open{overflow:hidden}
 
 <div class="menu-overlay" id="menuOverlay">
   <nav aria-label="移动端导航">
-    <a href="index.html#manifesto"><i>01</i>关于</a>
+    <a href="about-me.html"><i>01</i>关于</a>
     <a href="index.html#ring"><i>02</i>环</a>
     <a href="index.html#works"><i>03</i>作品</a>
     <a href="poetry.html"><i>04</i>诗集</a>
-    <a href="hometown.html"><i>05</i>家乡</a>
-    <a href="index.html#contact"><i>06</i>联系</a>
+    <a href="art.html"><i>05</i>画作</a>
+    <a href="hometown.html"><i>06</i>家乡</a>
+    <a href="index.html#contact"><i>07</i>联系</a>
   </nav>
   <div class="mo-foot">
     <span>扶风 · 宝鸡 · 陕西</span>

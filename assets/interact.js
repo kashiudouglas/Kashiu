@@ -2,7 +2,7 @@
    interact.js — shared interactive behavior
    - per-poem like + favorite (poetry.html)
    - bookmark-page popover (footer, all pages)
-   - tip coin animation + modal + wallet copy (index.html)
+   - favorability + wallet copy (tip.html)
    ============================================================ */
 (function(){
   'use strict';
@@ -246,29 +246,6 @@
     }
   }
 
-  /* ---------- tip modal ---------- */
-  var tipModal = document.getElementById('tipModal');
-  var tipOpen = document.getElementById('tipOpen');
-  function openTip(){
-    if (!tipModal) return;
-    tipModal.hidden = false;
-    requestAnimationFrame(function(){ tipModal.classList.add('show'); });
-    document.body.style.overflow = 'hidden';
-  }
-  function closeTip(){
-    if (!tipModal) return;
-    tipModal.classList.remove('show');
-    setTimeout(function(){ if (!tipModal.classList.contains('show')) tipModal.hidden = true; }, 420);
-    document.body.style.overflow = '';
-  }
-  if (tipOpen) tipOpen.addEventListener('click', openTip);
-  if (tipModal){
-    tipModal.addEventListener('click', function(e){
-      if (e.target.hasAttribute('data-close') || e.target.closest('[data-close]')) closeTip();
-    });
-  }
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeTip(); } });
-
   var walletCopy = document.querySelector('.copy-btn[data-copy-target]');
   if (walletCopy){
     walletCopy.addEventListener('click', function(){
@@ -292,9 +269,10 @@
     link.setAttribute('aria-current', value || 'page');
   }
 
-  var pageFor = { 'poetry.html':'04', 'hometown.html':'05', 'shelf.html':'06', 'about-me.html':'01' };
+  var pageFor = { 'poetry.html':'04', 'art.html':'05', 'hometown.html':'06', 'about-me.html':'01' };
   var wanted = pageFor[path];
   if (wanted){
+    clear();
     links.forEach(function(a){
       var i = a.querySelector('i');
       if (i && i.textContent.trim() === wanted) mark(a);
@@ -321,8 +299,10 @@
     }
     clear();
     if (!current) return;
-    var link = document.querySelector('.nav-links a[href="#' + current + '"], .menu-overlay nav a[href="#' + current + '"]');
-    if (link) mark(link, 'true');
+    links.forEach(function(a){
+      var href = a.getAttribute('href');
+      if (href === '#' + current || href === 'index.html#' + current) mark(a, 'true');
+    });
   }
 
   var ticking = false;
@@ -360,7 +340,7 @@
 /* ---------------- 返回首页时回到离开的位置 ---------------- */
 (function(){
   var path = location.pathname.split('/').pop() || 'index.html';
-  var subs = ['about-me.html','poetry.html','hometown.html','shelf.html','tip.html'];
+  var subs = ['about-me.html','poetry.html','art.html','hometown.html','tip.html'];
 
   if (path === 'index.html') {
     // 离开首页去子页时，记住当前滚动位置

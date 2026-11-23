@@ -774,74 +774,6 @@ body.menu-open{overflow:hidden}
 .work-row:hover .work-no{color:var(--accent)}
 .work-row:hover .work-title{color:var(--accent);transform:translateX(10px)}
 .work-row:hover .work-arrow{color:var(--paper);transform:translate(5px,-5px)}
-.work-preview{
-  position:fixed;
-  top:0;left:0;
-  z-index:80;
-  width:clamp(220px,22vw,320px);
-  aspect-ratio:4/3;
-  border:1px solid rgba(239,235,226,.22);
-  overflow:hidden;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .4s var(--ease);
-  will-change:transform;
-}
-.work-preview.on{opacity:1}
-.work-preview .pv-art{
-  position:absolute;
-  inset:0;
-  transition:transform .8s var(--ease);
-}
-.work-preview[data-art="1"] .pv-art{
-  background:
-    radial-gradient(circle at 68% 38%,rgba(216,80,47,.5),transparent 52%),
-    repeating-radial-gradient(circle at 30% 62%,rgba(239,235,226,.2) 0 1px,transparent 1px 24px),
-    linear-gradient(150deg,#111216,#07080A);
-}
-.work-preview[data-art="2"] .pv-art{
-  background:
-    repeating-linear-gradient(90deg,rgba(239,235,226,.12) 0 1px,transparent 1px 22px),
-    linear-gradient(180deg,#0C0D10,#14110D);
-}
-.work-preview[data-art="3"] .pv-art{
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 108%,rgba(199,167,108,.55),transparent 62%),
-    linear-gradient(180deg,#0A0B0E,#0D0B08);
-}
-.work-preview[data-art="4"] .pv-art{
-  background:
-    repeating-linear-gradient(0deg,rgba(239,235,226,.1) 0 1px,transparent 1px 26px),
-    repeating-linear-gradient(90deg,rgba(239,235,226,.1) 0 1px,transparent 1px 26px),
-    linear-gradient(140deg,#0B0C0F,#111318);
-}
-.work-preview .pv-no{
-  position:absolute;
-  top:14px;left:16px;
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:clamp(30px,3vw,46px);
-  line-height:1;
-  color:rgba(239,235,226,.9);
-}
-.work-preview .pv-meta{
-  position:absolute;
-  left:16px;right:16px;bottom:14px;
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  gap:10px;
-  font-size:9px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:rgba(239,235,226,.72);
-}
-.work-preview .pv-title{
-  font-family:var(--cn);
-  font-size:13px;
-  letter-spacing:.08em;
-  color:var(--paper);
-}
 
 /* ---------------- poetry ---------------- */
 .marquee{
@@ -1117,6 +1049,15 @@ body.menu-open{overflow:hidden}
 .more-card strong em{font-family:var(--serif);font-style:italic;font-size:10px;color:var(--muted);letter-spacing:.02em}
 .more-card p{font-size:11px;line-height:1.8;letter-spacing:.04em;color:var(--muted)}
 .more-card:hover strong{color:var(--accent)}
+.more-card-visual{position:relative;min-height:190px;padding:0;overflow:hidden;isolation:isolate;background:#19171D}
+.more-card-visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;transition:transform .45s var(--ease)}
+.more-card-visual::after{content:"";position:absolute;inset:45% 0 0;z-index:1;background:linear-gradient(transparent,rgba(12,10,16,.94));pointer-events:none}
+.more-visual-copy{position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;width:100%;height:100%;min-height:190px;justify-content:flex-end;padding:clamp(18px,2.2vw,26px)}
+.more-card-visual .n{color:#E4CDDE}
+.more-card-visual strong{color:#F4EAF1;text-shadow:0 2px 12px #000}
+.more-card-visual:hover{background:#19171D}
+.more-card-visual:hover>img{transform:scale(1.06)}
+.more-card-visual:hover strong{color:#FFF}
 @media (max-width:860px){.more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.more-grid{grid-template-columns:1fr}}
 .more-links{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:clamp(18px,2.4vw,26px);font-family:var(--mono);font-size:10px;letter-spacing:.14em}
@@ -1235,7 +1176,6 @@ body.menu-open{overflow:hidden}
   .stat:nth-child(odd){border-left:none;padding-left:0}
   .stat:nth-child(-n+2){border-bottom:1px solid var(--line-soft)}
   .contact-grid{gap:40px}
-  .work-preview{display:none}
 }
 @media (max-width:640px){
   body{font-size:13px}
@@ -1307,12 +1247,13 @@ body.menu-open{overflow:hidden}
       任喆<span>KASHIU</span>
     </a>
     <nav class="nav-links" aria-label="主导航">
-      <a href="#manifesto"><i>01</i>关于</a>
-      <a href="#ring"><i>02</i>环</a>
-      <a href="#works"><i>03</i>作品</a>
+      <a href="about-me.html"><i>01</i>关于</a>
+      <a href="index.html#ring"><i>02</i>环</a>
+      <a href="index.html#works"><i>03</i>作品</a>
       <a href="poetry.html"><i>04</i>诗集</a>
-      <a href="hometown.html"><i>05</i>家乡</a>
-      <a href="#contact"><i>06</i>联系</a>
+      <a href="art.html"><i>05</i>画作</a>
+      <a href="hometown.html"><i>06</i>家乡</a>
+      <a href="index.html#contact"><i>07</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span>
@@ -1322,12 +1263,13 @@ body.menu-open{overflow:hidden}
 
 <div class="menu-overlay" id="menuOverlay">
   <nav aria-label="移动端导航">
-    <a href="#manifesto"><i>01</i>关于</a>
-    <a href="#ring"><i>02</i>环</a>
-    <a href="#works"><i>03</i>作品</a>
+    <a href="about-me.html"><i>01</i>关于</a>
+    <a href="index.html#ring"><i>02</i>环</a>
+    <a href="index.html#works"><i>03</i>作品</a>
     <a href="poetry.html"><i>04</i>诗集</a>
-    <a href="hometown.html"><i>05</i>家乡</a>
-    <a href="#contact"><i>06</i>联系</a>
+    <a href="art.html"><i>05</i>画作</a>
+    <a href="hometown.html"><i>06</i>家乡</a>
+    <a href="index.html#contact"><i>07</i>联系</a>
   </nav>
   <div class="mo-foot">
     <span>扶风 · 宝鸡 · 陕西</span>
@@ -1568,20 +1510,23 @@ body.menu-open{overflow:hidden}
           <span class="work-tags">Character<br>Story</span>
           <span class="work-arrow">↗</span>
         </a>
-        <a class="work-row reveal" href="index.html"
-           data-no="05" data-title="个人网站" data-tag="HTML / CSS" data-art="1">
-          <span class="work-art" aria-hidden="true"><span class="art-word">ORDER<br>+ CHAOS</span><span class="art-caption">STATIC HTML / CSS / JS</span></span>
+        <a class="work-row reveal" href="art.html"
+           data-no="05" data-title="神的画作" data-tag="Art / Pixels" data-art="4">
+          <span class="work-art" aria-hidden="true"><span class="art-word">DIVINE<br>CANVAS</span><span class="art-caption">PAINTING / CHARACTER / PIXELS</span></span>
           <span class="work-no">(05)</span>
+          <span class="work-title">神的画作<em>绘画、角色与像素</em></span>
+          <span class="work-tags">Art<br>Collection</span>
+          <span class="work-arrow">↗</span>
+        </a>
+        <a class="work-row reveal" href="index.html"
+           data-no="06" data-title="个人网站" data-tag="HTML / CSS" data-art="1">
+          <span class="work-art" aria-hidden="true"><span class="art-word">ORDER<br>+ CHAOS</span><span class="art-caption">STATIC HTML / CSS / JS</span></span>
+          <span class="work-no">(06)</span>
           <span class="work-title">个人网站<em>你正在浏览的页面</em></span>
           <span class="work-tags">Static<br>HTML · CSS</span>
           <span class="work-arrow">↗</span>
         </a>
 
-        <div class="work-preview" id="workPreview" aria-hidden="true">
-          <div class="pv-art"></div>
-          <span class="pv-no">01</span>
-          <span class="pv-meta"><span class="pv-title">环 · Ring</span><span class="pv-tag">Worldbuilding</span></span>
-        </div>
       </div>
     </div>
   </section>
@@ -1783,6 +1728,13 @@ body.menu-open{overflow:hidden}
           <strong>家乡 <em>Hometown</em></strong>
           <p>想知道我从哪里来：陕西扶风，一个很小的地方。</p>
         </a>
+        <a class="more-card more-card-visual" href="art.html">
+          <img src="assets/pixel-yae.gif" width="320" height="320" alt="粉色头发动漫角色的像素动图" decoding="async">
+          <span class="more-visual-copy">
+            <span class="n">06 / DIVINE CANVAS</span>
+            <strong>神的画作 <em>进入画廊 ↗</em></strong>
+          </span>
+        </a>
       </div>
       <div class="more-links">
         <a href="essays.html">思想与随笔 <span>Essays</span></a>
@@ -1907,39 +1859,6 @@ body.menu-open{overflow:hidden}
     var startDate = new Date(2025, 0, 21);
     var days = Math.max(0, Math.floor((Date.now() - startDate.getTime()) / 86400000));
     diaryEl.textContent = days.toLocaleString('en-US');
-  }
-
-  /* ---------- works hover preview ---------- */
-  var preview = document.getElementById('workPreview');
-  if (preview && window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce) {
-    var works = document.querySelector('.works');
-    var rows = document.querySelectorAll('.work-row');
-    var px = 0, py = 0, fx = 0, fy = 0, shown = false;
-    works.addEventListener('pointermove', function(e){
-      px = e.clientX + 34;
-      py = e.clientY - 40;
-    }, {passive:true});
-    Array.prototype.forEach.call(rows, function(row){
-      row.addEventListener('pointerenter', function(){
-        preview.setAttribute('data-art', row.getAttribute('data-art'));
-        preview.querySelector('.pv-no').textContent = row.getAttribute('data-no');
-        preview.querySelector('.pv-title').textContent = row.getAttribute('data-title');
-        preview.querySelector('.pv-tag').textContent = row.getAttribute('data-tag');
-        preview.classList.add('on');
-        shown = true;
-        if (fx === 0 && fy === 0) { fx = px; fy = py; }
-      });
-      row.addEventListener('pointerleave', function(){
-        preview.classList.remove('on');
-        shown = false;
-      });
-    });
-    (function follow(){
-      fx += (px - fx) * 0.12;
-      fy += (py - fy) * 0.12;
-      preview.style.transform = 'translate3d(' + fx + 'px,' + fy + 'px,0) translate(-50%,-50%)';
-      requestAnimationFrame(follow);
-    })();
   }
 
   /* ---------- mobile menu ---------- */
@@ -2284,7 +2203,7 @@ body.menu-open{overflow:hidden}
     '你们的王回来了。',
     '输一场而已，不代表会一直输给你。'
   ];
-  var danmakuPool = ['任建国是谁呀？','又开始了是吧','私斋收收味','别装了别装了','醒醒，天还没黑呢','豪意值拉满了','脚趾已经开始扣了','这人扎啤吧','中二晚期','这台词谁写的','求求了你醒醒'];
+  var danmakuPool = ['任建国是谁呀？','又开始了是吧','私斋收收味','别装了别装了','醒醒，天还没黑呢','豪意值拉满了','脚趾已经开始扣了','这人扎啤吧','中二晚期','这台词谁写的','求求了你醒醒','原神，牛逼！'];
 
   var box = document.getElementById('danmakuBox');
   var quoteEl = document.getElementById('flashText');

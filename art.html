@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#151619">
+<meta name="description" content="任喆（Kashiu）的画作档案：像素、角色，以及那些不愿只待在脑子里的画面。">
+<title>神的画作 · DIVINE CANVAS | Kashiu</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="神的画作 · DIVINE CANVAS | Kashiu">
+<meta property="og:description" content="角色、像素，以及偶尔落到纸上的神来之笔。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kashiu">
+<meta property="og:url" content="https://kashiudouglas.github.io/Kashiu/art.html">
+<meta property="og:image" content="https://kashiudouglas.github.io/Kashiu/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#151619;--surface:#222329;--surface-2:#0E0F12;--shadow-deep:rgba(0,0,0,.28);
+  --paper:#EAE6DE;--paper-soft:rgba(234,230,222,.76);--dim:#AAA69E;--muted:#85827C;
+  --line:rgba(234,230,222,.16);--line-soft:rgba(234,230,222,.075);--accent:#B64148;
+  --serif:'Instrument Serif','Noto Serif SC',Georgia,serif;--cn:'Noto Serif SC','Songti SC','STSong',serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gutter:clamp(20px,3.2vw,48px);--ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:14px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--accent);color:var(--paper)}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.wrap{width:100%;max-width:1600px;margin:0 auto;padding:0 var(--gutter)}
+section[id],header[id]{scroll-margin-top:88px}
+.section{position:relative;padding:clamp(84px,10vw,156px) 0;border-top:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:clamp(14px,2vw,28px);margin-bottom:clamp(46px,6vw,92px)}
+.sec-no{font-size:11px;letter-spacing:.14em;color:var(--accent);flex:none}
+.sec-title{font-family:var(--cn);font-weight:300;font-size:clamp(28px,4vw,52px);line-height:1.1;letter-spacing:.02em;display:flex;align-items:baseline;gap:14px;flex:none}
+.sec-title em{font-family:var(--serif);font-style:italic;font-size:.52em;color:var(--dim)}
+.sec-line{flex:1;height:1px;background:var(--line)}.sec-note{font-size:10px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}.js .reveal.in{opacity:1;transform:none}
+.grain{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>")}
+.progress{position:fixed;top:0;left:0;z-index:300;width:100%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:0 50%}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--line)}
+.nav-inner{max-width:1600px;margin:0 auto;padding:0 var(--gutter);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:baseline;gap:10px;font-size:18px;font-weight:600;letter-spacing:.02em}.brand span{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;color:var(--muted)}
+.brand .bdot{width:5px;height:5px;border-radius:50%;background:var(--accent);align-self:center;margin-right:4px}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,32px)}
+.nav-links a{position:relative;font-size:9px;letter-spacing:.14em;color:var(--dim);padding:6px 0;transition:color .3s}.nav-links a i{font-style:normal;font-size:8px;color:var(--accent);margin-right:6px;vertical-align:super}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--paper);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s var(--ease)}
+.nav-links a:hover,.nav-links a.is-active{color:var(--paper)}.nav-links a:hover::after,.nav-links a.is-active::after{transform:scaleX(1)}.nav-links a.is-active::after{background:var(--accent)}
+.menu-toggle{display:none;width:42px;height:42px;position:relative;z-index:210}.menu-toggle span{position:absolute;left:10px;right:10px;height:1px;background:var(--paper);transition:transform .4s var(--ease),top .4s var(--ease)}
+.menu-toggle span:nth-child(1){top:16px}.menu-toggle span:nth-child(2){top:25px}body.menu-open .menu-toggle span:nth-child(1){top:20px;transform:rotate(45deg)}body.menu-open .menu-toggle span:nth-child(2){top:20px;transform:rotate(-45deg)}
+.menu-overlay{position:fixed;inset:0;z-index:205;background:var(--surface);padding:110px var(--gutter) 40px;display:flex;flex-direction:column;justify-content:space-between;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+body.menu-open .menu-overlay{opacity:1;visibility:visible}.menu-overlay nav{display:flex;flex-direction:column}.menu-overlay nav a{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid var(--line-soft);font-family:var(--cn);font-weight:200;font-size:clamp(28px,7.4vw,42px);line-height:1.15}.menu-overlay nav a i{font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.2em;color:var(--accent)}.menu-overlay nav a.is-active{color:var(--accent)}
+.menu-overlay .mo-foot{display:flex;justify-content:space-between;gap:20px;padding-top:28px;font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}body.menu-open{overflow:hidden}
+.page-hero{position:relative;min-height:76svh;display:flex;flex-direction:column;justify-content:flex-end;padding:126px 0 64px;overflow:hidden}
+.hero-top-meta{position:absolute;top:100px;left:0;right:0;z-index:2}.hero-top-meta .wrap{display:flex;justify-content:space-between;gap:20px;font-size:9.5px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
+.hero-main{position:relative;z-index:2}.hero-kicker{display:flex;align-items:center;gap:14px;font-size:10px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;margin-bottom:22px}.hero-kicker::before{content:"";width:46px;height:1px;background:var(--accent)}.hero-kicker .cn{font-family:var(--cn);color:var(--paper-soft)}
+.hero-title{font-family:var(--cn);font-weight:300;line-height:.9;letter-spacing:.02em}.hero-title .pinyin{display:block;margin-top:14px;font-family:var(--serif);font-style:italic;color:var(--dim)}
+.hero-sub{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:end;gap:clamp(24px,5vw,80px);margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
+.statement{font-family:var(--cn);font-weight:300;font-size:clamp(17px,1.7vw,24px);line-height:1.85;letter-spacing:.04em}.statement .dim{color:var(--muted)}
+.hero-meta{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px 20px;font-size:10px;letter-spacing:.24em;color:var(--dim);text-transform:uppercase}.hero-meta span+span::before{content:"";display:inline-block;width:4px;height:4px;margin-right:20px;border-radius:50%;background:var(--accent);vertical-align:middle}
+.hero-foot{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:48px;padding-top:16px;border-top:1px solid var(--line-soft);font-size:9.5px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}.scroll-cue{display:inline-flex;align-items:center;gap:12px}.scroll-cue .bar{width:44px;height:1px;background:var(--accent)}
+.footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.065em;color:transparent;-webkit-text-stroke:1px rgba(234,230,222,.14);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:30px;font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}.footer-bar a:hover{color:var(--accent)}
+@media(max-width:900px){.nav-links{display:none}.menu-toggle{display:block}.hero-sub{grid-template-columns:1fr}.hero-meta{justify-content:flex-start}.hero-top-meta{top:84px}}
+@media(max-width:640px){.hero-top-meta .wrap>span:nth-child(2){display:none}.sec-note{display:none}.hero-meta span+span::before{margin-right:10px}.footer-bar{flex-wrap:wrap;gap:10px 18px}.footer-word{font-size:26vw}}
+</style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.menu-overlay{opacity:1!important;visibility:visible!important}</style></noscript>
+<link rel="stylesheet" href="assets/interact.css">
+</head>
+<body id="top" class="archive-page art-page">
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="site-nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="bdot" aria-hidden="true"></span>任喆<span>KASHIU</span></a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="about-me.html"><i>01</i>关于</a>
+      <a href="index.html#ring"><i>02</i>环</a>
+      <a href="index.html#works"><i>03</i>作品</a>
+      <a href="poetry.html"><i>04</i>诗集</a>
+      <a href="art.html" class="is-active" aria-current="page"><i>05</i>画作</a>
+      <a href="hometown.html"><i>06</i>家乡</a>
+      <a href="index.html#contact"><i>07</i>联系</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+<div class="menu-overlay" id="menuOverlay">
+  <nav aria-label="移动端导航">
+    <a href="about-me.html"><i>01</i>关于</a>
+    <a href="index.html#ring"><i>02</i>环</a>
+    <a href="index.html#works"><i>03</i>作品</a>
+    <a href="poetry.html"><i>04</i>诗集</a>
+    <a href="art.html" class="is-active" aria-current="page"><i>05</i>画作</a>
+    <a href="hometown.html"><i>06</i>家乡</a>
+    <a href="index.html#contact"><i>07</i>联系</a>
+  </nav>
+  <div class="mo-foot"><span>绘画 · 角色 · 像素</span><span>Divine Canvas</span></div>
+</div>
+<main id="main">
+  <header class="page-hero" id="hero">
+    <div class="hero-top-meta"><div class="wrap"><span>Gallery · Divine Canvas</span><span>Painting · Character · Pixel</span><span>Collection 2026</span></div></div>
+    <div class="hero-main wrap">
+      <p class="hero-kicker"><span class="cn">神的画作</span> / Pictures that refused to stay still</p>
+      <h1 class="hero-title">神的画作<em class="pinyin">DIVINE CANVAS</em></h1>
+      <div class="hero-sub">
+        <p class="statement">这里收留那些不愿只待在脑子里的画面。<br><span class="dim">角色、像素，以及偶尔落到纸上的神来之笔。</span></p>
+        <div class="hero-meta"><span>02 Pieces</span><span>Growing slowly</span></div>
+      </div>
+    </div>
+    <div class="hero-foot wrap"><a class="scroll-cue" href="#gallery"><span class="bar" aria-hidden="true"></span> Scroll to explore</a><span>Art · Archive</span><span>01 — 02</span></div>
+  </header>
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-no">01</span><h2 class="sec-title">画作<em>Selected pieces</em></h2><span class="sec-line"></span><span class="sec-note">Pixel / Character</span></div>
+      <div class="art-gallery">
+        <figure class="art-piece art-piece-pixel reveal">
+          <a class="art-frame art-pixel-frame" href="assets/pixel-yae.gif" target="_blank" rel="noopener" aria-label="查看粉色像素动图原图">
+            <img src="assets/pixel-yae.gif" width="320" height="320" alt="粉色头发动漫角色的像素动图" decoding="async">
+          </a>
+          <figcaption class="art-caption"><span class="art-no">01 / PIXEL STUDY</span><h3>粉色信号</h3><p>一点像素，一点出神。</p></figcaption>
+        </figure>
+        <figure class="art-piece art-piece-character reveal" style="--d:.1s">
+          <div class="art-frame art-character-frame"><img src="assets/kashiu-hero.webp" width="947" height="1836" alt="KASHIU 的角色形象：黑色金边长外套与羽毛披肩" loading="lazy" decoding="async"></div>
+          <figcaption class="art-caption"><span class="art-no">02 / CHARACTER STUDY</span><h3>KASHIU · 杀死命运</h3><p>角色形象，2026。</p></figcaption>
+        </figure>
+      </div>
+      <p class="art-colophon reveal">不急着成为杰作。先把那一刻留下来。</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap pager">
+      <a class="pager-item" href="poetry.html"><span class="pager-k">← 上一页 / Prev</span><strong>诗集</strong><em>Poems</em></a>
+      <a class="pager-item next" href="hometown.html"><span class="pager-k">下一页 / Next →</span><strong>家乡</strong><em>Hometown</em></a>
+    </div>
+    <div class="footer-word" aria-hidden="true">CANVAS</div>
+    <div class="wrap footer-bar"><span>© 2026 任喆 · Kashiu</span><span>神的画作 · Divine Canvas</span><span class="foot-actions"><a href="index.html">← 首页</a><button class="bookmark-btn" type="button">☆ 收藏本页</button></span><a href="#top">Back to top ↑</a></div>
+  </section>
+</main>
+<script>
+(function(){
+  'use strict';
+  document.documentElement.classList.add('js');
+  var progress=document.getElementById('progress');
+  function onScroll(){var y=window.scrollY||document.documentElement.scrollTop;document.body.classList.toggle('scrolled',y>40);var max=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.transform='scaleX('+(max>0?y/max:0)+')'}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var revealEls=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});Array.prototype.forEach.call(revealEls,function(el){io.observe(el)})}else{Array.prototype.forEach.call(revealEls,function(el){el.classList.add('in')})}
+  var toggle=document.getElementById('menuToggle'),overlay=document.getElementById('menuOverlay');
+  function closeMenu(){document.body.classList.remove('menu-open');if(toggle)toggle.setAttribute('aria-expanded','false')}
+  if(toggle)toggle.addEventListener('click',function(){var open=document.body.classList.toggle('menu-open');toggle.setAttribute('aria-expanded',open?'true':'false')});
+  if(overlay)Array.prototype.forEach.call(overlay.querySelectorAll('a'),function(a){a.addEventListener('click',closeMenu)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+})();
+</script>
+<script src="assets/interact.js" defer></script>
+</body>
+</html>
