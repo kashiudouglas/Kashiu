@@ -1049,15 +1049,10 @@ body.menu-open{overflow:hidden}
 .more-card strong em{font-family:var(--serif);font-style:italic;font-size:10px;color:var(--muted);letter-spacing:.02em}
 .more-card p{font-size:11px;line-height:1.8;letter-spacing:.04em;color:var(--muted)}
 .more-card:hover strong{color:var(--accent)}
-.more-card-visual{position:relative;min-height:190px;padding:0;overflow:hidden;isolation:isolate;background:#19171D}
-.more-card-visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-rendering:pixelated;transition:transform .45s var(--ease)}
-.more-card-visual::after{content:"";position:absolute;inset:45% 0 0;z-index:1;background:linear-gradient(transparent,rgba(12,10,16,.94));pointer-events:none}
-.more-visual-copy{position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;width:100%;height:100%;min-height:190px;justify-content:flex-end;padding:clamp(18px,2.2vw,26px)}
-.more-card-visual .n{color:#E4CDDE}
-.more-card-visual strong{color:#F4EAF1;text-shadow:0 2px 12px #000}
-.more-card-visual:hover{background:#19171D}
-.more-card-visual:hover>img{transform:scale(1.06)}
-.more-card-visual:hover strong{color:#FFF}
+.more-card-visual{position:relative;min-height:190px;padding:0;overflow:visible;isolation:isolate}
+.more-card-visual>img{position:absolute;right:14px;bottom:-8px;z-index:1;width:clamp(96px,10vw,142px);height:auto;max-width:48%;object-fit:contain;image-rendering:pixelated;pointer-events:none;transform-origin:100% 100%;transition:transform .45s var(--ease)}
+.more-visual-copy{position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;width:100%;height:100%;min-height:190px;justify-content:flex-start;padding:clamp(18px,2.2vw,26px)}
+.more-card-visual:hover>img{transform:scale(1.04)}
 @media (max-width:860px){.more-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.more-grid{grid-template-columns:1fr}}
 .more-links{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:clamp(18px,2.4vw,26px);font-family:var(--mono);font-size:10px;letter-spacing:.14em}
