@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#151619">
-<meta name="description" content="任喆（Kashiu）的打赏页：微信、支付宝收款码与 BSC 链上钱包。">
-<title>打赏 · SUPPORT | Kashiu</title>
+<meta name="description" content="任喆（Kashiu）的好感度页：投喂一点好感度，或者看看微信、支付宝收款码与 BSC 链上钱包。">
+<title>好感度 · FAVORABILITY | Kashiu</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="打赏 · SUPPORT | Kashiu">
-<meta property="og:description" content="如果这些字曾让你停过一会儿，可以请我喝杯咖啡。">
+<meta property="og:title" content="好感度 · FAVORABILITY | Kashiu">
+<meta property="og:description" content="如果这些字曾让你停过一会儿，可以刷一点好感度。不刷也没关系。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kashiu">
 <meta property="og:url" content="https://kashiudouglas.github.io/Kashiu/tip.html">
@@ -194,9 +194,8 @@ body.menu-open{overflow:hidden}
       <a href="index.html#ring"><i>02</i>环</a>
       <a href="index.html#works"><i>03</i>作品</a>
       <a href="poetry.html"><i>04</i>诗集</a>
-      <a href="shelf.html"><i>05</i>书架</a>
-      <a href="hometown.html"><i>06</i>家乡</a>
-      <a href="index.html#contact"><i>07</i>联系</a>
+      <a href="hometown.html"><i>05</i>家乡</a>
+      <a href="index.html#contact"><i>06</i>联系</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false">
       <span></span><span></span>
@@ -210,9 +209,8 @@ body.menu-open{overflow:hidden}
     <a href="index.html#ring"><i>02</i>环</a>
     <a href="index.html#works"><i>03</i>作品</a>
     <a href="poetry.html"><i>04</i>诗集</a>
-    <a href="shelf.html"><i>05</i>书架</a>
-    <a href="hometown.html"><i>06</i>家乡</a>
-    <a href="index.html#contact"><i>07</i>联系</a>
+    <a href="hometown.html"><i>05</i>家乡</a>
+    <a href="index.html#contact"><i>06</i>联系</a>
   </nav>
   <div class="mo-foot">
     <span>扶风 · 宝鸡 · 陕西</span>
@@ -225,30 +223,30 @@ body.menu-open{overflow:hidden}
   <header class="page-hero" id="hero">
     <div class="hero-top-meta">
       <div class="wrap">
-        <span>Support · Tip</span>
+        <span>Favorability · 好感度</span>
         <span>微信 · 支付宝 · 链上钱包</span>
-        <span>Buy me a coffee</span>
+        <span>No tasks, just saying hi</span>
       </div>
     </div>
 
     <div class="hero-main wrap">
-      <p class="hero-kicker"><span class="cn">打赏</span> / Support</p>
-      <h1 class="hero-title">打赏<em class="pinyin">SUPPORT</em></h1>
+      <p class="hero-kicker"><span class="cn">好感度</span> / Favorability</p>
+      <h1 class="hero-title">好感度<em class="pinyin">FAVORABILITY</em></h1>
       <div class="hero-sub">
         <p class="statement">
           如果这些字、这颗星球，曾让你停过一会儿。<br>
-          <span class="dim">可以请我喝杯咖啡。不强求，被读到就已经很开心了。</span>
+          <span class="dim">可以刷一点好感度。不刷也完全没关系，<br>被读到已经很开心了。</span>
         </p>
         <div class="hero-meta">
-          <span>WeChat</span><span>Alipay</span><span>BSC</span>
+          <span>+1 Affection</span><span>No pressure</span>
         </div>
       </div>
     </div>
 
     <div class="hero-foot wrap">
       <a class="scroll-cue" href="#coffee"><span class="bar" aria-hidden="true"></span> Scroll to explore</a>
-      <span>Coffee · QR · Wallet</span>
-      <span>Support</span>
+      <span>Favorability · Meter</span>
+      <span>Just for fun</span>
     </div>
   </header>
 
@@ -256,16 +254,32 @@ body.menu-open{overflow:hidden}
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">01</span>
-        <h2 class="sec-title">请喝杯咖啡<em>Coffee</em></h2>
+        <h2 class="sec-title">刷好感度<em>Favorability</em></h2>
         <span class="sec-line"></span>
-        <span class="sec-note">Just for fun</span>
+        <span class="sec-note">Feed the meter</span>
       </div>
 
       <div class="tip-wrap reveal">
-        <p class="tip-lead">点一下，咖啡会飞起来。<br><span style="font-size:.6em;color:var(--muted)">计数只存在你自己的浏览器里，不会真的扣钱。</span></p>
+        <p class="tip-lead">愿意的话，投喂一点。<br><span class="tip-sub">好感度只增不减，也不会有任何任务。计数只存在你自己的浏览器里，不会扣钱。</span></p>
+
+        <div class="fav-meter">
+          <div class="fav-head">
+            <span class="fav-k">Current standing</span>
+            <span class="fav-level" id="favLevel">初识</span>
+            <span class="fav-en" id="favEn">Stranger</span>
+          </div>
+          <div class="fav-track" id="favTrack" role="progressbar" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0">
+            <span id="favBar"></span>
+          </div>
+          <div class="fav-foot">
+            <span class="fav-count">好感度 <b id="coffeeCount">0</b></span>
+            <span class="fav-next" id="favNext">再 1 次，变成「眼熟」</span>
+          </div>
+        </div>
+
         <div class="tip-actions">
-          <button id="coinBtn" class="coin-btn" type="button"><span class="coin-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 2.5c0 1.1-1 1.7-1 2.9M12 2.5c0 1.1-1 1.7-1 2.9"/></svg></span>请喝杯咖啡</button>
-          <span class="coin-count">已被请 <b id="coffeeCount">0</b> 杯</span>
+          <button id="coinBtn" class="coin-btn" type="button"><span class="coin-ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.5C19 15.4 12 20 12 20z"/></svg></span>投喂 +1</button>
+          <a class="tip-open" href="#codes">看看怎么投喂 →</a>
         </div>
       </div>
     </div>
@@ -275,7 +289,7 @@ body.menu-open{overflow:hidden}
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-no">02</span>
-        <h2 class="sec-title">收款码<em>QR Codes</em></h2>
+        <h2 class="sec-title">投喂方式<em>Ways to treat</em></h2>
         <span class="sec-line"></span>
         <span class="sec-note">WeChat / Alipay</span>
       </div>
@@ -321,10 +335,10 @@ body.menu-open{overflow:hidden}
 
   <section class="section" style="padding-top:0">
     <div class="wrap pager">
-      <a class="pager-item" href="shelf.html">
+      <a class="pager-item" href="hometown.html">
         <span class="pager-k">← 上一页 / Prev</span>
-        <strong>书架</strong>
-        <em>Shelf</em>
+        <strong>家乡</strong>
+        <em>Hometown</em>
       </a>
       <a class="pager-item next" href="index.html">
         <span class="pager-k">下一页 / Next →</span>
@@ -337,7 +351,7 @@ body.menu-open{overflow:hidden}
 
     <div class="wrap footer-bar">
       <span>© 2026 任喆 · Kashiu</span>
-      <span>打赏 · Support</span>
+      <span>好感度 · Favorability</span>
       <span class="foot-actions">
         <a href="index.html">← 首页</a>
         <a href="#top">Back to top ↑</a>

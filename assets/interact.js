@@ -175,19 +175,51 @@
   });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ hideBm(); } });
 
-  /* ---------- tip: coffee counter + coin toss ---------- */
+  /* ---------- favorability meter (local only) ---------- */
   var coffeeCountEl = document.getElementById('coffeeCount');
-  if (coffeeCountEl){
-    var stored = parseInt(localStorage.getItem(KEY.coffee) || '0', 10);
-    coffeeCountEl.textContent = isNaN(stored) ? 0 : stored;
+  var favLevelEl = document.getElementById('favLevel');
+  var favEnEl = document.getElementById('favEn');
+  var favBarEl = document.getElementById('favBar');
+  var favNextEl = document.getElementById('favNext');
+  var favTrackEl = document.getElementById('favTrack');
+  var FAV_LEVELS = [
+    {min:0,  name:'初识',     en:'Stranger'},
+    {min:1,  name:'眼熟',     en:'Noticed'},
+    {min:3,  name:'点头之交', en:'Acquaintance'},
+    {min:6,  name:'朋友',     en:'Friend'},
+    {min:12, name:'老朋友',   en:'Old friend'},
+    {min:24, name:'自己人',   en:'One of us'}
+  ];
+  function renderFav(n){
+    if (!coffeeCountEl && !favLevelEl) return;
+    var i = 0;
+    while (i + 1 < FAV_LEVELS.length && n >= FAV_LEVELS[i + 1].min) i++;
+    var cur = FAV_LEVELS[i], next = FAV_LEVELS[i + 1];
+    var top = FAV_LEVELS[FAV_LEVELS.length - 1].min;
+    var pct = Math.min(100, n / top * 100);
+    if (coffeeCountEl) coffeeCountEl.textContent = n;
+    if (favLevelEl) favLevelEl.textContent = cur.name;
+    if (favEnEl) favEnEl.textContent = cur.en;
+    if (favBarEl) favBarEl.style.width = pct + '%';
+    if (favNextEl) favNextEl.textContent = next
+      ? '再 ' + (next.min - n) + ' 次，变成「' + next.name + '」'
+      : '好感度已满，接下来交给时间。';
+    if (favTrackEl){
+      favTrackEl.setAttribute('aria-valuenow', String(n));
+      favTrackEl.setAttribute('aria-valuemax', String(FAV_LEVELS[FAV_LEVELS.length - 1].min));
+      favTrackEl.setAttribute('aria-valuetext', cur.name + '，好感度 ' + n);
+    }
   }
+  var favStored = parseInt(localStorage.getItem(KEY.coffee) || '0', 10);
+  renderFav(isNaN(favStored) ? 0 : favStored);
   var coinBtn = document.getElementById('coinBtn');
   if (coinBtn){
     coinBtn.addEventListener('click', function(){
       var cur = parseInt(localStorage.getItem(KEY.coffee) || '0', 10) || 0;
       cur++;
       try{ localStorage.setItem(KEY.coffee, String(cur)); }catch(e){}
-      if (coffeeCountEl){ coffeeCountEl.textContent = cur; bump(coffeeCountEl); }
+      renderFav(cur);
+      if (coffeeCountEl) bump(coffeeCountEl);
       tossCoins(coinBtn);
     });
   }
