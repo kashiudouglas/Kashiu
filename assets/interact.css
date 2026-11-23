@@ -576,7 +576,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 }
 .hero-visual.is-portrait .hero-art{
   display:block;width:auto;height:clamp(520px,76svh,800px);max-width:none;
-  filter:brightness(1.16) contrast(1.05) saturate(1.02);
+  filter:brightness(1.3) contrast(1.04) saturate(1.02);
   -webkit-mask-image:linear-gradient(to bottom,#000 94%,rgba(0,0,0,0) 100%);
   mask-image:linear-gradient(to bottom,#000 94%,rgba(0,0,0,0) 100%);
 }
