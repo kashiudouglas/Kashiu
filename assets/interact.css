@@ -561,3 +561,37 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
   .hero-frame .hero-art,.home-page .work-row,.hometown-page .place-row,.shelf-page .spine{transition:none!important}
   .hero-visual:hover .hero-frame .hero-art,.home-page .work-row:hover,.hometown-page .place-row:hover,.shelf-page .spine:hover{transform:none}
 }
+
+/* ---------- home hero: KASHIU portrait leaning on the page edge ---------- */
+.hero-visual.is-portrait{
+  position:absolute;grid-area:auto;right:calc(var(--gutter) * -1);bottom:calc(var(--gutter) * -2.4);z-index:2;
+  margin:0;display:flex;justify-content:flex-end;pointer-events:none;
+}
+.hero-visual.is-portrait::before{display:none}
+.hero-visual.is-portrait .hero-frame{
+  aspect-ratio:auto;max-height:none;overflow:visible;clip-path:none;
+  background:none;box-shadow:none;display:flex;justify-content:flex-end;
+  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0) 0%,rgba(0,0,0,.35) 16%,#000 46%);
+  mask-image:linear-gradient(to right,rgba(0,0,0,0) 0%,rgba(0,0,0,.35) 16%,#000 46%);
+}
+.hero-visual.is-portrait .hero-art{
+  display:block;width:auto;height:clamp(520px,76svh,800px);max-width:none;
+  filter:brightness(1.16) contrast(1.05) saturate(1.02);
+  -webkit-mask-image:linear-gradient(to bottom,#000 94%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(to bottom,#000 94%,rgba(0,0,0,0) 100%);
+}
+.hero-visual.is-portrait:hover .hero-frame .hero-art{transform:none}
+@media (min-width:901px){
+  .hero-visual.is-portrait figcaption{
+    left:auto;right:calc(100% + 16px);bottom:2px;width:min(350px,42vw);
+  }
+  .hero-visual.is-portrait .hero-visual-index{display:none}
+  body:has(.hero-visual.is-portrait) .hero-side{display:none}
+  body:has(.hero-visual.is-portrait) .hero-top{z-index:3}
+}
+@media (max-width:1100px){
+  .hero-visual.is-portrait figcaption{display:none}
+}
+@media (max-width:900px){
+  .hero-visual.is-portrait{display:none}
+}
