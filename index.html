@@ -168,6 +168,8 @@ section[id],header[id]{scroll-margin-top:88px}
   pointer-events:none;
   mix-blend-mode:difference;
   display:none;
+  --lx:0px;
+  --ly:0px;
 }
 .cursor-dot{
   position:absolute;
@@ -183,9 +185,10 @@ section[id],header[id]{scroll-margin-top:88px}
   margin:-17px 0 0 -17px;
   border:1px solid rgba(239,235,226,.5);
   border-radius:50%;
-  transition:transform .4s var(--ease),opacity .3s,border-color .3s;
+  transform:translate3d(var(--lx),var(--ly),0);
+  transition:scale .35s var(--ease),opacity .3s,border-color .3s;
 }
-#cursor.is-hover .cursor-ring{transform:scale(2.05);border-color:var(--paper)}
+#cursor.is-hover .cursor-ring{scale:2.05;border-color:var(--paper)}
 #cursor.is-hover .cursor-dot{opacity:0}
 @media (pointer:fine){
   .custom-cursor #cursor{display:block}
@@ -1126,13 +1129,16 @@ body.menu-open{overflow:hidden}
 .flash-card{
   position:relative;
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  height:clamp(400px,42vw,540px);
   padding:clamp(30px,4vw,52px) clamp(22px,3vw,40px);
   border:1px solid var(--line);
   border-radius:4px;
   background:rgba(7,8,10,.45);
   backdrop-filter:blur(4px);
 }
-.flash-quote{position:relative;z-index:2;max-width:880px}
+.flash-quote{position:relative;z-index:2;max-width:880px;margin:auto 0}
 .flash-text{
   font-family:var(--cn);
   font-weight:300;
@@ -1204,7 +1210,7 @@ body.menu-open{overflow:hidden}
 .flash-ctrl button span{margin-right:6px}
 
 @media (max-width:640px){
-  .flash-card{padding:26px 18px}
+  .flash-card{padding:26px 18px;height:400px}
   .danmaku{font-size:12.5px;padding:3px 8px}
   .flash-text{font-size:21px}
 }
@@ -1859,13 +1865,16 @@ body.menu-open{overflow:hidden}
     document.documentElement.classList.add('custom-cursor');
     var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
     var rx = cx, ry = cy;
+    cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
     window.addEventListener('pointermove', function(e){
       cx = e.clientX; cy = e.clientY;
+      cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
     }, {passive:true});
     (function loop(){
-      rx += (cx - rx) * 0.16;
-      ry += (cy - ry) * 0.16;
-      cursor.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+      rx += (cx - rx) * 0.34;
+      ry += (cy - ry) * 0.34;
+      cursor.style.setProperty('--lx', (rx - cx).toFixed(2) + 'px');
+      cursor.style.setProperty('--ly', (ry - cy).toFixed(2) + 'px');
       requestAnimationFrame(loop);
     })();
     var hoverables = document.querySelectorAll('a,button,[data-cursor]');
