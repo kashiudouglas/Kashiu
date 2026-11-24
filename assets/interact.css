@@ -279,8 +279,10 @@ body.menu-open .site-nav{z-index:210}
 .home-page .work-row:nth-child(3){grid-column:1/6}
 .home-page .work-row:nth-child(4){grid-column:6/13;margin-top:72px}
 .home-page .work-row:nth-child(5){grid-column:3/11;margin-top:12px}
-.home-page .work-row:nth-child(6){grid-column:2/12;margin-top:12px}
-.home-page .work-row:nth-child(6) .work-art{aspect-ratio:21/8}
+.home-page .work-row:nth-child(6){grid-column:1/7;margin-top:12px}
+.home-page .work-row:nth-child(6) .work-art{aspect-ratio:4/3}
+.home-page .work-row:nth-child(7){grid-column:7/13;margin-top:64px}
+.home-page .work-row:nth-child(7) .work-art{aspect-ratio:16/9}
 .home-page .work-row:hover{transform:translateY(-4px);background:#282A30}
 .home-page .work-art{grid-area:art;position:relative;display:flex;align-items:flex-end;aspect-ratio:16/10;overflow:hidden;padding:clamp(20px,3vw,44px);background:#191A1E}
 .home-page .work-row:nth-child(2) .work-art{aspect-ratio:4/5}
