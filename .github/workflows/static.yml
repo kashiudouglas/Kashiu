@@ -34,9 +34,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          # Upload entire repository
+          name: github-pages
+          # Upload the static site for actions/deploy-pages@v5
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
