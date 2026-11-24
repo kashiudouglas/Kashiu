@@ -269,7 +269,7 @@
     link.setAttribute('aria-current', value || 'page');
   }
 
-  var pageFor = { 'poetry.html':'04', 'art.html':'05', 'hometown.html':'06', 'about-me.html':'01' };
+  var pageFor = { 'poetry.html':'04', 'art.html':'05', 'hometown.html':'06', 'about-me.html':'01', 'ring.html':'02' };
   var wanted = pageFor[path];
   if (wanted){
     clear();

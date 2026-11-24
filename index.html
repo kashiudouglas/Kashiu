@@ -1243,7 +1243,7 @@ body.menu-open{overflow:hidden}
     </a>
     <nav class="nav-links" aria-label="主导航">
       <a href="about-me.html"><i>01</i>关于</a>
-      <a href="index.html#ring"><i>02</i>环</a>
+      <a href="ring.html"><i>02</i>环</a>
       <a href="index.html#works"><i>03</i>作品</a>
       <a href="poetry.html"><i>04</i>诗集</a>
       <a href="art.html"><i>05</i>画作</a>
@@ -1259,7 +1259,7 @@ body.menu-open{overflow:hidden}
 <div class="menu-overlay" id="menuOverlay">
   <nav aria-label="移动端导航">
     <a href="about-me.html"><i>01</i>关于</a>
-    <a href="index.html#ring"><i>02</i>环</a>
+    <a href="ring.html"><i>02</i>环</a>
     <a href="index.html#works"><i>03</i>作品</a>
     <a href="poetry.html"><i>04</i>诗集</a>
     <a href="art.html"><i>05</i>画作</a>
@@ -1400,7 +1400,7 @@ body.menu-open{overflow:hidden}
             <span class="mini-no" id="miniNo">THE RING / STAR MAP</span>
             <strong id="miniTitle">选择一片星域</strong>
             <p id="miniText">点击一颗星，进入星域；再点击其中的星点，查看已经公开的部分。</p>
-            <a class="mini-enter" id="miniLink" href="about-me.html#ring">阅读完整关系图 ↗</a>
+            <a class="mini-enter" id="miniLink" href="ring.html">阅读完整关系图 ↗</a>
           </div>
           <div class="mini-map" id="miniMap" role="group" aria-label="环的可探索星空">
             <svg class="mini-sky" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
@@ -1454,7 +1454,7 @@ body.menu-open{overflow:hidden}
             <span>Cultivation · Magic</span>
           </div>
           <div class="ring-cta">
-            <a class="btn" href="about-me.html#ring" target="_blank" rel="noopener">阅读设定选摘 <span class="ar">↗</span></a>
+            <a class="btn" href="ring.html" target="_blank" rel="noopener">阅读设定选摘 <span class="ar">↗</span></a>
             <a class="ring-more" href="#works">继续往下看 ↓</a>
           </div>
         </div>
@@ -1473,7 +1473,7 @@ body.menu-open{overflow:hidden}
       </div>
 
       <div class="works">
-        <a class="work-row reveal" href="about-me.html#ring"
+        <a class="work-row reveal" href="ring.html"
            data-no="01" data-title="环 · Ring" data-tag="Worldbuilding" data-art="1">
           <span class="work-art" aria-hidden="true"><span class="art-word">DIGITAL<br>FORM</span><span class="art-caption">A WORLD IN PROGRESS</span></span>
           <span class="work-no">(01)</span>
@@ -1703,7 +1703,7 @@ body.menu-open{overflow:hidden}
           <strong>关于我 <em>About</em></strong>
           <p>想认识我：在学什么、喜欢什么，以及正在写的东西。</p>
         </a>
-        <a class="more-card" href="about-me.html#ring">
+        <a class="more-card" href="ring.html">
           <span class="n">02</span>
           <strong>环 <em>Ring</em></strong>
           <p>想了解我的幻想世界：星域、行星与完整关系图。</p>
@@ -1976,8 +1976,8 @@ body.menu-open{overflow:hidden}
     miniTitle.textContent = d[1];
     miniText.textContent = d[2];
     miniLink.href = key === 'ring'
-      ? 'about-me.html#ring'
-      : 'about-me.html?atlas=' + (miniAtlasAliases[key] || key) + '#ring';
+      ? 'ring.html'
+      : 'ring.html?atlas=' + (miniAtlasAliases[key] || key);
     miniLink.textContent = key === 'ring' ? '阅读完整关系图 ↗' : '在关系图中查看 ↗';
   }
 
