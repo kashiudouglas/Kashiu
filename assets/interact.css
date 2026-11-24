@@ -585,19 +585,32 @@ body.menu-open .site-nav{z-index:210}
 /* motto: put it in the left gutter so it never collides with the roles line */
 .home-page .hero-motto{left:calc(var(--gutter) * -1 + 7px);top:46%;bottom:auto;writing-mode:vertical-rl;letter-spacing:.3em;z-index:5}
 
-/* ---------- divine canvas / waiting for original works ---------- */
+/* ---------- divine canvas / original works ---------- */
 .art-page{--surface-2:#0E0F12;--shadow-deep:rgba(0,0,0,.28)}
 .art-page .page-hero .hero-title{font-size:clamp(64px,11.5vw,176px);letter-spacing:-.045em;white-space:nowrap}
-.art-empty{min-height:clamp(260px,34vw,440px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(30px,6vw,76px);border:1px solid var(--line);background:linear-gradient(135deg,rgba(182,65,72,.09),transparent 65%),var(--surface)}
-.art-empty-kicker{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase}
-.art-empty h3{margin-top:18px;font-family:var(--cn);font-size:clamp(30px,4vw,58px);font-weight:300;line-height:1.25;color:var(--paper)}
-.art-empty p{max-width:32em;margin-top:16px;font-family:var(--cn);font-size:clamp(15px,1.4vw,19px);font-weight:300;line-height:1.9;color:var(--dim)}
+.art-gallery{column-count:3;column-gap:clamp(18px,2.5vw,36px)}
+.art-piece{display:inline-block;width:100%;margin:0 0 clamp(32px,4vw,58px);break-inside:avoid;vertical-align:top}
+.art-frame{display:block;overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:12px 14px 0 var(--surface-2);transition:border-color .35s,box-shadow .35s}
+.art-frame img{display:block;width:100%;height:auto}
+.art-frame:hover{border-color:rgba(234,230,222,.42);box-shadow:8px 10px 0 var(--surface-2)}
+.art-caption{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.art-no{color:var(--accent)}
+.art-open{color:var(--muted);transition:color .3s}
+.art-piece:hover .art-open{color:var(--paper)}
 .art-colophon{max-width:34em;margin:clamp(48px,7vw,88px) 0 0 auto;padding:clamp(24px,3vw,42px);border-top:3px solid var(--accent);background:var(--surface);font-family:var(--cn);font-size:clamp(20px,2.4vw,34px);font-weight:300;line-height:1.7;color:var(--paper)}
+@media (max-width:1050px){
+  .art-gallery{column-count:2}
+}
 @media (max-width:900px){
   .art-page .page-hero .hero-title{font-size:clamp(64px,13vw,112px)}
 }
 @media (max-width:640px){
   .art-page .page-hero .hero-title{font-size:clamp(48px,15vw,72px);letter-spacing:-.055em}
-  .art-empty{min-height:280px;padding:28px 24px}
+  .art-gallery{column-count:1}
+  .art-piece{margin-bottom:38px}
+  .art-frame{box-shadow:8px 10px 0 var(--surface-2)}
   .art-colophon{margin-top:48px;padding:24px;font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .art-frame,.art-open{transition:none}
 }
