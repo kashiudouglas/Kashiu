@@ -242,6 +242,17 @@ body.menu-open{overflow:hidden}
 .note-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .note-facts span{padding:5px 9px;border:1px solid var(--line);font-size:9px;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
 
+/* ---- hometown photos ---- */
+.note-photo{display:block;margin:0 0 20px;overflow:hidden;border:1px solid var(--line);background:rgba(239,235,226,.03);box-shadow:10px 12px 0 rgba(0,0,0,.22);transition:border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease)}
+.note-photo img{display:block;width:100%;height:auto;transition:transform .9s var(--ease)}
+.note-photo:hover{border-color:rgba(239,235,222,.42);box-shadow:5px 7px 0 rgba(0,0,0,.22);transform:translateY(-3px)}
+.note-photo:hover img{transform:scale(1.02)}
+.note-photo-cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.note-photo-cap b{color:var(--paper-soft);font-weight:400;letter-spacing:.06em;text-transform:none;font-family:var(--cn);font-size:12px}
+.notes-intro{max-width:56ch;margin:clamp(18px,2.4vw,30px) 0 clamp(30px,4vw,54px);font-size:12.5px;line-height:2.05;color:var(--dim)}
+.notes-intro b{color:var(--paper);font-weight:400}
+@media (prefers-reduced-motion:reduce){.note-photo,.note-photo img{transition:none}.note-photo:hover{transform:none}.note-photo:hover img{transform:none}}
+
 /* ============ FOOTER ============ */
 .footer-word{margin-top:clamp(60px,8vw,110px);padding:0 var(--gutter);font-family:var(--serif);font-size:clamp(88px,21.5vw,330px);line-height:.78;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(239,235,226,.16);text-align:center;user-select:none;pointer-events:none;overflow:hidden}
 .footer-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:30px;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,30px);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
@@ -564,11 +575,15 @@ body.menu-open{overflow:hidden}
 
       <p class="section-intro reveal">
         先说清楚：扶风不是值得专程来一趟的地方，没有要排队的店，也没有必须打卡的机位。
-        下面这些，是我自己会去、也会吃的东西。要是哪天碰巧路过，就当我带你看一圈。
+        下面这些，是我自己会去、也会吃的东西。每一条都配了实地影像，点击可看大图——要是哪天碰巧路过，就当我带你看一圈。
       </p>
 
       <div class="notes">
         <article class="note reveal" id="famen">
+          <a class="note-photo" href="assets/hometown/ht-06.webp" target="_blank" rel="noopener" aria-label="查看法门寺大图">
+            <img src="assets/hometown/ht-06.webp" width="750" height="422" alt="法门寺真身宝塔" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>法门寺 · 真身宝塔</b><span>法门镇</span></p>
           <div class="note-top"><span class="note-no">N.01</span><span>法门镇</span></div>
           <h3 class="note-title">法门寺<em>Famen Temple</em></h3>
           <p class="note-text">
@@ -580,6 +595,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="zhiyuan">
+          <a class="note-photo" href="assets/hometown/ht-02.webp" target="_blank" rel="noopener" aria-label="查看周原遗址大图">
+            <img src="assets/hometown/ht-02.webp" width="640" height="427" alt="周原遗址田野" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>周原遗址 · 召陈建筑基址</b><span>召陈村</span></p>
           <div class="note-top"><span class="note-no">N.02</span><span>法门镇召陈村</span></div>
           <h3 class="note-title">周原遗址<em>Zhouyuan Ruins</em></h3>
           <p class="note-text">
@@ -592,6 +611,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="bronze">
+          <a class="note-photo" href="assets/hometown/ht-03.webp" target="_blank" rel="noopener" aria-label="查看庄白青铜器窖藏大图">
+            <img src="assets/hometown/ht-03.webp" width="800" height="533" alt="庄白青铜器窖藏出土文物" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>庄白青铜器窖藏 · 史墙盘出土地</b><span>青铜器之乡</span></p>
           <div class="note-top"><span class="note-no">N.03</span><span>青铜器之乡</span></div>
           <h3 class="note-title">青铜器窖藏<em>Bronze Hoards</em></h3>
           <p class="note-text">
@@ -604,6 +627,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="water">
+          <a class="note-photo" href="assets/hometown/ht-01.webp" target="_blank" rel="noopener" aria-label="查看七星河大图">
+            <img src="assets/hometown/ht-01.webp" width="750" height="562" alt="七星河傍晚水面" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>七星河 · 傍晚河湾</b><span>城关街道</span></p>
           <div class="note-top"><span class="note-no">N.04</span><span>七星河 · 野河山</span></div>
           <h3 class="note-title">山水<em>River &amp; Mountain</em></h3>
           <p class="note-text">
@@ -616,6 +643,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="jiangzhang">
+          <a class="note-photo" href="assets/hometown/ht-07.webp" target="_blank" rel="noopener" aria-label="查看绛帐古镇大图">
+            <img src="assets/hometown/ht-07.webp" width="750" height="501" alt="绛帐古镇街巷" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>绛帐古镇 · 马融传经处</b><span>绛帐镇</span></p>
           <div class="note-top"><span class="note-no">N.05</span><span>绛帐镇</span></div>
           <h3 class="note-title">绛帐<em>Jiangzhang</em></h3>
           <p class="note-text">
@@ -627,6 +658,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="qin">
+          <a class="note-photo" href="assets/hometown/ht-08.webp" target="_blank" rel="noopener" aria-label="查看西府秦腔大图">
+            <img src="assets/hometown/ht-08.webp" width="1800" height="1350" alt="西府秦腔演出现场" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>西府秦腔 · 庙会大戏</b><span>法门镇</span></p>
           <div class="note-top"><span class="note-no">N.06</span><span>庙会 · 过事</span></div>
           <h3 class="note-title">西府秦腔<em>Xifu Qinqiang</em></h3>
           <p class="note-text">
@@ -638,6 +673,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="food">
+          <a class="note-photo" href="assets/hometown/ht-04.webp" target="_blank" rel="noopener" aria-label="查看一口香臊子面大图">
+            <img src="assets/hometown/ht-04.webp" width="1025" height="698" alt="扶风一口香臊子面" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>一口香臊子面 · 扶风吃食</b><span>县城</span></p>
           <div class="note-top"><span class="note-no">N.07</span><span>县城 · 各镇</span></div>
           <h3 class="note-title">吃<em>Eat</em></h3>
           <p class="note-text">
@@ -650,6 +689,10 @@ body.menu-open{overflow:hidden}
         </article>
 
         <article class="note reveal" id="museum">
+          <a class="note-photo" href="assets/hometown/ht-05.webp" target="_blank" rel="noopener" aria-label="查看扶风县博物馆大图">
+            <img src="assets/hometown/ht-05.webp" width="800" height="533" alt="扶风县博物馆" loading="lazy" decoding="async">
+          </a>
+          <p class="note-photo-cap"><b>扶风县博物馆 · 城隍庙旧址</b><span>城关街道</span></p>
           <div class="note-top"><span class="note-no">N.08</span><span>城关街道</span></div>
           <h3 class="note-title">县博物馆<em>County Museum</em></h3>
           <p class="note-text">
