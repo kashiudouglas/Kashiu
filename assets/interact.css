@@ -248,7 +248,8 @@ body.menu-open .site-nav{z-index:210}
 .hero-visual figcaption p{font-family:var(--cn);font-size:clamp(12px,1.1vw,15px);line-height:1.9;letter-spacing:.04em}
 .hero-visual-index{position:absolute;z-index:1;top:-76px;right:-8px;font-family:var(--sans);font-size:clamp(92px,11vw,168px);font-weight:600;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(234,230,222,.18)}
 .hero-motto{position:absolute;left:5%;bottom:0;z-index:4;font-family:var(--mono);font-size:9px;letter-spacing:.26em;color:var(--accent)}
-.editorial-hero .hero-sub{position:relative;z-index:4;margin-top:clamp(30px,4vw,54px);padding-top:20px;animation:heroIn .6s var(--ease) .25s both}
+.editorial-hero .hero-rule{position:relative;z-index:1;height:1px;margin-top:clamp(30px,4vw,54px);background:var(--line)}
+.editorial-hero .hero-sub{position:relative;z-index:4;margin-top:0;border-top:0;padding-top:20px;animation:heroIn .6s var(--ease) .25s both}
 .editorial-hero .statement{font-family:var(--cn);font-size:clamp(15px,1.35vw,19px)}
 .editorial-hero .hero-links{align-self:end}
 .editorial-hero .hero-foot{margin-top:24px;animation:heroIn .6s var(--ease) .35s both}
@@ -572,8 +573,8 @@ body.menu-open .site-nav{z-index:210}
 .hero-visual.is-portrait:hover .hero-frame .hero-art{transform:none}
 @media (min-width:901px){
   .hero-visual.is-portrait figcaption{
-    left:auto;right:calc(100% + 16px);bottom:2px;width:min(350px,42vw);
-    background:rgba(16,17,20,.78);
+    left:auto;right:calc(100% + 16px);bottom:2px;width:min(350px,42vw);z-index:6;
+    background:rgba(14,15,18,.92);
     -webkit-backdrop-filter:blur(12px) saturate(120%);
     backdrop-filter:blur(12px) saturate(120%);
     border:1px solid rgba(239,235,226,.14);
