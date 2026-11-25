@@ -573,6 +573,12 @@ body.menu-open .site-nav{z-index:210}
 @media (min-width:901px){
   .hero-visual.is-portrait figcaption{
     left:auto;right:calc(100% + 16px);bottom:2px;width:min(350px,42vw);
+    background:rgba(16,17,20,.78);
+    -webkit-backdrop-filter:blur(12px) saturate(120%);
+    backdrop-filter:blur(12px) saturate(120%);
+    border:1px solid rgba(239,235,226,.14);
+    box-shadow:0 24px 70px -34px rgba(0,0,0,.95);
+    color:var(--paper-soft);
   }
   .hero-visual.is-portrait .hero-visual-index{display:none}
   body:has(.hero-visual.is-portrait) .hero-side{display:none}
