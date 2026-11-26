@@ -428,3 +428,18 @@ html,body{margin:0;padding:0}
   .cover-hint,.danmaku,.flash-text.is-in{animation:none}
   *{scroll-behavior:auto !important}
 }
+
+/* 讲述要点：脚注式低对比提示，站着讲时扫一眼即可组织语言，不必拿稿 */
+.talk{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 0;
+  margin-top:clamp(14px,2.4vh,28px);
+  font-family:var(--mono);font-size:clamp(10px,.78vw,12px);
+  letter-spacing:.05em;line-height:1.9;color:var(--dim);
+}
+.talk span{position:relative;padding-right:1.7em}
+.talk span::after{content:"";position:absolute;right:.8em;top:50%;width:3px;height:3px;border-radius:50%;background:var(--line);transform:translateY(-50%)}
+.talk span:last-child::after{display:none}
+@media (max-width:560px){
+  .talk span{padding-right:1.2em}
+  .talk span::after{right:.55em}
+}
