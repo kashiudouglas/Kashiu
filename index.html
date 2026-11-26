@@ -495,7 +495,7 @@ body.menu-open{overflow:hidden}
 .hero-links{
   display:flex;
   justify-content:flex-end;
-  align-items:baseline;
+  align-items:center;
   flex-wrap:wrap;
   gap:10px 20px;
   font-size:10px;
@@ -512,7 +512,13 @@ body.menu-open{overflow:hidden}
 .hero-links a:hover{color:var(--accent);border-color:var(--accent)}
 .hero-links .hero-cta{background:var(--accent);color:var(--paper);border:1px solid var(--accent);padding:12px 20px}
 .hero-links .hero-cta:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
-.hero-links .hero-cta-ghost{color:var(--dim)}
+.hero-links .hero-cta-ghost{
+  color:var(--dim);
+  font-size:11.5px;
+  letter-spacing:.16em;
+  padding:9px 2px;
+  border-bottom-color:rgba(239,235,226,.34);
+}
 .hero-foot{
   position:relative;z-index:2;
   display:flex;
