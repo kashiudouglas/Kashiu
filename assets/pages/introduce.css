@@ -24,8 +24,81 @@ html,body{margin:0;padding:0}
 
 /* ---- deck / track ---- */
 .deck{position:fixed;inset:0;overflow:hidden;z-index:1}
-.slides-track{height:100%;width:100%;will-change:transform}
+.slides-track{position:relative;z-index:1;height:100%;width:100%;will-change:transform}
 .intro-body.is-animating .slides-track{transition:transform var(--dur-xl) var(--ease)}
+
+/* ============================================================
+   全站星空背景 + 每页星座锚点
+   ============================================================ */
+.sky{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sky-nebula{
+  position:absolute;inset:-6%;
+  background:
+    radial-gradient(80% 62% at 72% 0%,rgba(38,60,108,.42),transparent 64%),
+    radial-gradient(48% 42% at 14% 30%,rgba(216,80,47,.09),transparent 70%),
+    radial-gradient(62% 48% at 56% 92%,rgba(64,50,110,.24),transparent 70%),
+    linear-gradient(112deg,transparent 40%,rgba(120,142,200,.045) 50%,transparent 60%),
+    linear-gradient(180deg,#04050A 0%,#07080D 52%,#05060A 100%);
+  animation:nebulaDrift 52s ease-in-out infinite alternate;
+}
+@keyframes nebulaDrift{
+  from{transform:translate3d(-.6%,.4%,0) scale(1)}
+  to{transform:translate3d(1%,-1%,0) scale(1.06)}
+}
+.sky-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+.sky-veil{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(62% 68% at 66% 45%,rgba(5,6,10,.32),transparent 72%),
+    linear-gradient(180deg,rgba(5,6,10,.3),transparent 26%,transparent 74%,rgba(5,6,10,.5));
+}
+/* 流星：偶尔划过，不抢戏 */
+.shoot{
+  position:absolute;z-index:1;height:1px;width:clamp(90px,11vw,170px);border-radius:999px;
+  background:linear-gradient(90deg,rgba(233,240,255,.95),rgba(233,240,255,0));
+  opacity:0;animation:shootFly 13s ease-in infinite;
+}
+.shoot::before{
+  content:"";position:absolute;left:-1px;top:-1.5px;width:3px;height:3px;border-radius:50%;
+  background:#fff;box-shadow:0 0 8px 2px rgba(220,232,255,.8);
+}
+.shoot-a{top:16%;left:72%;animation-delay:3.5s}
+.shoot-b{top:62%;left:38%;width:clamp(60px,7vw,110px);animation-delay:9.5s;animation-duration:15s}
+@keyframes shootFly{
+  0%,86%{opacity:0;transform:translate3d(0,0,0) rotate(18deg)}
+  88%{opacity:.9}
+  92%{opacity:.7}
+  100%{opacity:0;transform:translate3d(-34vw,12vw,0) rotate(18deg)}
+}
+
+/* 每页右上角：专属星座锚点（页面编号 + 章节名） */
+.sky-anchor{
+  position:absolute;top:clamp(22px,3.8vh,42px);right:clamp(48px,7vw,120px);
+  width:clamp(96px,9vw,140px);z-index:2;pointer-events:none;
+  opacity:0;transform:translateY(-8px);
+  transition:opacity 1s var(--ease),transform 1s var(--ease);
+}
+.slide.is-active .sky-anchor{opacity:1;transform:none}
+.sky-anchor svg{display:block;width:100%;height:auto;overflow:visible}
+.sky-anchor .cn-line{
+  stroke:rgba(239,235,226,.3);stroke-width:1;fill:none;
+  stroke-dasharray:1;stroke-dashoffset:1;
+  transition:stroke-dashoffset 1.6s var(--ease) .25s;
+}
+.slide.is-active .sky-anchor .cn-line{stroke-dashoffset:0}
+.sky-anchor .cn-dot{fill:#EAF0FF;opacity:.35;transition:opacity 1s var(--ease) .5s}
+.slide.is-active .sky-anchor .cn-dot{opacity:.9}
+.sky-anchor .cn-dot.key{fill:var(--accent);opacity:.45}
+.slide.is-active .sky-anchor .cn-dot.key{opacity:1;animation:anchorPulse 4.5s ease-in-out infinite}
+@keyframes anchorPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.sky-anchor .cn-label{
+  display:flex;justify-content:space-between;gap:8px;margin-top:5px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--dim);
+  opacity:0;transition:opacity 1s var(--ease) .55s;
+}
+.slide.is-active .sky-anchor .cn-label{opacity:.8}
+.sky-anchor .cn-label b{color:var(--fg-soft);font-weight:400}
+.sky-anchor .cn-label span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 .slide{
   height:100vh;width:100vw;
@@ -389,42 +462,6 @@ html,body{margin:0;padding:0}
    16  POETRY  (诗选：目录 + 逐行浮现)
    ============================================================ */
 .poem-slide{overflow:hidden}
-/* 星空背景：深空底色 + 三层星点视差 + 偶发流星，纯 CSS 合成动画 */
-.poem-sky{
-  position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;
-  background:
-    radial-gradient(80% 62% at 72% 0%,rgba(38,60,108,.44),transparent 64%),
-    radial-gradient(48% 42% at 14% 30%,rgba(216,80,47,.09),transparent 70%),
-    radial-gradient(62% 48% at 56% 92%,rgba(64,50,110,.24),transparent 70%),
-    linear-gradient(112deg,transparent 40%,rgba(120,142,200,.045) 50%,transparent 60%),
-    linear-gradient(180deg,#04050A 0%,#07080D 52%,#05060A 100%);
-}
-/* 压暗中间，保证诗句可读 */
-.poem-sky::after{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(62% 68% at 66% 45%,rgba(5,6,10,.34),transparent 72%),
-    linear-gradient(180deg,rgba(5,6,10,.28),transparent 26%,transparent 74%,rgba(5,6,10,.45));
-}
-.sky-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
-/* 流星：偶尔划过，不抢戏 */
-.shoot{
-  position:absolute;z-index:1;height:1px;width:clamp(90px,11vw,170px);border-radius:999px;
-  background:linear-gradient(90deg,rgba(233,240,255,.95),rgba(233,240,255,0));
-  opacity:0;animation:shootFly 13s ease-in infinite;
-}
-.shoot::before{
-  content:"";position:absolute;left:-1px;top:-1.5px;width:3px;height:3px;border-radius:50%;
-  background:#fff;box-shadow:0 0 8px 2px rgba(220,232,255,.8);
-}
-.shoot-a{top:16%;left:72%;animation-delay:3.5s}
-.shoot-b{top:62%;left:38%;width:clamp(60px,7vw,110px);animation-delay:9.5s;animation-duration:15s}
-@keyframes shootFly{
-  0%,86%{opacity:0;transform:translate3d(0,0,0) rotate(18deg)}
-  88%{opacity:.9}
-  92%{opacity:.7}
-  100%{opacity:0;transform:translate3d(-34vw,12vw,0) rotate(18deg)}
-}
 .poem-slide .slide-inner{position:relative;z-index:1}
 .poem-ink{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .poem-ink .seal-side{
@@ -465,6 +502,8 @@ html,body{margin:0;padding:0}
   transition:height var(--dur-md) var(--ease);
 }
 .pi-item:hover{color:var(--fg-soft)}
+.pi-item:focus{outline:none}
+.pi-item:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
 .pi-item.is-on{color:var(--fg);padding-left:14px}
 .pi-item.is-on .n{color:var(--accent)}
 .pi-item.is-on::before{height:62%}
@@ -573,6 +612,9 @@ html,body{margin:0;padding:0}
   .cover-hint,.danmaku,.flash-text.is-in{animation:none}
   .poem-line{opacity:1;transform:none;filter:none;transition:none}
   .shoot{display:none}
+  .sky-nebula{animation:none}
+  .sky-anchor,.sky-anchor .cn-line,.sky-anchor .cn-dot,.sky-anchor .cn-label{transition:none}
+  .slide.is-active .sky-anchor .cn-dot.key{animation:none}
   *{scroll-behavior:auto !important}
 }
 
