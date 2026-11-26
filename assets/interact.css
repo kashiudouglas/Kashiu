@@ -206,7 +206,7 @@ body.scrolled .site-nav{background:rgba(21,22,25,.9);border-bottom-color:var(--l
 .nav-links a::after{transition:transform .18s}
 .menu-overlay{background:var(--surface);overflow-y:auto}
 body.menu-open .site-nav{z-index:210}
-.to-top{background:rgba(34,35,41,.94);backdrop-filter:none}
+.to-top{background:var(--ink);background:color-mix(in srgb,var(--ink) 88%,transparent);border-color:var(--line);backdrop-filter:blur(8px)}
 .pager{background:var(--line-soft);border-color:var(--line-soft)}
 .pager-item{background:var(--pager-bg)}
 .pager-item:hover{background:var(--pager-hover)}
