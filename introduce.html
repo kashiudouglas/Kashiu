@@ -13,7 +13,7 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-400-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css?v=20261126b">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/pages/introduce.css?v=20261126w">
+<link rel="stylesheet" href="assets/pages/introduce.css?v=20261126x">
 </head>
 <body class="intro-body">
 
@@ -23,8 +23,6 @@
   <div class="sky" id="sky" aria-hidden="true">
     <div class="sky-nebula"></div>
     <canvas class="sky-canvas" id="skyCanvas"></canvas>
-    <span class="shoot shoot-a"></span>
-    <span class="shoot shoot-b"></span>
     <div class="sky-veil"></div>
   </div>
   <div class="slides-track" id="track">
@@ -620,84 +618,172 @@
     });
   })();
 
-  /* 全站星空：canvas 绘制；翻页时星点轻微涌动 */
+  /* 全站星空：伪 3D 星场 + 透视流星（拖尾沿真实速度方向） */
   (function(){
     var canvas = document.getElementById('skyCanvas');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
-    var W = 0, H = 0, raf = null, t0 = 0, lastDraw = 0;
-    var pulse = 0, dir = 1;
-    var stars = [];
-    var cfgs = [
-      { n: 130, d: .35, s: [.6, 1.1], a: [.32, .6], v: [.25, .6] },
-      { n: 52, d: .7, s: [1, 1.6], a: [.42, .85], v: [.4, .9] },
-      { n: 24, d: 1.2, s: [1.3, 2.2], a: [.6, 1], v: [.6, 1.2] }
-    ];
+    var TAU = Math.PI * 2;
+    var W = 0, H = 0, CX = 0, CY = 0, RX = 0, RY = 0;
+    var raf = null, t0 = 0, lastDraw = 0, lastT = 0;
+    var pulse = 0;
+    var stars = [], meteors = [], nextMeteor = 2.5;
+
     function rand(a, b){ return a + Math.random() * (b - a); }
-    cfgs.forEach(function(c, li){
-      for (var i = 0; i < c.n; i++){
-        stars.push({
-          x: Math.random(), y: Math.random(),
-          r: rand(c.s[0], c.s[1]),
-          a: rand(c.a[0], c.a[1]),
-          sp: rand(c.v[0], c.v[1]),
-          ph: Math.random() * 6.2832,
-          d: c.d,
-          warm: li === 2 ? Math.random() < .2 : Math.random() < .12,
-          bright: li === 2 && Math.random() < .35
-        });
-      }
-    });
+    function makeStar(){
+      var r = .06 + .94 * Math.pow(Math.random(), .58);
+      return {
+        ang: Math.random() * TAU,
+        r: r,
+        size: rand(.5, 1.6) * (.5 + r * 1.2),
+        base: rand(.28, .95) * (.45 + r * .75),
+        sp: rand(.25, 1.1),
+        ph: Math.random() * TAU,
+        warm: Math.random() < .12
+      };
+    }
+    for (var i = 0; i < 200; i++) stars.push(makeStar());
+
     function resize(){
       var dpr = Math.min(1.5, window.devicePixelRatio || 1);
       W = canvas.clientWidth; H = canvas.clientHeight;
       canvas.width = Math.max(1, Math.round(W * dpr));
       canvas.height = Math.max(1, Math.round(H * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      CX = W * .5; CY = H * .5;
+      RX = W * .6; RY = H * .62;
     }
-    function draw(t){
+
+    function spawnMeteor(){
+      var ang = rand(Math.PI * .84, Math.PI * .94); /* 左下方向 */
+      var speed = rand(480, 760);
+      meteors.push({
+        x: rand(.45, .98) * W,
+        y: rand(.02, .3) * H,
+        vx: Math.cos(ang) * speed,
+        vy: Math.sin(ang) * speed,
+        len: rand(110, 230),
+        dur: rand(.9, 1.4),
+        life: 0,
+        w: rand(1, 1.8)
+      });
+    }
+
+    function draw(t, dt){
       ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      pulse *= .92;
+      if (pulse < .005) pulse = 0;
+      var drift = .0045 * (1 + pulse * 55);
+
       for (var i = 0; i < stars.length; i++){
         var st = stars[i];
-        var x = st.x * W + Math.sin(t * .02 * st.d + st.ph) * 9 * st.d + pulse * 30 * st.d * dir;
-        var y = st.y * H + Math.cos(t * .016 * st.d + st.ph) * 7 * st.d;
-        var alpha = st.a * (.62 + .38 * Math.sin(t * st.sp + st.ph)) * (1 + pulse * .55);
+        st.r += drift * dt * (.45 + st.r);
+        if (st.r > 1.04){ stars[i] = makeStar(); continue; }
+        var rr = st.r;
+        var ca = Math.cos(st.ang), sa = Math.sin(st.ang);
+        var x = CX + ca * rr * RX, y = CY + sa * rr * RY;
+        var alpha = st.base * (.7 + .3 * Math.sin(t * st.sp + st.ph)) * (.55 + rr * .6);
         if (alpha > 1) alpha = 1;
         if (alpha <= .02) continue;
-        var sz = Math.max(1, Math.round(st.r));
+
+        /* 伪 3D：越近越大越亮；翻页涌动时沿径向拉出拖尾 */
+        if (pulse > .03 || rr > .82){
+          var rp = Math.max(.02, rr - drift * dt * (.45 + rr));
+          var xp = CX + ca * rp * RX, yp = CY + sa * rp * RY;
+          ctx.globalAlpha = alpha * .2;
+          ctx.strokeStyle = st.warm ? '#FFE9C9' : '#EAF0FF';
+          ctx.lineWidth = Math.max(1, st.size * .8);
+          ctx.beginPath();
+          ctx.moveTo(xp, yp);
+          ctx.lineTo(x, y);
+          ctx.stroke();
+        }
+
         ctx.globalAlpha = alpha;
         ctx.fillStyle = st.warm ? '#FFE9C9' : '#EAF0FF';
+        var sz = Math.max(1, Math.round(st.size));
         ctx.fillRect(Math.round(x - sz / 2), Math.round(y - sz / 2), sz, sz);
-        if (st.bright){
-          ctx.globalAlpha = alpha * .16;
+
+        if (rr > .78 && st.base > .65){
+          ctx.globalAlpha = alpha * .14;
+          ctx.fillStyle = '#FFF6E3';
           ctx.beginPath();
-          ctx.arc(x, y, st.r * 2.6, 0, 6.2832);
+          ctx.arc(x, y, st.size * 3.2, 0, TAU);
           ctx.fill();
         }
       }
-      ctx.globalAlpha = 1;
-      pulse *= .94;
-      if (pulse < .01) pulse = 0;
+
+      /* 流星 */
+      for (var k = meteors.length - 1; k >= 0; k--){
+        var m = meteors[k];
+        m.life += dt;
+        if (m.life >= m.dur){ meteors.splice(k, 1); continue; }
+        var p = m.life / m.dur;
+        var fade = Math.sin(Math.PI * p);
+        var acc = .6 + p * 1.2; /* 越接近越快、越大，制造逼近感 */
+        m.x += m.vx * dt * acc;
+        m.y += m.vy * dt * acc;
+        var sp = Math.sqrt(m.vx * m.vx + m.vy * m.vy);
+        var ux = m.vx / sp, uy = m.vy / sp;
+        var tailLen = m.len * (.45 + p * .85);
+        var hx = m.x, hy = m.y;
+        var tx = hx - ux * tailLen, ty = hy - uy * tailLen;
+        var g = ctx.createLinearGradient(tx, ty, hx, hy);
+        g.addColorStop(0, 'rgba(220,232,255,0)');
+        g.addColorStop(.62, 'rgba(220,232,255,' + (fade * .35).toFixed(3) + ')');
+        g.addColorStop(1, 'rgba(255,255,255,' + (fade * .95).toFixed(3) + ')');
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = g;
+        ctx.lineWidth = m.w * (.6 + p * .9);
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(tx, ty);
+        ctx.lineTo(hx, hy);
+        ctx.stroke();
+
+        var hr = (1.4 + p * 2.6) * m.w * 3.2;
+        var rg = ctx.createRadialGradient(hx, hy, 0, hx, hy, hr);
+        rg.addColorStop(0, 'rgba(255,255,255,' + (fade * .9).toFixed(3) + ')');
+        rg.addColorStop(.35, 'rgba(220,232,255,' + (fade * .32).toFixed(3) + ')');
+        rg.addColorStop(1, 'rgba(220,232,255,0)');
+        ctx.fillStyle = rg;
+        ctx.beginPath();
+        ctx.arc(hx, hy, hr, 0, TAU);
+        ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+
+      nextMeteor -= dt;
+      if (nextMeteor <= 0){
+        spawnMeteor();
+        nextMeteor = rand(6, 12);
+      }
     }
+
     function loop(now){
       if (!t0) t0 = now;
+      var t = (now - t0) / 1000;
       if (now - lastDraw >= 45){
+        var dt = Math.min(.08, Math.max(0, t - lastT));
+        lastT = t;
         lastDraw = now;
-        draw((now - t0) / 1000);
+        draw(t, dt);
       }
       raf = requestAnimationFrame(loop);
     }
+
     resize();
     window.addEventListener('resize', function(){
       resize();
-      if (reduce) draw(0);
+      if (reduce) draw(0, 0);
     });
-    draw(0);
-    if (!reduce) raf = requestAnimationFrame(loop);
-    skyNudge = function(d){
-      pulse = 1;
-      dir = d;
-    };
+    if (reduce){
+      draw(0, 0);
+    } else {
+      raf = requestAnimationFrame(loop);
+    }
+    skyNudge = function(){ pulse = 1; };
   })();
 
   var m = /^#s(\d+)$/.exec(location.hash);

@@ -52,24 +52,7 @@ html,body{margin:0;padding:0}
     radial-gradient(62% 68% at 66% 45%,rgba(5,6,10,.32),transparent 72%),
     linear-gradient(180deg,rgba(5,6,10,.3),transparent 26%,transparent 74%,rgba(5,6,10,.5));
 }
-/* 流星：偶尔划过，不抢戏 */
-.shoot{
-  position:absolute;z-index:1;height:1px;width:clamp(90px,11vw,170px);border-radius:999px;
-  background:linear-gradient(90deg,rgba(233,240,255,.95),rgba(233,240,255,0));
-  opacity:0;animation:shootFly 13s ease-in infinite;
-}
-.shoot::before{
-  content:"";position:absolute;left:-1px;top:-1.5px;width:3px;height:3px;border-radius:50%;
-  background:#fff;box-shadow:0 0 8px 2px rgba(220,232,255,.8);
-}
-.shoot-a{top:16%;left:72%;animation-delay:3.5s}
-.shoot-b{top:62%;left:38%;width:clamp(60px,7vw,110px);animation-delay:9.5s;animation-duration:15s}
-@keyframes shootFly{
-  0%,86%{opacity:0;transform:translate3d(0,0,0) rotate(18deg)}
-  88%{opacity:.9}
-  92%{opacity:.7}
-  100%{opacity:0;transform:translate3d(-34vw,12vw,0) rotate(18deg)}
-}
+/* 流星由 canvas 绘制，拖尾方向与速度严格一致 */
 
 /* 每页右上角：专属星座锚点（页面编号 + 章节名） */
 .sky-anchor{
@@ -611,7 +594,6 @@ html,body{margin:0;padding:0}
   .reveal,.slide.is-active .reveal{transition:none;opacity:1;transform:none}
   .cover-hint,.danmaku,.flash-text.is-in{animation:none}
   .poem-line{opacity:1;transform:none;filter:none;transition:none}
-  .shoot{display:none}
   .sky-nebula{animation:none}
   .sky-anchor,.sky-anchor .cn-line,.sky-anchor .cn-dot,.sky-anchor .cn-label{transition:none}
   .slide.is-active .sky-anchor .cn-dot.key{animation:none}
