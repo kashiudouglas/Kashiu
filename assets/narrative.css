@@ -1,0 +1,86 @@
+/* ============================================================
+   KASHIU — 首屏 → 星图 → 作品：同一片星空
+   仅首页（index.html）加载。依赖 interact.css 的 :root token。
+   ============================================================ */
+
+/* ---------- 星空层 ---------- */
+#narrative-sky,
+#narrative-fore{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+#narrative-sky{z-index:-1;opacity:.46}
+#narrative-fore{z-index:30;opacity:0}
+
+/* 首页星图区：让星空从卡片周围透出，右侧保留一层极淡的色块 */
+.home-page #ring{background:linear-gradient(105deg,transparent 0 72%,rgba(34,35,41,.55) 72%)}
+
+/* ---------- 作品 01：携带星落点 ---------- */
+.work-orbit{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:4;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  background:rgba(21,22,25,.62);
+  border:1px solid rgba(234,230,222,.14);
+  opacity:0;
+  transform:translateY(-4px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease),color .4s var(--ease),border-color .4s var(--ease);
+  pointer-events:none;
+}
+.work-orbit.is-landed{opacity:1;transform:none}
+.work-orbit-dot{
+  width:5px;
+  height:5px;
+  flex:none;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 10px rgba(182,65,72,.9);
+}
+.work-orbit em{font-style:normal}
+.work-row.has-domain .work-orbit{color:var(--paper-soft);border-color:rgba(182,65,72,.45)}
+.work-row.has-domain .work-orbit-dot{box-shadow:0 0 14px rgba(182,65,72,1)}
+
+/* ---------- 星图停靠时点亮 ---------- */
+.mini-sky circle{transition:opacity .6s var(--ease)}
+#ring.atlas-live .mini-sky circle{opacity:.34}
+#ring.atlas-live .mini-sky circle.bright{opacity:.8}
+#ring.atlas-live .mini-sky circle.warm{opacity:.72}
+#ring.atlas-live .mini-node.main::before{animation:atlasIgnite .6s var(--ease)}
+@keyframes atlasIgnite{
+  0%{box-shadow:0 0 13px rgba(239,235,226,.5)}
+  40%{box-shadow:0 0 20px rgba(182,65,72,.95)}
+  100%{box-shadow:0 0 13px rgba(239,235,226,.5)}
+}
+
+/* ---------- 移动端：纵向下降 ---------- */
+@media (max-width:900px){
+  #narrative-sky{opacity:.4}
+}
+@media (max-width:640px){
+  .work-orbit{top:10px;left:10px;padding:5px 7px;font-size:7.5px}
+  .work-orbit em{display:none}
+  .home-page #ring{background:transparent}
+}
+
+/* ---------- 无 JS / 降低动效 ---------- */
+html:not(.js) .work-orbit{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  #narrative-sky,#narrative-fore{display:none}
+  .work-orbit{opacity:1;transform:none;transition:none}
+  .mini-sky circle{transition:none}
+  #ring.atlas-live .mini-node.main::before{animation:none}
+}

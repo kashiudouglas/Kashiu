@@ -7,6 +7,7 @@
 <meta name="description" content="任喆 · Kashiu 的个人网站 — 学者、写作者、探索者。在代码与诗歌之间搭桥，构建「环」的幻想宇宙。">
 <title>任喆 · Kashiu — 在代码与诗歌之间</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/kashiu-hero.webp" fetchpriority="high">
 <meta property="og:title" content="任喆 · Kashiu — 在代码与诗歌之间">
 <meta property="og:description" content="学者 / 写作者 / 探索者。构建幻想世界，记录日常思考。">
 <meta property="og:type" content="website">
@@ -390,13 +391,6 @@ body.menu-open{overflow:hidden}
   padding:120px 0 30px;
   overflow:hidden;
 }
-#sky{
-  position:absolute;
-  inset:0;
-  width:100%;height:100%;
-  pointer-events:none;
-  opacity:.85;
-}
 .hero::after{
   content:"";
   position:absolute;
@@ -659,7 +653,7 @@ body.menu-open{overflow:hidden}
 .mini-sky .bright{opacity:.55}
 .mini-sky .warm{fill:var(--accent);opacity:.48}
 .mini-scene{position:absolute;inset:0}
-.js .mini-scene{opacity:0;visibility:hidden;pointer-events:none;transform:scale(.94);transition:opacity .32s ease,transform .52s var(--ease),visibility .52s}
+.js .mini-scene{opacity:0;visibility:hidden;pointer-events:none;transform:scale(.94);transition:opacity var(--dur-md) var(--ease),transform var(--dur-lg) var(--ease),visibility var(--dur-lg)}
 .js .mini-scene.is-current{opacity:1;visibility:visible;pointer-events:auto;transform:scale(1)}
 .js .mini-scene.is-zoomed{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.14)}
 .mini-domain{display:none}
@@ -671,9 +665,9 @@ body.menu-open{overflow:hidden}
 .mini-back{position:absolute;left:0;top:-6px;z-index:4;padding:6px 0;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--dim);transition:color .3s}
 .mini-back:hover{color:var(--paper)}
 .mini-node{position:absolute;z-index:2;width:44px;height:44px;padding:0;transform:translate(-50%,-50%);color:var(--dim);font-family:var(--cn);font-size:10px;letter-spacing:.06em;white-space:nowrap}
-.mini-node::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border:1px solid var(--dim);border-radius:50%;background:var(--paper);box-shadow:0 0 8px rgba(239,235,226,.35);transform:translate(-50%,-50%);transition:background .3s,border-color .3s,box-shadow .3s,transform .35s var(--ease)}
+.mini-node::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border:1px solid var(--dim);border-radius:50%;background:var(--paper);box-shadow:0 0 8px rgba(239,235,226,.35);transform:translate(-50%,-50%);transition:background var(--dur-sm),border-color var(--dur-sm),box-shadow var(--dur-sm),transform var(--dur-sm) var(--ease)}
 .mini-node.main::before{width:7px;height:7px;border-color:var(--paper);box-shadow:0 0 13px rgba(239,235,226,.5)}
-.mini-node::after{content:"";position:absolute;left:50%;top:50%;width:23px;height:23px;border:1px solid rgba(216,80,47,.45);border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.65);transition:opacity .3s,transform .4s var(--ease)}
+.mini-node::after{content:"";position:absolute;left:50%;top:50%;width:23px;height:23px;border:1px solid rgba(216,80,47,.45);border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.65);transition:opacity var(--dur-sm),transform var(--dur-md) var(--ease)}
 .mini-label{position:absolute;left:calc(50% + 15px);top:50%;transform:translateY(-50%);pointer-events:none;transition:color .3s}
 .mini-node.label-left .mini-label{left:auto;right:calc(50% + 15px)}
 .mini-node:hover,.mini-node.is-active{color:var(--paper)}
@@ -1227,7 +1221,8 @@ body.menu-open{overflow:hidden}
   #preloader,#cursor{display:none !important}
 </style>
 </noscript>
-<link rel="stylesheet" href="assets/interact.css?v=20261126c">
+<link rel="stylesheet" href="assets/interact.css?v=20261126d">
+<link rel="stylesheet" href="assets/narrative.css?v=20261126a">
 </head>
 <body id="top" class="home-page">
 
@@ -1243,6 +1238,9 @@ body.menu-open{overflow:hidden}
   <div class="cursor-dot"></div>
 </div>
 <div class="progress" id="progress" aria-hidden="true"></div>
+
+<canvas id="narrative-sky" aria-hidden="true"></canvas>
+<canvas id="narrative-fore" aria-hidden="true"></canvas>
 
 <header class="site-nav" id="nav">
   <div class="nav-inner">
@@ -1285,8 +1283,6 @@ body.menu-open{overflow:hidden}
 
   <!-- ============ HERO ============ -->
   <section class="hero editorial-hero" id="hero">
-    <canvas id="sky" aria-hidden="true"></canvas>
-
     <div class="hero-top">
       <div class="wrap">
         <span>KASHIU. / Personal Archive</span>
@@ -1310,7 +1306,7 @@ body.menu-open{overflow:hidden}
 
         <figure class="hero-visual is-portrait">
           <div class="hero-frame">
-            <img class="hero-art" src="assets/kashiu-hero.webp" width="947" height="1836" alt="KASHIU 的形象：黑色金边长外套与羽毛披肩，靠在页面右侧边缘。" decoding="async">
+            <img class="hero-art" src="assets/kashiu-hero.webp" width="947" height="1836" alt="KASHIU 的形象：黑色金边长外套与羽毛披肩，靠在页面右侧边缘。" decoding="async" loading="eager" fetchpriority="high">
           </div>
           <figcaption>
             <span>A little about me</span>
@@ -1487,6 +1483,7 @@ body.menu-open{overflow:hidden}
           <span class="work-title">环 · Ring<em>生长的宇宙</em></span>
           <span class="work-tags">Worldbuilding<br>Fiction</span>
           <span class="work-arrow">↗</span>
+          <span class="work-orbit" id="workOrbit" aria-hidden="true"><i class="work-orbit-dot"></i><em id="workOrbitLabel">STAR MAP</em></span>
         </a>
         <a class="work-row reveal" href="xianzhao.html"
            data-no="02" data-title="仙诏 · 长篇企划" data-tag="Fiction / In Preparation" data-art="2">
@@ -2046,6 +2043,9 @@ body.menu-open{overflow:hidden}
     setMiniScene(miniOverview, false);
     setMiniScene(miniDomain, true);
     miniBack.focus({preventScroll:true});
+    document.dispatchEvent(new CustomEvent('ring:domainchange', {
+      detail:{key:key, label:miniData[key][1]}
+    }));
   }
 
   function returnToMiniOverview(){
@@ -2063,6 +2063,9 @@ body.menu-open{overflow:hidden}
     markMiniActive(node);
     showMiniDetail(key);
     if (node) node.focus({preventScroll:true});
+    document.dispatchEvent(new CustomEvent('ring:domainchange', {
+      detail:{key:null, label:null}
+    }));
   }
 
   if (miniMap && miniOverview && miniDomain && miniBack && miniNo && miniTitle && miniText && miniLink) {
@@ -2085,101 +2088,6 @@ body.menu-open{overflow:hidden}
     miniBack.addEventListener('click', returnToMiniOverview);
     setMiniScene(miniOverview, true);
     setMiniScene(miniDomain, false);
-  }
-
-  /* ---------- hero sky canvas ---------- */
-  var canvas = document.getElementById('sky');
-  if (canvas && canvas.getContext) {
-    var ctx = canvas.getContext('2d');
-    var w = 0, h = 0, dpr = 1;
-    var stars = [];
-    var mx = 0, my = 0, tx = 0, ty = 0;
-    var t = 0;
-
-    function resize(){
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.clientWidth;
-      h = canvas.clientHeight;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      stars.length = 0;
-      var n = Math.min(120, Math.round((w * h) / 15000));
-      for (var i = 0; i < n; i++) {
-        stars.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          r: Math.random() * 1.1 + 0.3,
-          a: Math.random() * 0.4 + 0.12,
-          p: Math.random() * Math.PI * 2,
-          s: Math.random() * 0.012 + 0.003
-        });
-      }
-    }
-
-    window.addEventListener('pointermove', function(e){
-      tx = e.clientX / Math.max(1, window.innerWidth) - 0.5;
-      ty = e.clientY / Math.max(1, window.innerHeight) - 0.5;
-    }, {passive:true});
-
-    function drawRings(){
-      var m = Math.min(w, h);
-      var cx = w * (w > 900 ? 0.7 : 0.5) + mx * 26;
-      var cy = h * (w > 900 ? 0.47 : 0.4) + my * 18;
-      var rings = [
-        {rx: m * 0.52, ry: m * 0.2, rot: -0.35, sp: 0.00018, dash: [1, 9], color: 'rgba(239,235,226,.2)', dot: 'rgba(216,80,47,.85)'},
-        {rx: m * 0.42, ry: m * 0.16, rot: 0.42, sp: -0.00024, dash: [1, 7], color: 'rgba(199,167,108,.2)', dot: 'rgba(199,167,108,.9)'},
-        {rx: m * 0.3, ry: m * 0.115, rot: 1.15, sp: 0.00032, dash: [1, 6], color: 'rgba(239,235,226,.14)', dot: 'rgba(216,80,47,.9)'}
-      ];
-      rings.forEach(function(rg, i){
-        var rot = rg.rot + (reduce ? 0 : t * rg.sp);
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(rot);
-        ctx.beginPath();
-        ctx.ellipse(0, 0, rg.rx, rg.ry, 0, 0, Math.PI * 2);
-        ctx.strokeStyle = rg.color;
-        ctx.lineWidth = 1;
-        ctx.setLineDash(rg.dash);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        var a = reduce ? 1.2 : t * rg.sp * 3 + i * 2.1;
-        var dx = Math.cos(a) * rg.rx;
-        var dy = Math.sin(a) * rg.ry;
-        ctx.beginPath();
-        ctx.arc(dx, dy, i === 1 ? 2 : 2.4, 0, Math.PI * 2);
-        ctx.fillStyle = rg.dot;
-        ctx.shadowColor = rg.dot;
-        ctx.shadowBlur = 8;
-        ctx.fill();
-        ctx.restore();
-      });
-    }
-
-    function frame(){
-      mx += (tx - mx) * 0.04;
-      my += (ty - my) * 0.04;
-      t += 1;
-      ctx.clearRect(0, 0, w, h);
-      for (var i = 0; i < stars.length; i++) {
-        var st = stars[i];
-        var alpha = st.a + Math.sin(t * st.s * 5 + st.p) * 0.12;
-        if (alpha < 0.03) alpha = 0.03;
-        ctx.beginPath();
-        ctx.arc(st.x + mx * 8, st.y + my * 6, st.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(239,235,226,' + alpha + ')';
-        ctx.fill();
-      }
-      drawRings();
-      if (!reduce) requestAnimationFrame(frame);
-    }
-
-    window.addEventListener('resize', function(){
-      resize();
-      if (reduce) frame();
-    });
-    resize();
-    frame();
   }
 })();
 
@@ -2300,5 +2208,6 @@ body.menu-open{overflow:hidden}
 })();
 </script>
 <script src="assets/interact.js" defer></script>
+<script src="assets/narrative.js?v=20261126a" defer></script>
 </body>
 </html>
