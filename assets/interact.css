@@ -183,7 +183,6 @@
 }
 body{font-family:var(--sans);background:var(--ink)}
 ::selection{color:var(--paper)}
-#preloader{display:none!important}
 html:not(.custom-cursor) #cursor{display:none!important}
 .grain{opacity:.032;mix-blend-mode:soft-light}
 .js .reveal{transform:translateY(16px);transition:opacity var(--dur-md) var(--ease),transform var(--dur-md) var(--ease);transition-delay:var(--d,0s)}

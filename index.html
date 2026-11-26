@@ -5,9 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#151619">
 <meta name="description" content="任喆 · Kashiu 的个人网站 — 学者、写作者、探索者。在代码与诗歌之间搭桥，构建「环」的幻想宇宙。">
+<script>
+(function(){
+  var root=document.documentElement;
+  try{
+    var seen=localStorage.getItem('kashiu:visited:v1');
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(seen||reduce){root.classList.add('preloaded');}
+    else{root.classList.add('preloader-active');localStorage.setItem('kashiu:visited:v1','1');}
+  }catch(e){root.classList.add('preloaded');}
+})();
+</script>
 <title>任喆 · Kashiu — 在代码与诗歌之间</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="assets/kashiu-hero.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/kashiu-hero.webp" imagesrcset="assets/kashiu-hero-480.webp 480w, assets/kashiu-hero-720.webp 720w, assets/kashiu-hero.webp 947w" imagesizes="414px" media="(min-width: 901px)" fetchpriority="high">
 <meta property="og:title" content="任喆 · Kashiu — 在代码与诗歌之间">
 <meta property="og:description" content="学者 / 写作者 / 探索者。构建幻想世界，记录日常思考。">
 <meta property="og:type" content="website">
@@ -20,7 +31,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Noto+Serif+SC:wght@200;300;400;500;600;900&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=20261126a">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    KASHIU — HOME CONCEPT / “环”
@@ -214,10 +227,14 @@ section[id],header[id]{scroll-margin-top:88px}
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:transform .95s var(--ease),visibility .95s;
-  animation:preOut .7s var(--ease) .9s forwards;
+  transition:transform .7s var(--ease),visibility .7s;
+  animation:preOut .6s var(--ease) .5s forwards;
 }
+html.preloaded #preloader{display:none!important}
 @keyframes preOut{to{transform:translateY(-100%);visibility:hidden}}
+html.preloader-active .editorial-hero .hero-title,
+html.preloader-active .editorial-hero .hero-sub,
+html.preloader-active .editorial-hero .hero-foot{animation-play-state:paused}
 .pre-center{position:relative;display:grid;place-items:center;width:132px;height:132px}
 .pre-center::before,.pre-center::after{
   content:"";
@@ -1221,7 +1238,7 @@ body.menu-open{overflow:hidden}
   #preloader,#cursor{display:none !important}
 </style>
 </noscript>
-<link rel="stylesheet" href="assets/interact.css?v=20261126d">
+<link rel="stylesheet" href="assets/interact.css?v=20261126e">
 <link rel="stylesheet" href="assets/narrative.css?v=20261126a">
 </head>
 <body id="top" class="home-page">
@@ -1306,7 +1323,7 @@ body.menu-open{overflow:hidden}
 
         <figure class="hero-visual is-portrait">
           <div class="hero-frame">
-            <img class="hero-art" src="assets/kashiu-hero.webp" width="947" height="1836" alt="KASHIU 的形象：黑色金边长外套与羽毛披肩，靠在页面右侧边缘。" decoding="async" loading="eager" fetchpriority="high">
+            <img class="hero-art" src="assets/kashiu-hero.webp" srcset="assets/kashiu-hero-480.webp 480w, assets/kashiu-hero-720.webp 720w, assets/kashiu-hero.webp 947w" sizes="414px" width="947" height="1836" alt="KASHIU 的形象：黑色金边长外套与羽毛披肩，靠在页面右侧边缘。" decoding="async" loading="eager" fetchpriority="high">
           </div>
           <figcaption>
             <span>A little about me</span>
@@ -1773,6 +1790,13 @@ body.menu-open{overflow:hidden}
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.documentElement.classList.add('js');
+
+  if (document.documentElement.classList.contains('preloader-active')) {
+    var preloader = document.getElementById('preloader');
+    var preloaderDone = function(){ document.documentElement.classList.remove('preloader-active'); };
+    if (preloader) preloader.addEventListener('animationend', preloaderDone, {once:true});
+    setTimeout(preloaderDone, 1600);
+  }
 
   /* ---------- custom cursor ---------- */
   var cursor = document.getElementById('cursor');
