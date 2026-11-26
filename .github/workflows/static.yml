@@ -27,13 +27,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Build sitemap
+        run: node scripts/build-sitemap.mjs
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp *.html sitemap.xml _site/
+          cp -r assets _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Archive the static site in the format expected by deploy-pages
-          path: '.'
+          # Only publish public pages and assets
+          path: '_site'
 
   deploy:
     environment:

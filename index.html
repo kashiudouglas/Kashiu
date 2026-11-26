@@ -510,6 +510,9 @@ body.menu-open{overflow:hidden}
   transition:color .3s,border-color .3s;
 }
 .hero-links a:hover{color:var(--accent);border-color:var(--accent)}
+.hero-links .hero-cta{background:var(--paper);color:var(--ink);border:1px solid var(--paper);padding:12px 20px}
+.hero-links .hero-cta:hover{background:transparent;color:var(--paper);border-color:var(--paper)}
+.hero-links .hero-cta-ghost{color:var(--dim)}
 .hero-foot{
   position:relative;z-index:2;
   display:flex;
@@ -1318,11 +1321,8 @@ body.menu-open{overflow:hidden}
       <div class="hero-sub">
         <p class="statement">这是一颗种子<br><span class="dim">一片充满生机的花园。</span></p>
         <div class="hero-links">
-          <span class="hl-label">Explore my world</span>
-          <a href="about-me.html">关于我</a>
-          <a href="#ring">环</a>
-          <a href="#works">作品</a>
-          <a href="poetry.html">诗集</a>
+          <a class="hero-cta" href="about-me.html">关于我 <span aria-hidden="true">↗</span></a>
+          <a class="hero-cta-ghost" href="#works">看作品 <span aria-hidden="true">↓</span></a>
         </div>
       </div>
     </div>
@@ -1727,17 +1727,17 @@ body.menu-open{overflow:hidden}
           <strong>诗集 <em>Poems</em></strong>
           <p>想读一些文字：《口水盆》42 首，2024 — 2026。</p>
         </a>
-        <a class="more-card" href="hometown.html">
-          <span class="n">05</span>
-          <strong>家乡 <em>Hometown</em></strong>
-          <p>出生点：陕西扶风，一个很小的地方。</p>
-        </a>
         <a class="more-card more-card-visual" href="art.html">
           <img src="assets/pixel-yae.gif" width="320" height="320" alt="粉色头发动漫角色的像素动图" decoding="async">
           <span class="more-visual-copy">
-            <span class="n">06 / DIVINE CANVAS</span>
+            <span class="n">05 / DIVINE CANVAS</span>
             <strong>神的画作 <em>进入画廊 ↗</em></strong>
           </span>
+        </a>
+        <a class="more-card" href="hometown.html">
+          <span class="n">06</span>
+          <strong>家乡 <em>Hometown</em></strong>
+          <p>出生点：陕西扶风，一个很小的地方。</p>
         </a>
       </div>
       <div class="more-links">

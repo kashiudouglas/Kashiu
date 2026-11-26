@@ -12,13 +12,6 @@
   function getSet(k){ try{ return JSON.parse(localStorage.getItem(k) || '[]'); }catch(e){ return []; } }
   function setSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 
-  /* deterministic pseudo base count so every poem shows a non-empty number */
-  function hashCount(id){
-    var h = 0;
-    for (var i = 0; i < id.length; i++){ h = (h * 31 + id.charCodeAt(i)) >>> 0; }
-    return 3 + (h % 37); /* 3 .. 39 */
-  }
-
   /* ---------- copy helper ---------- */
   function copyText(text, btn){
     function done(){
@@ -54,7 +47,6 @@
     Array.prototype.forEach.call(poems, function(poem){
       var id = poem.id;
       if (!id) return;
-      var base = hashCount(id);
       var isLiked = liked.indexOf(id) !== -1;
       var isFav = favs.indexOf(id) !== -1;
 
@@ -66,7 +58,7 @@
       likeBtn.className = 'pact like' + (isLiked ? ' is-on' : '');
       likeBtn.setAttribute('aria-pressed', isLiked ? 'true' : 'false');
       likeBtn.setAttribute('aria-label', '点赞');
-      likeBtn.innerHTML = HEART + '<span class="count">' + (base + (isLiked ? 1 : 0)) + '</span>';
+      likeBtn.innerHTML = HEART + '<span class="count">' + (isLiked ? 1 : 0) + '</span>';
       likeBtn.addEventListener('click', function(){
         var on = likeBtn.classList.toggle('is-on');
         likeBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -147,7 +139,8 @@
     bmPop = document.createElement('div');
     bmPop.className = 'bm-pop';
     bmPop.setAttribute('role', 'status');
-    var isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || '') || (navigator.userAgent || '').indexOf('Mac') !== -1;
+    var uaPlatform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    var isMac = /mac|iphone|ipad|ipod/i.test(uaPlatform) || (navigator.userAgent || '').indexOf('Mac') !== -1;
     var mod = isMac ? '\u2318' : 'Ctrl';
     bmPop.innerHTML = '<p>\u6309 <kbd>' + mod + '</kbd> + <kbd>D</kbd> \u628a\u672c\u9875\u52a0\u5165\u4e66\u7b7e</p>' +
                       '<div class="bm-row"><button class="bm-copy" type="button">\u590d\u5236\u94fe\u63a5</button></div>';
@@ -246,13 +239,13 @@
     }
   }
 
-  var walletCopy = document.querySelector('.copy-btn[data-copy-target]');
-  if (walletCopy){
-    walletCopy.addEventListener('click', function(){
-      var t = document.getElementById(walletCopy.getAttribute('data-copy-target'));
-      if (t) copyText(t.textContent.trim(), walletCopy);
+  var walletCopies = document.querySelectorAll('.copy-btn[data-copy-target]');
+  Array.prototype.forEach.call(walletCopies, function(btn){
+    btn.addEventListener('click', function(){
+      var t = document.getElementById(btn.getAttribute('data-copy-target'));
+      if (t) copyText(t.textContent.trim(), btn);
     });
-  }
+  });
 })();
 
 /* ---------------- nav active state ---------------- */
