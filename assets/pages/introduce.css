@@ -183,19 +183,21 @@ html,body{margin:0;padding:0}
 /* ============================================================
    05  RING  (mini atlas — 放大版)
    ============================================================ */
-.ring-split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,4vw,64px);align-items:center;margin-top:clamp(18px,2.5vh,30px)}
-.ring-copy .ring-line{font-family:var(--cn);font-size:clamp(19px,1.8vw,28px);line-height:1.6;color:var(--fg);font-weight:300}
-.ring-copy .ring-line+.ring-line{margin-top:14px;color:var(--fg-soft);font-size:.82em}
-.ring-tags{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:clamp(18px,2.5vh,28px)}
-.ring-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--dim);padding:4px 9px;border:1px solid var(--line);border-radius:2px}
+/* 沉浸式星图：整块 stage；星图占右侧大块，文字左上、详情左下浮层，绝不挤压星图 */
+.ring-stage{position:relative;margin-top:clamp(14px,2vh,26px);height:clamp(360px,58vh,600px);border:1px solid var(--line-soft);background:radial-gradient(70% 70% at 62% 46%,rgba(216,80,47,.06),transparent 70%);overflow:hidden}
+.ring-lead{position:absolute;left:clamp(18px,2.2vw,36px);top:clamp(16px,2.6vh,34px);max-width:36ch;z-index:3}
+.ring-copy .ring-line{font-family:var(--cn);font-size:clamp(16px,1.45vw,23px);line-height:1.6;color:var(--fg);font-weight:300}
+.ring-copy .ring-line+.ring-line{margin-top:10px;color:var(--fg-soft);font-size:.8em}
+.ring-tags{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:clamp(12px,1.8vh,20px)}
+.ring-tags span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--dim);padding:4px 9px;border:1px solid var(--line);border-radius:2px}
 
-.mini-atlas{width:100%;max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 170px;gap:clamp(14px,1.6vw,24px);align-items:start}
-.mini-detail{min-height:220px;border-left:1px solid var(--line);padding:4px 0 0 clamp(12px,1.2vw,20px)}
-.mini-detail .mini-no{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted)}
-.mini-detail strong{display:block;margin-top:8px;font-family:var(--cn);font-size:clamp(18px,1.6vw,26px);font-weight:300;color:var(--fg)}
-.mini-detail p{margin-top:8px;font-size:clamp(12px,1vw,15px);line-height:1.75;color:var(--dim)}
-.mini-enter{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(216,80,47,.4);padding-bottom:2px}
-.mini-map{position:relative;width:100%;aspect-ratio:1;isolation:isolate;overflow:hidden;border:1px solid var(--line-soft);background:radial-gradient(80% 80% at 50% 40%,rgba(216,80,47,.05),transparent)}
+.ring-map-wrap{position:absolute;right:clamp(8px,1.6vw,32px);top:50%;transform:translateY(-50%);width:clamp(320px,52vh,540px);aspect-ratio:1;z-index:2}
+.ring-detail{position:absolute;left:clamp(18px,2.2vw,36px);bottom:clamp(16px,2.4vh,30px);max-width:34ch;z-index:4;padding:14px 16px;background:rgba(7,8,10,.74);backdrop-filter:blur(7px);border:1px solid var(--line)}
+.ring-detail .mini-no{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--accent)}
+.ring-detail strong{display:block;margin-top:7px;font-family:var(--cn);font-size:clamp(17px,1.5vw,24px);font-weight:300;color:var(--fg)}
+.ring-detail p{margin-top:7px;font-size:clamp(12px,.95vw,14px);line-height:1.7;color:var(--dim)}
+
+.mini-map{position:relative;width:100%;height:100%;isolation:isolate;overflow:hidden;border:1px solid var(--line);background:radial-gradient(80% 80% at 50% 40%,rgba(216,80,47,.05),transparent)}
 .mini-map svg{position:absolute;inset:0;width:100%;height:100%}
 .mini-map circle{fill:var(--fg-soft)}
 .mini-map circle.bright{fill:var(--fg)}
@@ -203,18 +205,19 @@ html,body{margin:0;padding:0}
 .mini-scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity var(--dur-md) var(--ease),transform var(--dur-lg) var(--ease)}
 .mini-scene.is-current{opacity:1;visibility:visible}
 .mini-scene.is-zoomed{transform:scale(1.4);opacity:0;visibility:hidden}
-.mini-hint,.mini-domain-tip{position:absolute;top:10px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted)}
-.mini-node{position:absolute;z-index:2;width:40px;height:40px;padding:0;transform:translate(-50%,-50%);color:var(--dim);font-family:var(--cn);font-size:11px;letter-spacing:.04em;white-space:nowrap;background:none;border:none;cursor:pointer}
-.mini-node::before{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;border:1px solid var(--dim);border-radius:50%;background:var(--paper);box-shadow:0 0 8px rgba(239,235,226,.35);transform:translate(-50%,-50%);transition:all var(--dur-sm) var(--ease)}
-.mini-node.main::before{width:8px;height:8px;border-color:var(--paper);box-shadow:0 0 13px rgba(239,235,226,.5)}
-.mini-node .mini-label{position:absolute;left:calc(50% + 14px);top:50%;transform:translateY(-50%);color:var(--dim);transition:color var(--dur-sm)}
-.mini-node.label-left .mini-label{left:auto;right:calc(50% + 14px)}
+.mini-hint,.mini-domain-tip{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted)}
+.mini-node{position:absolute;z-index:2;width:48px;height:48px;padding:0;transform:translate(-50%,-50%);color:var(--dim);font-family:var(--cn);font-size:12px;letter-spacing:.04em;white-space:nowrap;background:none;border:none;cursor:pointer}
+.mini-node::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border:1px solid var(--dim);border-radius:50%;background:var(--paper);box-shadow:0 0 10px rgba(239,235,226,.4);transform:translate(-50%,-50%);transition:all var(--dur-sm) var(--ease)}
+.mini-node.main::before{width:11px;height:11px;border-color:var(--paper);box-shadow:0 0 16px rgba(239,235,226,.6)}
+.mini-node .mini-label{position:absolute;left:calc(50% + 16px);top:50%;transform:translateY(-50%);color:var(--dim);transition:color var(--dur-sm)}
+.mini-node.label-left .mini-label{left:auto;right:calc(50% + 16px)}
 .mini-node:hover,.mini-node.is-active{color:var(--paper)}
-.mini-node:hover::before,.mini-node.is-active::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 16px rgba(216,80,47,.85);transform:translate(-50%,-50%) scale(1.3)}
+.mini-node:hover::before,.mini-node.is-active::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 20px rgba(216,80,47,.9);transform:translate(-50%,-50%) scale(1.3)}
 .mini-node:hover .mini-label,.mini-node.is-active .mini-label{color:var(--accent)}
-.mini-back{position:absolute;top:10px;left:12px;background:none;border:1px solid var(--line);color:var(--fg-soft);font-family:var(--mono);font-size:10px;padding:4px 8px;cursor:pointer;border-radius:2px}
-.mini-back:hover{border-color:var(--accent);color:var(--accent)}
-.mini-domain-name{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted)}
+/* 返回按钮：大号胶囊，明显好点 */
+.mini-back{position:absolute;top:12px;left:12px;z-index:5;background:rgba(7,8,10,.78);border:1px solid var(--accent);color:var(--fg);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;padding:9px 16px;cursor:pointer;border-radius:999px;transition:all var(--dur-sm)}
+.mini-back:hover{background:var(--accent);color:#07080A}
+.mini-domain-name{position:absolute;bottom:12px;right:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted)}
 
 /* ============================================================
    06  WRITING
@@ -293,6 +296,73 @@ html,body{margin:0;padding:0}
 .flash-ctrl button span{margin-right:6px}
 
 /* ============================================================
+   HOMETOWN 家乡章节
+   ============================================================ */
+/* A 封面：扶风 + 陕西地图 */
+.home-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:center}
+.home-big{font-family:var(--serif);font-size:clamp(60px,10.5vw,168px);line-height:.95;letter-spacing:-.02em;color:var(--fg)}
+.home-big .pin{display:block;font-family:var(--mono);font-size:.26em;letter-spacing:.22em;color:var(--accent);margin-bottom:.16em}
+.home-sub{margin-top:clamp(16px,2.4vh,28px);font-family:var(--cn);font-size:clamp(16px,1.5vw,23px);line-height:1.7;color:var(--fg-soft)}
+.home-sub .dim{color:var(--muted)}
+.home-meta{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:clamp(16px,2.4vh,26px);font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.home-map{position:relative;width:100%;max-width:520px;margin:0 auto}
+.home-map svg{width:100%;height:auto;display:block;overflow:visible}
+.home-map .shaanxi{fill:none;stroke:var(--line);stroke-width:1.5}
+.home-map .baoji{fill:rgba(216,80,47,.07);stroke:rgba(216,80,47,.45);stroke-width:1}
+.home-map .fufeng{fill:rgba(216,80,47,.22);stroke:var(--accent);stroke-width:1.5}
+.home-map .here{fill:var(--accent);transform-origin:372px 252px;animation:pinpulse 2.4s var(--ease) infinite}
+@keyframes pinpulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.9);opacity:.45}}
+.home-map text{font-family:var(--mono);letter-spacing:.14em;fill:var(--dim);font-size:11px}
+
+/* B 地理数据 */
+.geo-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(26px,3.5vw,60px);margin-top:clamp(18px,2.6vh,32px);align-items:start}
+.geo-data{display:grid;grid-template-columns:auto 1fr;column-gap:22px}
+.geo-data .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;padding:11px 0;border-top:1px solid var(--line-soft)}
+.geo-data .v{font-family:var(--cn);font-size:clamp(15px,1.3vw,19px);color:var(--fg);padding:11px 0;border-top:1px solid var(--line-soft);text-align:right}
+.geo-data .v b{color:var(--accent);font-weight:400}
+.geo-copy{font-family:var(--cn);font-size:clamp(15px,1.35vw,20px);line-height:1.85;color:var(--fg-soft)}
+.geo-copy p+p{margin-top:clamp(14px,2vh,22px)}
+.geo-copy strong{color:var(--fg);font-weight:400}
+.geo-tags{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:clamp(16px,2.2vh,26px)}
+.geo-tags span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--dim);padding:4px 9px;border:1px solid var(--line);border-radius:2px}
+
+/* C 周原引文 */
+.zhou-quote{font-family:var(--cn);font-size:clamp(34px,4.8vw,76px);line-height:1.42;font-weight:300;color:var(--fg);letter-spacing:.02em}
+.zhou-quote .src{display:block;margin-top:clamp(14px,2vh,22px);font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--dim)}
+.zhou-body{margin-top:clamp(20px,3vh,34px);font-family:var(--cn);font-size:clamp(16px,1.4vw,21px);line-height:1.85;color:var(--fg-soft);max-width:54ch}
+.zhou-body b{color:var(--accent);font-weight:400}
+
+/* D/E 遗物分栏（法门寺 / 青铜 / 绛帐） */
+.relic-split{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,3.2vw,52px);align-items:center;margin-top:clamp(16px,2.4vh,28px)}
+.relic-photo{position:relative;aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden;background:var(--surface-2)}
+.relic-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.relic-photo:hover img{transform:scale(1.05)}
+.relic-cap{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--dim)}
+.relic-fact{margin-bottom:clamp(14px,2vh,22px)}
+.relic-fact b{display:block;font-family:var(--serif);font-size:clamp(44px,6vw,86px);line-height:1;color:var(--accent);font-weight:400}
+.relic-fact span{font-family:var(--cn);font-size:clamp(13px,1.1vw,16px);color:var(--fg-soft);line-height:1.5}
+.relic-body{margin-top:clamp(14px,2vh,22px);font-family:var(--cn);font-size:clamp(15px,1.3vw,19px);line-height:1.85;color:var(--fg-soft)}
+.relic-body b{color:var(--fg);font-weight:400}
+
+/* G 风物照片墙 + 灯箱 */
+.photo-wall{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(110px,17vh,180px);gap:10px;margin-top:clamp(18px,2.6vh,30px)}
+.photo-wall button{position:relative;overflow:hidden;border:1px solid var(--line);padding:0;cursor:pointer;background:var(--surface-2)}
+.photo-wall img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}
+.photo-wall button:hover img{transform:scale(1.08)}
+.photo-wall button::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.62));z-index:1}
+.photo-wall button span{position:absolute;left:9px;bottom:8px;z-index:2;font-family:var(--cn);font-size:clamp(11px,.95vw,14px);color:var(--fg);text-shadow:0 1px 6px #000}
+.lightbox{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;padding:4vh 4vw;opacity:0;visibility:hidden;transition:opacity var(--dur-md) var(--ease),visibility var(--dur-md)}
+.lightbox.on{opacity:1;visibility:visible}
+.lightbox img{max-width:92vw;max-height:90vh;object-fit:contain;border:1px solid var(--line)}
+.lightbox .lb-close{position:absolute;top:22px;right:26px;width:48px;height:48px;border-radius:50%;border:1px solid var(--accent);background:rgba(7,8,10,.7);color:var(--fg);font-size:22px;line-height:1;cursor:pointer}
+.lightbox .lb-close:hover{background:var(--accent);color:#07080A}
+
+/* H 回望 */
+.journey-quote{font-family:var(--cn);font-size:clamp(26px,3.4vw,52px);line-height:1.6;color:var(--fg);font-weight:300}
+.journey-quote .hl{color:var(--accent)}
+.journey-sub{margin-top:clamp(20px,3vh,34px);font-family:var(--cn);font-size:clamp(14px,1.2vw,18px);line-height:2;color:var(--dim)}
+
+/* ============================================================
    12  ENDING
    ============================================================ */
 .ending{text-align:center;align-items:center}
@@ -322,26 +392,33 @@ html,body{margin:0;padding:0}
   .route-stops{grid-template-columns:repeat(3,1fr);row-gap:34px}
   .route-line::before,.route-line::after{display:none}
   .brag-wall{grid-template-columns:repeat(4,1fr)}
+  .ring-detail{max-width:30ch}
 }
 @media (max-width:820px){
-  .ring-split,.write-split,.art-stage{grid-template-columns:1fr}
+  .write-split,.art-stage,.home-hero,.geo-grid,.relic-split{grid-template-columns:1fr}
   .write-split::before{display:none}
   .num-grid{grid-template-columns:repeat(2,1fr)}
   .num-cell:nth-child(3){border-left:none;border-top:1px solid var(--line-soft)}
   .num-cell:nth-child(4){border-top:1px solid var(--line-soft)}
   .brag-wall{grid-template-columns:repeat(3,1fr)}
-  .mini-atlas{grid-template-columns:1fr}
-  .mini-detail{border-left:none;border-top:1px solid var(--line);padding:14px 0 0}
+  .photo-wall{grid-template-columns:repeat(2,1fr)}
+  /* 星图：窄屏改上下堆叠，ring-stage 高度自适应 */
+  .ring-stage{height:auto;padding:clamp(20px,3vh,32px) 0 0;display:flex;flex-direction:column;gap:18px}
+  .ring-lead,.ring-detail,.ring-map-wrap{position:static;transform:none;max-width:none}
+  .ring-map-wrap{width:min(78vw,440px);margin:0 auto;order:-1}
+  .ring-detail{background:none;backdrop-filter:none;border:none;border-top:1px solid var(--line);padding:16px 0 0}
 }
 @media (max-height:640px){
-  .slide{padding-top:38px;padding-bottom:38px}
+  .slide{padding-top:34px;padding-bottom:34px}
   .cover-mark{font-size:clamp(70px,15vh,180px)}
+  .ring-stage{height:clamp(300px,52vh,480px)}
 }
 @media (max-width:560px){
   .id-row{grid-template-columns:1fr;gap:2px}
   .num-grid{grid-template-columns:1fr}
   .num-cell{border-left:none;border-top:1px solid var(--line-soft)}
   .brag-wall{grid-template-columns:repeat(2,1fr)}
+  .geo-data .v{text-align:left}
 }
 
 /* reduced motion */
