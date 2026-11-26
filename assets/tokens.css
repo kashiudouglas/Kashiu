@@ -1,0 +1,90 @@
+/* ============================================================
+   tokens.css — single source of truth for design tokens
+   Loaded first on every page, before page styles and interact.css.
+   Legacy names (--ink / --paper / --paper-soft) are kept as aliases
+   so existing component CSS keeps working.
+   ============================================================ */
+
+:root{
+  /* surfaces */
+  --bg:#07080A;
+  --bg-rgb:7,8,10;
+  --surface:#222329;
+  --surface-2:#1B1D22;
+  --pager-bg:#222329;
+  --pager-hover:#292B31;
+
+  /* text */
+  --fg:#EFEBE2;
+  --fg-soft:rgba(239,235,226,.72);
+  --dim:#9A958A;
+  --muted:#8B877C;
+
+  /* lines & fields */
+  --line:rgba(239,235,226,.14);
+  --line-soft:rgba(239,235,226,.07);
+  --field-bg:rgba(239,235,226,.04);
+
+  /* accent */
+  --accent:#D8502F;
+  --accent-rgb:216,80,47;
+  --accent-deep:#6E2A34;
+
+  /* effects */
+  --nav-bg:rgba(7,8,10,.78);
+  --shadow-deep:rgba(0,0,0,.55);
+
+  /* type */
+  --sans:'Helvetica Neue',Helvetica,Arial,'PingFang SC','Microsoft YaHei',sans-serif;
+  --serif:'Instrument Serif','Noto Serif SC',Georgia,serif;
+  --cn:'Noto Serif SC','Songti SC','STSong',serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  /* rhythm & motion */
+  --gutter:clamp(20px,3.2vw,48px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur-xs:.16s;
+  --dur-sm:.24s;
+  --dur-md:.4s;
+  --dur-lg:.7s;
+  --dur-xl:1.1s;
+
+  /* legacy aliases */
+  --ink:var(--bg);
+  --paper:var(--fg);
+  --paper-soft:var(--fg-soft);
+
+  color-scheme:dark;
+}
+
+[data-theme="light"]{
+  --bg:#EAE6DE;
+  --bg-rgb:234,230,222;
+  --surface:#DCD5C8;
+  --surface-2:#D3CCBE;
+  --pager-bg:#F2EEE7;
+  --pager-hover:#E5DED2;
+
+  --fg:#222329;
+  --fg-soft:rgba(34,35,41,.78);
+  --dim:#625F59;
+  --muted:#777169;
+
+  --line:rgba(34,35,41,.2);
+  --line-soft:rgba(34,35,41,.1);
+  --field-bg:rgba(34,35,41,.04);
+
+  --accent:#9F3F46;
+  --accent-rgb:159,63,70;
+  --accent-deep:#6E2A34;
+
+  --nav-bg:rgba(234,230,222,.92);
+  --shadow-deep:rgba(34,35,41,.16);
+
+  /* legacy aliases must be re-declared so they resolve against the light values */
+  --ink:var(--bg);
+  --paper:var(--fg);
+  --paper-soft:var(--fg-soft);
+
+  color-scheme:light;
+}
