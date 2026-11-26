@@ -13,7 +13,7 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-400-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css?v=20261126b">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/pages/introduce.css?v=20261126n">
+<link rel="stylesheet" href="assets/pages/introduce.css?v=20261126t">
 </head>
 <body class="intro-body">
 
@@ -392,8 +392,12 @@
     <!-- ============ 16 诗 ============ -->
     <section class="slide poem-slide" id="s16" data-title="诗">
       <span class="slide-tag">16 / Poetry</span>
+      <div class="poem-sky" aria-hidden="true">
+        <canvas class="sky-canvas" id="poemSky"></canvas>
+        <span class="shoot shoot-a"></span>
+        <span class="shoot shoot-b"></span>
+      </div>
       <div class="poem-ink" aria-hidden="true">
-        <span class="ghost">诗</span>
         <span class="seal-side">口水盆 · 2024—2026</span>
       </div>
       <div class="slide-inner">
@@ -653,7 +657,7 @@
   }, {passive:true});
 
   /* 各屏进入触发 */
-  var poemStep = null, poemRefresh = null;
+  var poemStep = null, poemRefresh = null, poemSkyStart = null, poemSkyStop = null;
   function onSlideEnter(i){
     var id = slides[i] ? slides[i].id : '';
     if (id === 's18') {
@@ -661,7 +665,10 @@
       if (line) line.style.setProperty('--route-fill', '100%');
     }
     if (id === 's19') runCounts();
-    if (id === 's16' && poemRefresh) poemRefresh();
+    if (id === 's16') {
+      if (poemRefresh) poemRefresh();
+      if (poemSkyStart) poemSkyStart();
+    } else if (poemSkyStop) poemSkyStop();
     if (id === 's21') startFlash(); else stopFlash();
   }
 
@@ -891,6 +898,89 @@
     var noteEl = document.getElementById('poemNote');
     var curEl = document.getElementById('poemCur');
     var totalEl = document.getElementById('poemTotal');
+
+    /* 星空：canvas 绘制；只在本屏可见时跑动画 */
+    (function(){
+      var canvas = document.getElementById('poemSky');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W = 0, H = 0, raf = null, running = false, t0 = 0, lastDraw = 0;
+      var stars = [];
+      var cfgs = [
+        { n: 150, d: .35, s: [.6, 1.1], a: [.35, .65], v: [.25, .6] },
+        { n: 56, d: .7, s: [1, 1.6], a: [.45, .9], v: [.4, .9] },
+        { n: 26, d: 1.2, s: [1.3, 2.2], a: [.65, 1], v: [.6, 1.2] }
+      ];
+      function rand(a, b){ return a + Math.random() * (b - a); }
+      cfgs.forEach(function(c, li){
+        for (var i = 0; i < c.n; i++){
+          stars.push({
+            x: Math.random(), y: Math.random(),
+            r: rand(c.s[0], c.s[1]),
+            a: rand(c.a[0], c.a[1]),
+            sp: rand(c.v[0], c.v[1]),
+            ph: Math.random() * 6.2832,
+            d: c.d,
+            warm: li === 2 ? Math.random() < .2 : Math.random() < .12,
+            bright: li === 2 && Math.random() < .35
+          });
+        }
+      });
+      function resize(){
+        var dpr = Math.min(2, window.devicePixelRatio || 1);
+        W = canvas.clientWidth; H = canvas.clientHeight;
+        canvas.width = Math.max(1, Math.round(W * dpr));
+        canvas.height = Math.max(1, Math.round(H * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      function draw(t){
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < stars.length; i++){
+          var st = stars[i];
+          var x = st.x * W + Math.sin(t * .02 * st.d + st.ph) * 9 * st.d;
+          var y = st.y * H + Math.cos(t * .016 * st.d + st.ph) * 7 * st.d;
+          var alpha = st.a * (.62 + .38 * Math.sin(t * st.sp + st.ph));
+          if (alpha <= .02) continue;
+          var sz = Math.max(1, Math.round(st.r));
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle = st.warm ? '#FFE9C9' : '#EAF0FF';
+          ctx.fillRect(Math.round(x - sz / 2), Math.round(y - sz / 2), sz, sz);
+          if (st.bright){
+            ctx.globalAlpha = alpha * .16;
+            ctx.beginPath();
+            ctx.arc(x, y, st.r * 2.6, 0, 6.2832);
+            ctx.fill();
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+      function loop(now){
+        if (!running) return;
+        if (!t0) t0 = now;
+        if (now - lastDraw >= 33){
+          lastDraw = now;
+          draw((now - t0) / 1000);
+        }
+        raf = requestAnimationFrame(loop);
+      }
+      resize();
+      window.addEventListener('resize', function(){
+        resize();
+        if (!running) draw(0);
+      });
+      draw(0);
+      if (reduce) return;
+      poemSkyStart = function(){
+        if (running) return;
+        running = true;
+        raf = requestAnimationFrame(loop);
+      };
+      poemSkyStop = function(){
+        running = false;
+        if (raf) cancelAnimationFrame(raf);
+        raf = null;
+      };
+    })();
 
     var POEMS = [
       { idx:'八声甘州', no:41, t:'八声甘州 · 寒云', y:'2026', k:'词', lines:[
