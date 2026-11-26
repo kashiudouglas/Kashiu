@@ -386,6 +386,132 @@ html,body{margin:0;padding:0}
 .intro-body.is-ending .hud-hint{visibility:hidden}
 
 /* ============================================================
+   16  POETRY  (诗选：目录 + 逐行浮现)
+   ============================================================ */
+.poem-slide{overflow:hidden}
+/* 稿纸竖线：淡淡的分栏，像摊开的手稿 */
+.poem-slide::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:8.3333% 100%;opacity:.55;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent);
+          mask-image:linear-gradient(180deg,transparent,#000 15%,#000 85%,transparent);
+}
+/* 缓慢漂移的墨雾 */
+.poem-slide::after{
+  content:"";position:absolute;inset:-12%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(42% 38% at 26% 32%,rgba(216,80,47,.13),transparent 70%),
+    radial-gradient(46% 42% at 76% 72%,rgba(232,212,172,.07),transparent 70%);
+  animation:poemMist 26s var(--ease) infinite alternate;
+}
+@keyframes poemMist{
+  from{transform:translate3d(-1.4%,-1%,0) scale(1)}
+  to{transform:translate3d(1.8%,1.4%,0) scale(1.07)}
+}
+.poem-slide .slide-inner{position:relative;z-index:1}
+.poem-ink{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.poem-ink .ghost{
+  position:absolute;right:-4vw;top:50%;
+  font-family:var(--cn);font-weight:200;font-size:min(58vh,40vw);line-height:.9;
+  color:rgba(239,235,226,.018);letter-spacing:-.04em;
+  animation:ghostFloat 18s var(--ease) infinite alternate;
+}
+@keyframes ghostFloat{
+  from{transform:translateY(calc(-50% - 8px))}
+  to{transform:translateY(calc(-50% + 8px))}
+}
+.poem-ink .seal-side{
+  position:absolute;left:clamp(8px,.9vw,16px);top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;font-family:var(--cn);font-size:10.5px;letter-spacing:.42em;
+  color:var(--dim);opacity:.55;
+}
+.poem-slide .sec-title{font-size:clamp(36px,5vw,78px);margin-bottom:clamp(10px,1.8vh,20px)}
+
+.poem-stage{
+  display:grid;grid-template-columns:minmax(210px,.78fr) 1.5fr;
+  gap:clamp(26px,3.6vw,64px);align-items:stretch;
+  border-top:1px solid var(--line);padding-top:clamp(14px,2.4vh,28px);min-height:0;
+}
+
+/* —— 左：诗目录 —— */
+.poem-index{display:flex;flex-direction:column;min-width:0}
+.pi-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin-bottom:6px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  color:var(--dim);text-transform:uppercase;
+}
+.pi-head em{font-style:normal;color:var(--accent)}
+.pi-list{display:flex;flex-direction:column}
+.pi-item{
+  position:relative;display:grid;grid-template-columns:2.4em 1fr auto;align-items:baseline;gap:10px;
+  padding:clamp(8px,1.25vh,13px) 0;background:none;border:0;border-bottom:1px solid var(--line-soft);
+  font-family:var(--cn);font-size:clamp(14px,1.16vw,18px);color:var(--muted);
+  text-align:left;cursor:pointer;
+  transition:color var(--dur-md) var(--ease),padding-left var(--dur-md) var(--ease);
+}
+.pi-item .n{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--dim);transition:color var(--dur-md)}
+.pi-item .y{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--dim)}
+.pi-item .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pi-item::before{
+  content:"";position:absolute;left:0;top:50%;width:2px;height:0;
+  background:var(--accent);transform:translateY(-50%);
+  transition:height var(--dur-md) var(--ease);
+}
+.pi-item:hover{color:var(--fg-soft)}
+.pi-item.is-on{color:var(--fg);padding-left:14px}
+.pi-item.is-on .n{color:var(--accent)}
+.pi-item.is-on::before{height:62%}
+.pi-foot{
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin-top:auto;padding-top:clamp(12px,2vh,20px);
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--dim);
+}
+.pi-foot b{color:var(--fg);font-weight:500}
+.pi-foot .key{color:var(--muted)}
+
+/* —— 右：诗正文 —— */
+.poem-reader{
+  position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;
+  padding-left:clamp(24px,3.2vw,56px);border-left:1px solid var(--line);
+}
+.pr-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:18px;
+  padding-bottom:clamp(9px,1.5vh,16px);border-bottom:1px solid var(--line-soft);
+}
+.pr-title{
+  margin:0;font-family:var(--cn);font-weight:400;
+  font-size:clamp(22px,2.4vw,38px);line-height:1.2;letter-spacing:.03em;color:var(--fg);
+}
+.pr-meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--dim);white-space:nowrap}
+.pr-body{
+  display:flex;flex-direction:column;gap:clamp(5px,.9vh,10px);
+  margin-top:clamp(14px,2.6vh,30px);flex:1;min-height:0;
+  font-family:var(--cn);font-weight:300;font-size:clamp(17px,1.7vw,29px);
+  line-height:1.7;letter-spacing:.02em;color:var(--fg);
+}
+.pr-body.is-long{font-size:clamp(13px,1.28vw,21px);line-height:1.55;gap:clamp(2px,.45vh,6px)}
+.pr-gap{height:clamp(4px,.8vh,12px)}
+.pr-body.is-long .pr-gap{height:clamp(2px,.4vh,6px)}
+.poem-line{
+  opacity:0;transform:translateY(14px);filter:blur(4px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease),filter .6s var(--ease);
+  transition-delay:calc(var(--i) * 50ms);
+}
+.pr-body.is-live .poem-line{opacity:1;transform:none;filter:blur(0)}
+.pr-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-top:clamp(12px,1.8vh,22px);padding-top:clamp(10px,1.6vh,16px);
+  border-top:1px solid var(--line-soft);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--dim);
+}
+.seal{
+  font-family:var(--cn);font-size:11px;letter-spacing:.16em;line-height:1;
+  color:var(--accent);border:1px solid rgba(var(--accent-rgb),.55);
+  padding:6px 8px;border-radius:2px;transform:rotate(-4deg);opacity:.85;
+}
+
+/* ============================================================
    responsive / short screens
    ============================================================ */
 @media (max-width:1100px){
@@ -393,6 +519,7 @@ html,body{margin:0;padding:0}
   .route-line::before,.route-line::after{display:none}
   .brag-wall{grid-template-columns:repeat(4,1fr)}
   .ring-detail{max-width:30ch}
+  .poem-stage{grid-template-columns:minmax(180px,.72fr) 1.45fr;gap:clamp(20px,2.6vw,34px)}
 }
 @media (max-width:820px){
   .write-split,.art-stage,.home-hero,.geo-grid,.relic-split{grid-template-columns:1fr}
@@ -407,11 +534,24 @@ html,body{margin:0;padding:0}
   .ring-lead,.ring-detail,.ring-map-wrap{position:static;transform:none;max-width:none}
   .ring-map-wrap{width:min(78vw,440px);margin:0 auto;order:-1}
   .ring-detail{background:none;backdrop-filter:none;border:none;border-top:1px solid var(--line);padding:16px 0 0}
+  /* 诗选：窄屏上下堆叠，目录横向滚动 */
+  .poem-stage{grid-template-columns:1fr;gap:16px}
+  .poem-index{min-width:0}
+  .pi-list{flex-direction:row;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .pi-item{flex:0 0 auto;min-width:130px;border-bottom:0;border-left:1px solid var(--line-soft);padding:8px 12px}
+  .pi-item.is-on{padding-left:12px;border-left-color:var(--accent)}
+  .pi-item::before{display:none}
+  .pi-foot{margin-top:8px}
+  .poem-reader{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:16px}
+  .poem-ink .ghost{display:none}
 }
 @media (max-height:640px){
   .slide{padding-top:34px;padding-bottom:34px}
   .cover-mark{font-size:clamp(70px,15vh,180px)}
   .ring-stage{height:clamp(300px,52vh,480px)}
+  .poem-slide .sec-title{font-size:clamp(28px,4.4vh,54px)}
+  .pr-body{font-size:clamp(14px,1.5vw,24px);gap:clamp(3px,.6vh,7px)}
+  .pi-item{padding-top:6px;padding-bottom:6px}
 }
 @media (max-width:560px){
   .id-row{grid-template-columns:1fr;gap:2px}
@@ -426,6 +566,8 @@ html,body{margin:0;padding:0}
   .intro-body.is-animating .slides-track{transition:none}
   .reveal,.slide.is-active .reveal{transition:none;opacity:1;transform:none}
   .cover-hint,.danmaku,.flash-text.is-in{animation:none}
+  .poem-line{opacity:1;transform:none;filter:none;transition:none}
+  .poem-slide::after,.poem-ink .ghost{animation:none}
   *{scroll-behavior:auto !important}
 }
 

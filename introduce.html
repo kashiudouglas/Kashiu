@@ -13,7 +13,7 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-400-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css?v=20261126b">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/pages/introduce.css?v=20261126k">
+<link rel="stylesheet" href="assets/pages/introduce.css?v=20261126n">
 </head>
 <body class="intro-body">
 
@@ -389,9 +389,46 @@
       </div>
     </section>
 
-    <!-- ============ 16 画 ============ -->
-    <section class="slide" id="s16" data-title="画">
-      <span class="slide-tag">16 / Divine Canvas</span>
+    <!-- ============ 16 诗 ============ -->
+    <section class="slide poem-slide" id="s16" data-title="诗">
+      <span class="slide-tag">16 / Poetry</span>
+      <div class="poem-ink" aria-hidden="true">
+        <span class="ghost">诗</span>
+        <span class="seal-side">口水盆 · 2024—2026</span>
+      </div>
+      <div class="slide-inner">
+        <p class="sec-kicker reveal">《口水盆》· Selected</p>
+        <h2 class="sec-title reveal" style="--d:.1s">诗<em>Verse</em></h2>
+        <div class="poem-stage no-nav reveal" style="--d:.2s">
+          <aside class="poem-index" aria-label="诗选目录">
+            <div class="pi-head"><span>目录</span><em>06 Selected</em></div>
+            <div class="pi-list" id="poemList"></div>
+            <div class="pi-foot">
+              <span class="pi-count"><b id="poemCur">01</b> / <span id="poemTotal">06</span></span>
+              <span class="key">↑ ↓ 换一首</span>
+            </div>
+          </aside>
+          <article class="poem-reader">
+            <header class="pr-head">
+              <h3 class="pr-title" id="poemTitle">八声甘州 · 寒云</h3>
+              <span class="pr-meta" id="poemMeta">2026 · 词</span>
+            </header>
+            <div class="pr-body" id="poemBody"></div>
+            <footer class="pr-foot">
+              <span class="seal" aria-hidden="true">口水盆</span>
+              <span id="poemNote">任喆 · 2026</span>
+            </footer>
+          </article>
+        </div>
+        <div class="talk reveal" style="--d:.65s">
+          <span>口水盆·42 首</span><span>始于 2024</span><span>八声甘州·寒云</span><span>不敢到君前</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 17 画 ============ -->
+    <section class="slide" id="s17" data-title="画">
+      <span class="slide-tag">17 / Divine Canvas</span>
       <div class="slide-inner">
         <p class="sec-kicker reveal">Pixels &amp; Paint</p>
         <h2 class="sec-title reveal" style="--d:.1s">画<em>Art，就是爆炸</em></h2>
@@ -413,8 +450,8 @@
     </section>
 
     <!-- ============ 17 求学之路 ============ -->
-    <section class="slide" id="s17" data-title="求学之路">
-      <span class="slide-tag">17 / School Route</span>
+    <section class="slide" id="s18" data-title="求学之路">
+      <span class="slide-tag">18 / School Route</span>
       <div class="slide-inner">
         <p class="sec-kicker reveal">06 Stops</p>
         <h2 class="sec-title reveal" style="--d:.1s">求学之路<em>From 泰达 to 陕机电</em></h2>
@@ -435,8 +472,8 @@
     </section>
 
     <!-- ============ 18 数据侧写 ============ -->
-    <section class="slide" id="s18" data-title="侧写">
-      <span class="slide-tag">18 / In Numbers</span>
+    <section class="slide" id="s19" data-title="侧写">
+      <span class="slide-tag">19 / In Numbers</span>
       <div class="slide-inner">
         <p class="sec-kicker reveal">Data of a curious life</p>
         <h2 class="sec-title reveal" style="--d:.1s">侧写<em>In Numbers</em></h2>
@@ -465,8 +502,8 @@
     </section>
 
     <!-- ============ 19 关于我 · 自夸墙 ============ -->
-    <section class="slide" id="s19" data-title="关于我">
-      <span class="slide-tag">19 / About Me</span>
+    <section class="slide" id="s20" data-title="关于我">
+      <span class="slide-tag">20 / About Me</span>
       <div class="slide-inner">
         <p class="sec-kicker reveal">Confidential · 别信</p>
         <h2 class="sec-title reveal" style="--d:.1s">关于我<em>All 18 personalities</em></h2>
@@ -480,8 +517,8 @@
     </section>
 
     <!-- ============ 20 精神状态 ============ -->
-    <section class="slide" id="s20" data-title="精神状态">
-      <span class="slide-tag">20 / Status</span>
+    <section class="slide" id="s21" data-title="精神状态">
+      <span class="slide-tag">21 / Status</span>
       <div class="slide-inner">
         <p class="sec-kicker reveal">My mental state</p>
         <h2 class="sec-title reveal" style="--d:.1s">我的精神状态<em>Unstable</em></h2>
@@ -498,7 +535,7 @@
     </section>
 
     <!-- ============ 21 结尾 ============ -->
-    <section class="slide ending" id="s21" data-title="结尾">
+    <section class="slide ending" id="s22" data-title="结尾">
       <div class="slide-inner">
         <div class="thanks reveal" style="--d:.1s">谢<em>谢</em>.</div>
         <p class="ending-quote reveal" style="--d:.3s">
@@ -591,6 +628,8 @@
     }
     if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); next(); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'ArrowDown') { if (slides[index] && slides[index].id === 's16') { e.preventDefault(); poemStep && poemStep(1); } }
+    else if (e.key === 'ArrowUp') { if (slides[index] && slides[index].id === 's16') { e.preventDefault(); poemStep && poemStep(-1); } }
     else if (e.key === 'Home') { e.preventDefault(); go(0); }
     else if (e.key === 'End') { e.preventDefault(); go(total - 1); }
   }, {passive:false});
@@ -614,14 +653,16 @@
   }, {passive:true});
 
   /* 各屏进入触发 */
+  var poemStep = null, poemRefresh = null;
   function onSlideEnter(i){
     var id = slides[i] ? slides[i].id : '';
-    if (id === 's17') {
+    if (id === 's18') {
       var line = document.querySelector('.route-line');
       if (line) line.style.setProperty('--route-fill', '100%');
     }
-    if (id === 's18') runCounts();
-    if (id === 's20') startFlash(); else stopFlash();
+    if (id === 's19') runCounts();
+    if (id === 's16' && poemRefresh) poemRefresh();
+    if (id === 's21') startFlash(); else stopFlash();
   }
 
   /* 天数 */
@@ -691,7 +732,7 @@
         else { clearInterval(timer); timer = null; }
       });
     }, {threshold:.3});
-    var s16 = document.getElementById('s16');
+    var s16 = document.getElementById('s17');
     if (s16) io.observe(s16);
   })();
 
@@ -839,6 +880,123 @@
     if (startFlash._cleanup) startFlash._cleanup();
     var box = document.getElementById('danmakuBox'); if (box) box.innerHTML = '';
   }
+
+  /* 诗选：目录 + 逐行浮现 */
+  (function(){
+    var list = document.getElementById('poemList');
+    if (!list) return;
+    var titleEl = document.getElementById('poemTitle');
+    var metaEl = document.getElementById('poemMeta');
+    var bodyEl = document.getElementById('poemBody');
+    var noteEl = document.getElementById('poemNote');
+    var curEl = document.getElementById('poemCur');
+    var totalEl = document.getElementById('poemTotal');
+
+    var POEMS = [
+      { idx:'八声甘州', no:41, t:'八声甘州 · 寒云', y:'2026', k:'词', lines:[
+        '倚山腰小阁暖金晖，千层楼倚山。',
+        '望云深隐处，不分崖壑，难辨人烟。',
+        '远近高低错落，楼影接青峦。',
+        '惟有天边岫，没入苍烟。',
+        '',
+        '不忍凭栏俯看，见众生渺渺，尽化微尘。',
+        '怪晨光虽暖，万类寂无声。',
+        '忽抬眼、一禽掠过，划长空、翅影破寒云。',
+        '方信道、此间犹有，未绝之音。'
+      ]},
+      { idx:'点绛唇', no:31, t:'点绛唇 · 相思', y:'2026', k:'词', lines:[
+        '帘隔云天，灯暖难遮心头远。',
+        '影孤人散，繁华都吹断。',
+        '墨冷笺寒，心事皆成烟。',
+        '千般念，未曾轻遣，不敢到君前。'
+      ]},
+      { idx:'江城子', no:23, t:'江城子 · 十月九日待别赠可人', y:'2025', k:'词', lines:[
+        '陈圃香销又一秋。水西流，漫凝眸。',
+        '奕奕风华，婷婷立洲头。',
+        '怎奈云深遮去路，鸿鹄志，不堪留。',
+        '',
+        '此情何寄总无由。月如舟，渡空愁。',
+        '万里霜天，何处望重楼?',
+        '但祝君行知此意，前程远，自悠游。'
+      ]},
+      { idx:'天净沙', no:21, t:'天净沙 · 秋思', y:'2025', k:'曲', lines:[
+        '残冠落木荒丘，',
+        '乌穹流云孤鸠，',
+        '故园青湖枯柳。',
+        '嵚崟清秀，',
+        '相思豆寄阁楼。'
+      ]},
+      { idx:'浣溪沙', no:32, t:'浣溪沙 · 元日小记', y:'2026', k:'词', lines:[
+        '新晨初暖戏言轻，',
+        '灯华熠彩报新正。',
+        '红封来往一般平。',
+        '静意暗随春入庭，',
+        '深情不向外人听。',
+        '只将安好寄卿卿。'
+      ]},
+      { idx:'于海中枯萎', no:37, t:'于海中枯萎', y:'2026', k:'现代诗', lines:[
+        '清风将花枝赠予长河，',
+        '河水无意地卷着落花，',
+        '于海中枯萎。',
+        '',
+        '夜幕将星辰投入尘间，',
+        '海浪无声地开出水花，',
+        '于海中枯萎。',
+        '',
+        '我将石心沉进海底，',
+        '思绪精致地雕刻着春花，',
+        '于海中枯萎。',
+        '',
+        '枯萎于海中流浪，',
+        '于是，',
+        '浪携着繁花，于海中枯萎。'
+      ]}
+    ];
+
+    function p2(n){ return (n < 10 ? '0' : '') + n; }
+    var items = [];
+    var cur = 0;
+
+    POEMS.forEach(function(p, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pi-item';
+      var n = document.createElement('span'); n.className = 'n'; n.textContent = p2(i + 1);
+      var t = document.createElement('span'); t.className = 't'; t.textContent = p.idx;
+      var y = document.createElement('span'); y.className = 'y'; y.textContent = p.y;
+      b.appendChild(n); b.appendChild(t); b.appendChild(y);
+      b.addEventListener('click', function(){ show(i); });
+      list.appendChild(b);
+      items.push(b);
+    });
+
+    function show(i){
+      cur = (i + POEMS.length) % POEMS.length;
+      var p = POEMS[cur];
+      titleEl.textContent = p.t;
+      metaEl.textContent = p.y + ' · ' + p.k;
+      noteEl.textContent = '《口水盆》· No.' + p.no;
+      curEl.textContent = p2(cur + 1);
+      bodyEl.classList.remove('is-live');
+      bodyEl.classList.toggle('is-long', p.lines.length > 10);
+      bodyEl.innerHTML = p.lines.map(function(l, idx){
+        if (!l) return '<span class="pr-gap" aria-hidden="true"></span>';
+        return '<span class="poem-line" style="--i:' + idx + '">' + l + '</span>';
+      }).join('');
+      void bodyEl.offsetWidth;
+      bodyEl.classList.add('is-live');
+      items.forEach(function(b, k){ b.classList.toggle('is-on', k === cur); });
+    }
+
+    if (totalEl) totalEl.textContent = p2(POEMS.length);
+    poemStep = function(dir){ show(cur + dir); };
+    poemRefresh = function(){
+      bodyEl.classList.remove('is-live');
+      void bodyEl.offsetWidth;
+      bodyEl.classList.add('is-live');
+    };
+    show(0);
+  })();
 
   render(false);
   requestAnimationFrame(function(){ slides[0].classList.add('is-active'); });
